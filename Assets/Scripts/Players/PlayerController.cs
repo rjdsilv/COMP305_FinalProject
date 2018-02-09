@@ -14,10 +14,10 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidBody;
 
-	/// <summary>
+    /// <summary>
     /// Method being used for the player movement initialization.
     /// </summary>
-	void Start ()
+    void Start ()
     {
         // Initalize the player objects.
         _animator = GetComponent<Animator>();
@@ -43,6 +43,51 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void MovePlayer()
     {
-        _rigidBody.velocity = new Vector2(Input.GetAxis("KB_Horizontal") * speed, Input.GetAxis("KB_Vertical") * speed);
+        float horizontalMovement = Input.GetAxis("KB_Horizontal");
+        float verticalMovement = Input.GetAxis("KB_Vertical");
+        _rigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * speed;
+        ChangePlayerAnimation(horizontalMovement, verticalMovement);
+    }
+
+    void ChangePlayerAnimation(float hMove, float vMove)
+    {
+        if (hMove > 0)
+        {
+            _currAnimState = PlayerAnimationState.WALKING_RIGHT;
+        }
+        else if (hMove < 0)
+        {
+            _currAnimState = PlayerAnimationState.WALKING_LEFT;
+        }
+        else if (vMove > 0)
+        {
+            _currAnimState = PlayerAnimationState.WALKING_BACK;
+        }
+        else if (vMove < 0)
+        {
+            _currAnimState = PlayerAnimationState.WALKING_FRONT;
+        }
+        else
+        {
+            switch (_currAnimState.FaceDirection)
+            {
+                case PlayerAnimationState.Direction.FACE_RIGHT:
+                    _currAnimState = PlayerAnimationState.STAND_RIGHT;
+                    break;
+
+                case PlayerAnimationState.Direction.FACE_FRONT:
+                    _currAnimState = PlayerAnimationState.STAND_FRONT;
+                    break;
+
+                case PlayerAnimationState.Direction.FACE_LEFT:
+                    _currAnimState = PlayerAnimationState.STAND_LEFT;
+                    break;
+
+                case PlayerAnimationState.Direction.FACE_BACK:
+                    _currAnimState = PlayerAnimationState.STAND_BACK;
+                    break;
+            }
+        }
+        _animator.Play(_currAnimState.AnimationName);
     }
 }
