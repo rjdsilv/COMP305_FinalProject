@@ -29,8 +29,6 @@ public class EnemyAI : MonoBehaviour
     /// <param name="detectedObject">The object detected.</param>
     void OnTriggerStay2D(Collider2D detectedObject)
     {
-        Debug.Log("I can see you");
-
         // Player is in the enemy's range of detection.
         if (IsPlayer(detectedObject))
         {
@@ -45,15 +43,6 @@ public class EnemyAI : MonoBehaviour
             {
                 _isSeeingPlayer = false;
             }
-        }
-
-        if (_isSeeingPlayer)
-        {
-            Debug.Log("I can see you");
-        }
-        else
-        {
-            Debug.Log("I no longer see you!!!");
         }
     }
 
