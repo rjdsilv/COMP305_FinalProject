@@ -23,6 +23,18 @@ public class EnemyAI : MonoBehaviour
         _eye = transform.GetChild(EYE_IDX);
     }
 
+    void LateUpdate()
+    {
+        if (_isSeeingPlayer)
+        {
+            Debug.Log("YESSS!!! I can see the Player!!!");
+        }
+        else
+        {
+            Debug.Log("NOOOO!!! I cannot see the Player!!!");
+        }
+    }
+
     /// <summary>
     /// Method called whenever a trigger collision is detected.
     /// </summary>
