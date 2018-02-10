@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 70543159644899864}
   - component: {fileID: 95984460002509624}
   - component: {fileID: 114042966782367542}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player-Mage
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 20421637474301566}
   - component: {fileID: 124026142806403934}
   - component: {fileID: 81908229008759878}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa8dab29a8e59747a5893922bd10717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2.5
   player: {fileID: 1226038040163758}
 --- !u!124 &124026142806403934
 Behaviour:
