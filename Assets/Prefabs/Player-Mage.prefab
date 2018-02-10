@@ -20,13 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4639007964062920}
   - component: {fileID: 212583772660451268}
-  - component: {fileID: 95984460002509624}
   - component: {fileID: 50852488109346300}
   - component: {fileID: 70543159644899864}
+  - component: {fileID: 95984460002509624}
   - component: {fileID: 114042966782367542}
   m_Layer: 0
   m_Name: Player-Mage
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 20421637474301566}
   - component: {fileID: 124026142806403934}
   - component: {fileID: 81908229008759878}
-  - component: {fileID: 114453912445259134}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -71,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1440477022472172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4639007964062920}
@@ -183,18 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa8dab29a8e59747a5893922bd10717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
   player: {fileID: 1226038040163758}
---- !u!114 &114453912445259134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440477022472172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &124026142806403934
 Behaviour:
   m_ObjectHideFlags: 1

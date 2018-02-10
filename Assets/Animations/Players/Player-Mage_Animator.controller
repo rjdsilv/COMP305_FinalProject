@@ -27,7 +27,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_StandLeft
+  m_Name: StandLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -52,7 +52,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_WalkingFront
+  m_Name: WalkingFront
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -77,7 +77,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_WalkingBack
+  m_Name: WalkingBack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -102,7 +102,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_WalkingLeft
+  m_Name: WalkingLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -127,7 +127,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_StandFront
+  m_Name: StandFront
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -152,7 +152,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_StandBack
+  m_Name: StandBack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -177,7 +177,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_WalkingRight
+  m_Name: WalkingRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -202,7 +202,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Player-Mage_StandRight
+  m_Name: StandRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

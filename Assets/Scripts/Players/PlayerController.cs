@@ -49,8 +49,14 @@ public class PlayerController : MonoBehaviour
         ChangePlayerAnimation(horizontalMovement, verticalMovement);
     }
 
+    /// <summary>
+    /// Method responsible for changing the player animations based on the keys pressed and released.
+    /// </summary>
+    /// <param name="hMove">The value of the horizontal movement</param>
+    /// <param name="vMove">The value of the vertical movement</param>
     void ChangePlayerAnimation(float hMove, float vMove)
     {
+        // Movement animations.
         if (hMove > 0)
         {
             _currAnimState = PlayerAnimationState.WALKING_RIGHT;
@@ -67,6 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             _currAnimState = PlayerAnimationState.WALKING_FRONT;
         }
+        // Stand animations.
         else
         {
             switch (_currAnimState.FaceDirection)
@@ -88,6 +95,8 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+
+        // Plas the animation.
         _animator.Play(_currAnimState.AnimationName);
     }
 }
