@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewAngle: 30
-  turnDistance: 1.5
+  turnDistance: 1.25
 --- !u!114 &114939576995653750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baac1ed1123cba44a1258bda6367f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1.5
 --- !u!212 &212019409925732722
 SpriteRenderer:
   m_ObjectHideFlags: 1
