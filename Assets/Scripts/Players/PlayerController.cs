@@ -7,12 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
-    public GameObject player;
 
     // Private properties declaration.
-    private PlayerAnimationState _currAnimState;
-    private Animator _animator;
-    private Rigidbody2D _rigidBody;
+    private AnimationState _currAnimState; // The player's current animation state.
+    private Animator _animator;            // The player's rigid body.
+    private Rigidbody2D _rigidBody;        // The player's animator.
 
     /// <summary>
     /// Method being used for the player movement initialization.
@@ -24,7 +23,7 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
 
         // The player starts looking to the right.
-        _currAnimState = PlayerAnimationState.STAND_RIGHT;
+        _currAnimState = AnimationState.STAND_RIGHT;
 
         // Starts the player animation looking to the right.
         _animator.Play(_currAnimState.AnimationName);
@@ -59,39 +58,39 @@ public class PlayerController : MonoBehaviour
         // Movement animations.
         if (hMove > 0)
         {
-            _currAnimState = PlayerAnimationState.WALKING_RIGHT;
+            _currAnimState = AnimationState.WALKING_RIGHT;
         }
         else if (hMove < 0)
         {
-            _currAnimState = PlayerAnimationState.WALKING_LEFT;
+            _currAnimState = AnimationState.WALKING_LEFT;
         }
         else if (vMove > 0)
         {
-            _currAnimState = PlayerAnimationState.WALKING_BACK;
+            _currAnimState = AnimationState.WALKING_UP;
         }
         else if (vMove < 0)
         {
-            _currAnimState = PlayerAnimationState.WALKING_FRONT;
+            _currAnimState = AnimationState.WALKING_DOWN;
         }
         // Stand animations.
         else
         {
             switch (_currAnimState.FaceDirection)
             {
-                case PlayerAnimationState.Direction.FACE_RIGHT:
-                    _currAnimState = PlayerAnimationState.STAND_RIGHT;
+                case AnimationState.Direction.FACE_RIGHT:
+                    _currAnimState = AnimationState.STAND_RIGHT;
                     break;
 
-                case PlayerAnimationState.Direction.FACE_FRONT:
-                    _currAnimState = PlayerAnimationState.STAND_FRONT;
+                case AnimationState.Direction.FACE_DOWN:
+                    _currAnimState = AnimationState.STAND_DOWN;
                     break;
 
-                case PlayerAnimationState.Direction.FACE_LEFT:
-                    _currAnimState = PlayerAnimationState.STAND_LEFT;
+                case AnimationState.Direction.FACE_LEFT:
+                    _currAnimState = AnimationState.STAND_LEFT;
                     break;
 
-                case PlayerAnimationState.Direction.FACE_BACK:
-                    _currAnimState = PlayerAnimationState.STAND_BACK;
+                case AnimationState.Direction.FACE_UP:
+                    _currAnimState = AnimationState.STAND_UP;
                     break;
             }
         }
