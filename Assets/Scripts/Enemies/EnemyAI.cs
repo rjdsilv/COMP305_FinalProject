@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class responsible for dealing the the enemy AI for both movement and sight of view.
+/// </summary>
 public class EnemyAI : MonoBehaviour
 {
     // Public variable declaration.
@@ -20,6 +23,15 @@ public class EnemyAI : MonoBehaviour
     private float _lastDirChangeTime;         // The last time the direction was changed.
 
     /// <summary>
+    /// Method to indicate if the enemy is seeing the player.
+    /// </summary>
+    /// <returns><b>true</b> if the enemy is seeing the player. <b>false</b> otherwise.</returns>
+    public bool IsSeeingPlayer()
+    {
+        return _isSeeingPlayer;
+    }
+
+    /// <summary>
     /// Initializes all the necessary variables for the AI to work properly.
     /// </summary>
     void Start()
@@ -36,15 +48,6 @@ public class EnemyAI : MonoBehaviour
     /// </summary>
     void LateUpdate()
     {
-        if (_isSeeingPlayer)
-        {
-            Debug.Log("YESSS!!! I can see the Player!!!");
-        }
-        else
-        {   
-            Debug.Log("NOOOO!!! I cannot see the Player!!!");
-        }
-
         if (_isSeeingObstacle)
         {
             TurnDueToScenarioObjectFound();
@@ -99,6 +102,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
+        // Checking if should turn due to an obstacle ahead.
         if (IsScenarioObjectOrSectorEdge(detectedObject.transform))
         {
             Vector3 ep = _eye.transform.position;
@@ -116,7 +120,10 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TurnDueToTimeFrame()
+    /// <summary>
+    /// Turns the enemy due to the time elapsed.
+    /// </summary>
+    void TurnDueToTimeFrame()
     {
         if (Time.time - _lastDirChangeTime >= _secondsInSameDirection)
         {
@@ -124,12 +131,18 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TurnDueToScenarioObjectFound()
+    /// <summary>
+    /// Turn the enemy due to finding a scenario object.
+    /// </summary>
+    void TurnDueToScenarioObjectFound()
     {
         TurnNow();
     }
 
-    private void TurnNow()
+    /// <summary>
+    /// Turns randomly the enemy.
+    /// </summary>
+    void TurnNow()
     {
         float direction = Random.Range(-1, 1);
 
@@ -146,17 +159,29 @@ public class EnemyAI : MonoBehaviour
         _lastDirChangeTime = Time.time;
     }
 
-    private bool IsMovingVertically()
+    /// <summary>
+    /// Indicates if the enemy is moving vertically.
+    /// </summary>
+    /// <returns><b>true</b> if the enemy is moving vertically. <b>false</b> otherwise.</returns>
+    bool IsMovingVertically()
     {
         return _enemyController.IsMovingUp() || _enemyController.IsMovingDown();
     }
 
-    private bool IsMovingHorizontally()
+    /// <summary>
+    /// Indicates if the enemy is moving horizontally.
+    /// </summary>
+    /// <returns><b>true</b> if the enemy is moving horizontally. <b>false</b> otherwise.</returns>
+    bool IsMovingHorizontally()
     {
         return _enemyController.IsMovingLeft() || _enemyController.IsMovingRight();
     }
 
-    private void TurnVertical(float direction)
+    /// <summary>
+    /// Turn the enemy to vertical direction.
+    /// </summary>
+    /// <param name="direction">The direction (up or down) to turn.</param>
+    void TurnVertical(float direction)
     {
         if (direction >= 0)
         {
@@ -168,7 +193,11 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void TurnHorizontal(float direction)
+    /// <summary>
+    /// Turn the enemy to horizontal direction.
+    /// </summary>
+    /// <param name="direction">The direction (left or right) to turn.</param>
+    void TurnHorizontal(float direction)
     {
         if (direction >= 0)
         {
@@ -179,7 +208,6 @@ public class EnemyAI : MonoBehaviour
             _enemyController.MoveLeft();
         }
     }
-
 
     /// <summary>
     /// Method that indicates if the object in question is a player.

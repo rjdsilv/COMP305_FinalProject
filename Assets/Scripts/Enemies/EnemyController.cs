@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class responsible for controlling the enemy movements.
+/// </summary>
 public class EnemyController : MonoBehaviour
 {
     // Public properties declaration.

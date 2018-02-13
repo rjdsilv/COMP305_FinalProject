@@ -1,6 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Enemy properties to be controlled by the sector.
+/// </summary>
 [Serializable]
 public class SectorEnemyProperties
 {
