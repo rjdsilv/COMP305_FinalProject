@@ -3,8 +3,10 @@
 public class EnemyAI : MonoBehaviour
 {
     // Public variable declaration.
-    public float viewAngle;    // The maximum angle this enemy can see.
-    public float turnDistance; // The distance that will make the enemy turn when seeing a scenario object.
+    public float viewAngle;      // The maximum angle this enemy can see.
+    public float turnDistance;   // The distance that will make the enemy turn when seeing a scenario object.
+    public float minTimeSameDir; // Minimum range time before turning to another direcion.
+    public float maxTimeSameDir; // Maximum range time before turning to another direcion.
 
     // Private constants declaration.
     private const int EYE_IDX = 0;
@@ -13,6 +15,9 @@ public class EnemyAI : MonoBehaviour
     private Transform _eye;                   // The enemy's eye.
     private EnemyController _enemyController; // The script responsible for moving and animating the enemy.
     private bool _isSeeingPlayer;             // Flag indicating if the enemy can actualy see the player.
+    private bool _isSeeingObstacle;           // Indicates if the enemy is seeing an objstacle and must turn.
+    private float _secondsInSameDirection;    // The maximum number of seconds the enemy will walk in the same direction before turning.
+    private float _lastDirChangeTime;         // The last time the direction was changed.
 
     /// <summary>
     /// Initializes all the necessary variables for the AI to work properly.
@@ -21,6 +26,8 @@ public class EnemyAI : MonoBehaviour
     {
         _eye = transform.GetChild(EYE_IDX);
         _enemyController = GetComponent<EnemyController>();
+        _secondsInSameDirection = Random.Range(minTimeSameDir, maxTimeSameDir);
+        _lastDirChangeTime = 0;
     }
 
     /// <summary>
@@ -36,6 +43,16 @@ public class EnemyAI : MonoBehaviour
         else
         {   
             Debug.Log("NOOOO!!! I cannot see the Player!!!");
+        }
+
+        if (_isSeeingObstacle)
+        {
+            TurnDueToScenarioObjectFound();
+            _isSeeingObstacle = false;
+        }
+        else
+        {
+            TurnDueToTimeFrame();
         }
     }
 
@@ -82,7 +99,7 @@ public class EnemyAI : MonoBehaviour
             }
         }
 
-        if (IsScenarioObject(detectedObject))
+        if (IsScenarioObjectOrSectorEdge(detectedObject.transform))
         {
             Vector3 ep = _eye.transform.position;
             Vector3 dp = detectedObject.transform.position;
@@ -91,31 +108,78 @@ public class EnemyAI : MonoBehaviour
             foreach (RaycastHit2D hit in hits)
             {
                 if (hit.transform.tag == "Enemy") continue;
-                if (hit.transform.tag == "ScenarioObject") Turn();
+                if (IsScenarioObjectOrSectorEdge(hit.transform))
+                {
+                    _isSeeingObstacle = true;
+                }
             }
         }
     }
 
-    private void Turn()
+    private void TurnDueToTimeFrame()
+    {
+        if (Time.time - _lastDirChangeTime >= _secondsInSameDirection)
+        {
+            TurnNow();
+        }
+    }
+
+    private void TurnDueToScenarioObjectFound()
+    {
+        TurnNow();
+    }
+
+    private void TurnNow()
     {
         float direction = Random.Range(-1, 1);
 
-        // Moving horizontally. Change Direction.
-        if (_enemyController.IsMovingLeft() || _enemyController.IsMovingRight())
+        if (IsMovingHorizontally())
         {
-            if (direction >= 0)
-                _enemyController.MoveUp();
-            else
-                _enemyController.MoveDown();
+            TurnVertical(direction);
         }
-        else if (_enemyController.IsMovingUp() || _enemyController.IsMovingDown())
+        else if (IsMovingVertically())
         {
-            if (direction >= 0)
-                _enemyController.MoveRight();
-            else
-                _enemyController.MoveLeft();
+            TurnHorizontal(direction);
+        }
+
+        // If turned, update the time for not going turn crazy!
+        _lastDirChangeTime = Time.time;
+    }
+
+    private bool IsMovingVertically()
+    {
+        return _enemyController.IsMovingUp() || _enemyController.IsMovingDown();
+    }
+
+    private bool IsMovingHorizontally()
+    {
+        return _enemyController.IsMovingLeft() || _enemyController.IsMovingRight();
+    }
+
+    private void TurnVertical(float direction)
+    {
+        if (direction >= 0)
+        {
+            _enemyController.MoveUp();
+        }
+        else
+        {
+            _enemyController.MoveDown();
         }
     }
+
+    private void TurnHorizontal(float direction)
+    {
+        if (direction >= 0)
+        {
+            _enemyController.MoveRight();
+        }
+        else
+        {
+            _enemyController.MoveLeft();
+        }
+    }
+
 
     /// <summary>
     /// Method that indicates if the object in question is a player.
@@ -127,9 +191,14 @@ public class EnemyAI : MonoBehaviour
         return detectedObject.tag == "Player";
     }
 
-    bool IsScenarioObject(Collider2D detectedObject)
+    /// <summary>
+    /// Method to verify if the object seen by the enemy is a scenario object or a sector edge.
+    /// </summary>
+    /// <param name="detectedObject">The object detected by the enemy.</param>
+    /// <returns><b>true</b> if the object is either a scenario object or a sector edge. <b>false</b>otherwise.</returns>
+    bool IsScenarioObjectOrSectorEdge(Transform detectedObject)
     {
-        return detectedObject.tag == "ScenarioObject";
+        return detectedObject.tag == "ScenarioObject" || detectedObject.tag == "SectorEdge";
     }
 
     /// <summary>

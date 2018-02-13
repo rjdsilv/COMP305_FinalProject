@@ -255,6 +255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewAngle: 30
   turnDistance: 1.25
+  minTimeSameDir: 3
+  maxTimeSameDir: 6
 --- !u!114 &114939576995653750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -300,7 +302,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300142, guid: 4b2fb91c99ccce641b06aa568e46c293, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -34,7 +34,7 @@ public class EnemyController : MonoBehaviour
         _eye = transform.GetChild(EYE_IDX);
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        MoveLeft();
+        StartRandomMovement();
     }
 
     /// <summary>
@@ -196,5 +196,30 @@ public class EnemyController : MonoBehaviour
         }
 
         return new Vector2();
+    }
+
+    /// <summary>
+    /// Starts the enemy movement in a random direction based on the number generated.
+    /// </summary>
+    private void StartRandomMovement()
+    {
+        float direction = Random.Range(0, 4);
+
+        if (direction >= 0 && direction < 1)
+        {
+            MoveLeft();
+        }
+        else if (direction >= 1 && direction < 2)
+        {
+            MoveUp();
+        }
+        else if (direction >= 2 && direction < 3)
+        {
+            MoveRight();
+        }
+        else if (direction >= 3 && direction <= 4)
+        {
+            MoveDown();
+        }
     }
 }
