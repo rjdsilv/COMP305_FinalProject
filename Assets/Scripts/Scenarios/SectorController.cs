@@ -16,6 +16,7 @@ public class SectorController : MonoBehaviour
 
     // Private variables declaration.
     private bool _isDataSaved = false;
+    private bool _spawnEnemies = true;        // Indicates if the enemies were destroyed or not.
     private List<GameObject> _enemiesSpawned; // The enemies spawned.
     private List<GameObject> _enemiesToFight; // The enemies that are going to be on the battle.
     private List<EnemyAI> _enemiesAI;         // The enemy AI script.
@@ -27,6 +28,31 @@ public class SectorController : MonoBehaviour
         _enemiesToFight = new List<GameObject>();
         _enemiesAI = new List<EnemyAI>();
 	}
+
+    /// <summary>
+    /// When the player enters into the sector, spawn all the enemies from that sector.
+    /// </summary>
+    /// <param name="detectedObject">The detected object.</param>
+    void OnTriggerEnter2D(Collider2D detectedObject)
+    {
+        if (TagUtils.IsPlayer(detectedObject.transform))
+        {
+            SpawnEnemies();
+        }
+
+    }
+
+    /// <summary>
+    /// When the player leaves the sector, destroys all the enemies from that sector.
+    /// </summary>
+    /// <param name="detectedObject">The detected object.</param>
+    void OnTriggerExit2D(Collider2D detectedObject)
+    {
+        if (TagUtils.IsCamera(detectedObject.transform) && detectedObject.isTrigger)
+        {
+            DestroyEnemies();
+        }
+    }
 
     /// <summary>
     /// Checks what enemies are seeing the player and select enemies within a radius to join the battle.
@@ -129,31 +155,11 @@ public class SectorController : MonoBehaviour
     }
 
     /// <summary>
-    /// When the player enters into the sector, spawn all the enemies from that sector.
-    /// </summary>
-    /// <param name="other">The other collider.</param>
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        SpawnEnemies();
-
-    }
-
-    /// <summary>
-    /// When the player leaves the sector, destroys all the enemies from that sector.
-    /// </summary>
-    /// <param name="other">The other collider.</param>
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        DestroyEnemies();
-
-    }
-
-    /// <summary>
     /// Spawns all the enemies based on the sector configuration.
     /// </summary>
     void SpawnEnemies()
     {
-        if (sectorProperties.spawnEnemies)
+        if (sectorProperties.spawnEnemies && _spawnEnemies)
         {
             foreach (SectorEnemyProperties ep in sectorProperties.enemyProperties)
             {
@@ -176,6 +182,8 @@ public class SectorController : MonoBehaviour
                 }
             }
         }
+
+        _spawnEnemies = false;
     }
 
     /// <summary>
@@ -189,5 +197,6 @@ public class SectorController : MonoBehaviour
         }
         _enemiesSpawned.Clear();
         _enemiesAI.Clear();
+        _spawnEnemies = true;
     }
 }

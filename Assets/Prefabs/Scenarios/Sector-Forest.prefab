@@ -200,7 +200,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03290963, y: -0.02179864}
@@ -225,7 +225,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03290963, y: -0.02179864}
@@ -250,7 +250,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03290963, y: -0.02179864}
@@ -275,7 +275,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03290963, y: -0.02179864}
@@ -304,10 +304,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectorProperties:
     spawnEnemies: 0
+    fightRadius: 0
     enemyProperties:
     - spawnNumber: 1
       spawnRadius: 4
       enemy: {fileID: 1000555749018116, guid: 98f30ee5f8c48e24db0b563156f074d7, type: 2}
+  battleScene: 
 --- !u!212 &212029132297481198
 SpriteRenderer:
   m_ObjectHideFlags: 1

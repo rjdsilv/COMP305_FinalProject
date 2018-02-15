@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour
     /// <param name="collision">The object that left the colision area.</param>
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (IsPlayer(collision))
+        if (TagUtils.IsPlayer(collision.transform))
         {
             _isSeeingPlayer = false;
         }
@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
     void WhatAmISeeing(Collider2D detectedObject)
     {
         // Player is in the enemy's range of detection.
-        if (IsPlayer(detectedObject))
+        if (TagUtils.IsPlayer(detectedObject.transform))
         {
             // Player is within the enemy's line of sight.
             if (CalculateAngleToPlayer(detectedObject) <= viewAngle)
@@ -112,7 +112,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Checking if should turn due to an obstacle ahead.
-        if (IsScenarioObjectOrSectorEdge(detectedObject.transform))
+        if (TagUtils.IsScenarioObject(detectedObject.transform) || TagUtils.IsSectorEdge(detectedObject.transform))
         {
             Vector3 ep = _eye.transform.position;
             Vector3 dp = detectedObject.transform.position;
@@ -120,8 +120,8 @@ public class EnemyAI : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.transform.tag == "Enemy") continue;
-                if (IsScenarioObjectOrSectorEdge(hit.transform))
+                if (TagUtils.IsEnemy(hit.transform)) continue;
+                if (TagUtils.IsScenarioObject(hit.transform) || TagUtils.IsSectorEdge(hit.transform))
                 {
                     _isSeeingObstacle = true;
                 }
@@ -219,26 +219,6 @@ public class EnemyAI : MonoBehaviour
     }
 
     /// <summary>
-    /// Method that indicates if the object in question is a player.
-    /// </summary>
-    /// <param name="detectedObject">The object to be checked.</param>
-    /// <returns><b>true</b> if the object detected is the player. <b>false</b> otherwise.</returns>
-    bool IsPlayer(Collider2D detectedObject)
-    {
-        return detectedObject.tag == "Player";
-    }
-
-    /// <summary>
-    /// Method to verify if the object seen by the enemy is a scenario object or a sector edge.
-    /// </summary>
-    /// <param name="detectedObject">The object detected by the enemy.</param>
-    /// <returns><b>true</b> if the object is either a scenario object or a sector edge. <b>false</b>otherwise.</returns>
-    bool IsScenarioObjectOrSectorEdge(Transform detectedObject)
-    {
-        return detectedObject.tag == "ScenarioObject" || detectedObject.tag == "SectorEdge";
-    }
-
-    /// <summary>
     /// This method calculates the angle between the player and the ortogonal line of sight from the enemy's eye.
     /// </summary>
     /// <param name="player">The player object</param>
@@ -267,11 +247,11 @@ public class EnemyAI : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                // Hit an enemy, continue looking.
-                if (hit.transform.tag == "Enemy") continue;
+                // Hit an enemy or the camera, continue looking.
+                if (TagUtils.IsEnemy(hit.transform) || TagUtils.IsCamera(hit.transform)) continue;
 
                 // Hit anything that is not the player, so the line of view is blocked.
-                if (hit.transform.tag != "Player") return true;
+                if (!TagUtils.IsPlayer(hit.transform)) return true;
             }
         }
 

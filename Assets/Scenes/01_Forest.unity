@@ -239,6 +239,26 @@ Prefab:
       propertyPath: battleScene
       value: 01-01_Forest-Battle
       objectReference: {fileID: 0}
+    - target: {fileID: 61340477233832024, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61991330762384612, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61326680055673558, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61372647641277878, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
   m_IsPrefabParent: 0
@@ -1064,39 +1084,24 @@ Prefab:
       propertyPath: m_Name
       value: Camera-Player01
       objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
+    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_UseAutoMass
+      propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
+    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_Mass
-      value: 0.0001
-      objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_GravityScale
+      propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
+    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: m_Size.x
+      value: 17.7
       objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
+    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50402068899484142, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_LinearDrag
+      propertyPath: m_Size.y
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
