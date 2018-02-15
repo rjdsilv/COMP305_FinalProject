@@ -32,6 +32,15 @@ public class EnemyAI : MonoBehaviour
     }
 
     /// <summary>
+    /// Method to retrieve the enemy position on the world.
+    /// </summary>
+    /// <returns>The enemy position on the world.</returns>
+    public Vector3 GetEnemyPosition()
+    {
+        return transform.position;
+    }
+
+    /// <summary>
     /// Initializes all the necessary variables for the AI to work properly.
     /// </summary>
     void Start()

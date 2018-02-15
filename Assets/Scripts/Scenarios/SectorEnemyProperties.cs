@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class SectorEnemyProperties
 {
-    public int spawnNumber;
-    public float spawnRadius;
-    public GameObject enemy;
+    public int spawnNumber;   // The number of enemies to be spawned.
+    public float spawnRadius; // The radius within the enemies should spawn.
+    public GameObject enemy;  // The enemy to be spawned.
 }
