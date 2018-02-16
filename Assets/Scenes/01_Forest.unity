@@ -404,7 +404,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
@@ -996,7 +996,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}

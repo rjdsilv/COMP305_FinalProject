@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SceneSwitchDataHandler
 {
-    public static List<GameObject> playersOnScene = new List<GameObject>();
-    public static List<GameObject> enemiesInBattle;
-    public static List<GameObject> enemiesNotInBattle;
+    public static bool isComingBackFromBattle = false;
+    public static List<PlayerHolder> players = new List<PlayerHolder>();
+    public static List<EnemyHolder> enemiesInBattle;
+    public static List<EnemyHolder> enemiesNotInBattle;
 }

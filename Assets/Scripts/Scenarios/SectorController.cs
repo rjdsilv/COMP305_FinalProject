@@ -11,22 +11,24 @@ using UnityEngine.SceneManagement;
 public class SectorController : MonoBehaviour
 {
     // Public variable declaration.
+    public string sectorName;
     public SectorProperties sectorProperties;
     public string battleScene;
 
     // Private variables declaration.
     private bool _isDataSaved = false;
     private bool _spawnEnemies = true;        // Indicates if the enemies were destroyed or not.
-    private List<GameObject> _enemiesSpawned; // The enemies spawned.
-    private List<GameObject> _enemiesToFight; // The enemies that are going to be on the battle.
+    private List<EnemyHolder> _enemiesSpawned; // The enemies spawned.
+    private List<EnemyHolder> _enemiesToFight; // The enemies that are going to be on the battle.
     private List<EnemyAI> _enemiesAI;         // The enemy AI script.
 
 	// Use this for initialization
 	void Start ()
     {
-        _enemiesSpawned = new List<GameObject>();
-        _enemiesToFight = new List<GameObject>();
+        _enemiesSpawned = new List<EnemyHolder>();
+        _enemiesToFight = new List<EnemyHolder>();
         _enemiesAI = new List<EnemyAI>();
+        PositionPlayers();
 	}
 
     /// <summary>
@@ -39,7 +41,6 @@ public class SectorController : MonoBehaviour
         {
             SpawnEnemies();
         }
-
     }
 
     /// <summary>
@@ -72,8 +73,6 @@ public class SectorController : MonoBehaviour
         if (shouldBattle && !_isDataSaved)
         {
             SaveSceneData();
-            Debug.Log(string.Format("#Players on the Battle: {0} - #Enemies on the Battle: {1} - #Enemies Remaining: {2}\n",
-                SceneSwitchDataHandler.playersOnScene.Count, SceneSwitchDataHandler.enemiesInBattle.Count, SceneSwitchDataHandler.enemiesNotInBattle.Count));
             LoadBattleScene();
         }
     }
@@ -108,11 +107,11 @@ public class SectorController : MonoBehaviour
     void SelectEnemiesForBattle(EnemyAI ai)
     {
         // Go through all the enemies on the sector to find the ones that will be on battle.
-        foreach(GameObject enemy in _enemiesSpawned)
+        foreach(EnemyHolder enemy in _enemiesSpawned)
         {
             Vector2 circleCenter = new Vector2(ai.GetEnemyPosition().x, ai.GetEnemyPosition().y);
-            float enemyRadius = CalculateCircleRadiusForEnemy(enemy, circleCenter);
-            if (enemyRadius < sectorProperties.fightRadius)
+            float enemyRadius = CalculateCircleRadiusForEnemy(enemy.Enemy, circleCenter);
+            if (enemyRadius < sectorProperties.fightRadius && enemy.Sector == sectorName)
             {
                 if (!_enemiesToFight.Contains(enemy))
                 {
@@ -132,14 +131,17 @@ public class SectorController : MonoBehaviour
 
         foreach(GameObject player in players)
         {
-            if (!SceneSwitchDataHandler.playersOnScene.Contains(player))
+            PlayerHolder playerHolder = new PlayerHolder(player.transform.name, new Vector3(player.transform.position.x, player.transform.position.y, 0));
+            if (!SceneSwitchDataHandler.players.Contains(playerHolder))
             {
-                SceneSwitchDataHandler.playersOnScene.Add(player);
+                SceneSwitchDataHandler.players.Add(playerHolder);
             }
         }
 
         SceneSwitchDataHandler.enemiesInBattle = _enemiesToFight;
         SceneSwitchDataHandler.enemiesNotInBattle = _enemiesSpawned;
+        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesInBattle) holder.Enemy.SetActive(false);
+        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesNotInBattle) holder.Enemy.SetActive(false);
         _isDataSaved = true;
     }
 
@@ -154,33 +156,61 @@ public class SectorController : MonoBehaviour
         return Mathf.Sqrt(Mathf.Pow((enemy.transform.position.x - center.x), 2.0f) + Mathf.Pow((enemy.transform.position.y - center.y), 2.0f));
     }
 
+    void PositionPlayers()
+    {
+        if (SceneSwitchDataHandler.isComingBackFromBattle)
+        {
+            // Reposition the players in the original position
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (GameObject player in players)
+            {
+                PlayerHolder oldPlayer = SceneSwitchDataHandler.players.Find(p => p.Name == player.transform.name);
+                player.transform.position = oldPlayer.Position;
+                Camera.main.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.transform.position.z) ;
+            }
+        }
+    }
+
     /// <summary>
     /// Spawns all the enemies based on the sector configuration.
     /// </summary>
     void SpawnEnemies()
     {
-        if (sectorProperties.spawnEnemies && _spawnEnemies)
+        if (!SceneSwitchDataHandler.isComingBackFromBattle)
         {
-            foreach (SectorEnemyProperties ep in sectorProperties.enemyProperties)
+            if (sectorProperties.spawnEnemies && _spawnEnemies)
             {
-                for (int i = 0; i < ep.spawnNumber; i++)
+                foreach (SectorEnemyProperties ep in sectorProperties.enemyProperties)
                 {
-                    // Instantiate the enemy.
-                    GameObject enemy = Instantiate(
-                        ep.enemy,
-                        new Vector3(
-                            transform.position.x + UnityEngine.Random.Range(-ep.spawnRadius, ep.spawnRadius), 
+                    for (int i = 0; i < ep.spawnNumber; i++)
+                    {
+                        // Instantiate the enemy.
+                        Vector3 position = new Vector3(
+                            transform.position.x + UnityEngine.Random.Range(-ep.spawnRadius, ep.spawnRadius),
                             transform.position.y + UnityEngine.Random.Range(-ep.spawnRadius, ep.spawnRadius),
                             0
-                        ),
-                        Quaternion.identity
-                    );
+                        );
+                        GameObject enemy = Instantiate(ep.enemy, position, Quaternion.identity);
+                        DontDestroyOnLoad(enemy);
 
-                    // Adds the enemy and its AI into lists.
-                    _enemiesSpawned.Add(enemy);
-                    _enemiesAI.Add(enemy.GetComponent<EnemyAI>());
+                        // Adds the enemy and its AI into lists.
+                        _enemiesSpawned.Add(new EnemyHolder(sectorName, enemy));
+                        _enemiesAI.Add(enemy.GetComponent<EnemyAI>());
+                    }
                 }
             }
+        }
+        else
+        {
+            foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesNotInBattle)
+            {
+                holder.Enemy.SetActive(true);
+                _enemiesSpawned.Add(holder);
+                _enemiesAI.Add(holder.Enemy.GetComponent<EnemyAI>());
+            }
+
+            SceneSwitchDataHandler.isComingBackFromBattle = false;
         }
 
         _spawnEnemies = false;
@@ -191,9 +221,9 @@ public class SectorController : MonoBehaviour
     /// </summary>
     private void DestroyEnemies()
     {
-        foreach(GameObject go in _enemiesSpawned)
+        foreach(EnemyHolder holder in _enemiesSpawned)
         {
-            Destroy(go.gameObject);
+            Destroy(holder.Enemy);
         }
         _enemiesSpawned.Clear();
         _enemiesAI.Clear();
