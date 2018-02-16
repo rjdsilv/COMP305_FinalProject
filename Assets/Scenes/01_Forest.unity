@@ -169,7 +169,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4335416556651618, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -216,17 +216,17 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.spawnEnemies
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
-        type: 2}
-      propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
+      propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnRadius
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
@@ -258,6 +258,16 @@ Prefab:
         type: 2}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: sectorName
+      value: Forest_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: sectorProperties.fightRadius
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
@@ -420,6 +430,11 @@ Prefab:
         type: 2}
       propertyPath: sectorProperties.fightRadius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: sectorName
+      value: Forest_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
@@ -1038,6 +1053,11 @@ Prefab:
       propertyPath: sectorProperties.fightRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: sectorName
+      value: Forest_02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
   m_IsPrefabParent: 0
@@ -1083,31 +1103,6 @@ Prefab:
     - target: {fileID: 1137215033216060, guid: 6c8a83ed30562504fbeb521adc942a61, type: 2}
       propertyPath: m_Name
       value: Camera-Player01
-      objectReference: {fileID: 0}
-    - target: {fileID: 20911687901483688, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: orthographic size
-      value: 6.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_Offset.x
-      value: 0.013646126
-      objectReference: {fileID: 0}
-    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 23.130495
-      objectReference: {fileID: 0}
-    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: -0.013644695
-      objectReference: {fileID: 0}
-    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 12.974492
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c8a83ed30562504fbeb521adc942a61, type: 2}

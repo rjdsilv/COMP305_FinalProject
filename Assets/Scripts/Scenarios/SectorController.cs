@@ -110,52 +110,83 @@ public class SectorController : MonoBehaviour
         foreach(EnemyHolder enemy in _enemiesSpawned)
         {
             Vector2 circleCenter = new Vector2(ai.GetEnemyPosition().x, ai.GetEnemyPosition().y);
-            float enemyRadius = CalculateCircleRadiusForEnemy(enemy.Enemy, circleCenter);
-            if (enemyRadius < sectorProperties.fightRadius && enemy.Sector == sectorName)
+            if (enemy.Sector == sectorName)
             {
-                if (!_enemiesToFight.Contains(enemy))
+                float enemyRadius = CalculateCircleRadiusForEnemy(enemy.Enemy, circleCenter);
+                if (enemyRadius < sectorProperties.fightRadius)
                 {
-                    _enemiesToFight.Add(enemy);
+                    if (!_enemiesToFight.Contains(enemy))
+                    {
+                        _enemiesToFight.Add(enemy);
+                    }
                 }
             }
         }
     }
 
     /// <summary>
-    /// Saves the necessary data for switching between scenes.
+    /// Saves the necessary data for switching between scenes. Also calculates what must be
+    /// destroyed from multiple sectors due to the camera sight of sectors.
     /// </summary>
+    /// TODO improve this code!!!
     void SaveSceneData()
     {
-        _enemiesSpawned.RemoveAll(enemy => _enemiesToFight.Contains(enemy));
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        foreach(GameObject player in players)
+        List<EnemyHolder> enemiesToDestroy = new List<EnemyHolder>();
+        // Destroys all the enemies that are saved but ar not from the same sector.
+        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesIndestructible)
         {
-            PlayerHolder playerHolder = new PlayerHolder(player.transform.name, new Vector3(player.transform.position.x, player.transform.position.y, 0));
-            if (!SceneSwitchDataHandler.players.Contains(playerHolder))
+            if (holder.Sector != sectorName)
             {
-                SceneSwitchDataHandler.players.Add(playerHolder);
+                enemiesToDestroy.Add(holder);
             }
         }
 
+        // Clean the lists that will be reused.
+        SceneSwitchDataHandler.enemiesIndestructible.RemoveAll(h => enemiesToDestroy.Contains(h));
+        SceneSwitchDataHandler.players.Clear();
+
+        // Destroys the enemies marked to be destroyed.
+        foreach (EnemyHolder holder in enemiesToDestroy) Destroy(holder.Enemy);
+
+        // Removes from the enemies spawned, the enemies that will fight.
+        _enemiesSpawned.RemoveAll(enemy => _enemiesToFight.Contains(enemy));
+
+        // Saves all the players.
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            SceneSwitchDataHandler.players.Add(new PlayerHolder(player.transform.name, new Vector3(player.transform.position.x, player.transform.position.y, 0)));
+        }
+
+        // Saves the enemies in battle, not in battle, and the ones that are marked as not destroyable.
         SceneSwitchDataHandler.enemiesInBattle = _enemiesToFight;
         SceneSwitchDataHandler.enemiesNotInBattle = _enemiesSpawned;
-        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesInBattle) holder.Enemy.SetActive(false);
-        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesNotInBattle) holder.Enemy.SetActive(false);
+        SceneSwitchDataHandler.enemiesIndestructible.AddRange(_enemiesToFight);
+        SceneSwitchDataHandler.enemiesIndestructible.AddRange(_enemiesSpawned);
+
+        // Prevent destruction and deactivate all the enemies from the sector.
+        // They will be reloaded either in the battle scene or the original scene.
+        foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesIndestructible)
+        {
+            holder.Enemy.SetActive(false);
+            DontDestroyOnLoad(holder.Enemy);
+        }
         _isDataSaved = true;
     }
 
     /// <summary>
-    /// 
+    /// Calculates the radius where to pick enemies to go to the battle.
     /// </summary>
-    /// <param name="enemy"></param>
-    /// <param name="center"></param>
-    /// <returns></returns>
+    /// <param name="enemy">The enemy to verify if should be put on the battle.</param>
+    /// <param name="center">The circle center from where to look into.</param>
+    /// <returns>The position of the enemy found.</returns>
     float CalculateCircleRadiusForEnemy(GameObject enemy, Vector2 center)
     {
         return Mathf.Sqrt(Mathf.Pow((enemy.transform.position.x - center.x), 2.0f) + Mathf.Pow((enemy.transform.position.y - center.y), 2.0f));
     }
 
+    /// <summary>
+    /// Positions the player in its previous spot before going to battle.
+    /// </summary>
     void PositionPlayers()
     {
         if (SceneSwitchDataHandler.isComingBackFromBattle)
@@ -177,6 +208,7 @@ public class SectorController : MonoBehaviour
     /// </summary>
     void SpawnEnemies()
     {
+        // If the scene is loading for the first time, just spawn the enemies.
         if (!SceneSwitchDataHandler.isComingBackFromBattle)
         {
             if (sectorProperties.spawnEnemies && _spawnEnemies)
@@ -192,7 +224,6 @@ public class SectorController : MonoBehaviour
                             0
                         );
                         GameObject enemy = Instantiate(ep.enemy, position, Quaternion.identity);
-                        DontDestroyOnLoad(enemy);
 
                         // Adds the enemy and its AI into lists.
                         _enemiesSpawned.Add(new EnemyHolder(sectorName, enemy));
@@ -201,6 +232,7 @@ public class SectorController : MonoBehaviour
                 }
             }
         }
+        // Otherwise, coming from a battle, just reactivate the enemies that where deactivated and were not in battle.
         else
         {
             foreach (EnemyHolder holder in SceneSwitchDataHandler.enemiesNotInBattle)

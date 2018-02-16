@@ -7,4 +7,5 @@ public class SceneSwitchDataHandler
     public static List<PlayerHolder> players = new List<PlayerHolder>();
     public static List<EnemyHolder> enemiesInBattle;
     public static List<EnemyHolder> enemiesNotInBattle;
+    public static List<EnemyHolder> enemiesIndestructible = new List<EnemyHolder>();
 }
