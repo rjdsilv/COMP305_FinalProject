@@ -1084,25 +1084,30 @@ Prefab:
       propertyPath: m_Name
       value: Camera-Player01
       objectReference: {fileID: 0}
-    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
+    - target: {fileID: 20911687901483688, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_Offset.x
-      value: 0
+      propertyPath: orthographic size
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
-      propertyPath: m_Offset.y
-      value: 0
+      propertyPath: m_Offset.x
+      value: 0.013646126
       objectReference: {fileID: 0}
     - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
       propertyPath: m_Size.x
-      value: 17.7
+      value: 23.130495
+      objectReference: {fileID: 0}
+    - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.013644695
       objectReference: {fileID: 0}
     - target: {fileID: 61393820525335698, guid: 6c8a83ed30562504fbeb521adc942a61,
         type: 2}
       propertyPath: m_Size.y
-      value: 10
+      value: 12.974492
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c8a83ed30562504fbeb521adc942a61, type: 2}
