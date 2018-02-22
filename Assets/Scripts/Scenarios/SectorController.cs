@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -151,7 +150,7 @@ public class SectorController : MonoBehaviour
         _enemiesSpawned.RemoveAll(enemy => _enemiesToFight.Contains(enemy));
 
         // Saves all the players.
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        foreach (GameObject player in TagUtils.FindAllPlayers())
         {
             PlayerController playerController = player.GetComponent<PlayerController>();
             SceneSwitchDataHandler.AddPlayer(player.transform.name, player.transform.position, playerController.GetAttributes());
@@ -192,7 +191,7 @@ public class SectorController : MonoBehaviour
         if (SceneSwitchDataHandler.isComingBackFromBattle)
         {
             // Reposition the players in the original position
-            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            foreach (GameObject player in TagUtils.FindAllPlayers())
             {
                 PlayerHolder oldPlayer = SceneSwitchDataHandler.GetPlayer(player.transform.name);
                 player.transform.position = oldPlayer.Position;

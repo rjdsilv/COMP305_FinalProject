@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
+    public bool hasMana;
+    public bool hasStamina;
 
     // Private constants declaration.
     private const int EYE_IDX = 0;
@@ -20,7 +22,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D _rigidBody;        // The enemy's rigid body.
     private Animator _animator;            // The enemy's animator.
     private Transform _eye;                // The enemy's eye.
-
+    private EnemyAttributes _attributes;   // The enemy's attributes.
 
     // Private Static declrations.
     private static AnimationState WALKING_LEFT = AnimationState.WALKING_LEFT;
@@ -33,10 +35,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        // Initalize the player objects.
+        // Initalize the enemy objects.
         _eye = transform.GetChild(EYE_IDX);
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        InitializeEnemy();
         StartRandomMovement();
     }
 
@@ -223,6 +226,33 @@ public class EnemyController : MonoBehaviour
         else if (direction >= 3 && direction <= 4)
         {
             MoveDown();
+        }
+    }
+
+    /// <summary>
+    /// Initializes the enemy for being used on the game. The attributes are initialized depending on
+    /// whether the DataHandler was already initialized or not.
+    /// </summary>
+    void InitializeEnemy()
+    {
+        _attributes = new EnemyAttributes();
+
+        LevelAttributes levelAttributes = _attributes.LevelDictionary.GetAttributeForLevel(_attributes.CurrentLevel);
+
+        _attributes.IsInitialized = true;
+        _attributes.CurrentLife = levelAttributes.MaxLife;
+        _attributes.HasMana = hasMana;
+        _attributes.HasStamina = hasStamina;
+        _attributes.CurrentLevel = TagUtils.FindOnePlayer().GetComponent<PlayerController>().GetAttributes().CurrentLevel;
+
+        if (_attributes.HasMana)
+        {
+            _attributes.CurrentMana = levelAttributes.MaxMana;
+        }
+
+        if (_attributes.HasStamina)
+        {
+            _attributes.CurrentStamina = levelAttributes.MaxStamina;
         }
     }
 }

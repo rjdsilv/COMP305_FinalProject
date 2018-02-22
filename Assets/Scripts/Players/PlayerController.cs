@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private AnimationState _currAnimState; // The player's current animation state.
     private Animator _animator;            // The player's rigid body.
     private Rigidbody2D _rigidBody;        // The player's animator.
-    private PlayerAttributes _attributes;  // The player attributes.
+    private PlayerAttributes _attributes;  // The player's attributes.
 
     /// <summary>
     /// Method being used for the player movement initialization.
@@ -24,14 +24,8 @@ public class PlayerController : MonoBehaviour
         // Initalize the player objects.
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
-
-        // The player starts looking to the right.
         _currAnimState = AnimationState.STAND_RIGHT;
-
-        // Starts the player animation looking to the right.
         _animator.Play(_currAnimState.AnimationName);
-
-        // Initializes the player.
         InitializePlayer();
 	}
 

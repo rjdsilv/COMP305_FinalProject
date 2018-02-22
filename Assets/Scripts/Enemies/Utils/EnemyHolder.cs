@@ -5,6 +5,12 @@
 /// </summary>
 public class EnemyHolder
 {
+    // The sector where the enemy belong to.
+    public string Sector { get; set; }
+
+    // The enemy being hold.
+    public GameObject Enemy { get; set; }
+
     /// <summary>
     /// Constructor for the enemy holder object.
     /// </summary>
@@ -15,10 +21,4 @@ public class EnemyHolder
         Sector = sector;
         Enemy = enemy;
     }
-
-    // The sector where the enemy belong to.
-    public string Sector { get; set; }
-
-    // The enemy being hold.
-    public GameObject Enemy { get; set; }
 }

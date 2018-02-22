@@ -12,6 +12,18 @@ public abstract class CharacterAttributes
     // Indicates if the attributes are alread initialized.
     public bool IsInitialized { get; set; }
 
+    // Flag indicating whether the player has a mana attribute or not.
+    public bool HasMana { get; set; }
+
+    // The ammount of mana the player has.
+    public int CurrentMana { get; set; }
+
+    // Flag indicating whether the player has a stamina attribute or not.
+    public bool HasStamina { get; set; }
+
+    // The ammout of stamina the player has.
+    public int CurrentStamina { get; set; }
+
     // The charactere level dictionary to be consulted.
     public LevelDictionary LevelDictionary { get; set; }
 
