@@ -143,7 +143,6 @@ public class SectorController : MonoBehaviour
 
         // Clean the lists that will be reused.
         SceneSwitchDataHandler.enemiesIndestructible.RemoveAll(h => enemiesToDestroy.Contains(h));
-        SceneSwitchDataHandler.players.Clear();
 
         // Destroys the enemies marked to be destroyed.
         foreach (EnemyHolder holder in enemiesToDestroy) Destroy(holder.Enemy);
@@ -154,7 +153,8 @@ public class SectorController : MonoBehaviour
         // Saves all the players.
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
-            SceneSwitchDataHandler.players.Add(new PlayerHolder(player.transform.name, new Vector3(player.transform.position.x, player.transform.position.y, 0)));
+            PlayerController playerController = player.GetComponent<PlayerController>();
+            SceneSwitchDataHandler.AddPlayer(player.transform.name, player.transform.position, playerController.GetAttributes());
         }
 
         // Saves the enemies in battle, not in battle, and the ones that are marked as not destroyable.
@@ -192,11 +192,9 @@ public class SectorController : MonoBehaviour
         if (SceneSwitchDataHandler.isComingBackFromBattle)
         {
             // Reposition the players in the original position
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-            foreach (GameObject player in players)
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                PlayerHolder oldPlayer = SceneSwitchDataHandler.players.Find(p => p.Name == player.transform.name);
+                PlayerHolder oldPlayer = SceneSwitchDataHandler.GetPlayer(player.transform.name);
                 player.transform.position = oldPlayer.Position;
                 Camera.main.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, Camera.main.transform.position.z) ;
             }
