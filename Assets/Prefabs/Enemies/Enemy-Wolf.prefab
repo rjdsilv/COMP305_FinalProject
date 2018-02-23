@@ -269,6 +269,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  hasMana: 0
+  hasStamina: 1
+  attributes:
+    levelDictionary:
+      levelList:
+      - level: 1
+        attributes:
+          minUpgradeXp: 0
+          maxLife: 60
+          maxMana: 0
+          maxStamina: 45
+          minAttackPower: 15
+          maxAttackPower: 30
+          minDefensePower: 10
+          maxDefensePower: 15
+      - level: 2
+        attributes:
+          minUpgradeXp: 0
+          maxLife: 90
+          maxMana: 0
+          maxStamina: 70
+          minAttackPower: 25
+          maxAttackPower: 50
+          minDefensePower: 20
+          maxDefensePower: 35
 --- !u!212 &212019409925732722
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -223,6 +223,7 @@ public class SectorController : MonoBehaviour
                         GameObject enemy = Instantiate(ep.enemy, position, Quaternion.identity);
 
                         // Adds the enemy and its AI into lists.
+                        enemy.name = ep.enemy.name;
                         _enemiesSpawned.Add(new EnemyHolder(sectorName, enemy));
                         _enemiesAI.Add(enemy.GetComponent<EnemyAI>());
                     }

@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using System;
+
+/// <summary>
 /// Class that will hold all the necessary enemy attributes.
 /// </summary>
 public class EnemyAttributes : CharacterAttributes

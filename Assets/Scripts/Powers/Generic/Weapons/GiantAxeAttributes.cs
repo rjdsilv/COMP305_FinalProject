@@ -6,7 +6,7 @@ public class GiantAxeAttributes : GenericWeaponAttributes
     /// <summary>
     /// Builds a new instance of GiantAxeAttributes.
     /// </summary>
-    public GiantAxeAttributes()
+    public GiantAxeAttributes() : base()
     {
         Type = PowerType.ATTACK;
     }

@@ -6,7 +6,7 @@ public class HeallingMagicAttributes : GenericMagicAttributes
     /// <summary>
     /// Builds a new instance of HeallingMagicAttributes.
     /// </summary>
-    public HeallingMagicAttributes()
+    public HeallingMagicAttributes() : base()
     {
         Type = PowerType.ATTACK;
     }

@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using System;
+
+/// <summary>
 /// Class that will hold all the necessary player attributes.
 /// </summary>
 public class PlayerAttributes : CharacterAttributes

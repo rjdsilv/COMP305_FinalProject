@@ -6,7 +6,7 @@ public class ShieldAttributes : GenericWeaponAttributes
     /// <summary>
     /// Builds a new instance of ShieldAttributes.
     /// </summary>
-    public ShieldAttributes()
+    public ShieldAttributes() : base()
     {
         Type = PowerType.DEFENSE;
     }

@@ -63,10 +63,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void InitializePlayer()
     {
+        InitializePlayerAttributes();
         PlayerHolder player = SceneSwitchDataHandler.GetPlayer(transform.name);
         if (null == player)
         {
             _attributes = new PlayerAttributes();
+            _attributes.LevelDictionary.LevelList = PlayerAttributesDictionary.GetLevelEntryListForPlayer(name);
         }
         else
         {
@@ -76,7 +78,7 @@ public class PlayerController : MonoBehaviour
         // If the attributes are not initialized yet, initialize it.
         if (!_attributes.IsInitialized)
         {
-            LevelAttributes levelAttributes = _attributes.LevelDictionary.GetAttributeForLevel(_attributes.CurrentLevel);
+            LevelAttributes levelAttributes = _attributes.LevelDictionary.GetLevelAttributes(_attributes.CurrentLevel);
 
             _attributes.IsInitialized = true;
             _attributes.CurrentGold = 0;
@@ -148,5 +150,18 @@ public class PlayerController : MonoBehaviour
 
         // Plas the animation.
         _animator.Play(_currAnimState.AnimationName);
+    }
+
+    /// <summary>
+    /// Initializes the player attributes based on its name.
+    /// </summary>
+    void InitializePlayerAttributes()
+    {
+        switch (name)
+        {
+            case "Player-Mage":
+                PlayerAttributesDictionary.InitializePlayerMage();
+                break;
+        }
     }
 }

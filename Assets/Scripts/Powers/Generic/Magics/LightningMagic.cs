@@ -6,7 +6,7 @@ public class LightningMagic : GenericMagicAttributes
     /// <summary>
     /// Builds a new instance of LightningMagic.
     /// </summary>
-    public LightningMagic()
+    public LightningMagic() : base()
     {
         Type = PowerType.ATTACK;
     }

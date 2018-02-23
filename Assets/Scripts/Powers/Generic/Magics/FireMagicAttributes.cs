@@ -6,7 +6,7 @@ public class FireMagicAttributes : GenericMagicAttributes
     /// <summary>
     /// Builds a new instance of FireMagicAttributes.
     /// </summary>
-    public FireMagicAttributes()
+    public FireMagicAttributes() : base()
     {
         Type = PowerType.ATTACK;
     }

@@ -6,7 +6,7 @@ public class SwordAttributes : GenericWeaponAttributes
     /// <summary>
     /// Builds a new instance of SwordAttributes.
     /// </summary>
-    public SwordAttributes()
+    public SwordAttributes() : base()
     {
         Type = PowerType.ATTACK;
     }

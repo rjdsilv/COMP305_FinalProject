@@ -45,4 +45,13 @@ public abstract class CharacterAttributes
             return _currentLevel;
         }
     }
+
+    /// <summary>
+    /// Gets the attribute values for the current level.
+    /// </summary>
+    /// <returns>The attributes for the current level.</returns>
+    public LevelAttributes GetLevelAttributes()
+    {
+        return LevelDictionary.GetLevelAttributes(CurrentLevel);
+    }
 }

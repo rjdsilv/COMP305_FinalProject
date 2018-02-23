@@ -233,11 +233,13 @@ public class EnemyController : MonoBehaviour
     /// Initializes the enemy for being used on the game. The attributes are initialized depending on
     /// whether the DataHandler was already initialized or not.
     /// </summary>
-    void InitializeEnemy()
+    private void InitializeEnemy()
     {
+        InitializeEnemyAttributes();
         _attributes = new EnemyAttributes();
+        _attributes.LevelDictionary.LevelList = EnemyAttributesDictionary.GetLevelEntryListForEnemy(transform.name);
 
-        LevelAttributes levelAttributes = _attributes.LevelDictionary.GetAttributeForLevel(_attributes.CurrentLevel);
+        LevelAttributes levelAttributes = _attributes.LevelDictionary.GetLevelAttributes(_attributes.CurrentLevel);
 
         _attributes.IsInitialized = true;
         _attributes.CurrentLife = levelAttributes.MaxLife;
@@ -253,6 +255,19 @@ public class EnemyController : MonoBehaviour
         if (_attributes.HasStamina)
         {
             _attributes.CurrentStamina = levelAttributes.MaxStamina;
+        }
+    }
+    
+    /// <summary>
+    /// Initializes the enemy attributes based on its name.
+    /// </summary>
+    private void InitializeEnemyAttributes()
+    {
+        switch (name)
+        {
+            case "Enemy-Wolf":
+                EnemyAttributesDictionary.InitializeEnemyWolf();
+                break;
         }
     }
 }

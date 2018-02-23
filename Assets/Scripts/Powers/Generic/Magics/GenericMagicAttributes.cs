@@ -4,6 +4,23 @@
 /// </summary>
 public abstract class GenericMagicAttributes : GenericPowerAttributes
 {
-    // How much Mana this magic will consume when used.
-    public int ManaComsuption { get; set; }
+    /// <summary>
+    /// Creates a new instance of GenericMagicAttribute.
+    /// </summary>
+    protected GenericMagicAttributes()
+    {
+        Consumable = PowerConsumable.MANA;
+    }
+
+    /// <see cref="GenericPowerAttributes"/>
+    public override int UsePower(PlayerController playerController)
+    {
+        if (CanUsePower(playerController))
+        {
+            playerController.GetAttributes().CurrentMana -= ForceConmsuption;
+            return CalculateAppliedPower(playerController);
+        }
+
+        return 0;
+    }
 }

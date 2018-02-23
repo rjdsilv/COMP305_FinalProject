@@ -6,7 +6,7 @@ public class DaggerAttributes : GenericWeaponAttributes
     /// <summary>
     /// Builds a new instance of DaggerAttributes.
     /// </summary>
-    public DaggerAttributes()
+    public DaggerAttributes() : base()
     {
         Type = PowerType.ATTACK;
     }

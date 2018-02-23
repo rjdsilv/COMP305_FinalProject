@@ -4,6 +4,23 @@
 /// </summary>
 public abstract class GenericWeaponAttributes : GenericPowerAttributes
 {
-    // How much stamina this weapon will consume when used.
-    public int StaminaComsuption { get; set; }
+    /// <summary>
+    /// Creates a new instance of GenericWeaponAttributes.
+    /// </summary>
+    protected GenericWeaponAttributes()
+    {
+        Consumable = PowerConsumable.STAMINA;
+    }
+
+    /// <see cref="GenericPowerAttributes"/>
+    public override int UsePower(PlayerController playerController)
+    {
+        if (CanUsePower(playerController))
+        {
+            playerController.GetAttributes().CurrentStamina -= ForceConmsuption;
+            return CalculateAppliedPower(playerController);
+        }
+
+        return 0;
+    }
 }
