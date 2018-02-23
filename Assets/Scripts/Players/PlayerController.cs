@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
-    public bool hasMana;
-    public bool hasStamina;
 
     // Private properties declaration.
     private AnimationState _currAnimState; // The player's current animation state.
@@ -83,19 +81,11 @@ public class PlayerController : MonoBehaviour
             _attributes.IsInitialized = true;
             _attributes.CurrentGold = 0;
             _attributes.CurrentLife = levelAttributes.MaxLife;
-            _attributes.HasMana = hasMana;
-            _attributes.HasStamina = hasStamina;
+            _attributes.HasMana = levelAttributes.MaxMana > 0;
+            _attributes.HasStamina = levelAttributes.MaxStamina > 0;
             _attributes.CurrentXp = 0;
-
-            if (_attributes.HasMana)
-            {
-                _attributes.CurrentMana = levelAttributes.MaxMana;
-            }
-
-            if (_attributes.HasStamina)
-            {
-                _attributes.CurrentStamina = levelAttributes.MaxStamina;
-            }
+            _attributes.CurrentMana = levelAttributes.MaxMana;
+            _attributes.CurrentStamina = levelAttributes.MaxStamina;
         }
 
         SceneSwitchDataHandler.AddPlayer(transform.name, transform.position, _attributes);

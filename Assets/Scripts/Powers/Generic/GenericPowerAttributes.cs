@@ -43,10 +43,10 @@ public abstract class GenericPowerAttributes
         switch (Consumable)
         {
             case PowerConsumable.MANA:
-                return playerController.hasMana && playerController.GetAttributes().CurrentMana >= ForceConmsuption;
+                return playerController.GetAttributes().HasMana && playerController.GetAttributes().CurrentMana >= ForceConmsuption;
 
             case PowerConsumable.STAMINA:
-                return playerController.hasStamina && playerController.GetAttributes().CurrentStamina >= ForceConmsuption;
+                return playerController.GetAttributes().HasStamina && playerController.GetAttributes().CurrentStamina >= ForceConmsuption;
         }
 
         return false;

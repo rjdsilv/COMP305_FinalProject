@@ -7,8 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
-    public bool hasMana;
-    public bool hasStamina;
+    public GameObject battleEnemy;
 
     // Private constants declaration.
     private const int EYE_IDX = 0;
@@ -181,6 +180,15 @@ public class EnemyController : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns the related enemy that is going to be instantiated on the battle scene.
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetBattleEnemy()
+    {
+        return battleEnemy;
+    }
+
+    /// <summary>
     /// Gets the ray direction based on the position the enemy is looking at.
     /// </summary>
     /// <returns>The direction to where the ray must by cast.</returns>
@@ -243,8 +251,8 @@ public class EnemyController : MonoBehaviour
 
         _attributes.IsInitialized = true;
         _attributes.CurrentLife = levelAttributes.MaxLife;
-        _attributes.HasMana = hasMana;
-        _attributes.HasStamina = hasStamina;
+        _attributes.HasMana = levelAttributes.MaxMana > 0; ;
+        _attributes.HasStamina = levelAttributes.MaxStamina > 0;
         _attributes.CurrentLevel = TagUtils.FindOnePlayer().GetComponent<PlayerController>().GetAttributes().CurrentLevel;
 
         if (_attributes.HasMana)
