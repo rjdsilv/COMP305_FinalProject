@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour
 {
     public string originalScene;
+
+    // Mage objects.
     public GameObject playerMage;
+    public Slider playerMageMana;
+    public Slider playerMageLife;
 
     private BattlePlayerController mageController;
 
@@ -13,10 +18,19 @@ public class BattleController : MonoBehaviour
 	void Start ()
     {
         mageController = playerMage.GetComponent<BattlePlayerController>();
-        SceneSwitchDataHandler.isComingBackFromBattle = true;
         SpawnEnemies();
-        StartCoroutine(WaitAndReturn(10));
+        StartCoroutine(WaitAndReturn(5));
 	}
+
+    void InitializeMage()
+    {
+        BattlePlayerController playerMageController = playerMage.GetComponent<BattlePlayerController>().Initialize();
+        PlayerAttributes mageAttrs = playerMageController.GetAttributes();
+        playerMageMana.maxValue = mageAttrs.GetLevelAttributes().MaxMana;
+        playerMageMana.value = mageAttrs.CurrentMana;
+        playerMageLife.maxValue = mageAttrs.GetLevelAttributes().MaxLife;
+        playerMageLife.value = mageAttrs.CurrentLife;
+    }
 
     void LoadOriginalScene()
     {
@@ -25,6 +39,7 @@ public class BattleController : MonoBehaviour
 
     IEnumerator WaitAndReturn(float time)
     {
+        SceneSwitchDataHandler.isComingBackFromBattle = true;
         yield return new WaitForSeconds(time);
         LoadOriginalScene();
     }

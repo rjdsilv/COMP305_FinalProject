@@ -8,18 +8,14 @@ public class BattlePlayerController : MonoBehaviour
 {
     private PlayerAttributes _attributes;  // The player's attributes.
 
-    private void Start()
-    {
-        InitializePlayer();
-    }
-
     /// <summary>
     /// Initializes the player for being used on the battle. The attributes are initialized getting what was stored
     /// in the SceneSwitcherDataHandlerObject.
     /// </summary>
-    private void InitializePlayer()
+    public BattlePlayerController Initialize()
     {
         _attributes = SceneSwitchDataHandler.GetPlayer(transform.name).Attributes;
+        return this;
     }
 
     /// <summary>

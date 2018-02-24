@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            transform.position = player.Position;
             _attributes = player.Attributes;
         }
 
