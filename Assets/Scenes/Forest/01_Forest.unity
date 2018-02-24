@@ -1023,12 +1023,12 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnRadius
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
