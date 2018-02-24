@@ -414,7 +414,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
@@ -435,6 +435,11 @@ Prefab:
         type: 2}
       propertyPath: sectorName
       value: Forest_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
+        type: 2}
+      propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnRadius
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
@@ -573,6 +578,18 @@ Prefab:
     - target: {fileID: 4639007964062920, guid: 23317b9bbdea9bb4884474ff696333e6, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639007964062920, guid: 23317b9bbdea9bb4884474ff696333e6, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639007964062920, guid: 23317b9bbdea9bb4884474ff696333e6, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639007964062920, guid: 23317b9bbdea9bb4884474ff696333e6, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23317b9bbdea9bb4884474ff696333e6, type: 2}
@@ -1006,7 +1023,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.data[0].spawnNumber
-      value: 8
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
@@ -1046,7 +1063,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.fightRadius
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}

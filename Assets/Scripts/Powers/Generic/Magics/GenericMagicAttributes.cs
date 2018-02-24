@@ -17,7 +17,7 @@ public abstract class GenericMagicAttributes : GenericPowerAttributes
     {
         if (CanUsePower(playerController))
         {
-            playerController.GetAttributes().CurrentMana -= ForceConmsuption;
+            playerController.GetAttributes().CurrentMana -= PowerCost;
             return CalculateAppliedPower(playerController);
         }
 

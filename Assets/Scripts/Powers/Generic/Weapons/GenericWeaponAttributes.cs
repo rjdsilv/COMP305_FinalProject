@@ -17,7 +17,7 @@ public abstract class GenericWeaponAttributes : GenericPowerAttributes
     {
         if (CanUsePower(playerController))
         {
-            playerController.GetAttributes().CurrentStamina -= ForceConmsuption;
+            playerController.GetAttributes().CurrentStamina -= PowerCost;
             return CalculateAppliedPower(playerController);
         }
 

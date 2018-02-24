@@ -18,7 +18,7 @@ public abstract class GenericPowerAttributes
     public int Level { get; set; }
 
     // The ammount of force that will be consumed when using the power
-    public int ForceConmsuption { get; set; }
+    public int PowerCost { get; set; }
 
     // The power type: ATTACK or DEFENSE.
     public PowerType Type { get; set; }
@@ -43,10 +43,10 @@ public abstract class GenericPowerAttributes
         switch (Consumable)
         {
             case PowerConsumable.MANA:
-                return playerController.GetAttributes().HasMana && playerController.GetAttributes().CurrentMana >= ForceConmsuption;
+                return playerController.GetAttributes().HasMana && playerController.GetAttributes().CurrentMana >= PowerCost;
 
             case PowerConsumable.STAMINA:
-                return playerController.GetAttributes().HasStamina && playerController.GetAttributes().CurrentStamina >= ForceConmsuption;
+                return playerController.GetAttributes().HasStamina && playerController.GetAttributes().CurrentStamina >= PowerCost;
         }
 
         return false;
