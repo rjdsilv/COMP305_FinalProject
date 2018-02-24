@@ -49,33 +49,27 @@ public class BattleController : MonoBehaviour
     /// </summary>
     void SpawnEnemies()
     {
-        int yPosController = 1;
-        int xPosController = 1;
+        int posController = 1;
 
         float xPos = 5.5f;
-        float yPos = 1.25f;
+        float yPos = -2.0f;
         float zPos = 0.0f;
+        float xPosVar = 0.75f;
 
         foreach (EnemyHolder enemy in SceneSwitchDataHandler.enemiesInBattle)
         {
             EnemyController enemyController = enemy.Enemy.GetComponent<EnemyController>();
-            Instantiate(enemyController.GetBattleEnemy(), new Vector3(xPos, Mathf.Pow(-1.0f, yPosController) *  yPos, zPos), Quaternion.identity);
-
-            // Moves the enemy spawn position in the y axis.
-            if (yPosController % 2 == 0)
-            {
-                yPos += 2.75f;
-            }
+            Instantiate(enemyController.GetBattleEnemy(), new Vector3(xPos + Mathf.Pow(-1, posController) * xPosVar, yPos, zPos), Quaternion.identity);
+            yPos += 2.0f;
 
             // Moves the enemy spawn position in the x axis.
-            if (xPosController %4 == 0)
+            if (posController %4 == 0)
             {
-                yPos = 1.25f;
-                xPos -= 2.5f;
+                yPos = -2.0f;
+                xPos -= 3.0f;
             }
 
-            yPosController++;
-            xPosController++;
+            posController++;
         }
     }
 }
