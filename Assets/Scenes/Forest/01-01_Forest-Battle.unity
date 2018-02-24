@@ -506,7 +506,7 @@ MonoBehaviour:
   originalScene: 01_Forest
   playerMage: {fileID: 1244238849}
   playerMageMana: {fileID: 1782020126}
-  playerMageLife: {fileID: 0}
+  playerMageLife: {fileID: 1973431975}
 --- !u!1 &806748155
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class BattlePlayerController : MonoBehaviour
     public BattlePlayerController Initialize()
     {
         _attributes = SceneSwitchDataHandler.GetPlayer(transform.name).Attributes;
+        _attributes.CurrentLife = _attributes.GetLevelAttributes().MaxLife - 10;
         return this;
     }
 

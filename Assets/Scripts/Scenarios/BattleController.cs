@@ -18,14 +18,20 @@ public class BattleController : MonoBehaviour
 	void Start ()
     {
         mageController = playerMage.GetComponent<BattlePlayerController>();
+        InitializePlayers();
         SpawnEnemies();
-        StartCoroutine(WaitAndReturn(5));
+        StartCoroutine(WaitAndReturn(30));
 	}
+
+    void InitializePlayers()
+    {
+        InitializeMage();
+    }
 
     void InitializeMage()
     {
-        BattlePlayerController playerMageController = playerMage.GetComponent<BattlePlayerController>().Initialize();
-        PlayerAttributes mageAttrs = playerMageController.GetAttributes();
+        mageController = playerMage.GetComponent<BattlePlayerController>().Initialize();
+        PlayerAttributes mageAttrs = mageController.GetAttributes();
         playerMageMana.maxValue = mageAttrs.GetLevelAttributes().MaxMana;
         playerMageMana.value = mageAttrs.CurrentMana;
         playerMageLife.maxValue = mageAttrs.GetLevelAttributes().MaxLife;
