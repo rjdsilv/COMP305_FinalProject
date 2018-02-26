@@ -1,13 +1,16 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// Class that will be used to store all the Fire Magic attributes for the game.
 /// </summary>
-public class FireMagicAttributes : GenericMagicAttributes
+[CreateAssetMenu(menuName = "Ability/Magic/Fire")]
+public class FireMagic : GenericMagic
 {
     /// <summary>
     /// Builds a new instance of FireMagicAttributes.
     /// </summary>
-    public FireMagicAttributes() : base()
+    public FireMagic() : base()
     {
-        Type = PowerType.ATTACK;
+        type = AbilityType.ATTACK;
     }
 }

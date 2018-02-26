@@ -7,12 +7,15 @@ public class PlayerController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
+    public GenericAbility mainAbility;
+    public GenericAbility secondaryAbility;
 
     // Private properties declaration.
-    private AnimationState _currAnimState; // The player's current animation state.
-    private Animator _animator;            // The player's rigid body.
-    private Rigidbody2D _rigidBody;        // The player's animator.
-    private PlayerAttributes _attributes;  // The player's attributes.
+    private AnimationState _currAnimState;      // The player's current animation state.
+    private Animator _animator;                 // The player's rigid body.
+    private Rigidbody2D _rigidBody;             // The player's animator.
+    private PlayerAttributes _attributes;       // The player's attributes.
+    private GenericAbility _selectedAbility;    // The player's selected ability.
 
     /// <summary>
     /// Method being used for the player movement initialization.
@@ -24,6 +27,7 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _currAnimState = AnimationState.STAND_RIGHT;
         _animator.Play(_currAnimState.AnimationName);
+        _selectedAbility = mainAbility;
         InitializePlayer();
 	}
 
@@ -49,8 +53,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void MovePlayer()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal");
-        float verticalMovement = Input.GetAxis("Vertical");
+        float horizontalMovement = ControlUtils.Horizontal(); ;
+        float verticalMovement = ControlUtils.Vertical(); ;
         _rigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * speed;
         ChangePlayerAnimation(horizontalMovement, verticalMovement);
     }

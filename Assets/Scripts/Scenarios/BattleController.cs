@@ -5,37 +5,57 @@ using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour
 {
+    // Battle setup.
+    public int turnTime;
     public string originalScene;
+    public TurnSchema turnSchema;
+    public Mage mage;
 
-    // Mage objects.
-    public GameObject playerMage;
-    public Slider playerMageMana;
-    public Slider playerMageLife;
-
-    private BattlePlayerController mageController;
+    private TurnPlayer _turnPlayer;
 
 	// Use this for initialization
 	void Start ()
     {
-        mageController = playerMage.GetComponent<BattlePlayerController>();
+        _turnPlayer = Random.Range(0, 1) >= 0.5f ? TurnPlayer.PLAYER : TurnPlayer.ENEMY;
         InitializePlayers();
         SpawnEnemies();
-        StartCoroutine(WaitAndReturn(30));
+        //StartCoroutine(WaitAndReturn(30));
 	}
+
+    void Update()
+    {
+        switch (turnSchema)
+        {
+            case TurnSchema.ALL_AT_ONCE:
+                PlayAllAtOnce();
+                break;
+
+            case TurnSchema.ALTERNATE:
+                PlayAlternate();
+                break;
+        }
+    }
+
+    void PlayAlternate()
+    {
+        switch (_turnPlayer)
+        {
+            case TurnPlayer.PLAYER:
+                break;
+
+            case TurnPlayer.ENEMY:
+                break;
+        }
+    }
+
+    void PlayAllAtOnce()
+    {
+        
+    }
 
     void InitializePlayers()
     {
-        InitializeMage();
-    }
-
-    void InitializeMage()
-    {
-        mageController = playerMage.GetComponent<BattlePlayerController>().Initialize();
-        PlayerAttributes mageAttrs = mageController.GetAttributes();
-        playerMageMana.maxValue = mageAttrs.GetLevelAttributes().MaxMana;
-        playerMageMana.value = mageAttrs.CurrentMana;
-        playerMageLife.maxValue = mageAttrs.GetLevelAttributes().MaxLife;
-        playerMageLife.value = mageAttrs.CurrentLife;
+        mage.Initialize();
     }
 
     void LoadOriginalScene()

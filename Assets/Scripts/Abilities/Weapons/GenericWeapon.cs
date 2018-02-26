@@ -2,22 +2,22 @@
 /// Class containing all the attributes that will be considered when a character
 /// uses a weapon during a battle.
 /// </summary>
-public abstract class GenericWeaponAttributes : GenericPowerAttributes
+public abstract class GenericWeapon : GenericAbility
 {
     /// <summary>
     /// Creates a new instance of GenericWeaponAttributes.
     /// </summary>
-    protected GenericWeaponAttributes()
+    protected GenericWeapon()
     {
-        Consumable = PowerConsumable.STAMINA;
+        consumable = AbilityConsumable.STAMINA;
     }
 
-    /// <see cref="GenericPowerAttributes"/>
+    /// <see cref="GenericAbility"/>
     public override int UsePower(PlayerController playerController)
     {
         if (CanUsePower(playerController))
         {
-            playerController.GetAttributes().CurrentStamina -= PowerCost;
+            playerController.GetAttributes().CurrentStamina -= powerCost;
             return CalculateAppliedPower(playerController);
         }
 

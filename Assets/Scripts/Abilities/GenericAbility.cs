@@ -3,28 +3,15 @@
 /// <summary>
 /// Class representing a generic power that a player or a enemy can have.
 /// </summary>
-public abstract class GenericPowerAttributes
+public abstract class GenericAbility : ScriptableObject
 {
-    // The minimum power the power has.
-    public int MinPower { get; set; }
-
-    // The maximum power the power has.
-    public int MaxPower { get; set; }
-
-    // The power's name
-    public string Name { get; set; }
-
-    // The power's current level.
-    public int Level { get; set; }
-
-    // The ammount of force that will be consumed when using the power
-    public int PowerCost { get; set; }
-
-    // The power type: ATTACK or DEFENSE.
-    public PowerType Type { get; set; }
-
-    // The force attribute that will be consumed by this power: Mana or Stamina.
-    public PowerConsumable Consumable { get; set; }
+    public int minPower;                    // The minimum power the ability has.
+    public int maxPower;                    // The maximum power the ability has.
+    public string powerNme;                 // The ability's name.
+    public int level;                       // The ability's current level.
+    public int powerCost;                   // The ammount of force that will be consumed when using the ability.
+    public AbilityType type;                // The ability type: ATTACK or DEFENSE.
+    public AbilityConsumable consumable;    // The force attribute that will be consumed by this ability : Mana or Stamina.
 
     /// <summary>
     /// Uses the power by the given player and returns the power applied against the opponent.
@@ -40,13 +27,13 @@ public abstract class GenericPowerAttributes
     /// <returns><b>true</b> if the player can use the power. <b>false</b> otherwise.</returns>
     public bool CanUsePower(PlayerController playerController)
     {
-        switch (Consumable)
+        switch (consumable)
         {
-            case PowerConsumable.MANA:
-                return playerController.GetAttributes().HasMana && playerController.GetAttributes().CurrentMana >= PowerCost;
+            case AbilityConsumable.MANA:
+                return playerController.GetAttributes().HasMana && playerController.GetAttributes().CurrentMana >= powerCost;
 
-            case PowerConsumable.STAMINA:
-                return playerController.GetAttributes().HasStamina && playerController.GetAttributes().CurrentStamina >= PowerCost;
+            case AbilityConsumable.STAMINA:
+                return playerController.GetAttributes().HasStamina && playerController.GetAttributes().CurrentStamina >= powerCost;
         }
 
         return false;
@@ -61,14 +48,14 @@ public abstract class GenericPowerAttributes
     {
         LevelAttributes levelAttributes = playerController.GetAttributes().GetLevelAttributes();
 
-        switch (Type)
+        switch (type)
         {
             // Attacking.
-            case PowerType.ATTACK:
+            case AbilityType.ATTACK:
                 return Mathf.FloorToInt(Random.Range(levelAttributes.MinAttackPower, levelAttributes.MaxAttackPower));
 
             // Defending.
-            case PowerType.DEFENSE:
+            case AbilityType.DEFENSE:
                 return Mathf.FloorToInt(Random.Range(levelAttributes.MinDefensePower, levelAttributes.MaxDefensePower));
         }
 

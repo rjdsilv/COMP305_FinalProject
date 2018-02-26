@@ -1,13 +1,16 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// Class that will be used to store all the shield attributes for the game.
 /// </summary>
-public class ShieldAttributes : GenericWeaponAttributes
+[CreateAssetMenu(menuName = "Ability/Weapon/Shield")]
+public class Shield : GenericWeapon
 {
     /// <summary>
     /// Builds a new instance of ShieldAttributes.
     /// </summary>
-    public ShieldAttributes() : base()
+    public Shield() : base()
     {
-        Type = PowerType.DEFENSE;
+        type = AbilityType.DEFENSE;
     }
 }

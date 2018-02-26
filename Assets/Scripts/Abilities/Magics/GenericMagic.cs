@@ -2,22 +2,22 @@
 /// Class containing all the attributes that will be considered when a character
 /// uses a magic during a battle.
 /// </summary>
-public abstract class GenericMagicAttributes : GenericPowerAttributes
+public abstract class GenericMagic : GenericAbility
 {
     /// <summary>
     /// Creates a new instance of GenericMagicAttribute.
     /// </summary>
-    protected GenericMagicAttributes()
+    protected GenericMagic()
     {
-        Consumable = PowerConsumable.MANA;
+        consumable = AbilityConsumable.MANA;
     }
 
-    /// <see cref="GenericPowerAttributes"/>
+    /// <see cref="GenericAbility"/>
     public override int UsePower(PlayerController playerController)
     {
         if (CanUsePower(playerController))
         {
-            playerController.GetAttributes().CurrentMana -= PowerCost;
+            playerController.GetAttributes().CurrentMana -= powerCost;
             return CalculateAppliedPower(playerController);
         }
 

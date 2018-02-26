@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
-  hasMana: 1
-  hasStamina: 0
+  mainAbility: {fileID: 11400000, guid: 6a0f74d3170fa264cae2f6503ecab059, type: 2}
+  secondaryAbility: {fileID: 11400000, guid: f56bf092d6cbee34eb5806eb6402fe5b, type: 2}
 --- !u!212 &212583772660451268
 SpriteRenderer:
   m_ObjectHideFlags: 1

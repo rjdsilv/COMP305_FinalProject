@@ -1,13 +1,16 @@
-﻿/// <summary>
+﻿using UnityEngine;
+
+/// <summary>
 /// Class that will be used to store all the Dagger attributes for the game.
 /// </summary>
-public class DaggerAttributes : GenericWeaponAttributes
+[CreateAssetMenu(menuName = "Ability/Weapon/Dagger")]
+public class Dagger : GenericWeapon
 {
     /// <summary>
     /// Builds a new instance of DaggerAttributes.
     /// </summary>
-    public DaggerAttributes() : base()
+    public Dagger() : base()
     {
-        Type = PowerType.ATTACK;
+        type = AbilityType.ATTACK;
     }
 }
