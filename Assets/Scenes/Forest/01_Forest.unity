@@ -215,7 +215,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.enemyProperties.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4335416556651618, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -262,7 +262,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.spawnEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
@@ -313,7 +313,7 @@ Prefab:
     - target: {fileID: 114593020138538454, guid: 859cceda2b5d4684d9fac6069c4bd28d,
         type: 2}
       propertyPath: sectorProperties.fightRadius
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 859cceda2b5d4684d9fac6069c4bd28d, type: 2}
