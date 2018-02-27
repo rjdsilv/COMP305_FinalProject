@@ -21,8 +21,13 @@ public class ControlUtils
         return Input.GetAxis("Swap Ability");
     }
 
-    public static float SwapEnemy()
+    public static bool SwapEnemyUp()
     {
-        return Input.GetAxis("Swap Enemy");
+        return Input.GetButton("Swap Enemy Up") || Input.GetAxis("Swap Enemy Up") > 0;
+    }
+
+    public static bool SwapEnemyDown()
+    {
+        return Input.GetButton("Swap Enemy Down") || Input.GetAxis("Swap Enemy Down") < 0;
     }
 }

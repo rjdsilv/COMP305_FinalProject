@@ -45,7 +45,7 @@ public class BattlePlayerController : MonoBehaviour
         return _attributes;
     }
 
-    public void SwapAbility()
+    void SwapAbility()
     {
         if ((ControlUtils.SwapAbility() > 0) && (_selectedAbility == mainAbility))
         {
@@ -61,7 +61,7 @@ public class BattlePlayerController : MonoBehaviour
         }
     }
 
-    private void InitializeHUD()
+    void InitializeHUD()
     {
         // Main ability.
         _mainAbilityOutline = mainAbilityHUD.AddComponent<Outline>();

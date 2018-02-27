@@ -1,7 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour
 {
@@ -11,19 +11,26 @@ public class BattleController : MonoBehaviour
     public TurnSchema turnSchema;
     public Mage mage;
 
+    private int _selectedEnemyIndex = -1;
+    private float _lastSwapTime = 0;
+    private float _swapInterval = 0.25f;
     private TurnPlayer _turnPlayer;
+    private List<GameObject> _enemies = new List<GameObject>();
 
 	// Use this for initialization
 	void Start ()
     {
         _turnPlayer = Random.Range(0, 1) >= 0.5f ? TurnPlayer.PLAYER : TurnPlayer.ENEMY;
+        _lastSwapTime = Time.time;
         InitializePlayers();
         SpawnEnemies();
+        _enemies[0].transform.GetChild(1).GetComponent<Light>().intensity = 16f;
         //StartCoroutine(WaitAndReturn(30));
-	}
+    }
 
     void Update()
     {
+        SwapEnemy();
         switch (turnSchema)
         {
             case TurnSchema.ALL_AT_ONCE:
@@ -34,6 +41,40 @@ public class BattleController : MonoBehaviour
                 PlayAlternate();
                 break;
         }
+    }
+
+    void SwapEnemy()
+    {
+        if (Time.time - _lastSwapTime > _swapInterval)
+        {
+            int max = _enemies.Count - 1;
+            if (ControlUtils.SwapEnemyDown())
+            {
+                _selectedEnemyIndex = ClampEnemyIndex(_selectedEnemyIndex, max, false);
+                _enemies[_selectedEnemyIndex].transform.GetChild(1).GetComponent<Light>().intensity = 8f;
+                _selectedEnemyIndex = ClampEnemyIndex(--_selectedEnemyIndex, max, false);
+                _enemies[_selectedEnemyIndex].transform.GetChild(1).GetComponent<Light>().intensity = 16f;
+                _lastSwapTime = Time.time;
+            }
+            else if (ControlUtils.SwapEnemyUp())
+            {
+                _selectedEnemyIndex = ClampEnemyIndex(_selectedEnemyIndex, max, true);
+                _enemies[_selectedEnemyIndex].transform.GetChild(1).GetComponent<Light>().intensity = 8f;
+                _selectedEnemyIndex = ClampEnemyIndex(++_selectedEnemyIndex, max, true);
+                _enemies[_selectedEnemyIndex].transform.GetChild(1).GetComponent<Light>().intensity = 16f;
+                _lastSwapTime = Time.time;
+            }
+        }
+    }
+
+    int ClampEnemyIndex(int index, int max, bool isUp)
+    {
+        if (index < 0 || index > max)
+        {
+            return isUp ? 0 : max;
+        }
+
+        return index;
     }
 
     void PlayAlternate()
@@ -100,7 +141,7 @@ public class BattleController : MonoBehaviour
         foreach (EnemyHolder enemy in SceneSwitchDataHandler.enemiesInBattle)
         {
             EnemyController enemyController = enemy.Enemy.GetComponent<EnemyController>();
-            Instantiate(enemyController.GetBattleEnemy(), new Vector3(xPos + Mathf.Pow(-1, posController) * xPosVar, yPos, zPos), Quaternion.identity);
+            _enemies.Add(Instantiate(enemyController.GetBattleEnemy(), new Vector3(xPos + Mathf.Pow(-1, posController) * xPosVar, yPos, zPos), Quaternion.identity));
             yPos += 2.0f;
 
             // Moves the enemy spawn position in the x axis.
