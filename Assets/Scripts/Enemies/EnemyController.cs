@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     // Public properties declaration.
     public float speed;
+    public GameObject battleEnemy;
 
     // Private constants declaration.
     private const int EYE_IDX = 0;
@@ -20,7 +21,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D _rigidBody;        // The enemy's rigid body.
     private Animator _animator;            // The enemy's animator.
     private Transform _eye;                // The enemy's eye.
-
+    private EnemyAttributes _attributes;   // The enemy's attributes.
 
     // Private Static declrations.
     private static AnimationState WALKING_LEFT = AnimationState.WALKING_LEFT;
@@ -33,10 +34,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void Start ()
     {
-        // Initalize the player objects.
+        // Initalize the enemy objects.
         _eye = transform.GetChild(EYE_IDX);
         _rigidBody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        InitializeEnemy();
         StartRandomMovement();
     }
 
@@ -178,6 +180,15 @@ public class EnemyController : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns the related enemy that is going to be instantiated on the battle scene.
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetBattleEnemy()
+    {
+        return battleEnemy;
+    }
+
+    /// <summary>
     /// Gets the ray direction based on the position the enemy is looking at.
     /// </summary>
     /// <returns>The direction to where the ray must by cast.</returns>
@@ -223,6 +234,48 @@ public class EnemyController : MonoBehaviour
         else if (direction >= 3 && direction <= 4)
         {
             MoveDown();
+        }
+    }
+
+    /// <summary>
+    /// Initializes the enemy for being used on the game. The attributes are initialized depending on
+    /// whether the DataHandler was already initialized or not.
+    /// </summary>
+    private void InitializeEnemy()
+    {
+        InitializeEnemyAttributes();
+        _attributes = new EnemyAttributes();
+        _attributes.LevelDictionary.LevelList = EnemyAttributesDictionary.GetLevelEntryListForEnemy(transform.name);
+
+        LevelAttributes levelAttributes = _attributes.LevelDictionary.GetLevelAttributes(_attributes.CurrentLevel);
+
+        _attributes.IsInitialized = true;
+        _attributes.CurrentLife = levelAttributes.MaxLife;
+        _attributes.HasMana = levelAttributes.MaxMana > 0; ;
+        _attributes.HasStamina = levelAttributes.MaxStamina > 0;
+        _attributes.CurrentLevel = TagUtils.FindOnePlayer().GetComponent<PlayerController>().GetAttributes().CurrentLevel;
+
+        if (_attributes.HasMana)
+        {
+            _attributes.CurrentMana = levelAttributes.MaxMana;
+        }
+
+        if (_attributes.HasStamina)
+        {
+            _attributes.CurrentStamina = levelAttributes.MaxStamina;
+        }
+    }
+    
+    /// <summary>
+    /// Initializes the enemy attributes based on its name.
+    /// </summary>
+    private void InitializeEnemyAttributes()
+    {
+        switch (name)
+        {
+            case "Enemy-Wolf":
+                EnemyAttributesDictionary.InitializeEnemyWolf();
+                break;
         }
     }
 }

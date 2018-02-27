@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50852488109346300}
   - component: {fileID: 70543159644899864}
   - component: {fileID: 95984460002509624}
-  - component: {fileID: 114042966782367542}
+  - component: {fileID: 114178002525890078}
   m_Layer: 9
   m_Name: Player-Mage
   m_TagString: Player
@@ -96,7 +96,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114042966782367542
+--- !u!114 &114178002525890078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -104,10 +104,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226038040163758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa8dab29a8e59747a5893922bd10717, type: 3}
+  m_Script: {fileID: 11500000, guid: 25c362a816a1de241b7d8e332dbea7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 3.5
+  mainAbility: {fileID: 11400000, guid: 6a0f74d3170fa264cae2f6503ecab059, type: 2}
+  secondaryAbility: {fileID: 11400000, guid: f56bf092d6cbee34eb5806eb6402fe5b, type: 2}
 --- !u!212 &212583772660451268
 SpriteRenderer:
   m_ObjectHideFlags: 1

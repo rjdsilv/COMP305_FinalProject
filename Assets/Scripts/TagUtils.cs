@@ -51,4 +51,22 @@ public class TagUtils
     {
         return detectedObject.tag == "SectorEdge";
     }
+
+    /// <summary>
+    /// Searches the world for the first occurrence of a player in it.
+    /// </summary>
+    /// <returns>The first occurrence of a player in the game world.</returns>
+    public static GameObject FindOnePlayer()
+    {
+        return GameObject.FindGameObjectWithTag("Player");
+    }
+
+    /// <summary>
+    /// Searches the world for all the occurrence of a player in it.
+    /// </summary>
+    /// <returns>All the occurrence of aplayers in the game world.</returns>
+    public static GameObject[] FindAllPlayers()
+    {
+        return GameObject.FindGameObjectsWithTag("Player");
+    }
 }
