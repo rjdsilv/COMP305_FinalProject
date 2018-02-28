@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8dcb3bc9b6216947a6e96dd04289197, type: 3}
   m_Name: WolfMovement
   m_EditorClassIdentifier: 
-  faceDirection: 0
-  speed: 2.5
+  faceDirection: 2
+  speed: 2

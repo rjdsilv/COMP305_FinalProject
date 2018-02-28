@@ -43,13 +43,23 @@ public class TagUtils
     }
 
     /// <summary>
-    /// Method to verify if the object seen by the enemy is a scenario object.
+    /// Method to verify if the object seen by the enemy is a sector edge.
     /// </summary>
     /// <param name="detectedObject">The object to be checked.</param>
     /// <returns><b>true</b> if the object is either a sector edge. <b>false</b>otherwise.</returns>
     public static bool IsSectorEdge(Transform detectedObject)
     {
         return detectedObject.tag == "SectorEdge";
+    }
+
+    /// <summary>
+    /// Method to verify if the object seen by the enemy is a sector.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object is either a sector. <b>false</b>otherwise.</returns>
+    public static bool IsSector(Transform detectedObject)
+    {
+        return detectedObject.tag == "Sector";
     }
 
     /// <summary>

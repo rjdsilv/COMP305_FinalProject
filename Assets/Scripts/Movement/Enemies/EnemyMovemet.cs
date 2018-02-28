@@ -36,7 +36,7 @@ public class EnemyMovemet : ActorMovement
         // The enemy will turn due to be near to an obstacle.
         if (_visionAI.IsSeeingObstacle())
         {
-            // TODO implement obstacle vision in AI.
+            TurnNow();
         }
         // The enemy will turn due to timeframe constraints.
         else
