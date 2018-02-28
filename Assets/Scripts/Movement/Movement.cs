@@ -6,8 +6,37 @@
 [CreateAssetMenu(menuName = "Miscelaneous/Movement")]
 public class Movement : ScriptableObject
 {
+    // Public variable declaration.
     public int faceDirection;  // The movement direction.
     public float speed;        // The movement speed.
+
+    // Protected variable declaration.
+    protected string _currAnimation;
+
+    /// <summary>
+    /// Default constructor.
+    /// </summary>
+    public Movement() : base()
+    {
+        switch (faceDirection)
+        {
+            case FaceDirection.RIGHT:
+                _currAnimation = AnimatorUtils.STAND_RIGHT;
+                break;
+
+            case FaceDirection.DOWN:
+                _currAnimation = AnimatorUtils.STAND_DOWN;
+                break;
+
+            case FaceDirection.LEFT:
+                _currAnimation = AnimatorUtils.STAND_LEFT;
+                break;
+
+            case FaceDirection.UP:
+                _currAnimation = AnimatorUtils.STAND_UP;
+                break;
+        }
+    }
 
     /// <summary>
     /// Method responsible for moving the actor based on the input provided by the user.
@@ -33,7 +62,63 @@ public class Movement : ScriptableObject
             {
                 Stop(actor, animator);
             }
+
+            animator.Play(_currAnimation);
         }
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving horizontally.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving horizontally. <b>false</b> otherwise.</returns>
+    public bool IsMovingHorizontally()
+    {
+        return IsWalkingLeft() || IsWalkingRight();
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving horizontally.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving horizontally. <b>false</b> otherwise.</returns>
+    public bool IsMovingVerticaally()
+    {
+        return IsWalkingUp() || IsWalkingDown();
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving to the left.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving to the left. <b>false</b> otherwise.</returns>
+    private bool IsWalkingLeft()
+    {
+        return _currAnimation == AnimatorUtils.WALK_LEFT;
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving upwards.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving upwards. <b>false</b> otherwise.</returns>
+    private bool IsWalkingUp()
+    {
+        return _currAnimation == AnimatorUtils.WALK_UP;
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving downwards.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving downwards. <b>false</b> otherwise.</returns>
+    private bool IsWalkingDown()
+    {
+        return _currAnimation == AnimatorUtils.WALK_DOWN;
+    }
+
+    /// <summary>
+    /// This method indicates if an actor is moving to the right.
+    /// </summary>
+    /// <returns><b>true</b> if the actor is moving to the right. <b>false</b> otherwise.</returns>
+    private bool IsWalkingRight()
+    {
+        return _currAnimation == AnimatorUtils.WALK_RIGHT;
     }
 
     /// <summary>
@@ -48,13 +133,13 @@ public class Movement : ScriptableObject
         {
             actor.GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
             faceDirection = FaceDirection.RIGHT;
-            animator.Play(AnimatorUtils.WALK_RIGHT);
+            _currAnimation = AnimatorUtils.WALK_RIGHT;
         }
         else if (movementX < 0)
         {
             actor.GetComponent<Rigidbody2D>().velocity = Vector2.left * speed;
             faceDirection = FaceDirection.LEFT;
-            animator.Play(AnimatorUtils.WALK_LEFT);
+            _currAnimation = AnimatorUtils.WALK_LEFT;
         }
     }
 
@@ -70,13 +155,13 @@ public class Movement : ScriptableObject
         {
             actor.GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
             faceDirection = FaceDirection.UP;
-            animator.Play(AnimatorUtils.WALK_UP);
+            _currAnimation = AnimatorUtils.WALK_UP;
         }
         else if (movementY < 0)
         {
             actor.GetComponent<Rigidbody2D>().velocity = Vector2.down * speed;
             faceDirection = FaceDirection.DOWN;
-            animator.Play(AnimatorUtils.WALK_DOWN);
+            _currAnimation = AnimatorUtils.WALK_DOWN;
         }
     }
 
@@ -91,19 +176,19 @@ public class Movement : ScriptableObject
         switch (faceDirection)
         {
             case FaceDirection.RIGHT:
-                animator.Play(AnimatorUtils.STAND_RIGHT);
+                _currAnimation = AnimatorUtils.STAND_RIGHT;
                 break;
 
             case FaceDirection.DOWN:
-                animator.Play(AnimatorUtils.STAND_DOWN);
+                _currAnimation = AnimatorUtils.STAND_DOWN;
                 break;
 
             case FaceDirection.LEFT:
-                animator.Play(AnimatorUtils.STAND_LEFT);
+                _currAnimation = AnimatorUtils.STAND_LEFT;
                 break;
 
             case FaceDirection.UP:
-                animator.Play(AnimatorUtils.STAND_UP);
+                _currAnimation = AnimatorUtils.STAND_UP;
                 break;
         }
     }

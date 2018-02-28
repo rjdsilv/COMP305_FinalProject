@@ -10,20 +10,4 @@ public abstract class ActorMovement : MonoBehaviour
 
     // Protected variable declaration.
     protected Animator _animator;       // The actor's animator.
-
-    /// <summary>
-    /// Initializes all the necessary properties for the 
-    /// </summary>
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
-    /// <summary>
-    /// Method that will control the player's movement.
-    /// </summary>
-    void FixedUpdate()
-    {
-        movement.Move(gameObject, _animator, ControlUtils.Horizontal(), ControlUtils.Vertical(), false);
-    }
 }

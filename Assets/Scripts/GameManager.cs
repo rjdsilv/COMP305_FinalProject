@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < players.Length; i++)
             {
                 players[i] = Instantiate(players[i]);
-                players[i].GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
             }
         }
 	}
