@@ -1,16 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+/// <summary>
+/// Script responsible for managing the game.
+/// </summary>
+public class GameManager : MonoBehaviour
+{
+    public GameObject[] players;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    /// <summary>
+    /// Starts all the necessary information for the game.
+    /// </summary>
+	void Start ()
+    {
+		if (null != players)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                players[i] = Instantiate(players[i]);
+                players[i].GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
+            }
+        }
 	}
 }
