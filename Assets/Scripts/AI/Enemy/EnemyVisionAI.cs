@@ -49,35 +49,48 @@ public class EnemyVisionAI : VisionAI
     {
         if (TagUtils.IsPlayer(other))
         {
-            if (CalculateAngleToActor(other) <= visionAttributes.viewingAngle)
-            {
-                // Checks if anything is blocking the enemy line of view.
-                _isSeeingPlayer = !HasObjectsBlockingView(other);
-            }
-            else
-            {
-                _isSeeingPlayer = false;
-            }
+            SeePlayer(other);
         }
         // Checking if should turn due to an obstacle ahead.
         else if (TagUtils.IsScenarioObject(other) || TagUtils.IsSectorEdge(other))
         {
-            float turnDistance = GetComponent<EnemyMovemet>().randomWalkAttributes.turnDistance;
-            Vector2 origin = _eye.position;
-            Vector2 direction = GetRayDirection();
-            RaycastHit2D[] allHits = Physics2D.RaycastAll(origin, direction, turnDistance);
-            foreach (RaycastHit2D hit in allHits)
+            SeeObstacle();
+        }
+    }
+
+    /// <summary>
+    /// Method in charge of evaluating if the enemy can see the player.
+    /// </summary>
+    /// <param name="player">The player to check</param>
+    private void SeePlayer(Transform player)
+    {
+        if (CalculateAngleToActor(player) <= visionAttributes.viewingAngle)
+        {
+            // Checks if anything is blocking the enemy line of view.
+            _isSeeingPlayer = !HasObjectsBlockingView(player);
+        }
+        else
+        {
+            // Don't see the player.
+            _isSeeingPlayer = false;
+        }
+    }
+
+    /// <summary>
+    /// Method in charge of evaluating if the enemy can see any obstacle.
+    /// </summary>
+    private void SeeObstacle()
+    {
+        foreach (RaycastHit2D hit in Physics2D.RaycastAll(_eye.position, GetRayDirection(), GetComponent<EnemyMovemet>().randomWalkAttributes.turnDistance))
+        {
+            if (TagUtils.IsEnemy(hit.transform)) continue;
+            if (TagUtils.IsScenarioObject(hit.transform) || TagUtils.IsSectorEdge(hit.transform))
             {
-                if (TagUtils.IsEnemy(hit.transform)) continue;
-                if (TagUtils.IsScenarioObject(hit.transform) || TagUtils.IsSectorEdge(hit.transform))
-                {
-                    _isSeeingObstacle = true;
-                    Debug.Log("See Obstacle");
-                }
-                else
-                {
-                    _isSeeingObstacle = false;
-                }
+                _isSeeingObstacle = true;
+            }
+            else
+            {
+                _isSeeingObstacle = false;
             }
         }
     }
