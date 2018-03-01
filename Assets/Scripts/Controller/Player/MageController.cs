@@ -5,6 +5,15 @@
 /// </summary>
 public class MageController : PlayerController<MageAttributes, MageLevelTree>
 {
+    [HideInInspector]
+    public FireBall fireBall;                               // The mage's fire ball ability.
+
+    [HideInInspector]
+    public LightningBall lightningBall;                     // The mage's lightning ball ability.
+
+    public FireBallLevelTree fireBallLevelTree;             // The mage's fire ball level tree.
+    public LightningBallLevelTree lightningBallLevelTre;    // The mage's lighting ball level tree.
+
     /// <summary>
     /// Initializes all the necessary variables.
     /// </summary>
@@ -16,6 +25,7 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
     /// <see cref="ActorController{A, L}">
     protected override void Init()
     {
+        // Initializes the mage attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
         attributes.mana = levelTree.GetAttributesForCurrentLevel().mana;
@@ -24,5 +34,9 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
         attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+
+        // Initializes the mage's abilities.
+        fireBall = fireBallLevelTree.GetAttributesForCurrentLevel();
+        lightningBall = lightningBallLevelTre.GetAttributesForCurrentLevel();
     }
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece305f23084f6d45b054516aa165216, type: 3}
+  m_Name: LightningBall_Lv02
+  m_EditorClassIdentifier: 
+  level: 2
+  minPower: 14
+  maxPower: 23
+  consumableType: 1
+  consumptionValue: 12
