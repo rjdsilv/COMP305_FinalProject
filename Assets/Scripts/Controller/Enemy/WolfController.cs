@@ -2,6 +2,11 @@
 
 public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
 {
+    [HideInInspector]
+    public PowerBite powerBite;                     // The wolf's power bite ability.
+
+    public PowerBiteLevelTree powerBiteLevelTree;   // The wolf's power bite level tree.
+
     /// <summary>
     /// Initializes all the necessary variables.
     /// </summary>
@@ -15,8 +20,10 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
     /// </summary>
     protected override void Init()
     {
+        // Initialize its parent first.
         base.Init();
 
+        // Initializes its attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
         attributes.managedByAI = levelTree.GetAttributesForCurrentLevel().managedByAI;
@@ -24,5 +31,8 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
         attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+
+        // Initializes its abilities.
+        powerBite = powerBiteLevelTree.GetAttributesForCurrentLevel();
     }
 }

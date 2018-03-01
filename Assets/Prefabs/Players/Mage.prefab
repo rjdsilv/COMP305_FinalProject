@@ -128,6 +128,11 @@ MonoBehaviour:
     managedByAI: 0
     mana: 0
   levelTree: {fileID: 11400000, guid: 6d69899949f2c5d4bb0da1af74d23bb2, type: 2}
+  fireBall: {fileID: 0}
+  lightningBall: {fileID: 0}
+  fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
+  lightningBallLevelTre: {fileID: 11400000, guid: dc709df018c61574e83d374675ebb455,
+    type: 2}
 --- !u!114 &114491267976572776
 MonoBehaviour:
   m_ObjectHideFlags: 1
