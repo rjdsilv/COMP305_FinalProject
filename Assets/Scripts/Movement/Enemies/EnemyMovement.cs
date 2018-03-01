@@ -2,7 +2,7 @@
 /// <summary>
 /// Class responsible for dealing with enemy movement.
 /// </summary>
-public class EnemyMovemet : ActorMovement
+public class EnemyMovement : ActorMovement
 {
     // Public variable declaration.
     public RandomWalkAttributes randomWalkAttributes;       // The random walk attributes specification.
@@ -24,8 +24,8 @@ public class EnemyMovemet : ActorMovement
         _animator = GetComponent<Animator>();
         _visionAI = GetComponent<EnemyVisionAI>();
         _secondsInSameDirection = Random.Range(randomWalkAttributes.minTimeSameDir, randomWalkAttributes.maxTimeSameDir);
-        _movementVector = Vector2.left;
-        movement.faceDirection = FaceDirection.LEFT;
+        movement.faceDirection = Mathf.FloorToInt(Random.Range(0, 3.9999999999f));
+        _movementVector = GetDirectionVector();
     }
 
     /// <summary>
@@ -37,6 +37,7 @@ public class EnemyMovemet : ActorMovement
         if (_visionAI.IsSeeingObstacle())
         {
             TurnNow();
+            _visionAI.NotSeeingObstacle();
         }
         // The enemy will turn due to timeframe constraints.
         else
@@ -49,6 +50,30 @@ public class EnemyMovemet : ActorMovement
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
+
+    /// <summary>
+    /// Gets the ray direction based on the position the enemy is looking at.
+    /// </summary>
+    /// <returns>The direction to where the ray must by cast.</returns>
+    public Vector2 GetDirectionVector()
+    {
+        switch (movement.faceDirection)
+        {
+            case FaceDirection.DOWN:
+                return Vector2.down;
+
+            case FaceDirection.UP:
+                return Vector2.up;
+
+            case FaceDirection.LEFT:
+                return Vector2.left;
+
+            case FaceDirection.RIGHT:
+                return Vector2.right;
+        }
+
+        return Vector2.zero; ;
+    }
 
     /// <summary>
     /// Turns the enemy due to the time elapsed.
@@ -79,7 +104,6 @@ public class EnemyMovemet : ActorMovement
 
         // If turned, update the time for not going turn crazy!
         _lastDirChangeTime = Time.time;
-        _secondsInSameDirection = Random.Range(randomWalkAttributes.minTimeSameDir, randomWalkAttributes.maxTimeSameDir);
     }
 
     /// <summary>

@@ -18,7 +18,7 @@ public class EnemyVisionAI : VisionAI
         _isSeeingPlayer = false;
         _isSeeingObstacle = false;
         _eye = transform.GetChild(EYE_IDX);
-        _movement = GetComponent<EnemyMovemet>().movement;
+        _enemyMovement = GetComponent<EnemyMovement>();
     }
 
     /// <summary>
@@ -42,6 +42,20 @@ public class EnemyVisionAI : VisionAI
         return _isSeeingObstacle;
     }
 
+    public void NotSeeingObstacle()
+    {
+        _isSeeingObstacle = false;
+    }
+
+    /// <summary>
+    /// Indicates whether the enemy is seeing the player or not.
+    /// </summary>
+    /// <returns><b>true</b> if the enemy is seeing the player. <b>false</b> otherwise.</returns>
+    public bool IsSeeingPlayer()
+    {
+        return _isSeeingPlayer;
+    }
+
     /// <summary>
     /// <see cref="VisionAI" />
     /// </summary>
@@ -51,8 +65,9 @@ public class EnemyVisionAI : VisionAI
         {
             SeePlayer(other);
         }
+        
         // Checking if should turn due to an obstacle ahead.
-        else if (TagUtils.IsScenarioObject(other) || TagUtils.IsSectorEdge(other))
+        if (TagUtils.IsScenarioObject(other) || TagUtils.IsSectorEdge(other))
         {
             SeeObstacle();
         }
@@ -81,17 +96,13 @@ public class EnemyVisionAI : VisionAI
     /// </summary>
     private void SeeObstacle()
     {
-        foreach (RaycastHit2D hit in Physics2D.RaycastAll(_eye.position, GetRayDirection(), GetComponent<EnemyMovemet>().randomWalkAttributes.turnDistance))
+        RaycastHit2D[] allHits = Physics2D.RaycastAll(_eye.position, _enemyMovement.GetDirectionVector(), _enemyMovement.randomWalkAttributes.turnDistance);
+        foreach (RaycastHit2D hit in allHits)
         {
-            if (TagUtils.IsEnemy(hit.transform)) continue;
+            if (TagUtils.IsEnemy(hit.transform) || TagUtils.IsCamera(hit.transform))
+                continue;
             if (TagUtils.IsScenarioObject(hit.transform) || TagUtils.IsSectorEdge(hit.transform))
-            {
                 _isSeeingObstacle = true;
-            }
-            else
-            {
-                _isSeeingObstacle = false;
-            }
         }
     }
 
@@ -112,7 +123,7 @@ public class EnemyVisionAI : VisionAI
     /// </summary>
     /// <param name="other">The object being seen.</param>
     /// <returns><b>true</b> if there is any object blocking the line of view to the player. <b>false</b> otherwise.</returns>
-    bool HasObjectsBlockingView(Transform other)
+    private bool HasObjectsBlockingView(Transform other)
     {
         // Sends an imaginary beam from the enemy to the player.
         foreach (RaycastHit2D hit in Physics2D.RaycastAll(_eye.position, other.position - _eye.position, Vector2.Distance(_eye.position, other.position)))
@@ -129,29 +140,5 @@ public class EnemyVisionAI : VisionAI
 
         // Nothing blocking the line of view.
         return false;
-    }
-
-    /// <summary>
-    /// Gets the ray direction based on the position the enemy is looking at.
-    /// </summary>
-    /// <returns>The direction to where the ray must by cast.</returns>
-    private Vector2 GetRayDirection()
-    {
-        switch (_movement.faceDirection)
-        {
-            case FaceDirection.DOWN:
-                return Vector2.down;
-
-            case FaceDirection.UP:
-                return Vector2.up;
-
-            case FaceDirection.LEFT:
-                return Vector2.left;
-
-            case FaceDirection.RIGHT:
-                return Vector2.right;
-        }
-
-        return Vector2.zero; ;
     }
 }

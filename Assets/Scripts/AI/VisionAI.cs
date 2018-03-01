@@ -17,7 +17,7 @@ public abstract class VisionAI : GenericAI
 
     // Protected variable declaration.
     protected Transform _eye;               // The actor's eye.
-    protected Movement _movement;           // The actor's movement attributes.
+    protected EnemyMovement _enemyMovement;           // The actor's movement attributes.
 
     /// <summary>
     /// Execute the logic for when some other object enters the field of view.
@@ -32,7 +32,7 @@ public abstract class VisionAI : GenericAI
     /// <returns>The correct line of sight.</returns>
     protected Transform GetLineOfSight()
     {
-        switch (_movement.faceDirection)
+        switch (_enemyMovement.movement.faceDirection)
         {
             case FaceDirection.RIGHT:
                 return transform.GetChild(VIEW_RIGHT_IDX);

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Scriptable object class that will hold values for charactere movement
 /// </summary>
-[CreateAssetMenu(menuName = "Miscelaneous/Movement")]
-public class Movement : ScriptableObject
+[Serializable]
+public class Movement
 {
     // Public variable declaration.
     public int faceDirection;  // The movement direction.

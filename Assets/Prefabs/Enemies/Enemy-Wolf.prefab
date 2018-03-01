@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 58689514249051596}
   - component: {fileID: 114754688690488856}
   - component: {fileID: 114601856764497442}
+  - component: {fileID: 114006507093140872}
   m_Layer: 8
   m_Name: Enemy-Wolf
   m_TagString: Enemy
@@ -242,6 +243,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114006507093140872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383903170578806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46904a9755fba0f4f8894a2e0ea0d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114601856764497442
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f03d55220ed1d41870402ea1455238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 11400000, guid: 9b981f52273adc744a65ade7e26a41bc, type: 2}
+  movement:
+    faceDirection: 0
+    speed: 2.5
   randomWalkAttributes: {fileID: 11400000, guid: 47766307c25c0404a9eeb084eac9eff8,
     type: 2}
 --- !u!114 &114754688690488856
