@@ -45,7 +45,7 @@ public class EnemyMovement : ActorMovement
             TurnDueToTimeFrame();
         }
 
-        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, false);
+        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, SceneData.isIsBattle);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

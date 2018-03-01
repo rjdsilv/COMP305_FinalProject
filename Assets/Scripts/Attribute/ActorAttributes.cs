@@ -3,7 +3,7 @@
 /// <summary>
 /// Class representing commom attributes for all game actors.
 /// </summary>
-public abstract class ActorAttributes : ScriptableObject
+public abstract class ActorAttributes
 {
     public int health;              // The life the actor currently has.
     public int level;               // The level the actor curreltly has.
@@ -11,4 +11,7 @@ public abstract class ActorAttributes : ScriptableObject
     public int maxAttack;           // The maximum attack power the actor has.
     public int minDefense;          // The minimum defense power the actor has.
     public int maxDefense;          // The maximum defense power the actor has.
+
+    [HideInInspector]
+    public bool managedByAI;        // Flag indicating if the actor is managed by an AI.
 }

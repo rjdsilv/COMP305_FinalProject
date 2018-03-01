@@ -11,19 +11,10 @@ public class SectorController : MonoBehaviour
 
     // Private variable declaration.
     private bool _spawnEnemies = true;          // Indicates if the enemies were destroyed or not.
-    private GameManager _gameManager;           // The game manager script.
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// EVENT METHODS
-
-    /// <summary>
-    /// This method will initialize the sector controller needed variables.
-    /// </summary>
-    private void Start ()
-    {
-        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-	}
 
     /// <summary>
     /// When the player enters into the sector, spawn all the enemies from that sector.
@@ -46,6 +37,7 @@ public class SectorController : MonoBehaviour
         if (TagUtils.IsCamera(detectedObject.transform) && detectedObject.isTrigger)
         {
             DestroyEnemies();
+            _spawnEnemies = true;
         }
     }
 
@@ -72,9 +64,9 @@ public class SectorController : MonoBehaviour
                     );
                     GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
                     enemy.name = ea.enemy.name;
-                    enemy.GetComponent<EnemyController>().SectorName = attributes.sectorName;
+                    SetEnemyControllerParameters(enemy);
                     DontDestroyOnLoad(enemy);
-                    _gameManager.sceneData.SaveEnemyNotInBattle(enemy);
+                    SceneData.SaveEnemyNotInBattle(enemy);  
                 }
             }
         }
@@ -86,6 +78,19 @@ public class SectorController : MonoBehaviour
     /// </summary>
     private void DestroyEnemies()
     {
-        _gameManager.sceneData.DestroyAllEnemiesOnSector(attributes.sectorName);
+        SceneData.DestroyAllEnemiesOnSector(attributes.sectorName);
+    }
+
+    /// <summary>
+    /// Sets the 
+    /// </summary>
+    /// <param name="enemy"></param>
+    private void SetEnemyControllerParameters(GameObject enemy)
+    {
+        if (EnemyUtils.IsWolf(enemy))
+        {
+            enemy.GetComponent<WolfController>().SectorName = attributes.sectorName;
+            enemy.GetComponent<WolfController>().BattleScene = attributes.battleScene;
+        }
     }
 }

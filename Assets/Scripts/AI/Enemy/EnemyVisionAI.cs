@@ -42,6 +42,9 @@ public class EnemyVisionAI : VisionAI
         return _isSeeingObstacle;
     }
 
+    /// <summary>
+    /// Marks the obstacle flag as not seeing any obstacle.
+    /// </summary>
     public void NotSeeingObstacle()
     {
         _isSeeingObstacle = false;

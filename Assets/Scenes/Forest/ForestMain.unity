@@ -157,6 +157,11 @@ Prefab:
       propertyPath: attributes.enemyAttributes.Array.data[0].spawnRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114552189001478434, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4118e18ac3f2a5c418b245d8a1a39ecf, type: 2}
   m_IsPrefabParent: 0
@@ -202,7 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - {fileID: 1869775162124002, guid: 718a82dd4cba2a1499154764e0e58eda, type: 2}
-  sceneData: {fileID: 0}
 --- !u!1 &1063594127
 GameObject:
   m_ObjectHideFlags: 0

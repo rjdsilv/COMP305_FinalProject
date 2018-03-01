@@ -118,7 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c764309d2642814288c05691163fd47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attributes: {fileID: 11400000, guid: 1be6bc09d2e8e494194e467a14e14f56, type: 2}
+  attributes:
+    health: 0
+    level: 0
+    minAttack: 0
+    maxAttack: 0
+    minDefense: 0
+    maxDefense: 0
+    managedByAI: 0
+    mana: 0
+  levelTree: {fileID: 11400000, guid: 6d69899949f2c5d4bb0da1af74d23bb2, type: 2}
 --- !u!114 &114491267976572776
 MonoBehaviour:
   m_ObjectHideFlags: 1

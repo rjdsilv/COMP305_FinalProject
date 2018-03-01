@@ -63,9 +63,13 @@ public class Movement
             {
                 Stop(actor, animator);
             }
-
-            animator.Play(_currAnimation);
         }
+        else
+        {
+            Stop(actor, animator);
+        }
+
+        animator.Play(_currAnimation);
     }
 
     /// <summary>
