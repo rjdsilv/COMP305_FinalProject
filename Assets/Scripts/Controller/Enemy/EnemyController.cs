@@ -7,6 +7,10 @@ public abstract class EnemyController<A, L> : ActorController<A, L>
     where A : ActorAttributes
     where L : ActorLevelTree<A>
 {
+    // Public variable declaration.
+    public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
+    public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
+
     // Protected variable declaration.
     protected GameManager _gameManager;           // The game manager script to be used.
     protected EnemyVisionAI _enemyVisionAI;       // The enemy vision AI script to be used.
@@ -33,7 +37,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>
     {
         if (_enemyVisionAI.IsSeeingPlayer())
         {
-            _gameManager.GoToBattle(BattleScene);
+            _gameManager.GoToBattle(BattleScene, gameObject);
         }
     }
 }

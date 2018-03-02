@@ -12,7 +12,7 @@ public static class EnemyUtils
     /// </summary>
     /// <param name="enemy">The enemy to be checked</param>
     /// <returns><b>true</b> if the enemy is a wolf. <b>false</b> otherwise.</returns>
-    public static bool IsWolf(GameObject enemy)
+    public static bool IsWolf(this GameObject enemy)
     {
         return enemy.name == WOLF;
     }
@@ -23,13 +23,41 @@ public static class EnemyUtils
     /// <param name="enemy">The enemy to be checked.</param>
     /// <param name="sectorName">The sector to be checked.</param>
     /// <returns><b>true</b> if the given enemy belongs to the given sector. <b>false</b> otherwise.</returns>
-    public static bool BelongsToSector(GameObject enemy, string sectorName)
+    public static bool BelongsToSector(this GameObject enemy, string sectorName)
     {
-        if (IsWolf(enemy))
+        if (enemy.IsWolf())
         {
             return enemy.GetComponent<WolfController>().SectorName == sectorName;
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Sets the attributes for the given game enemy.
+    /// </summary>
+    /// <param name="enemy">The enemy to have parameters set.x`</param>
+    public static void SetEnemyControllerParameters(this GameObject enemy, SectorAttributes attributes)
+    {
+        if (enemy.IsWolf())
+        {
+            enemy.GetComponent<WolfController>().SectorName = attributes.sectorName;
+            enemy.GetComponent<WolfController>().BattleScene = attributes.battleScene;
+        }
+    }
+
+    /// <summary>
+    /// Gets the WolfController component for he enemy.
+    /// </summary>
+    /// <param name="enemy">The enemy to be used to get the controller.</param>
+    /// <returns>The WolfController component if the enemy is a wolf. null otherwise.</returns>
+    public static WolfController GetWolfControllerComponent(this GameObject enemy)
+    {
+        if (enemy.IsWolf())
+        {
+            return enemy.GetComponent<WolfController>();
+        }
+
+        return null;
     }
 }

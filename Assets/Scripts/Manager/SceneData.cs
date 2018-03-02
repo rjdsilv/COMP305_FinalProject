@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public static class SceneData
 {
-    public static bool isIsBattle = false;                                            // Flat indicating if we are in a battle scene.
+    public static bool isInBattle = false;                                            // Flat indicating if we are in a battle scene.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
     public static List<GameObject> enemyInBattleList = new List<GameObject>();        // The list of enemies that are in battle.
     public static List<GameObject> enemyNotInBattleList = new List<GameObject>();     // The list of enemies that are not in battle.
@@ -22,24 +22,6 @@ public static class SceneData
     }
 
     /// <summary>
-    /// Saves an enemy as one that is not in the battle.
-    /// </summary>
-    /// <param name="enemy">The enemy to be saved.</param>
-    public static void SaveEnemyNotInBattle(GameObject enemy)
-    {
-        enemyNotInBattleList.Add(enemy);
-    }
-
-    /// <summary>
-    /// Saves an enemy as one that is in the battle.
-    /// </summary>
-    /// <param name="enemy">The enemy to be saved.</param>
-    public static void SaveEnemyInBattle(GameObject enemy)
-    {
-        enemyInBattleList.Add(enemy);
-    }
-
-    /// <summary>
     /// Destroys all the enemies that belongs to the given sector.
     /// </summary>
     /// <param name="sectorName">The sector to be evaluated.</param>
@@ -50,7 +32,7 @@ public static class SceneData
         // Destroys from the enemyInBattleList
         foreach (GameObject enemy in enemyInBattleList)
         {
-            if (EnemyUtils.BelongsToSector(enemy, sectorName))
+            if (enemy.BelongsToSector(sectorName))
             {
                 enemiesToDestroy.Add(enemy);
             }
@@ -60,7 +42,7 @@ public static class SceneData
         // Destroys from the enemyNotInBattleList
         foreach (GameObject enemy in enemyNotInBattleList)
         {
-            if (EnemyUtils.BelongsToSector(enemy, sectorName))
+            if (enemy.BelongsToSector(sectorName))
             {
                 enemiesToDestroy.Add(enemy);
             }

@@ -18,6 +18,6 @@ public class PlayerMovement : ActorMovement
     /// </summary>
     private void FixedUpdate()
     {
-        movement.Move(gameObject, _animator, ControlUtils.Horizontal(), ControlUtils.Vertical(), SceneData.isIsBattle);
+        movement.Move(gameObject, _animator, ControlUtils.Horizontal(), ControlUtils.Vertical(), SceneData.isInBattle);
     }
 }

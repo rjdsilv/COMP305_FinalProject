@@ -154,7 +154,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.39705884, g: 0.32231838, b: 0.21020763, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -234,6 +234,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedb73d8cf8aa934ab66ea1562629a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawnPoints:
+  - actorName: Mage
+    spawnPoint: {x: -10, y: -3.5, z: 0}
+  - actorName: Thief
+    spawnPoint: {x: -10, y: -0.5, z: 0}
+  - actorName: Cleric
+    spawnPoint: {x: -10, y: 2.5, z: 0}
+  - actorName: Knight
+    spawnPoint: {x: -10, y: 5.5, z: 0}
+  enemySpawnPoints:
+  - {x: 10, y: -3.5, z: 0}
+  - {x: 10, y: -0.5, z: 0}
+  - {x: 10, y: 2.5, z: 0}
+  - {x: 10, y: 5.5, z: 0}
+  - {x: 7, y: -3.5, z: 0}
+  - {x: 7, y: -0.5, z: 0}
+  - {x: 7, y: 2.5, z: 0}
+  - {x: 7, y: 5.5, z: 0}
 --- !u!1 &1898857618
 GameObject:
   m_ObjectHideFlags: 0

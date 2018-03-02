@@ -53,10 +53,15 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Sets the state of the game in order to go to the battle scene.
     /// </summary>
-    public void GoToBattle(string battleScene)
+    public void GoToBattle(string battleScene, GameObject enemy)
     {
-        _goToBattle = true;
-        _battleScene = battleScene;
+        if (!_goToBattle)
+        {
+            _goToBattle = true;
+            _battleScene = battleScene;
+            SceneData.enemyNotInBattleList.Remove(enemy);
+            SceneData.enemyInBattleList.Add(enemy);
+        }
     }
 
     /// <summary>
@@ -68,7 +73,7 @@ public class GameManager : MonoBehaviour
         {
             if (_goToBattle)
             {
-                SceneData.isIsBattle = true;
+                SceneData.isInBattle = true;
                 SceneManager.LoadScene(_battleScene);
             }
 

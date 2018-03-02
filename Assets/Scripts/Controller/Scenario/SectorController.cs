@@ -64,9 +64,9 @@ public class SectorController : MonoBehaviour
                     );
                     GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
                     enemy.name = ea.enemy.name;
-                    SetEnemyControllerParameters(enemy);
+                    enemy.SetEnemyControllerParameters(attributes);
                     DontDestroyOnLoad(enemy);
-                    SceneData.SaveEnemyNotInBattle(enemy);  
+                    SceneData.enemyNotInBattleList.Add(enemy);  
                 }
             }
         }
@@ -79,18 +79,5 @@ public class SectorController : MonoBehaviour
     private void DestroyEnemies()
     {
         SceneData.DestroyAllEnemiesOnSector(attributes.sectorName);
-    }
-
-    /// <summary>
-    /// Sets the 
-    /// </summary>
-    /// <param name="enemy"></param>
-    private void SetEnemyControllerParameters(GameObject enemy)
-    {
-        if (EnemyUtils.IsWolf(enemy))
-        {
-            enemy.GetComponent<WolfController>().SectorName = attributes.sectorName;
-            enemy.GetComponent<WolfController>().BattleScene = attributes.battleScene;
-        }
     }
 }
