@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ActorController<A, L> : MonoBehaviour
+public abstract class ActorController<A, L> : MonoBehaviour, IController
     where A : ActorAttributes
     where L : ActorLevelTree<A>
 {

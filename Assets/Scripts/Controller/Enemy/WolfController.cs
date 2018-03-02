@@ -2,6 +2,7 @@
 
 public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
 {
+    // Public variable declaration.
     [HideInInspector]
     public PowerBite powerBite;                     // The wolf's power bite ability.
 

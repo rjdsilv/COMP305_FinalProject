@@ -47,11 +47,11 @@ public static class EnemyUtils
     }
 
     /// <summary>
-    /// Gets the WolfController component for he enemy.
+    /// Gets the controller component for the given enemy.
     /// </summary>
     /// <param name="enemy">The enemy to be used to get the controller.</param>
-    /// <returns>The WolfController component if the enemy is a wolf. null otherwise.</returns>
-    public static WolfController GetWolfControllerComponent(this GameObject enemy)
+    /// <returns>The controller component for the given the enemy. Retrns null if it is not a known enemy.</returns>
+    public static IEnemyController GetEnemyControllerComponent(this GameObject enemy)
     {
         if (enemy.IsWolf())
         {

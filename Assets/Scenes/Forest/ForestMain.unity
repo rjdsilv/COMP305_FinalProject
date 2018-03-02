@@ -162,6 +162,11 @@ Prefab:
       propertyPath: attributes.battleScene
       value: ForestBattle_01
       objectReference: {fileID: 0}
+    - target: {fileID: 114552189001478434, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.enemyAttributes.Array.data[0].spawnNumber
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4118e18ac3f2a5c418b245d8a1a39ecf, type: 2}
   m_IsPrefabParent: 0

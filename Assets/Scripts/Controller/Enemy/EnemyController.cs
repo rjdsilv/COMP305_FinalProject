@@ -3,10 +3,13 @@
 /// <summary>
 /// Class responsible for controlling the enemy.
 /// </summary>
-public abstract class EnemyController<A, L> : ActorController<A, L>
+public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyController
     where A : ActorAttributes
     where L : ActorLevelTree<A>
 {
+    // Constant declaration.
+    protected const int SELECTION_LIGHT_IDX = 5;
+
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
     public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
@@ -21,14 +24,8 @@ public abstract class EnemyController<A, L> : ActorController<A, L>
     // The battle scene to be loaded.
     public string BattleScene { get; set; }
 
-    /// <summary>
-    /// Initialize all the necessary variables.
-    /// </summary>
-    protected override void Init()
-    {
-        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        _enemyVisionAI = GetComponent<EnemyVisionAI>();
-    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// EVENT METHODS
 
     /// <summary>
     /// Method called after all scene updates occur. This method will set the game state to battle.
@@ -39,5 +36,26 @@ public abstract class EnemyController<A, L> : ActorController<A, L>
         {
             _gameManager.GoToBattle(BattleScene, gameObject);
         }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// NON EVENT METHODS
+    
+    /// <summary>
+    /// Returns the enemy selection light to be used.
+    /// </summary>
+    /// <returns>The enemy selection light to be used.</returns>
+    public Light GetSelectionLight()
+    {
+        return transform.GetChild(SELECTION_LIGHT_IDX).GetComponent<Light>();
+    }
+
+    /// <summary>
+    /// Initialize all the necessary variables.
+    /// </summary>
+    protected override void Init()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        _enemyVisionAI = GetComponent<EnemyVisionAI>();
     }
 }
