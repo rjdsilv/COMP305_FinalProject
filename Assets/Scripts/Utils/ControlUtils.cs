@@ -11,9 +11,9 @@ public class ControlUtils
         return Input.GetAxis("Vertical");
     }
 
-    public static float Attack()
+    public static bool Attack()
     {
-        return Input.GetAxis("Attack");
+        return Input.GetButton("Attack");
     }
 
     public static float SwapAbility()

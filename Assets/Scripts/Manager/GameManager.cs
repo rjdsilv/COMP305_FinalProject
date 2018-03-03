@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
             {
                 players[i] = SceneData.playerList[i];
                 players[i].SetActive(true);
+                if (!players[i].GetControllerComponent().IsManagedByAI())
+                {
+                    Camera.main.transform.position = players[i].transform.position + Vector3.back * 10;
+                }
             }
         }
 

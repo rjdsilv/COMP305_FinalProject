@@ -62,6 +62,11 @@ public class HUDManager : MonoBehaviour
         turnText.text = string.Format(TURN_TEXT, _turnNumber++, actorName);
     }
 
+    public void DisplayEndOfBattleText()
+    {
+        turnText.text = "Enemies Killed!";
+    }
+
     /// <summary>
     /// Hides the turn text.
     /// </summary>

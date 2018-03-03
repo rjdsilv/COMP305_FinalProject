@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class responsible for controlling the enemy.
@@ -9,6 +10,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
 {
     // Constant declaration.
     protected const int SELECTION_LIGHT_IDX = 5;
+    protected const int HUD_CANVAS_IDX = 6;
 
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
@@ -40,14 +42,17 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
-    
-    /// <summary>
-    /// Returns the enemy selection light to be used.
-    /// </summary>
-    /// <returns>The enemy selection light to be used.</returns>
+
+    /// <see cref="IEnemyController"/>    
     public Light GetSelectionLight()
     {
         return transform.GetChild(SELECTION_LIGHT_IDX).GetComponent<Light>();
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public void DecreaseHealthHUD(int ammount)
+    {
+        GetHUDHealthSlider().value -= ammount;
     }
 
     /// <summary>
@@ -57,5 +62,31 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     {
         _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
+
+        // Initializes the HUD.
+        GetHUDCanvas().enabled = true;
+        GetHUDHealthSlider().maxValue = levelTree.GetAttributesForCurrentLevel().health;
+        GetHUDHealthSlider().value = attributes.health;
+
+        if (!SceneData.isInBattle)
+            GetHUDCanvas().enabled = false;
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas to be used.</returns>
+    protected Canvas GetHUDCanvas()
+    {
+        return transform.GetChild(HUD_CANVAS_IDX).GetComponent<Canvas>();
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas health slider to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas health slider to be used.</returns>
+    protected Slider GetHUDHealthSlider()
+    {
+        return GetHUDCanvas().GetComponent<RectTransform>().GetChild(0).GetComponent<Slider>();
     }
 }
