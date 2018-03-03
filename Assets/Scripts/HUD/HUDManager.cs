@@ -6,10 +6,16 @@ using UnityEngine.UI;
 /// </summary>
 public class HUDManager : MonoBehaviour
 {
+    // Constant declaration.
+    private const string TURN_TEXT = "Turn {0} - {1}";
+
     // Public variable declaration.
+    public Text turnText;                       // The turn text to be displayed.
+    public Slider turnTimer;                    // The turn timer to be managed.
     public PlayerHUD mageHUD;                   // The mage HUD to be managed.
 
     // Private variable declaration.
+    private int _turnNumber = 1;
     private Image _selectedImage;
 
     /// <summary>
@@ -26,6 +32,42 @@ public class HUDManager : MonoBehaviour
                 InitializeMageHUD(player);
             }
         }
+    }
+
+    /// <summary>
+    ///  Initializes the timer to the maximum value configured.
+    /// </summary>
+    /// <param name="value"></param>
+    public void InitializeTurnTimer(int value)
+    {
+        turnTimer.minValue = 0;
+        turnTimer.maxValue = value;
+    }
+
+    /// <summary>
+    /// Updates the value for the turn timer based on the configured timer.
+    /// </summary>
+    /// <param name="value">The value to be used.</param>
+    public void UpdateTurnTimer(float value)
+    {
+        turnTimer.value = value;
+    }
+
+    /// <summary>
+    /// Displays the turn text on the screen.
+    /// </summary>
+    /// <param name="actorName">The actor name to be displayed.</param>
+    public void DisplayTurnText(string actorName)
+    {
+        turnText.text = string.Format(TURN_TEXT, _turnNumber++, actorName);
+    }
+
+    /// <summary>
+    /// Hides the turn text.
+    /// </summary>
+    public void HideTurnText()
+    {
+        turnText.text = "";
     }
 
     /// <summary>

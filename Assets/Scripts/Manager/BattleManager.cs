@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// This class will manage all the actions that will happen in a battle.
@@ -10,7 +12,8 @@ public class BattleManager : MonoBehaviour
     private const float SCALE_FACTOR = 1.25f;
     private const float MIN_SEL_TIME = 0.25f;
 
-        // Public variable declaration.
+    // Public variable declaration.
+    public int turnTime;                            // The time the turn will endure.
     public PlayerSpawnPoint[] playerSpawnPoints;    // The points where the players will spawn in the battle scene.
     public Vector3[] enemySpawnPoints;              // The points where the enemies will spawn in the battle scene.
     public HUDManager hudManager;                   // The HUD manager to be used.
@@ -26,9 +29,12 @@ public class BattleManager : MonoBehaviour
     // Generic variables.
     private GameObject _actorPlaying;
     private float _lastSwapTime;
+    private float _turnRemainingTime;
+    private bool _battleEnd = false;
 
     // Enemies variables.
-    private int _selectedEnemyIndex;
+    private int _enemyPlayerIndex = 0;
+    private int _selectedEnemyIndex = 0;
     private GameObject[] _enemies;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,21 +55,20 @@ public class BattleManager : MonoBehaviour
         // Inactivate all the players and enemies from the previous scene.
         InactivateActorsFromPreviousScene();
 
-        // Initialize the HUD for the players.
+        // Initialize the HUD.
         hudManager.InitializePlayersHUD(_mage);
-
-        // Initializes the battle turn.
-        _actorPlaying = _mage;
+        hudManager.InitializeTurnTimer(turnTime);
 
         // Initializes the last selection time.
         _lastSwapTime = Time.time;
-
+        
+        StartCoroutine(BattleLoop());
 	}
 
     /// <summary>
-    /// Method that will run after all the normal update and fixed update runs in order.
+    /// Method that will run the game logic.
     /// </summary>
-    private void LateUpdate()
+    private void Update()
     {
         SwapAbility();
         SwapEnemy();
@@ -71,6 +76,63 @@ public class BattleManager : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
+
+    private IEnumerator BattleLoop()
+    {
+        while (!BattleEnd())
+        {
+            yield return StartTurn();
+            yield return PlayTurn();
+        }
+
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("ForestMain");
+    }
+
+    /// <summary>
+    /// Resets everything to start a new turn.
+    /// </summary>
+    private IEnumerator StartTurn()
+    {
+        _turnRemainingTime = turnTime;
+        hudManager.DisplayTurnText(_actorPlaying.name);
+        yield return new WaitForSeconds(2);
+        hudManager.HideTurnText();
+
+        // Initializes the battle turn.
+        if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
+        {
+            _actorPlaying = _mage;
+        }
+        else
+        {
+            _enemyPlayerIndex = ClampIndex(_enemyPlayerIndex++, _enemies.Length, true);
+            _actorPlaying = _enemies[_enemyPlayerIndex];
+        }
+    }
+
+    /// <summary>
+    /// Sets up things so the turn can be played.
+    /// </summary>
+    private IEnumerator PlayTurn()
+    {
+        while (!TurnEnd() && !BattleEnd())
+        {
+            yield return new WaitForSeconds(0.01f);
+            _turnRemainingTime -= 0.01f;
+            hudManager.UpdateTurnTimer(_turnRemainingTime);
+        }
+    }
+
+    private bool TurnEnd()
+    {
+        return _turnRemainingTime <= 0;
+    }
+
+    private bool BattleEnd()
+    {
+        return _battleEnd;
+    }
 
     /// <summary>
     /// Method responsible for swapping the player ability as commanded by
