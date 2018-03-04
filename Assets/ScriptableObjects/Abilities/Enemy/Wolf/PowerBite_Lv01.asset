@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: PowerBite_Lv01
   m_EditorClassIdentifier: 
   level: 1
-  minPower: 15
-  maxPower: 25
+  minPower: 13
+  maxPower: 20

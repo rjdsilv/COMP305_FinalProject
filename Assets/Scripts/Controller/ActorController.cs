@@ -1,17 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class ActorController<A, L> : MonoBehaviour, IController
     where A : ActorAttributes
     where L : ActorLevelTree<A>
 {
+    // Public variable declaration.
     [HideInInspector]
-    public A attributes;    // The actor's attributes.
-    public L levelTree;     // The actor's level tree.
+    public A attributes;                            // The actor's attributes.
+    public L levelTree;                             // The actor's level tree.
+
+    // Protected variable declaration.
+    protected List<ActorAbility> _abilityList;      // The list of abilities this enemy has.
+
 
     /// <summary>
     /// Initialize all the necessary variables.
     /// </summary>
-    protected abstract void Init();
+    protected virtual void Init()
+    {
+        _abilityList = new List<ActorAbility>();
+    }
 
     /// <see cref="IController"/>
     public int Attack(GameObject opponent, ActorAbility ability)
@@ -41,8 +50,16 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
         return attributes.health > 0;
     }
 
+    /// <see cref="IController"/>
     public void DecreaseHealth(int ammount)
     {
         attributes.health -= ammount;
+    }
+
+    /// <see cref="IController"/>
+    public ActorAbility SelectAbility()
+    {
+        int selectedAbilityIndex = Mathf.FloorToInt(Random.Range(0, _abilityList.Count - 0.000001f));
+        return _abilityList[selectedAbilityIndex];
     }
 }

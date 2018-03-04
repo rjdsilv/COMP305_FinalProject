@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: FireBall_Lv01
   m_EditorClassIdentifier: 
   level: 1
-  minPower: 10
-  maxPower: 18
+  minPower: 15
+  maxPower: 23
   consumableType: 1
-  consumptionValue: 10
+  consumptionValue: 5

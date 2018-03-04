@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] players;        // The players to be instantiated.
 
     // Private variable declaration.
-    private bool _goToBattle = false;   // The scene should change to the battle scene.
+    private bool _goToBattle;           // The scene should change to the battle scene.
     private string _battleScene = "";   // The battle scene that must be loaded.
 
     /// <summary>
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
 	private void Start ()
     {
+        _goToBattle = false;
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
             if (_goToBattle)
             {
                 SceneData.isInBattle = true;
+                SceneData.mainScene = "ForestMain";
                 SceneManager.LoadScene(_battleScene);
             }
 

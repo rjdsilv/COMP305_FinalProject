@@ -542,7 +542,7 @@ MonoBehaviour:
     managedByAI: 0
   levelTree: {fileID: 11400000, guid: 751a6e4a51e78294fb8948ee468df688, type: 2}
   minEnemiesInBattle: 2
-  maxEnemiesInBattle: 4
+  maxEnemiesInBattle: 3
   powerBite: {fileID: 0}
   powerBiteLevelTree: {fileID: 11400000, guid: c47b11b547de28a4bb66f87dcdaca604, type: 2}
 --- !u!114 &114754688690488856

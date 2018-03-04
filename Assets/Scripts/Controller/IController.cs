@@ -29,4 +29,10 @@ public interface IController
     /// </summary>
     /// <returns><b>true</b> if the actor is alive. <b>false</b> otherwise.</returns>
     bool IsAlive();
+
+    /// <summary>
+    /// Method that will randomly select the ability that will be used for the enemy to attack.
+    /// </summary>
+    /// <returns>The ability to use on the attack.</returns>
+    ActorAbility SelectAbility();
 }

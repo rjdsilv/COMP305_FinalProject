@@ -35,6 +35,7 @@ public class BattleManager : MonoBehaviour
     private float _turnRemainingTime;
     private bool _turnStarted;
     private bool _attackExecuted;
+    private bool _canAIAttack = false;
 
     // Enemies variables.
     private int _enemyPlayerIndex = -1;
@@ -47,7 +48,7 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Initializes all the necessary data on the manager.
     /// </summary>
-    private void Start ()
+    private void Start()
     {
         // Sets the scene as being in a battle.
         SceneData.isInBattle = true;
@@ -66,16 +67,16 @@ public class BattleManager : MonoBehaviour
         // Initializes the last selection time.
         _lastSwapTime = Time.time;
         _lastAttackTime = Time.time;
-        
+
         StartCoroutine(BattleLoop());
-	}
+    }
 
     /// <summary>
     /// Method that will run the game logic.
     /// </summary>
     private void Update()
     {
-        if (_turnStarted)
+        if (_turnStarted && !IsBattleEnded())
         {
             SwapAbility();
             SwapEnemy();
@@ -85,99 +86,6 @@ public class BattleManager : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
-
-    /// <summary>
-    /// Method that will control the battle turn flow.
-    /// </summary>
-    private IEnumerator BattleLoop()
-    {
-        while (!BattleEnd())
-        {
-            yield return StartTurn();
-            yield return PlayTurn();
-        }
-
-        if (_mage.GetControllerComponent().IsAlive())
-        {
-            hudManager.DisplayEndOfBattleText();
-            yield return new WaitForSeconds(1.5f);
-            hudManager.HideTurnText();
-            _mage.transform.position = _mageOldPos;
-            SceneData.isInBattle = false;
-            SceneManager.LoadScene("ForestMain");
-        }
-    }
-
-    /// <summary>
-    /// Resets everything to start a new turn.
-    /// </summary>
-    private IEnumerator StartTurn()
-    {
-        _turnStarted = false;
-        _attackExecuted = false;
-
-        // Initializes the battle turn.
-        if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
-        {
-            _actorPlaying = _mage;
-        }
-        else
-        {
-            int counter = 0;
-            do
-            {
-                _enemyPlayerIndex = ClampIndex(++_enemyPlayerIndex, _enemies.Length - 1, true);
-                _actorPlaying = _enemies[_enemyPlayerIndex];
-                counter++;
-            }
-            while (!_enemies[_enemyPlayerIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
-        }
-
-        // Setting the turn start message.
-        hudManager.DisplayTurnText(string.Format("{0}_{1}", _actorPlaying.name, _enemyPlayerIndex));
-        yield return new WaitForSeconds(2);
-        hudManager.HideTurnText();
-
-        _turnRemainingTime = turnTime;
-        _turnStarted = true;
-    }
-
-    /// <summary>
-    /// Sets up things so the turn can be played.
-    /// </summary>
-    private IEnumerator PlayTurn()
-    {
-        while (!TurnEnd() && !BattleEnd())
-        {
-            yield return new WaitForSecondsRealtime(0.025f);
-            _turnRemainingTime -= 0.025f;
-            hudManager.UpdateTurnTimer(_turnRemainingTime);
-        }
-    }
-
-    /// <summary>
-    /// Method to indicate whether a turn finished or not.
-    /// </summary>
-    /// <returns></returns>
-    private bool TurnEnd()
-    {
-        return _turnRemainingTime <= 0 || _attackExecuted;
-    }
-
-    /// <summary>
-    /// Method to indicate whether a battle finished or not.
-    /// </summary>
-    /// <returns></returns>
-    private bool BattleEnd()
-    {
-        foreach (GameObject enemy in _enemies)
-        {
-            if (enemy.GetControllerComponent().IsAlive())
-                return false;
-        }
-
-        return true;
-    }
 
     /// <summary>
     /// Method responsible for swapping the player ability as commanded by
@@ -199,6 +107,163 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Method that will control the battle turn flow.
+    /// </summary>
+    private IEnumerator BattleLoop()
+    {
+        while (!IsBattleEnded())
+        {
+            yield return StartTurn();
+            yield return PlayTurn();
+        }
+
+        yield return EndBattle();
+    }
+
+    /// <summary>
+    /// Resets everything to start a new turn.
+    /// </summary>
+    private IEnumerator StartTurn()
+    {
+        _turnStarted = false;
+        _attackExecuted = false;
+
+        // Selects the player to attack.
+        if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
+        {
+            _actorPlaying = _mage;
+        }
+        // Selects the enemy to attack.
+        else
+        {
+            SelectEnemyToAttack();
+        }
+
+        // Setting the turn start message.
+        hudManager.DisplayTurnText(_actorPlaying.name);
+        yield return new WaitForSeconds(2);
+        hudManager.HideTurnText();
+
+        _turnRemainingTime = turnTime;
+        _turnStarted = true;
+    }
+
+    /// <summary>
+    /// Sets up things so the turn can be played.
+    /// </summary>
+    private IEnumerator PlayTurn()
+    {
+        float startTime = Time.time;
+
+        while (!IsTurnEnded() && !IsBattleEnded())
+        {
+            yield return new WaitForSecondsRealtime(0.025f);
+            _turnRemainingTime -= 0.05f;
+            hudManager.UpdateTurnTimer(_turnRemainingTime);
+
+            if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
+            {
+                _canAIAttack = true;
+            }
+        }
+    }
+
+    private IEnumerator EndBattle()
+    {
+        if (IsAnyPlayerAlive())
+        {
+            // Displays the end of battle text.
+            hudManager.DisplayEndOfBattleText();
+            yield return new WaitForSeconds(1.5f);
+            hudManager.HideTurnText();
+
+            // Restores the old positions for all players.
+            RestorePlayersPositions();
+
+            // Destroys all the enemies that entered the battle.
+            foreach (GameObject enemy in SceneData.enemyInBattleList)
+            {
+                Destroy(enemy);
+            }
+
+            // Restores the calling scene.
+            SceneData.enemyInBattleList.Clear();
+            SceneData.isInBattle = false;
+            SceneData.isCommingBackFronBattle = true;
+            SceneManager.LoadScene(SceneData.mainScene);
+        }
+        else
+        {
+            hudManager.DisplayGameOverText();
+        }
+    }
+
+    /// <summary>
+    /// Method that will check if any of the players is still alive.
+    /// </summary>
+    /// <returns><b>true</b> if at least one player is alive. <b>false</b> otherwise.</returns>
+    private bool IsAnyPlayerAlive()
+    {
+        return _mage.GetControllerComponent().IsAlive();
+    }
+
+    /// <summary>
+    /// Restores all the previous positions for the players.
+    /// </summary>
+    private void RestorePlayersPositions()
+    {
+        _mage.transform.position = _mageOldPos;
+    }
+
+    /// <summary>
+    /// Method to indicate whether a turn finished or not.
+    /// </summary>
+    /// <returns></returns>
+    private bool IsTurnEnded()
+    {
+        return _turnRemainingTime <= 0 || _attackExecuted;
+    }
+
+    /// <summary>
+    /// Method to indicate whether a battle finished or not.
+    /// </summary>
+    /// <returns></returns>
+    private bool IsBattleEnded()
+    {
+        // Is there players alive?
+        if (!IsAnyPlayerAlive())
+        {
+            return true;
+        }
+        else
+        {
+            // Is there enemies alive?
+            foreach (GameObject enemy in _enemies)
+            {
+                if (enemy.GetControllerComponent().IsAlive())
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Selects an alive enemy to perform the next attack.
+    /// </summary>
+    private void SelectEnemyToAttack()
+    {
+        int counter = 0;
+        do
+        {
+            _enemyPlayerIndex = ClampIndex(++_enemyPlayerIndex, _enemies.Length - 1, true);
+            _actorPlaying = _enemies[_enemyPlayerIndex];
+            counter++;
+        }
+        while (!_enemies[_enemyPlayerIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+    }
+
+    /// <summary>
     /// Method responsible for swapping between enemies when its a player turn.
     /// </summary>
     private void SwapEnemy()
@@ -214,25 +279,11 @@ public class BattleManager : MonoBehaviour
 
                     if (ControlUtils.SwapEnemyDown())
                     {
-                        int counter = 0;
-                        do
-                        {
-                            _selectedEnemyIndex = ClampIndex(--_selectedEnemyIndex, max, false);
-                            _lastSwapTime = Time.time;
-                            counter++;
-                        }
-                        while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+                        SwapEnemyDown(max);
                     }
                     else if (ControlUtils.SwapEnemyUp())
                     {
-                        int counter = 0;
-                        do
-                        {
-                            _selectedEnemyIndex = ClampIndex(++_selectedEnemyIndex, max, true);
-                            _lastSwapTime = Time.time;
-                            counter++;
-                        }
-                        while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+                        SwapEnemyUp(max);
                     }
 
                     _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 30f;
@@ -248,33 +299,49 @@ public class BattleManager : MonoBehaviour
     {
         if ((Time.time - _lastAttackTime > MIN_ATTACK_TIME) && !_attackExecuted)
         {
+            IController attackerController = _actorPlaying.GetControllerComponent();
+
+            // The player is attacking.
             if (_actorPlaying.IsPlayer())
             {
+                // The player is controlled by human.
                 if (!_actorPlaying.GetControllerComponent().IsManagedByAI())
                 {
                     if (ControlUtils.Attack())
                     {
                         GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
-                        int healthDrained = _actorPlaying.GetControllerComponent().Attack(selectedEnemy, _selectedAbility);
-                        selectedEnemy.GetEnemyControllerComponent().DecreaseHealthHUD(healthDrained);
+                        IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
+                        enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
 
-                        if (!selectedEnemy.GetControllerComponent().IsAlive())
+                        if (!enemyController.IsAlive())
                         {
-                            int counter = 0;
-                            do
-                            {
-                                _selectedEnemyIndex = ClampIndex(++_selectedEnemyIndex, _enemies.Length - 1, true);
-                                _lastSwapTime = Time.time;
-                                counter++;
-                            }
-                            while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
-                            _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 30f;
+                            SwapEnemyUp(_enemies.Length - 1);
+                            enemyController.GetSelectionLight().intensity = 30f;
                             selectedEnemy.SetActive(false);
                         }
 
-                        Debug.Log("Health Drainned: " + healthDrained);
                         _attackExecuted = true;
+                        _lastAttackTime = Time.time;
                     }
+                }
+            }
+            else
+            {
+                if (_canAIAttack)
+                {
+                    _attackExecuted = true;
+                    ActorAbility selectedAbility = attackerController.SelectAbility();
+
+                    // Finds an alive player to attack.
+                    GameObject selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
+                    while (!selectedPlayer.GetControllerComponent().IsAlive())
+                    {
+                        selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
+                    }
+
+                    hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
+                    _lastAttackTime = Time.time;
+                    _canAIAttack = false;
                 }
             }
         }
@@ -295,6 +362,38 @@ public class BattleManager : MonoBehaviour
         }
 
         return index;
+    }
+
+    /// <summary>
+    /// Swaps the selected enemy up in direction for the max maximum number of enemies until an alive enemy is found.
+    /// </summary>
+    /// <param name="max">The maximum number of enemies.</param>
+    private void SwapEnemyUp(int max)
+    {
+        int counter = 0;
+        do
+        {
+            _selectedEnemyIndex = ClampIndex(++_selectedEnemyIndex, max, true);
+            _lastSwapTime = Time.time;
+            counter++;
+        }
+        while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+    }
+
+    /// <summary>
+    /// Swaps the selected enemy down in direction for the max maximum number of enemies until an alive enemy is found.
+    /// </summary>
+    /// <param name="max">The maximum number of enemies.</param>
+    private void SwapEnemyDown(int max)
+    {
+        int counter = 0;
+        do
+        {
+            _selectedEnemyIndex = ClampIndex(--_selectedEnemyIndex, max, false);
+            _lastSwapTime = Time.time;
+            counter++;
+        }
+        while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
     }
 
     /// <summary>
@@ -403,7 +502,7 @@ public class BattleManager : MonoBehaviour
                 else
                     _selectedAbility = _mageController.lightningBall;
 
-                hudManager.SwapAbility();
+                hudManager.SwapAbility(_mage);
                 _lastSwapTime = Time.time;
             }
         }

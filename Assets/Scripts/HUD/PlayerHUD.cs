@@ -11,4 +11,5 @@ public class PlayerHUD
     public Slider consumableSlider;
     public Image mainAbilityImage;
     public Image secondaryAbilityImage;
+    public Image selectedImage;
 }

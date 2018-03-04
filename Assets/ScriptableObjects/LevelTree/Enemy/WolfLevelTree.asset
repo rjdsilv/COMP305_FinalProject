@@ -13,17 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 80
+  - health: 60
     level: 1
-    minAttack: 20
-    maxAttack: 32
+    minAttack: 15
+    maxAttack: 30
     minDefense: 10
-    maxDefense: 17
+    maxDefense: 15
     managedByAI: 0
-  - health: 95
+  - health: 75
     level: 2
-    minAttack: 25
+    minAttack: 20
     maxAttack: 35
     minDefense: 15
-    maxDefense: 25
+    maxDefense: 20
     managedByAI: 0

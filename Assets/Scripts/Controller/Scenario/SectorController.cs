@@ -49,25 +49,36 @@ public class SectorController : MonoBehaviour
     /// </summary>
     private void SpawnEnemies()
     {
-        // If the scene is loading for the first time, just spawn the enemies.
-        if (attributes.spawnEnemies && _spawnEnemies)
+        if (!SceneData.isCommingBackFronBattle)
         {
-            foreach (SectorEnemyAttributes ea in attributes.enemyAttributes)
+            // If the scene is loading for the first time, just spawn the enemies.
+            if (attributes.spawnEnemies && _spawnEnemies)
             {
-                for (int i = 0; i < ea.spawnNumber; i++)
+                foreach (SectorEnemyAttributes ea in attributes.enemyAttributes)
                 {
-                    // Instantiate the enemy.
-                    Vector3 position = new Vector3(
-                        transform.position.x + Random.Range(-ea.spawnRadius, ea.spawnRadius),
-                        transform.position.y + Random.Range(-ea.spawnRadius, ea.spawnRadius),
-                        0
-                    );
-                    GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
-                    enemy.name = ea.enemy.name;
-                    enemy.SetEnemyControllerParameters(attributes);
-                    DontDestroyOnLoad(enemy);
-                    SceneData.enemyNotInBattleList.Add(enemy);  
+                    for (int i = 0; i < ea.spawnNumber; i++)
+                    {
+                        // Instantiate the enemy.
+                        Vector3 position = new Vector3(
+                            transform.position.x + Random.Range(-ea.spawnRadius, ea.spawnRadius),
+                            transform.position.y + Random.Range(-ea.spawnRadius, ea.spawnRadius),
+                            0
+                        );
+                        GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
+                        enemy.name = ea.enemy.name;
+                        enemy.SetEnemyControllerParameters(attributes);
+                        DontDestroyOnLoad(enemy);
+                        SceneData.enemyNotInBattleList.Add(enemy);
+                    }
                 }
+            }
+        }
+        else
+        {
+            SceneData.isCommingBackFronBattle = false;
+            foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+            {
+                enemy.SetActive(true);
             }
         }
         _spawnEnemies = false;

@@ -155,7 +155,7 @@ Prefab:
     - target: {fileID: 114552189001478434, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
         type: 2}
       propertyPath: attributes.enemyAttributes.Array.data[0].spawnRadius
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114552189001478434, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
         type: 2}
@@ -166,6 +166,756 @@ Prefab:
         type: 2}
       propertyPath: attributes.enemyAttributes.Array.data[0].spawnNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410041213292052, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569869511023920, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114552189001478434, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924346269013580, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068540547495536, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114214126184397516, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562961254797624, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295630346641396, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410041213292052, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569869511023920, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068540547495536, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924346269013580, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114214126184397516, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562961254797624, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295630346641396, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114214126184397516, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 114295630346641396, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068540547495536, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562961254797624, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410041213292052, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569869511023920, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 114924346269013580, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 114047459017301144, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424979618830326, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960426622763804, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114173697591412718, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114739658050242596, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092514325615442, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603306845083332, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413465704398658, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114047459017301144, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960426622763804, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424979618830326, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114173697591412718, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114739658050242596, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092514325615442, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603306845083332, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413465704398658, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114047459017301144, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114960426622763804, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114424979618830326, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114173697591412718, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114739658050242596, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114092514325615442, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114603306845083332, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114413465704398658, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204107645244864, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114086972516600908, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114813992008925240, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682138035253250, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114611360740007550, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468631899202170, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802180342230266, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114679548422334562, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204107645244864, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114086972516600908, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114813992008925240, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682138035253250, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114611360740007550, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468631899202170, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802180342230266, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114679548422334562, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114204107645244864, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114086972516600908, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_27
+      objectReference: {fileID: 0}
+    - target: {fileID: 114813992008925240, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682138035253250, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_26
+      objectReference: {fileID: 0}
+    - target: {fileID: 114611360740007550, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468631899202170, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114802180342230266, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_22
+      objectReference: {fileID: 0}
+    - target: {fileID: 114679548422334562, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_24
+      objectReference: {fileID: 0}
+    - target: {fileID: 114639590475150210, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114019279865288818, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236114049188298, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906275628915910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114148511255180662, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717259778564382, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256277785090236, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114355014351648402, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114639590475150210, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717259778564382, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114148511255180662, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906275628915910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256277785090236, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236114049188298, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114019279865288818, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114355014351648402, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114639590475150210, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_34
+      objectReference: {fileID: 0}
+    - target: {fileID: 114717259778564382, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_31
+      objectReference: {fileID: 0}
+    - target: {fileID: 114148511255180662, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_33
+      objectReference: {fileID: 0}
+    - target: {fileID: 114906275628915910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_37
+      objectReference: {fileID: 0}
+    - target: {fileID: 114256277785090236, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236114049188298, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_36
+      objectReference: {fileID: 0}
+    - target: {fileID: 114019279865288818, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114355014351648402, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053975104385592, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114302866835181926, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642971961218058, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951394168123992, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009371784139370, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485621289019534, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122337697769114, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347042785384910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053975104385592, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114302866835181926, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642971961218058, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951394168123992, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009371784139370, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485621289019534, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122337697769114, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347042785384910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053975104385592, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_47
+      objectReference: {fileID: 0}
+    - target: {fileID: 114302866835181926, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_40
+      objectReference: {fileID: 0}
+    - target: {fileID: 114642971961218058, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951394168123992, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_42
+      objectReference: {fileID: 0}
+    - target: {fileID: 114009371784139370, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485621289019534, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_46
+      objectReference: {fileID: 0}
+    - target: {fileID: 114122337697769114, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_41
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347042785384910, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_44
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390778555535366, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114201772383551234, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735812530649166, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137855688709676, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615203920873262, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965366676132752, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114894237583567090, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193565336535178, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: ForestBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390778555535366, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114201772383551234, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735812530649166, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137855688709676, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615203920873262, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965366676132752, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114894237583567090, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193565336535178, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193565336535178, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390778555535366, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114201772383551234, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735812530649166, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137855688709676, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615203920873262, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965366676132752, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114894237583567090, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: ForestMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390778555535366, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_52
+      objectReference: {fileID: 0}
+    - target: {fileID: 114201772383551234, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_56
+      objectReference: {fileID: 0}
+    - target: {fileID: 114735812530649166, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114137855688709676, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_51
+      objectReference: {fileID: 0}
+    - target: {fileID: 114615203920873262, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_55
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965366676132752, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_54
+      objectReference: {fileID: 0}
+    - target: {fileID: 114894237583567090, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_57
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193565336535178, guid: 4118e18ac3f2a5c418b245d8a1a39ecf,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: Sector_53
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4118e18ac3f2a5c418b245d8a1a39ecf, type: 2}

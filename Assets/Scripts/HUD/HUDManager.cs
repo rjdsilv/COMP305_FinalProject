@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -16,7 +17,6 @@ public class HUDManager : MonoBehaviour
 
     // Private variable declaration.
     private int _turnNumber = 1;
-    private Image _selectedImage;
 
     /// <summary>
     /// Method to initialize the HUD for all the players on the battle scene.
@@ -28,7 +28,6 @@ public class HUDManager : MonoBehaviour
         {
             if (player.IsMage())
             {
-                player.GetComponent<MageController>().attributes.health = 50;
                 InitializeMageHUD(player);
             }
         }
@@ -62,9 +61,20 @@ public class HUDManager : MonoBehaviour
         turnText.text = string.Format(TURN_TEXT, _turnNumber++, actorName);
     }
 
+    /// <summary>
+    /// Displays the text for the end of battle.
+    /// </summary>
     public void DisplayEndOfBattleText()
     {
         turnText.text = "Enemies Killed!";
+    }
+
+    /// <summary>
+    /// Displays the text for game over.
+    /// </summary>
+    public void DisplayGameOverText()
+    {
+        turnText.text = "Game Over";
     }
 
     /// <summary>
@@ -78,16 +88,25 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Method in charge of swapping the ability on the HUD.
     /// </summary>
-    public void SwapAbility()
+    public void SwapAbility(GameObject player)
     {
-        _selectedImage.gameObject.GetComponent<Outline>().enabled = false;
+        if (player.IsMage())
+        {
+            SwapMageAbility();
+        }
+    }
 
-        if (_selectedImage == mageHUD.mainAbilityImage)
-            _selectedImage = mageHUD.secondaryAbilityImage;
-        else
-            _selectedImage = mageHUD.mainAbilityImage;
-
-        _selectedImage.gameObject.GetComponent<Outline>().enabled = true;
+    /// <summary>
+    /// Updates the player's healh HUD to the new value after an attack.
+    /// </summary>
+    /// <param name="player">The player to have the HUD updated.</param>
+    /// <param name="healthDrained">The ammount of health drained.</param>
+    public void DecreaseHealthHUD(GameObject player, int healthDrained)
+    {
+        if (player.IsMage())
+        {
+            DecreaseMageHealthHUD(healthDrained);
+        }
     }
 
     /// <summary>
@@ -110,6 +129,30 @@ public class HUDManager : MonoBehaviour
 
         // Initializes the abilities.
         mageHUD.mainAbilityImage.gameObject.GetComponent<Outline>().enabled = true;
-        _selectedImage = mageHUD.mainAbilityImage;
+        mageHUD.selectedImage = mageHUD.mainAbilityImage;
+    }
+
+    /// <summary>
+    /// Method in charge of swapping the mage's ability on the HUD.
+    /// </summary>
+    private void SwapMageAbility()
+    {
+        mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
+
+        if (mageHUD.selectedImage == mageHUD.mainAbilityImage)
+            mageHUD.selectedImage = mageHUD.secondaryAbilityImage;
+        else
+            mageHUD.selectedImage = mageHUD.mainAbilityImage;
+
+        mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
+    }
+
+    /// <summary>
+    /// Updates the mage health HUD.
+    /// </summary>
+    /// <param name="healthDrained">The ammount of health to be drained.</param>
+    private void DecreaseMageHealthHUD(int healthDrained)
+    {
+        mageHUD.healthSlider.value -= healthDrained;
     }
 }

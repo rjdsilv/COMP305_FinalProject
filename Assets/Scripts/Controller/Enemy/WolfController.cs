@@ -9,6 +9,14 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
     public PowerBiteLevelTree powerBiteLevelTree;   // The wolf's power bite level tree.
 
     /// <summary>
+    /// Method called when the 
+    /// </summary>
+    private void OnEnable()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
+    /// <summary>
     /// Initializes all the necessary variables.
     /// </summary>
     private void Start()
@@ -27,13 +35,14 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
         // Initializes its attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
-        attributes.managedByAI = levelTree.GetAttributesForCurrentLevel().managedByAI;
         attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
         attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+        attributes.managedByAI = true;
 
         // Initializes its abilities.
         powerBite = powerBiteLevelTree.GetAttributesForCurrentLevel();
+        _abilityList.Add(powerBite);
     }
 }

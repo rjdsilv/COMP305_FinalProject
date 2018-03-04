@@ -13,19 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 80
+  - health: 100
     level: 1
-    minAttack: 25
-    maxAttack: 35
-    minDefense: 15
-    maxDefense: 20
-    managedByAI: 0
-    mana: 60
-  - health: 95
-    level: 2
-    minAttack: 30
-    maxAttack: 37
-    minDefense: 18
-    maxDefense: 25
+    minAttack: 35
+    maxAttack: 50
+    minDefense: 20
+    maxDefense: 30
     managedByAI: 0
     mana: 75
+  - health: 120
+    level: 2
+    minAttack: 40
+    maxAttack: 60
+    minDefense: 25
+    maxDefense: 35
+    managedByAI: 0
+    mana: 90

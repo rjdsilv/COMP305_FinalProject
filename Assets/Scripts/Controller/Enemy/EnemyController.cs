@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -60,7 +61,9 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// </summary>
     protected override void Init()
     {
-        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        base.Init();
+
+        // Initializes the vision AI.
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
 
         // Initializes the HUD.
@@ -69,7 +72,9 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         GetHUDHealthSlider().value = attributes.health;
 
         if (!SceneData.isInBattle)
+        {
             GetHUDCanvas().enabled = false;
+        }
     }
 
     /// <summary>

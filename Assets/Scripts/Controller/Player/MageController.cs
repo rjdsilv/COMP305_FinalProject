@@ -25,6 +25,8 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
     /// <see cref="ActorController{A, L}">
     protected override void Init()
     {
+        base.Init();
+
         // Initializes the mage attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
@@ -38,5 +40,7 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
         // Initializes the mage's abilities.
         fireBall = fireBallLevelTree.GetAttributesForCurrentLevel();
         lightningBall = lightningBallLevelTre.GetAttributesForCurrentLevel();
+        _abilityList.Add(fireBall);
+        _abilityList.Add(lightningBall);
     }
 }
