@@ -6,7 +6,7 @@ InputManager:
   serializedVersion: 2
   m_Axes:
   - serializedVersion: 3
-    m_Name: KB_Horizontal
+    m_Name: Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: left
@@ -22,7 +22,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: KB_Vertical
+    m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
@@ -38,11 +38,11 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: KB_Attack
+    m_Name: Attack
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: left ctrl
+    positiveButton: space
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000
@@ -54,27 +54,91 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: JS_Horizontal
+    m_Name: Swap Ability
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: left
+    positiveButton: right
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Swap Enemy Up
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: up
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Swap Enemy Down
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: down
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Horizontal
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
     snap: 0
     invert: 0
     type: 2
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: JS_Vertical
+    m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 1
+    type: 2
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Attack
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -82,17 +146,81 @@ InputManager:
     sensitivity: 1000
     snap: 0
     invert: 0
-    type: 2
-    axis: 1
+    type: 0
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: JS_Attack
+    m_Name: Swap Ability
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: joystick button 4
+    positiveButton: joystick button 5
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Swap Enemy Up
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 0
+    positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Swap Enemy Down
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 0.19
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 2
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Submit
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: return
+    altNegativeButton: 
+    altPositiveButton: joystick button 0
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Cancel
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: escape
+    altNegativeButton: 
+    altPositiveButton: joystick button 1
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
