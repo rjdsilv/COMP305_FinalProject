@@ -8,7 +8,7 @@ public interface IPlayerController : IController
     /// Method that will be used for increasing the players's consumable (mana or stamina).
     /// </summary>
     /// <param name="amount">The amount to be increased.</param>
-    void IncreaseConsumable(int amount);
+    void IncreaseConsumable(float amount);
 
     /// <summary>
     /// Method to indicate if the player still has consumable force to use he given ability.

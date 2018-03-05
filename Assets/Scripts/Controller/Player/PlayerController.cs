@@ -14,16 +14,30 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
     }
 
     /// <see cref="IPlayerController"/>
-    public void IncreaseConsumable(int amount)
+    public void IncreaseConsumable(float amount)
     {
         // Every player has at least one ability of type player ability.
         if ((_abilityList[0] as PlayerAbility).consumableType == ConsumableType.MANA)
         {
-            attributes.mana += amount;
+            if (attributes.mana + amount <= levelTree.GetAttributesForCurrentLevel().mana)
+            {
+                attributes.mana += amount;
+            }
+            else
+            {
+                attributes.mana = levelTree.GetAttributesForCurrentLevel().mana;
+            }
         }
         else
         {
-            attributes.stamina += amount;
+            if (attributes.stamina + amount <= levelTree.GetAttributesForCurrentLevel().stamina)
+            {
+                attributes.stamina += amount;
+            }
+            else
+            {
+                attributes.stamina = levelTree.GetAttributesForCurrentLevel().stamina;
+            }
         }
     }
 

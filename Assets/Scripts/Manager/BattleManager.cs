@@ -16,6 +16,7 @@ public class BattleManager : MonoBehaviour
 
     // Public variable declaration.
     public int turnTime;                            // The time the turn will endure.
+    public bool autoRecoverConsumable;              // Flag to indicate whether the players consumable should auto-recover when on battle.
     public PlayerSpawnPoint[] playerSpawnPoints;    // The points where the players will spawn in the battle scene.
     public Vector3[] enemySpawnPoints;              // The points where the enemies will spawn in the battle scene.
     public HUDManager hudManager;                   // The HUD manager to be used.
@@ -155,12 +156,22 @@ public class BattleManager : MonoBehaviour
     private IEnumerator PlayTurn()
     {
         float startTime = Time.time;
+        float turnTimeDecreaseRate = 0.05f;
 
         while (!IsTurnEnded() && !IsBattleEnded())
         {
-            yield return new WaitForSecondsRealtime(0.025f);
-            _turnRemainingTime -= 0.05f;
+            yield return new WaitForSecondsRealtime(turnTimeDecreaseRate);
+            _turnRemainingTime -= turnTimeDecreaseRate;
             hudManager.UpdateTurnTimer(_turnRemainingTime);
+
+            if (autoRecoverConsumable)
+            {
+                foreach (GameObject player in SceneData.playerList)
+                {
+                    player.GetPlayerControllerComponent().IncreaseConsumable(turnTimeDecreaseRate / 2);
+                    hudManager.UpdateConsumableHUD(player, turnTimeDecreaseRate / 2, false);
+                }
+            }
 
             if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
             {

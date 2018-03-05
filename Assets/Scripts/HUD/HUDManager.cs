@@ -115,7 +115,7 @@ public class HUDManager : MonoBehaviour
     /// <param name="player">The player to have the HUD updated.</param>
     /// <param name="amount">The amount of consumable to be update.</param>
     /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
-    public void UpdateConsumableHUD(GameObject player, int amount, bool decrease)
+    public void UpdateConsumableHUD(GameObject player, float amount, bool decrease)
     {
         if (player.IsMage())
         {
@@ -175,7 +175,7 @@ public class HUDManager : MonoBehaviour
     /// </summary>
     /// <param name="amount">The amount of consumable to be update.</param>
     /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
-    private void UpdateMageConsumableHUD(int amount, bool decrease)
+    private void UpdateMageConsumableHUD(float amount, bool decrease)
     {
         if (decrease)
         {
