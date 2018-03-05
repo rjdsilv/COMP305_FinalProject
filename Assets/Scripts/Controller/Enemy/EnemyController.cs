@@ -6,8 +6,8 @@ using UnityEngine.UI;
 /// Class responsible for controlling the enemy.
 /// </summary>
 public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyController
-    where A : ActorAttributes
-    where L : ActorLevelTree<A>
+    where A : EnemyAttributes
+    where L : EnemyLevelTree<A>
 {
     // Constant declaration.
     protected const int SELECTION_LIGHT_IDX = 5;
@@ -51,9 +51,9 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     }
 
     /// <see cref="IEnemyController"/>    
-    public void DecreaseHealthHUD(int ammount)
+    public void DecreaseHealthHUD(int amount)
     {
-        GetHUDHealthSlider().value -= ammount;
+        GetHUDHealthSlider().value -= amount;
     }
 
     /// <summary>
@@ -65,6 +65,14 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
 
         // Initializes the vision AI.
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
+
+        // Initializes the attributes.
+        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
+        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
+        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
+        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
 
         // Initializes the HUD.
         GetHUDCanvas().enabled = true;

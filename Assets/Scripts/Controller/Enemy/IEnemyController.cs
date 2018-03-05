@@ -14,6 +14,6 @@ public interface IEnemyController : IController
     /// <summary>
     /// Decreases the health from int the actor's HUD.
     /// </summary>
-    /// <param name="ammount">The ammount of health to be decreased.</param>
-    void DecreaseHealthHUD(int ammount);
+    /// <param name="amount">The amount of health to be decreased.</param>
+    void DecreaseHealthHUD(int amount);
 }

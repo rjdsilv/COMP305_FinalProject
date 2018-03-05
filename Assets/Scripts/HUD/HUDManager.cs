@@ -100,12 +100,26 @@ public class HUDManager : MonoBehaviour
     /// Updates the player's healh HUD to the new value after an attack.
     /// </summary>
     /// <param name="player">The player to have the HUD updated.</param>
-    /// <param name="healthDrained">The ammount of health drained.</param>
+    /// <param name="healthDrained">The amount of health drained.</param>
     public void DecreaseHealthHUD(GameObject player, int healthDrained)
     {
         if (player.IsMage())
         {
             DecreaseMageHealthHUD(healthDrained);
+        }
+    }
+
+    /// <summary>
+    /// Updates the player's consumable HUD to the new value after an attack.
+    /// </summary>
+    /// <param name="player">The player to have the HUD updated.</param>
+    /// <param name="amount">The amount of consumable to be update.</param>
+    /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
+    public void UpdateConsumableHUD(GameObject player, int amount, bool decrease)
+    {
+        if (player.IsMage())
+        {
+            UpdateMageConsumableHUD(amount, decrease);
         }
     }
 
@@ -150,9 +164,26 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Updates the mage health HUD.
     /// </summary>
-    /// <param name="healthDrained">The ammount of health to be drained.</param>
+    /// <param name="healthDrained">The amount of health to be drained.</param>
     private void DecreaseMageHealthHUD(int healthDrained)
     {
         mageHUD.healthSlider.value -= healthDrained;
+    }
+
+    /// <summary>
+    /// Updates the mage's consumable HUD to the new value after an attack.
+    /// </summary>
+    /// <param name="amount">The amount of consumable to be update.</param>
+    /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
+    private void UpdateMageConsumableHUD(int amount, bool decrease)
+    {
+        if (decrease)
+        {
+            mageHUD.consumableSlider.value -= amount;
+        }
+        else
+        {
+            mageHUD.consumableSlider.value += amount;
+        }
     }
 }

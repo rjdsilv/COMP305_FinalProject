@@ -13,7 +13,6 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
     // Protected variable declaration.
     protected List<ActorAbility> _abilityList;      // The list of abilities this enemy has.
 
-
     /// <summary>
     /// Initialize all the necessary variables.
     /// </summary>
@@ -23,7 +22,7 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
     }
 
     /// <see cref="IController"/>
-    public int Attack(GameObject opponent, ActorAbility ability)
+    public virtual int Attack(GameObject opponent, ActorAbility ability)
     {
         int attack = Mathf.FloorToInt(Random.Range(attributes.minAttack, attributes.maxAttack + 0.99999f)) + Mathf.FloorToInt(Random.Range(ability.minPower, ability.maxPower + 0.99999f));
         int deffense = opponent.GetControllerComponent().CalculateDefense();
@@ -51,9 +50,9 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
     }
 
     /// <see cref="IController"/>
-    public void DecreaseHealth(int ammount)
+    public void DecreaseHealth(int amount)
     {
-        attributes.health -= ammount;
+        attributes.health -= amount;
     }
 
     /// <see cref="IController"/>

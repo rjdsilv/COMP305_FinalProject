@@ -22,6 +22,8 @@ public class BattleManager : MonoBehaviour
     public Material enemyMaterial;                  // The material to be used on the battle scene.
 
     // Private variable declaration.
+    private PlayerAbility _selectedAbility;
+
     // Mage variables.
     private Vector3 _mageOldPos;
     private GameObject _mage;
@@ -29,7 +31,6 @@ public class BattleManager : MonoBehaviour
 
     // Generic variables.
     private GameObject _actorPlaying;
-    private ActorAbility _selectedAbility;
     private float _lastSwapTime;
     private float _lastAttackTime;
     private float _turnRemainingTime;
@@ -299,34 +300,41 @@ public class BattleManager : MonoBehaviour
     {
         if ((Time.time - _lastAttackTime > MIN_ATTACK_TIME) && !_attackExecuted)
         {
-            IController attackerController = _actorPlaying.GetControllerComponent();
-
             // The player is attacking.
             if (_actorPlaying.IsPlayer())
             {
-                // The player is controlled by human.
-                if (!_actorPlaying.GetControllerComponent().IsManagedByAI())
+                IPlayerController attackerController = _actorPlaying.GetPlayerControllerComponent();
+
+                // Checks if the player can attack, which means it has consumable.
+                if (attackerController.CanAttack(_selectedAbility))
                 {
-                    if (ControlUtils.Attack())
+                    // The player is controlled by human.
+                    if (!attackerController.IsManagedByAI())
                     {
-                        GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
-                        IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
-                        enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
-
-                        if (!enemyController.IsAlive())
+                        if (ControlUtils.Attack())
                         {
-                            SwapEnemyUp(_enemies.Length - 1);
-                            enemyController.GetSelectionLight().intensity = 30f;
-                            selectedEnemy.SetActive(false);
-                        }
+                            GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
+                            IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
+                            enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
+                            hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
 
-                        _attackExecuted = true;
-                        _lastAttackTime = Time.time;
+                            if (!enemyController.IsAlive())
+                            {
+                                SwapEnemyUp(_enemies.Length - 1);
+                                enemyController.GetSelectionLight().intensity = 30f;
+                                selectedEnemy.SetActive(false);
+                            }
+
+                            _attackExecuted = true;
+                            _lastAttackTime = Time.time;
+                        }
                     }
                 }
             }
             else
             {
+                IEnemyController attackerController = _actorPlaying.GetEnemyControllerComponent();
+
                 if (_canAIAttack)
                 {
                     _attackExecuted = true;

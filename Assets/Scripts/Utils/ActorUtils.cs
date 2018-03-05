@@ -102,7 +102,7 @@ public static class ActorUtils
     /// </summary>
     /// <param name="actor">The actor to be used to get the controller.</param>
     /// <returns>The controller component for the given the actor. Retrns null if it is not a known actor.</returns>
-    private static IPlayerController GetPlayerControllerComponent(this GameObject actor)
+    public static IPlayerController GetPlayerControllerComponent(this GameObject actor)
     {
         if (actor.IsMage())
         {

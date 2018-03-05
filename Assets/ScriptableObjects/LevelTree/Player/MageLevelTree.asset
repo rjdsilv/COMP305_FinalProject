@@ -20,6 +20,10 @@ MonoBehaviour:
     minDefense: 20
     maxDefense: 30
     managedByAI: 0
+    xp: 150
+    gold: 300
+    hasMana: 1
+    hasStamina: 0
     mana: 75
   - health: 120
     level: 2
@@ -28,4 +32,8 @@ MonoBehaviour:
     minDefense: 25
     maxDefense: 35
     managedByAI: 0
+    xp: 300
+    gold: 400
+    hasMana: 1
+    hasStamina: 0
     mana: 90

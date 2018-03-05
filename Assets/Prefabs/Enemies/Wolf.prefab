@@ -253,7 +253,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1383903170578806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.870452, y: -0.26745224, z: 0}
+  m_LocalPosition: {x: 9.380482, y: -1.8771815, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 4052883297430304}
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 30
   m_WholeNumbers: 0
-  m_Value: 30
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -540,6 +540,12 @@ MonoBehaviour:
     minDefense: 0
     maxDefense: 0
     managedByAI: 0
+    xpForKilling: 0
+    minGoldForKilling: 0
+    maxGoldForKilling: 0
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
   levelTree: {fileID: 11400000, guid: 751a6e4a51e78294fb8948ee468df688, type: 2}
   minEnemiesInBattle: 2
   maxEnemiesInBattle: 3
@@ -646,7 +652,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830550663471700}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -676,7 +682,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224334359541026054
 RectTransform:
@@ -694,8 +700,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0.00000023841858, y: 0}
-  m_SizeDelta: {x: -10.799999, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224754996207134584
 RectTransform:

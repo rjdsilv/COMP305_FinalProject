@@ -16,7 +16,11 @@ public interface IController
     /// <returns>The calculated defense power.</returns>
     int CalculateDefense();
 
-    void DecreaseHealth(int ammount);
+    /// <summary>
+    /// Method that will be used for decreasing the actor's health.
+    /// </summary>
+    /// <param name="amount">The amount of health the actor will have decreased.</param>
+    void DecreaseHealth(int amount);
 
     /// <summary>
     /// Method that indicates whether a player is managed by AI or not.

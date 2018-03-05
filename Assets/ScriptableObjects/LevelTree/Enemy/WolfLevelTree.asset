@@ -20,6 +20,12 @@ MonoBehaviour:
     minDefense: 10
     maxDefense: 15
     managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 10
+    maxGoldForKilling: 25
+    healthRecoverDropChance: 0.15
+    staminaRecoverDropChance: 0.2
+    manaRecoverDropChance: 0.1
   - health: 75
     level: 2
     minAttack: 20
@@ -27,3 +33,9 @@ MonoBehaviour:
     minDefense: 15
     maxDefense: 20
     managedByAI: 0
+    xpForKilling: 25
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.175
+    staminaRecoverDropChance: 0.225
+    manaRecoverDropChance: 0.125
