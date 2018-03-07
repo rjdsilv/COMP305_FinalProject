@@ -74,7 +74,7 @@ public class TagUtils
     /// <summary>
     /// Searches the world for all the occurrence of a player in it.
     /// </summary>
-    /// <returns>All the occurrence of aplayers in the game world.</returns>
+    /// <returns>All the occurrences of aplayers in the game world.</returns>
     public static GameObject[] FindAllPlayers()
     {
         return GameObject.FindGameObjectsWithTag("Player");
