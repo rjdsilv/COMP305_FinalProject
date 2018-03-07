@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Forest/01_Forest.unity
-    guid: 9445fd27c6d847f4d9eaff7642dfb291
+    path: Assets/Scenes/Forest/ForestMain.unity
+    guid: eed4d8c5d34a29a47b8f195216cc6f2a
   - enabled: 1
-    path: Assets/Scenes/Forest/01-01_Forest-Battle.unity
-    guid: c7263a479b3b5fc41a4772b2d7167ab8
+    path: Assets/Scenes/Forest/ForestBattle_01.unity
+    guid: 97fe923b7361764448f4080d9438555e

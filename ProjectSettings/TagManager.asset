@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - ScenarioObject
   - Sector
+  - SectorEdge
+  - UI
   layers:
   - Default
   - TransparentFX
