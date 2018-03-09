@@ -1,0 +1,24 @@
+﻿# Tiled2Unity generated file. Do not modify by hand.
+# Wavefront file for 'Temple_mesh_0369.obj'
+
+# Vertices (Count = 4)
+v -716.8 -716.8 0
+v -819.2 -716.8 0
+v -819.2 -614.4 0
+v -716.8 -614.4 0
+
+# Texture cooridinates (Count = 4)
+vt 0.28125 0.125
+vt 0.3125 0.125
+vt 0.3125 0.15625
+vt 0.28125 0.15625
+
+# Normal
+vn 0 0 -1
+
+# Mesh description
+g Temple_mesh_0369
+
+# Faces
+f 1/1/1 2/2/1 3/3/1 4/4/1
+
