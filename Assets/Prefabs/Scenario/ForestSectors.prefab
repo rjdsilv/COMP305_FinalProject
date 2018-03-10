@@ -5012,8 +5012,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464598329141206}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10.7, z: 1}
+  m_LocalPosition: {x: -38.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 21.4, z: 1}
   m_Children: []
   m_Father: {fileID: 4303669068656872}
   m_RootOrder: 1
@@ -6086,8 +6086,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596337525097396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.7, z: 0}
-  m_LocalScale: {x: 19.1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 21.4, z: 0}
+  m_LocalScale: {x: 38.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4303669068656872}
   m_RootOrder: 2
@@ -6762,8 +6762,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1884157454204056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.7, z: 0}
-  m_LocalScale: {x: 19.1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -21.4, z: 0}
+  m_LocalScale: {x: 38.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4303669068656872}
   m_RootOrder: 3
@@ -7284,8 +7284,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657778915214858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10.7, z: 1}
+  m_LocalPosition: {x: 38.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 21.4, z: 1}
   m_Children: []
   m_Father: {fileID: 4303669068656872}
   m_RootOrder: 0
@@ -8584,7 +8584,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.4, y: 21.6}
+  m_Size: {x: 76.8, y: 43.2}
   m_EdgeRadius: 0
 --- !u!61 &61909708022343556
 BoxCollider2D:
@@ -11937,10 +11937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_45
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114019279865288818
 MonoBehaviour:
@@ -11954,10 +11954,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_32
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114047459017301144
 MonoBehaviour:
@@ -11971,10 +11971,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_10
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114053975104385592
 MonoBehaviour:
@@ -11988,10 +11988,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_47
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114068540547495536
 MonoBehaviour:
@@ -12005,10 +12005,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_03
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114086972516600908
 MonoBehaviour:
@@ -12022,10 +12022,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_27
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114092514325615442
 MonoBehaviour:
@@ -12039,10 +12039,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_12
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114122337697769114
 MonoBehaviour:
@@ -12056,10 +12056,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_41
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114137855688709676
 MonoBehaviour:
@@ -12073,10 +12073,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_51
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114148511255180662
 MonoBehaviour:
@@ -12090,10 +12090,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_33
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114173697591412718
 MonoBehaviour:
@@ -12107,10 +12107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_13
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114193565336535178
 MonoBehaviour:
@@ -12124,10 +12124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_53
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114201772383551234
 MonoBehaviour:
@@ -12141,10 +12141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_56
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114204107645244864
 MonoBehaviour:
@@ -12158,10 +12158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_21
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114214126184397516
 MonoBehaviour:
@@ -12175,10 +12175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_00
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114236114049188298
 MonoBehaviour:
@@ -12192,10 +12192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_36
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114256277785090236
 MonoBehaviour:
@@ -12209,10 +12209,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_35
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114295630346641396
 MonoBehaviour:
@@ -12226,10 +12226,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_02
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114302866835181926
 MonoBehaviour:
@@ -12243,10 +12243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_40
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114347042785384910
 MonoBehaviour:
@@ -12260,10 +12260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_44
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114355014351648402
 MonoBehaviour:
@@ -12277,10 +12277,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_30
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114390778555535366
 MonoBehaviour:
@@ -12294,10 +12294,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_52
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114410041213292052
 MonoBehaviour:
@@ -12311,10 +12311,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_05
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114413465704398658
 MonoBehaviour:
@@ -12328,10 +12328,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_15
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114424979618830326
 MonoBehaviour:
@@ -12345,10 +12345,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_11
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114468631899202170
 MonoBehaviour:
@@ -12362,10 +12362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_25
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114485621289019534
 MonoBehaviour:
@@ -12379,10 +12379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_46
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114552189001478434
 MonoBehaviour:
@@ -12397,12 +12397,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes:
     sectorName: Sector_01
-    battleScene: Forest_Battle_01
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 1
-    fightRadius: 3
     enemyAttributes:
-    - spawnNumber: 4
-      spawnRadius: 2
+    - spawnNumber: 2
+      spawnRadius: 3
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114562961254797624
 MonoBehaviour:
@@ -12416,10 +12416,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_04
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114569869511023920
 MonoBehaviour:
@@ -12433,10 +12433,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_06
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114603306845083332
 MonoBehaviour:
@@ -12450,10 +12450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_16
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114611360740007550
 MonoBehaviour:
@@ -12467,10 +12467,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_23
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114615203920873262
 MonoBehaviour:
@@ -12484,10 +12484,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_55
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114639590475150210
 MonoBehaviour:
@@ -12501,10 +12501,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_34
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114642971961218058
 MonoBehaviour:
@@ -12518,10 +12518,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_43
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114679548422334562
 MonoBehaviour:
@@ -12535,10 +12535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_24
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114682138035253250
 MonoBehaviour:
@@ -12552,10 +12552,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_26
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114717259778564382
 MonoBehaviour:
@@ -12569,10 +12569,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_31
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114735812530649166
 MonoBehaviour:
@@ -12586,10 +12586,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_50
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114739658050242596
 MonoBehaviour:
@@ -12603,10 +12603,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_14
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114802180342230266
 MonoBehaviour:
@@ -12620,10 +12620,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_22
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114813992008925240
 MonoBehaviour:
@@ -12637,10 +12637,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_20
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114894237583567090
 MonoBehaviour:
@@ -12654,10 +12654,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_57
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114906275628915910
 MonoBehaviour:
@@ -12671,10 +12671,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_37
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114924346269013580
 MonoBehaviour:
@@ -12688,10 +12688,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_07
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114951394168123992
 MonoBehaviour:
@@ -12705,10 +12705,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_42
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114960426622763804
 MonoBehaviour:
@@ -12722,10 +12722,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_17
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
 --- !u!114 &114965366676132752
 MonoBehaviour:
@@ -12739,8 +12739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
-    sectorName: 
-    battleScene: 
+    sectorName: Sector_54
+    battleScene: ForestBattle_01
+    originalScene: ForestMain
     spawnEnemies: 0
-    fightRadius: 0
     enemyAttributes: []
