@@ -6,29 +6,35 @@ public class VillageController : MonoBehaviour
 {
     private Dictionary<GameObject, int> colliderDictionary = new Dictionary<GameObject, int>();
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D detectedObject)
     {
-        if (!colliderDictionary.ContainsKey(collision.gameObject))
+        if (TagUtils.IsPlayer(detectedObject.transform))
         {
-            colliderDictionary.Add(collision.gameObject, collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
-            collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
-            Debug.Log(collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
-        }
+            if (!colliderDictionary.ContainsKey(detectedObject.gameObject))
+            {
+                colliderDictionary.Add(detectedObject.gameObject, detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
+                detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
+                Debug.Log(detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
+            }
 
-        Color oldColor = GetComponent<SpriteRenderer>().color;
-        GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 0.5f);
+            Color oldColor = GetComponent<SpriteRenderer>().color;
+            GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 0.5f);
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D detectedObject)
     {
-        if (colliderDictionary.ContainsKey(collision.gameObject))
+        if (TagUtils.IsPlayer(detectedObject.transform))
         {
-            collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = colliderDictionary[collision.gameObject];
-            colliderDictionary.Remove(collision.gameObject);
-            Debug.Log(collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
-        }
+            if (colliderDictionary.ContainsKey(detectedObject.gameObject))
+            {
+                detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder = colliderDictionary[detectedObject.gameObject];
+                colliderDictionary.Remove(detectedObject.gameObject);
+                Debug.Log(detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
+            }
 
-        Color oldColor = GetComponent<SpriteRenderer>().color;
-        GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 1.0f);
+            Color oldColor = GetComponent<SpriteRenderer>().color;
+            GetComponent<SpriteRenderer>().color = new Color(oldColor.r, oldColor.g, oldColor.b, 1.0f);
+        }
     }
 }
