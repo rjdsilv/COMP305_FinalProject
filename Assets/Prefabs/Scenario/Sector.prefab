@@ -272,12 +272,9 @@ MonoBehaviour:
   attributes:
     sectorName: 
     battleScene: 
-    spawnEnemies: 1
-    fightRadius: 0
-    enemyAttributes:
-    - spawnNumber: 2
-      spawnRadius: 1
-      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
+    originalScene: 
+    spawnEnemies: 0
+    enemyAttributes: []
 --- !u!212 &212092627697993176
 SpriteRenderer:
   m_ObjectHideFlags: 1
