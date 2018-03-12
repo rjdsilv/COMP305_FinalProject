@@ -35,9 +35,12 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// </summary>
     private void LateUpdate()
     {
-        if (_enemyVisionAI.IsSeeingPlayer())
+        if (null != _gameManager)
         {
-            _gameManager.GoToBattle(BattleScene, gameObject);
+            if (_enemyVisionAI.IsSeeingPlayer())
+            {
+                _gameManager.GoToBattle(BattleScene, gameObject);
+            }
         }
     }
 
