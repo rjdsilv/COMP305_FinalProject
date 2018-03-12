@@ -287,7 +287,7 @@ public class BattleManager : MonoBehaviour
                 if (!_actorPlaying.GetControllerComponent().IsManagedByAI())
                 {
                     int max = _enemies.Length - 1;
-                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 10f;
+                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 8f;
 
                     if (ControlUtils.SwapEnemyDown())
                     {
@@ -298,7 +298,7 @@ public class BattleManager : MonoBehaviour
                         SwapEnemyUp(max);
                     }
 
-                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 30f;
+                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
                 }
             }
         }
@@ -471,7 +471,7 @@ public class BattleManager : MonoBehaviour
         if (_enemies.Length > 0)
         {
             _selectedEnemyIndex = 0;
-            _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 30;
+            _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
         }
     }
 
