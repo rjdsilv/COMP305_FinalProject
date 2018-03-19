@@ -7,8 +7,9 @@ using UnityEngine;
 /// </summary>
 public static class SceneData
 {
-    public static bool isInBattle = false;                                            // Flat indicating if we are in a battle scene.
-    public static bool isCommingBackFronBattle = false;                               // Flat indicating if the player is comming back from a batlle.
+    public static bool shouldStop = false;                                            // Flag indicating if should stop all the scene movement.
+    public static bool isInBattle = false;                                            // Flag indicating if we are already in battle.
+    public static bool isCommingBackFronBattle = false;                               // Flag indicating if the player is comming back from a batlle.
     public static string mainScene = "";                                              // Stores the name of the scene that invoked the battle scene.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
     public static List<GameObject> enemyInBattleList = new List<GameObject>();        // The list of enemies that are in battle.

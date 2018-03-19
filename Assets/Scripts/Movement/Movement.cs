@@ -46,10 +46,10 @@ public class Movement
     /// <param name="animator">The animator to set the properties in order to play the correct animation.</param>
     /// <param name="movementX">The movement on the X axis.</param>
     /// <param name="movementY">The movement on the Y axis.</param>
-    /// <param name="isInBattle">Flag indicating whether the player is in battle or not.</param>
-    public void Move(GameObject actor, Animator animator, float movementX, float movementY, bool isInBattle)
+    /// <param name="shouldStop">Flag indicating whether the player is in battle or not.</param>
+    public void Move(GameObject actor, Animator animator, float movementX, float movementY, bool shouldStop)
     {
-        if (!isInBattle)
+        if (!shouldStop)
         {
             if (movementX != 0)
             {
