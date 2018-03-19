@@ -14,7 +14,6 @@ public class VillageController : MonoBehaviour
             {
                 colliderDictionary.Add(detectedObject.gameObject, detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
                 detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder = GetComponent<SpriteRenderer>().sortingOrder - 1;
-                Debug.Log(detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
             }
 
             Color oldColor = GetComponent<SpriteRenderer>().color;
@@ -30,7 +29,6 @@ public class VillageController : MonoBehaviour
             {
                 detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder = colliderDictionary[detectedObject.gameObject];
                 colliderDictionary.Remove(detectedObject.gameObject);
-                Debug.Log(detectedObject.gameObject.GetComponent<SpriteRenderer>().sortingOrder);
             }
 
             Color oldColor = GetComponent<SpriteRenderer>().color;

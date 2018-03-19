@@ -53,7 +53,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         // Sets the scene as being in a battle.
-        SceneData.isInBattle = true;
+        SceneData.shouldStop = true;
 
         // Spawn all the players and enemies in the previous scene.
         SpawnPlayers();
@@ -200,8 +200,9 @@ public class BattleManager : MonoBehaviour
 
             // Restores the calling scene.
             SceneData.enemyInBattleList.Clear();
-            SceneData.isInBattle = false;
+            SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
+            SceneData.isInBattle = false;
             SceneManager.LoadScene(SceneData.mainScene);
         }
         else
