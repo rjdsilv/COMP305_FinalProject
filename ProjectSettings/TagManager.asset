@@ -9,6 +9,9 @@ TagManager:
   - Sector
   - SectorEdge
   - UI
+  - Temple
+  - EntrancePanel
+  - DialogPanel
   layers:
   - Default
   - TransparentFX
@@ -23,7 +26,7 @@ TagManager:
   - ScenarioObject
   - SectorEdge
   - Camera
-  - 
+  - Entrance
   - 
   - 
   - 

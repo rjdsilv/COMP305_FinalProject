@@ -63,6 +63,16 @@ public class TagUtils
     }
 
     /// <summary>
+    /// Method to verify if the object overlaping the player circle is an entrance.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object overlaping the player circle is an entrance. <b>false</b>otherwise.</returns>
+    public static bool IsTemple(Transform detectedObject)
+    {
+        return detectedObject.tag == "Temple";
+    }
+
+    /// <summary>
     /// Searches the world for the first occurrence of a player in it.
     /// </summary>
     /// <returns>The first occurrence of a player in the game world.</returns>
@@ -78,5 +88,14 @@ public class TagUtils
     public static GameObject[] FindAllPlayers()
     {
         return GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    /// <summary>
+    /// Searches the world for the object with the DialogPanel tag.
+    /// </summary>
+    /// <returns>The world for the object with the DialogPanel tag</returns>
+    public static GameObject FindDialogPanel()
+    {
+        return GameObject.FindGameObjectWithTag("DialogPanel");
     }
 }
