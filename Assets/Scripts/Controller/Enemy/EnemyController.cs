@@ -37,7 +37,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     {
         if (null != _gameManager)
         {
-            if (_enemyVisionAI.IsSeeingPlayer())
+            if (!SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
                 _gameManager.GoToBattle(BattleScene, gameObject);
             }
@@ -82,7 +82,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         GetHUDHealthSlider().maxValue = levelTree.GetAttributesForCurrentLevel().health;
         GetHUDHealthSlider().value = attributes.health;
 
-        if (!SceneData.isInBattle)
+        if (!SceneData.shouldStop)
         {
             GetHUDCanvas().enabled = false;
         }
