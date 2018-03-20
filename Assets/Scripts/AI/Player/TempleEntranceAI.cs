@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class TempleEntranceAI : EntranceAI
 {
     // The text that will be shown when the player enters the temple first time.
-    private string dialogText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
+    private string _dialogText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
         "Are you sure you want to enter the temple and die?";
 
     /// <summary>
@@ -19,20 +19,20 @@ public class TempleEntranceAI : EntranceAI
     private void Update()
     {
         LoadDialogPanel();
-        collisionObject = Physics2D.OverlapCircle(transform.position, entranceCheckRadius, entranceMask);
-        if (null != collisionObject)
+        _collisionObject = Physics2D.OverlapCircle(transform.position, entranceCheckRadius, entranceMask);
+        if (null != _collisionObject)
         {
-            if (!showingText && TagUtils.IsTemple(collisionObject.transform))
+            if (!_showingText && TagUtils.IsTemple(_collisionObject.transform))
             {
                 // Shows the dialog panel.
-                showingText = true;
+                _showingText = true;
                 SceneData.shouldStop = true;
-                dialogPanel.DisplayMessage(dialogText, true);
+                _dialogPanel.DisplayMessage(_dialogText, true);
             }
         }
         else
         {
-            showingText = false;
+            _showingText = false;
         }
     }
 
@@ -59,6 +59,6 @@ public class TempleEntranceAI : EntranceAI
     private void HideDialogPanelAndWalk()
     {
         SceneData.shouldStop = false;
-        dialogPanel.Hide();
+        _dialogPanel.Hide();
     }
 }

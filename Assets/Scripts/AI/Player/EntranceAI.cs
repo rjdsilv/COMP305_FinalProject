@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class EntranceAI : GenericAI
 {
@@ -8,9 +7,9 @@ public abstract class EntranceAI : GenericAI
     public LayerMask entranceMask;
 
     // Protected variable declaration
-    protected Collider2D collisionObject;
-    protected bool showingText;
-    protected DialogPanel dialogPanel;
+    protected Collider2D _collisionObject;
+    protected bool _showingText;
+    protected DialogPanel _dialogPanel;
 
     /// <summary>
     /// Draw the player overlaping circle to make life easier when debugging.
@@ -36,11 +35,11 @@ public abstract class EntranceAI : GenericAI
     /// </summary>
     protected void LoadDialogPanel()
     {
-        if (null == dialogPanel)
+        if (null == _dialogPanel)
         {
-            dialogPanel = new DialogPanel();
+            _dialogPanel = new DialogPanel();
         }
 
-        dialogPanel.Load(Enter, DoNotEnter);
+        _dialogPanel.Load(Enter, DoNotEnter);
     }
 }

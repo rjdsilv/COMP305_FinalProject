@@ -38,6 +38,8 @@ public class BattleManager : MonoBehaviour
     private bool _turnStarted;
     private bool _attackExecuted;
     private bool _canAIAttack = false;
+    private int _xpEarned = 0;
+    private int _goldEarned = 0;
 
     // Enemies variables.
     private int _enemyPlayerIndex = -1;
@@ -69,6 +71,13 @@ public class BattleManager : MonoBehaviour
         // Initializes the last selection time.
         _lastSwapTime = Time.time;
         _lastAttackTime = Time.time;
+
+        // Level up the enemy if its level is under the player's level.
+        IEnemyController enemyController = _enemies[_selectedEnemyIndex].GetEnemyControllerComponent();
+        if (enemyController.GetCurrentLevel() < _mageController.GetCurrentLevel())
+        {
+            enemyController.LevelUp();
+        }
 
         StartCoroutine(BattleLoop());
     }
@@ -197,6 +206,12 @@ public class BattleManager : MonoBehaviour
             {
                 Destroy(enemy);
             }
+
+            _mage.transform.localScale /= SCALE_FACTOR;
+
+            // Sets up the players amount earned.
+            _mageController.IncreaseGold(_goldEarned);
+            _mageController.IncreaseXp(_xpEarned);
 
             // Restores the calling scene.
             SceneData.enemyInBattleList.Clear();
@@ -333,6 +348,7 @@ public class BattleManager : MonoBehaviour
                             if (!enemyController.IsAlive())
                             {
                                 SwapEnemyUp(_enemies.Length - 1);
+                                UpdateBattleEarnings(enemyController);
                                 enemyController.GetSelectionLight().intensity = 30f;
                                 selectedEnemy.SetActive(false);
                             }
@@ -526,5 +542,15 @@ public class BattleManager : MonoBehaviour
                 _lastSwapTime = Time.time;
             }
         }
+    }
+
+    /// <summary>
+    /// Updates the earnings ammount for the given battle.
+    /// </summary>
+    /// <param name="enemyController">The controller to calculate the earnings.</param>
+    private void UpdateBattleEarnings(IEnemyController enemyController)
+    {
+        _xpEarned += enemyController.GetXpEarnedForKilling();
+        _goldEarned += enemyController.GetGoldEarnedForKilling();
     }
 }

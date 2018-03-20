@@ -59,6 +59,40 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         GetHUDHealthSlider().value -= amount;
     }
 
+    /// <see cref="IEnemyController"/>    
+    public int GetXpEarnedForKilling()
+    {
+        return attributes.xpForKilling;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public int GetGoldEarnedForKilling()
+    {
+        return Mathf.FloorToInt(Random.Range(attributes.minGoldForKilling, attributes.maxGoldForKilling + 0.99999f));
+    }
+
+    /// <see cref="IController"/>
+    public override void LevelUp()
+    {
+        if (levelTree.CanLevelUp())
+        {
+            levelTree.IncreaseLevel();
+            SetAttributesForCurrentLevel();
+        }
+    }
+
+    /// <see cref="ActorController{A, L}"/>
+    protected override void SetAttributesForCurrentLevel()
+    {
+        // Initializes its attributes.
+        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
+        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
+        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
+        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+    }
+
     /// <summary>
     /// Initialize all the necessary variables.
     /// </summary>
@@ -70,12 +104,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
 
         // Initializes the attributes.
-        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
-        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
-        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
-        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
-        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
-        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        SetAttributesForCurrentLevel();
 
         // Initializes the HUD.
         GetHUDCanvas().enabled = true;

@@ -39,4 +39,15 @@ public interface IController
     /// </summary>
     /// <returns>The ability to use on the attack.</returns>
     ActorAbility SelectAbility();
+
+    /// <summary>
+    /// Gets the actor's current level.
+    /// </summary>
+    /// <returns>The actor's current level</returns>
+    int GetCurrentLevel();
+
+    /// <summary>
+    /// Levels up the actor if necessary.
+    /// </summary>
+    void LevelUp();
 }

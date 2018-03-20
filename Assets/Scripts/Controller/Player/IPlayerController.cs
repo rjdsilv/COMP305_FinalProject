@@ -16,4 +16,16 @@ public interface IPlayerController : IController
     /// <param name="ability">The ability to be used.</param>
     /// <returns><b>true</b> if the player has consumable force and can use ability. <b>false</b> otherwise.</returns>
     bool CanAttack(PlayerAbility ability);
+
+    /// <summary>
+    /// Increases the ammount of XP this player has.
+    /// <param name="amount">The amount of XP to increase.</param>
+    /// </summary>
+    void IncreaseXp(int amount);
+
+    /// <summary>
+    /// Increases the ammount of gold this player has.
+    /// <param name="amount">The amount of gold to increase.</param>
+    /// </summary>
+    void IncreaseGold(int amount);
 }

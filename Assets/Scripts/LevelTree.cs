@@ -28,4 +28,13 @@ public class LevelTree<A> : ScriptableObject
     {
         currentLevel++;
     }
+
+    /// <summary>
+    /// Method to indicate if the level tree can still level up.
+    /// </summary>
+    /// <returns><b>true</b> if the level can be increased. <b>false</b> otherwise.</returns>
+    public bool CanLevelUp()
+    {
+        return currentLevel < levelAttributes.Length;
+    }
 }
