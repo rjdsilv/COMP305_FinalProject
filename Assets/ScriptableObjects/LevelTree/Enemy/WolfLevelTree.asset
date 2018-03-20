@@ -20,7 +20,7 @@ MonoBehaviour:
     minDefense: 10
     maxDefense: 15
     managedByAI: 0
-    xpForKilling: 20
+    xpForKilling: 50
     minGoldForKilling: 10
     maxGoldForKilling: 25
     healthRecoverDropChance: 0.15
@@ -33,7 +33,7 @@ MonoBehaviour:
     minDefense: 15
     maxDefense: 20
     managedByAI: 0
-    xpForKilling: 25
+    xpForKilling: 50
     minGoldForKilling: 15
     maxGoldForKilling: 30
     healthRecoverDropChance: 0.175

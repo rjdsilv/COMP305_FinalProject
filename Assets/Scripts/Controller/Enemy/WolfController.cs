@@ -31,6 +31,17 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
     {
         // Initialize its parent first.
         base.Init();
+        SetAttributesForCurrentLevel();
+
+        // Initializes its abilities.
+        powerBite = powerBiteLevelTree.GetAttributesForCurrentLevel();
+        _abilityList.Add(powerBite);
+    }
+
+    /// <see cref="ActorController{A, L}"/>
+    protected override void SetAttributesForCurrentLevel()
+    {
+        base.SetAttributesForCurrentLevel();
 
         // Initializes its attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
@@ -40,9 +51,5 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
         attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
         attributes.managedByAI = true;
-
-        // Initializes its abilities.
-        powerBite = powerBiteLevelTree.GetAttributesForCurrentLevel();
-        _abilityList.Add(powerBite);
     }
 }
