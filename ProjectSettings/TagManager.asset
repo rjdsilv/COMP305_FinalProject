@@ -12,6 +12,7 @@ TagManager:
   - Temple
   - EntrancePanel
   - DialogPanel
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - SectorEdge
   - Camera
   - Entrance
-  - 
+  - Item
   - 
   - 
   - 

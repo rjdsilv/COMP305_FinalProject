@@ -269,6 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
+  manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
+  staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
   attributes:
     sectorName: 
     battleScene: 

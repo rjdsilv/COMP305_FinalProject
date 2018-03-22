@@ -12,8 +12,14 @@ public static class SceneData
     public static bool isCommingBackFronBattle = false;                               // Flag indicating if the player is comming back from a batlle.
     public static string mainScene = "";                                              // Stores the name of the scene that invoked the battle scene.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
-    public static List<GameObject> enemyInBattleList = new List<GameObject>();        // The list of enemies that are in battle.
     public static List<GameObject> enemyNotInBattleList = new List<GameObject>();     // The list of enemies that are not in battle.
+    public static GameObject enemyInBattle;                                           // The enemy that are currently in battle.
+
+    // Item related data.
+    public static bool dropHealthPot = false;                                         // Indicates if the enemy dropped a health pot.
+    public static bool dropManaPot = false;                                           // Indicates if the enemy dropped a mana pot.
+    public static bool dropStaminaPot = false;                                        // Indicates if the enemy dropped a stamina pot.
+    public static Vector3 dropPosition = Vector3.zero;                                // The position where the items will be dropped.
 
     /// <summary>
     /// Saves the player to be used in any scene.
@@ -31,16 +37,16 @@ public static class SceneData
     public static void DestroyAllEnemiesOnSector(string sectorName)
     {
         List<GameObject> enemiesToDestroy = new List<GameObject>();
-        
+
         // Destroys from the enemyInBattleList
-        foreach (GameObject enemy in enemyInBattleList)
+        if (null != enemyInBattle)
         {
-            if (enemy.BelongsToSector(sectorName))
+            if (enemyInBattle.BelongsToSector(sectorName))
             {
-                enemiesToDestroy.Add(enemy);
+                enemiesToDestroy.Add(enemyInBattle);
             }
+            DestroyEnemies(enemiesToDestroy, null);
         }
-        DestroyEnemies(enemiesToDestroy, enemyInBattleList);
 
         // Destroys from the enemyNotInBattleList
         foreach (GameObject enemy in enemyNotInBattleList)
@@ -62,7 +68,10 @@ public static class SceneData
     {
         foreach (GameObject enemy in enemiesToDestroy)
         {
-            listToRemove.Remove(enemy);
+            if (null != listToRemove)
+            {
+                listToRemove.Remove(enemy);
+            }
             Object.Destroy(enemy);
         }
     }

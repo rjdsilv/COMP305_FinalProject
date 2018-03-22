@@ -201,20 +201,21 @@ public class BattleManager : MonoBehaviour
             // Restores the old positions for all players.
             RestorePlayersPositions();
 
-            // Destroys all the enemies that entered the battle.
-            foreach (GameObject enemy in SceneData.enemyInBattleList)
-            {
-                Destroy(enemy);
-            }
+            // Setup the dropped items.
+            SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
+            SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
+            SceneData.dropStaminaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropManaPot;
+            SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
 
-            _mage.transform.localScale /= SCALE_FACTOR;
+            // Destroy the enemy.
+            Destroy(SceneData.enemyInBattle);
 
             // Sets up the players amount earned.
             _mageController.IncreaseGold(_goldEarned);
             _mageController.IncreaseXp(_xpEarned);
+            _mage.transform.localScale /= SCALE_FACTOR;
 
             // Restores the calling scene.
-            SceneData.enemyInBattleList.Clear();
             SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
             SceneData.isInBattle = false;
@@ -340,7 +341,6 @@ public class BattleManager : MonoBehaviour
                     {
                         if (ControlUtils.Attack())
                         {
-
                             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
                             enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
@@ -470,21 +470,18 @@ public class BattleManager : MonoBehaviour
     {
         List<GameObject> enemies = new List<GameObject>();
 
-        foreach (GameObject enemy in SceneData.enemyInBattleList)
+        if (SceneData.enemyInBattle.IsWolf())
         {
-            if (enemy.IsWolf())
-            {
-                WolfController controller = enemy.GetEnemyControllerComponent() as WolfController;
-                int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
+            WolfController controller = SceneData.enemyInBattle.GetEnemyControllerComponent() as WolfController;
+            int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
 
-                for (int i = 0; i < enemiesInBattle; i++)
-                {
-                    GameObject instantiatedEnemy = Instantiate(enemy, enemySpawnPoints[i], Quaternion.identity);
-                    instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
-                    instantiatedEnemy.name = enemy.name;
-                    instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
-                    enemies.Add(instantiatedEnemy);
-                }
+            for (int i = 0; i < enemiesInBattle; i++)
+            {
+                GameObject instantiatedEnemy = Instantiate(SceneData.enemyInBattle, enemySpawnPoints[i], Quaternion.identity);
+                instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
+                instantiatedEnemy.name = SceneData.enemyInBattle.name;
+                instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
+                enemies.Add(instantiatedEnemy);
             }
         }
 
@@ -502,8 +499,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void InactivateActorsFromPreviousScene()
     {
-        foreach (GameObject o in SceneData.enemyInBattleList)
-            o.SetActive(false);
+        SceneData.enemyInBattle.SetActive(false);
 
         foreach (GameObject o in SceneData.enemyNotInBattleList)
             o.SetActive(false);
