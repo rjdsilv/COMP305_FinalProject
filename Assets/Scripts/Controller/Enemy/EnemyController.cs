@@ -56,6 +56,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public void DecreaseHealthHUD(int amount)
     {
+        GetHUDHealthText().text = amount.ToString();
         GetHUDHealthSlider().value -= amount;
     }
 
@@ -133,5 +134,14 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     protected Slider GetHUDHealthSlider()
     {
         return GetHUDCanvas().GetComponent<RectTransform>().GetChild(0).GetComponent<Slider>();
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas health text to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas health text to be used.</returns>
+    protected Text GetHUDHealthText()
+    {
+        return GetHUDCanvas().GetComponent<RectTransform>().GetChild(1).GetComponent<Text>();
     }
 }

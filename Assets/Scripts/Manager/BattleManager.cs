@@ -340,6 +340,7 @@ public class BattleManager : MonoBehaviour
                     {
                         if (ControlUtils.Attack())
                         {
+
                             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
                             enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
@@ -349,8 +350,12 @@ public class BattleManager : MonoBehaviour
                             {
                                 SwapEnemyUp(_enemies.Length - 1);
                                 UpdateBattleEarnings(enemyController);
-                                enemyController.GetSelectionLight().intensity = 30f;
-                                selectedEnemy.SetActive(false);
+                                enemyController.GetSelectionLight().intensity = 8f;
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH);
+                            }
+                            else
+                            {
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE);
                             }
 
                             _attackExecuted = true;
