@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4835324227252978}
   - component: {fileID: 212576936413565522}
   - component: {fileID: 61395576319176118}
+  - component: {fileID: 114769622265882582}
   m_Layer: 14
   m_Name: HealthPot
-  m_TagString: Item
+  m_TagString: HealthPot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &114769622265882582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1027069720514076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24f232cb157bfc48a9b9446e1ee02a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 50
 --- !u!212 &212576936413565522
 SpriteRenderer:
   m_ObjectHideFlags: 1

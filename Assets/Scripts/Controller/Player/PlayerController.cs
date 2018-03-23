@@ -41,6 +41,20 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         }
     }
 
+    /// <see cref="IPlayerController"/>
+    public void IncreaseHealth(int amount)
+    {
+        // Every player has at least one ability of type player ability.
+        if (attributes.health + amount <= levelTree.GetAttributesForCurrentLevel().health)
+        {
+            attributes.health += amount;
+        }
+        else
+        {
+            attributes.health = levelTree.GetAttributesForCurrentLevel().health;
+        }
+    }
+
     /// <see cref="IPlayerController{A, L}">
     public bool CanAttack(PlayerAbility ability)
     {

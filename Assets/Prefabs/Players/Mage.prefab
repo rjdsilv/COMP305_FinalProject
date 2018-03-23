@@ -25,7 +25,8 @@ GameObject:
   - component: {fileID: 61628858338193744}
   - component: {fileID: 114491267976572776}
   - component: {fileID: 114099804694245758}
-  - component: {fileID: 114319989777178318}
+  - component: {fileID: 114966651153551616}
+  - component: {fileID: 114333121510317594}
   m_Layer: 9
   m_Name: Mage
   m_TagString: Player
@@ -137,7 +138,7 @@ MonoBehaviour:
   fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
   lightningBallLevelTre: {fileID: 11400000, guid: dc709df018c61574e83d374675ebb455,
     type: 2}
---- !u!114 &114319989777178318
+--- !u!114 &114333121510317594
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -145,13 +146,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1869775162124002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f45f4447b9b5e142b52fa261cef57fa, type: 3}
+  m_Script: {fileID: 11500000, guid: a297c6ac615a89140a89d39b509c48cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   entranceCheckRadius: 0.5
   entranceMask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 16384
 --- !u!114 &114491267976572776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +167,21 @@ MonoBehaviour:
   movement:
     faceDirection: 0
     speed: 8
+--- !u!114 &114966651153551616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869775162124002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56db58501ff62d64fbcd358ad2beff5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entranceCheckRadius: 0.5
+  entranceMask:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!212 &212623987305169716
 SpriteRenderer:
   m_ObjectHideFlags: 1

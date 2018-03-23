@@ -11,6 +11,12 @@ public interface IPlayerController : IController
     void IncreaseConsumable(float amount);
 
     /// <summary>
+    /// Method that will be used for increasing the players's health (mana or stamina).
+    /// </summary>
+    /// <param name="amount">The amount to be increased.</param>
+    void IncreaseHealth(int amount);
+
+    /// <summary>
     /// Method to indicate if the player still has consumable force to use he given ability.
     /// </summary>
     /// <param name="ability">The ability to be used.</param>

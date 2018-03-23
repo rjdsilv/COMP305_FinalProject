@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4689044731937032}
   - component: {fileID: 212372794592506982}
   - component: {fileID: 61469187199242496}
+  - component: {fileID: 114766449328777190}
   m_Layer: 14
   m_Name: StaminaPot
-  m_TagString: Item
+  m_TagString: ConsumablePot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &114766449328777190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1025668855695556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c183ba78833c0142923fab8c1e9d003, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 30
 --- !u!212 &212372794592506982
 SpriteRenderer:
   m_ObjectHideFlags: 1

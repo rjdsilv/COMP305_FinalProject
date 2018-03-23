@@ -56,7 +56,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public void DecreaseHealthHUD(int amount)
     {
-        GetHUDHealthText().text = amount.ToString();
+        GetHUDHealthText().text = "-" + amount.ToString();
         GetHUDHealthSlider().value -= amount;
     }
 

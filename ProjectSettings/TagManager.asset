@@ -13,6 +13,8 @@ TagManager:
   - EntrancePanel
   - DialogPanel
   - Item
+  - HealthPot
+  - ConsumablePot
   layers:
   - Default
   - TransparentFX

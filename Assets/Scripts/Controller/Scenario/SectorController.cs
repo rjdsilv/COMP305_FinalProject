@@ -109,7 +109,7 @@ public class SectorController : MonoBehaviour
         if (SceneData.dropHealthPot)
         {
             // Instantiate the pot.
-            Instantiate(healthPot, CalculatePotSpawnPosition(), Quaternion.identity);
+            DontDestroyOnLoad(Instantiate(healthPot, CalculatePotSpawnPosition(), Quaternion.identity));
             SceneData.dropHealthPot = false;
         }
     }
@@ -122,7 +122,7 @@ public class SectorController : MonoBehaviour
         // Did the enemy drop a mana pot?
         if (SceneData.dropManaPot)
         {
-            Instantiate(manaPot, CalculatePotSpawnPosition(), Quaternion.identity);
+            DontDestroyOnLoad(Instantiate(manaPot, CalculatePotSpawnPosition(), Quaternion.identity));
             SceneData.dropManaPot = false;
         }
     }
@@ -135,7 +135,7 @@ public class SectorController : MonoBehaviour
         // Did the enemy drop a stamina pot?
         if (SceneData.dropStaminaPot)
         {
-            Instantiate(staminaPot, CalculatePotSpawnPosition(), Quaternion.identity);
+            DontDestroyOnLoad(Instantiate(staminaPot, CalculatePotSpawnPosition(), Quaternion.identity));
             SceneData.dropStaminaPot = false;
         }
     }
