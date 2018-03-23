@@ -28,4 +28,22 @@ public interface IEnemyController : IController
     /// </summary>
     /// <returns>The ammount of Gold earned by killing the given enemy.</returns>
     int GetGoldEarnedForKilling();
+
+    /// <summary>
+    /// Method that will determine if the enemy will drop any health pot to be collected.
+    /// </summary>
+    /// <returns><b>true</b> if a health pot is dropped/ <b>false</b> otherwise.</returns>
+    bool DropHealthPot();
+
+    /// <summary>
+    /// Method that will determine if the enemy will drop any mana pot to be collected.
+    /// </summary>
+    /// <returns><b>true</b> if a mana pot is dropped/ <b>false</b> otherwise.</returns>
+    bool DropManaPot();
+
+    /// <summary>
+    /// Method that will determine if the enemy will drop any stamina pot to be collected.
+    /// </summary>
+    /// <returns><b>true</b> if a stamina pot is dropped/ <b>false</b> otherwise.</returns>
+    bool DropStaminaPot();
 }
