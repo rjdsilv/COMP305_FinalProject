@@ -69,7 +69,10 @@ public class Movement
             Stop(actor, animator);
         }
 
-        animator.Play(_currAnimation);
+        if (!AnimatorUtils.IsPlaying(animator, AnimatorUtils.BATTLE_DAMAGE) && !AnimatorUtils.IsPlaying(animator, AnimatorUtils.BATTLE_DEATH))
+        {
+            animator.Play(_currAnimation);
+        }
     }
 
     /// <summary>

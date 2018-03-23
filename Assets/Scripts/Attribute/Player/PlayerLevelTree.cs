@@ -3,6 +3,10 @@
 /// </summary>
 /// <typeparam name="A"></typeparam>
 public class PlayerLevelTree<A> : ActorLevelTree<A>
-    where A : ActorAttributes
+    where A : PlayerAttributes
 {
+    public int GetMinXpForNextLevel()
+    {
+        return levelAttributes[currentLevel - 1].xp;
+    }
 }

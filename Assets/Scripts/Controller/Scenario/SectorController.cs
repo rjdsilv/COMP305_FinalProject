@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Class responsible for controlling the sectors created, spawning and destroying enemies according
@@ -7,10 +8,14 @@
 public class SectorController : MonoBehaviour
 {
     // Public variable declaration.
+    public GameObject healthPot;                // The health pot dropped by the enemy.
+    public GameObject manaPot;                  // The mana pot dropped by the enemy.
+    public GameObject staminaPot;               // The stamina pot dropped by the enemy.
     public SectorAttributes attributes;         // The attributes for the sector.
 
     // Private variable declaration.
     private bool _spawnEnemies = true;          // Indicates if the enemies were destroyed or not.
+    private float _itemSpawnRadius = 2.5f;      // The radius arround the dead enemy where the items will be spawned.
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,8 +65,8 @@ public class SectorController : MonoBehaviour
                     {
                         // Instantiate the enemy.
                         Vector3 position = new Vector3(
-                            transform.position.x + Random.Range(-ea.spawnRadius, ea.spawnRadius),
-                            transform.position.y + Random.Range(-ea.spawnRadius, ea.spawnRadius),
+                            transform.position.x + UnityEngine.Random.Range(-ea.spawnRadius, ea.spawnRadius),
+                            transform.position.y + UnityEngine.Random.Range(-ea.spawnRadius, ea.spawnRadius),
                             0
                         );
                         GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
@@ -80,8 +85,68 @@ public class SectorController : MonoBehaviour
             {
                 enemy.SetActive(true);
             }
+            SpawnDroppedItems();
         }
         _spawnEnemies = false;
+    }
+
+    /// <summary>
+    /// Spawns all the enemy dropped items from the battle.
+    /// </summary>
+    private void SpawnDroppedItems()
+    {
+        SpawnDroppedHealthPot();
+        SpawnDroppedManaPot();
+        SpawnDroppedStaminahPot();
+    }
+
+    /// <summary>
+    /// Spawns the health pot.
+    /// </summary>
+    private void SpawnDroppedHealthPot()
+    {
+        // Did the enemy drop a health pot?
+        if (SceneData.dropHealthPot)
+        {
+            // Instantiate the pot.
+            DontDestroyOnLoad(Instantiate(healthPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            SceneData.dropHealthPot = false;
+        }
+    }
+
+    /// <summary>
+    /// Spawns the mana pot.
+    /// </summary>
+    private void SpawnDroppedManaPot()
+    {
+        // Did the enemy drop a mana pot?
+        if (SceneData.dropManaPot)
+        {
+            DontDestroyOnLoad(Instantiate(manaPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            SceneData.dropManaPot = false;
+        }
+    }
+
+    /// <summary>
+    /// Spawns the stamina pot.
+    /// </summary>
+    private void SpawnDroppedStaminahPot()
+    {
+        // Did the enemy drop a stamina pot?
+        if (SceneData.dropStaminaPot)
+        {
+            DontDestroyOnLoad(Instantiate(staminaPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            SceneData.dropStaminaPot = false;
+        }
+    }
+
+    private Vector3 CalculatePotSpawnPosition()
+    {
+        return new Vector3(
+            SceneData.dropPosition.x + UnityEngine.Random.Range(-_itemSpawnRadius, _itemSpawnRadius),
+            SceneData.dropPosition.y + UnityEngine.Random.Range(-_itemSpawnRadius, _itemSpawnRadius),
+            0
+        );
     }
 
     /// <summary>

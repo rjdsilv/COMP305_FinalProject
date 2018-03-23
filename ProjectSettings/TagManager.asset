@@ -12,6 +12,9 @@ TagManager:
   - Temple
   - EntrancePanel
   - DialogPanel
+  - Item
+  - HealthPot
+  - ConsumablePot
   layers:
   - Default
   - TransparentFX
@@ -27,7 +30,7 @@ TagManager:
   - SectorEdge
   - Camera
   - Entrance
-  - 
+  - Item
   - 
   - 
   - 
