@@ -61,4 +61,20 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
         int selectedAbilityIndex = Mathf.FloorToInt(Random.Range(0, _abilityList.Count - 0.000001f));
         return _abilityList[selectedAbilityIndex];
     }
+
+    /// <see cref="IController"/>
+    public int GetCurrentLevel()
+    {
+        return attributes.level;
+    }
+
+    /// <summary>
+    /// Levels up the actor if necessary.
+    /// </summary>
+    public abstract void LevelUp();
+
+    /// <summary>
+    /// Sets the players attributes for the current level.
+    /// </summary>
+    protected abstract void SetAttributesForCurrentLevel();
 }

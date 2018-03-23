@@ -37,7 +37,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     {
         if (null != _gameManager)
         {
-            if (!SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
+            if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
                 _gameManager.GoToBattle(BattleScene, gameObject);
             }
@@ -56,7 +56,60 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public void DecreaseHealthHUD(int amount)
     {
+        GetHUDHealthText().text = "-" + amount.ToString();
         GetHUDHealthSlider().value -= amount;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public int GetXpEarnedForKilling()
+    {
+        return attributes.xpForKilling;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public int GetGoldEarnedForKilling()
+    {
+        return Mathf.FloorToInt(Random.Range(attributes.minGoldForKilling, attributes.maxGoldForKilling + 0.99999f));
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public bool DropHealthPot()
+    {
+        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public bool DropManaPot()
+    {
+        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public bool DropStaminaPot()
+    {
+        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+    }
+
+    /// <see cref="IController"/>
+    public override void LevelUp()
+    {
+        if (levelTree.CanLevelUp())
+        {
+            levelTree.IncreaseLevel();
+            SetAttributesForCurrentLevel();
+        }
+    }
+
+    /// <see cref="ActorController{A, L}"/>
+    protected override void SetAttributesForCurrentLevel()
+    {
+        // Initializes its attributes.
+        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
+        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
+        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
+        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
     }
 
     /// <summary>
@@ -70,12 +123,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
 
         // Initializes the attributes.
-        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
-        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
-        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
-        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
-        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
-        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        SetAttributesForCurrentLevel();
 
         // Initializes the HUD.
         GetHUDCanvas().enabled = true;
@@ -104,5 +152,14 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     protected Slider GetHUDHealthSlider()
     {
         return GetHUDCanvas().GetComponent<RectTransform>().GetChild(0).GetComponent<Slider>();
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas health text to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas health text to be used.</returns>
+    protected Text GetHUDHealthText()
+    {
+        return GetHUDCanvas().GetComponent<RectTransform>().GetChild(1).GetComponent<Text>();
     }
 }

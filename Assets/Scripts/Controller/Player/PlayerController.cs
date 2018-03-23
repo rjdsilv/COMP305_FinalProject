@@ -41,6 +41,20 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         }
     }
 
+    /// <see cref="IPlayerController"/>
+    public void IncreaseHealth(int amount)
+    {
+        // Every player has at least one ability of type player ability.
+        if (attributes.health + amount <= levelTree.GetAttributesForCurrentLevel().health)
+        {
+            attributes.health += amount;
+        }
+        else
+        {
+            attributes.health = levelTree.GetAttributesForCurrentLevel().health;
+        }
+    }
+
     /// <see cref="IPlayerController{A, L}">
     public bool CanAttack(PlayerAbility ability)
     {
@@ -52,6 +66,19 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         return attributes.stamina >= ability.consumptionValue;
     }
 
+    /// <see cref="IPlayerController{A, L}">
+    public void IncreaseXp(int amount)
+    {
+        attributes.xp += amount;
+        LevelUp();
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public void IncreaseGold(int amount)
+    {
+        attributes.gold += amount;
+    }
+
     /// <see cref="ActorController{A, L}">
     protected override void Init()
     {
@@ -59,6 +86,16 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
 
         attributes.gold = 0;
         attributes.xp = 0;
+    }
+
+    /// <see cref="IController{A, L}"/>
+    public override void LevelUp()
+    {
+        if (levelTree.CanLevelUp() && (attributes.xp >= levelTree.GetMinXpForNextLevel()))
+        {
+            levelTree.IncreaseLevel();
+            SetAttributesForCurrentLevel();
+        }
     }
 
     /// <summary>

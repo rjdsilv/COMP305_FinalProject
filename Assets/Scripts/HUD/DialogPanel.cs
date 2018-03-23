@@ -12,9 +12,9 @@ public class DialogPanel
     private const int NO_IDX = 1;
 
     // Private variable declaration.
-    private GameObject dialogPanel;
-    private Button[] dialogPanelButtons;
-    private Text dialogText;
+    private GameObject _dialogPanel;
+    private Button[] _dialogPanelButtons;
+    private Text _dialogText;
 
     /// <summary>
     /// Loads the dialog panel data to be used.
@@ -23,14 +23,14 @@ public class DialogPanel
     {
         if (!SceneData.isInBattle)
         {
-            if (null == dialogPanel)
+            if (null == _dialogPanel)
             {
-                dialogPanel = TagUtils.FindDialogPanel();
-                dialogText = dialogPanel.GetComponentInChildren<Text>();
-                dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
-                dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
-                dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
-                dialogPanel.SetActive(false);
+                _dialogPanel = TagUtils.FindDialogPanel();
+                _dialogText = _dialogPanel.GetComponentInChildren<Text>();
+                _dialogPanelButtons = _dialogPanel.GetComponentsInChildren<Button>();
+                _dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
+                _dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
+                _dialogPanel.SetActive(false);
             }
         }
     }
@@ -40,7 +40,7 @@ public class DialogPanel
     /// </summary>
     public void Hide()
     {
-        dialogPanel.SetActive(false);
+        _dialogPanel.SetActive(false);
     }
 
     /// <summary>
@@ -50,10 +50,10 @@ public class DialogPanel
     /// <param name="showButtons">The flag indicating if the buttons should be shown or not.</param>
     public void DisplayMessage(string message, bool showButtons)
     {
-        dialogPanel.SetActive(true);
-        dialogText.text = message;
+        _dialogPanel.SetActive(true);
+        _dialogText.text = message;
 
-        foreach (Button b in dialogPanelButtons)
+        foreach (Button b in _dialogPanelButtons)
         {
             b.gameObject.SetActive(showButtons);
         }
