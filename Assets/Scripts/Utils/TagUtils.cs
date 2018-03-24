@@ -73,6 +73,26 @@ public class TagUtils
     }
 
     /// <summary>
+    /// Method to verify if the object overlaping the player circle is a health pot.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object overlaping the player circle is a health pot. <b>false</b>otherwise.</returns>
+    public static bool IsHealthPot(Transform detectedObject)
+    {
+        return detectedObject.tag == "HealthPot";
+    }
+
+    /// <summary>
+    /// Method to verify if the object overlaping the player circle is a consumable pot.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object overlaping the player circle is a consumable pot. <b>false</b>otherwise.</returns>
+    public static bool IsConsumablePot(Transform detectedObject)
+    {
+        return detectedObject.tag == "ConsumablePot";
+    }
+
+    /// <summary>
     /// Searches the world for the first occurrence of a player in it.
     /// </summary>
     /// <returns>The first occurrence of a player in the game world.</returns>

@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             SceneData.shouldStop = true;
             SceneData.mainScene = "ForestMain";
             SceneData.enemyNotInBattleList.Remove(enemy);
-            SceneData.enemyInBattleList.Add(enemy);
+            SceneData.enemyInBattle= enemy;
             SceneManager.LoadScene(battleScene);
         }
     }
