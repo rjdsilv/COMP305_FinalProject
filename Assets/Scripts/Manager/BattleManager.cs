@@ -382,6 +382,7 @@ public class BattleManager : MonoBehaviour
                         selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
                     }
 
+                    _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
                     hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
                     _lastAttackTime = Time.time;
                     _canAIAttack = false;
