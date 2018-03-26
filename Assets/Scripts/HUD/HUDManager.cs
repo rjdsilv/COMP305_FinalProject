@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     // Constant declaration.
+    private const int HUD_CANVAS_IDX = 0;
     private const string TURN_TEXT = "Turn {0} - {1}";
 
     // Public variable declaration.
@@ -105,6 +106,7 @@ public class HUDManager : MonoBehaviour
     {
         if (player.IsMage())
         {
+            GetHUDHealthText(player).text = "-" + healthDrained.ToString();
             DecreaseMageHealthHUD(healthDrained);
         }
     }
@@ -185,5 +187,23 @@ public class HUDManager : MonoBehaviour
         {
             mageHUD.consumableSlider.value += amount;
         }
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas to be used.</returns>
+    private Canvas GetHUDCanvas(GameObject player)
+    {
+        return player.transform.GetChild(HUD_CANVAS_IDX).GetComponent<Canvas>();
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas health text to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas health text to be used.</returns>
+    private Text GetHUDHealthText(GameObject player)
+    {
+        return GetHUDCanvas(player).GetComponent<RectTransform>().GetChild(0).GetComponent<Text>();
     }
 }

@@ -386,6 +386,15 @@ public class BattleManager : MonoBehaviour
                     hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
                     _lastAttackTime = Time.time;
                     _canAIAttack = false;
+                    IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
+                    if (!playerController.IsAlive())
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+                    }
+                    else
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
+                    }
                 }
             }
         }

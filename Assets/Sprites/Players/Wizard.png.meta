@@ -52,12 +52,12 @@ TextureImporter:
     21300090: Wizard_StandRight_00
     21300092: Wizard_StandRight_01
     21300094: Wizard_StandRight_02
-    21300096: Wizard_Die_00
-    21300098: Wizard_Die_01
-    21300100: Wizard_Die_02
-    21300102: Wizard_Die_03
-    21300104: Wizard_Die_04
-    21300106: Wizard_Die_05
+    21300096: Wizard_BattleDeath_00
+    21300098: Wizard_BattleDeath_01
+    21300100: Wizard_BattleDeath_02
+    21300102: Wizard_BattleDeath_03
+    21300104: Wizard_BattleDeath_04
+    21300106: Wizard_BattleDeath_05
     21300108: Wizard_Atack_00
     21300110: Wizard_Atack_01
     21300112: Wizard_Atack_02
@@ -65,6 +65,12 @@ TextureImporter:
     21300116: Wizard_Atack_04
     21300118: Wizard_Atack_05
     21300120: Wizard_Atack_06
+    21300122: Wizard_BattleDamage_00
+    21300124: Wizard_BattleDamage_01
+    21300126: Wizard_BattleDamage_02
+    21300128: Wizard_BattleDamage_03
+    21300130: Wizard_BattleDamage_04
+    21300132: Wizard_BattleDamage_05
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -833,7 +839,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_00
+      name: Wizard_BattleDeath_00
       rect:
         serializedVersion: 2
         x: 18
@@ -847,7 +853,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_01
+      name: Wizard_BattleDeath_01
       rect:
         serializedVersion: 2
         x: 84
@@ -861,7 +867,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_02
+      name: Wizard_BattleDeath_02
       rect:
         serializedVersion: 2
         x: 148
@@ -875,7 +881,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_03
+      name: Wizard_BattleDeath_03
       rect:
         serializedVersion: 2
         x: 212
@@ -889,7 +895,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_04
+      name: Wizard_BattleDeath_04
       rect:
         serializedVersion: 2
         x: 276
@@ -903,7 +909,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Wizard_Die_05
+      name: Wizard_BattleDeath_05
       rect:
         serializedVersion: 2
         x: 337
@@ -1010,6 +1016,90 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_00
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 322
+        width: 21
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_01
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 322
+        width: 25
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_02
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 322
+        width: 24
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_03
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 322
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_04
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 322
+        width: 33
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_BattleDamage_05
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 322
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
