@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// Class containing helper methods and attributes to work with animations.
@@ -17,6 +18,7 @@ public class AnimatorUtils
 
     public const string BATTLE_DAMAGE = "BattleDamage";
     public const string BATTLE_DEATH = "BattleDeath";
+    public const string BATTLE_ATTACK = "BattleAttack";
 
     /// <summary>
     /// Checks if the animator is currently playing the given animation.
