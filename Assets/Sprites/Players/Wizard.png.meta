@@ -1,59 +1,70 @@
 fileFormatVersion: 2
-guid: 0afc5de2fb702f949ae4527601a809c7
-timeCreated: 1519769276
+guid: b17cbb5521712784cb0e529202f5fbf6
+timeCreated: 1522088772
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mage_StandFront_00
-    21300002: Mage_StandFront_01
-    21300004: Mage_StandFront_02
-    21300006: Mage_StandLeft_00
-    21300008: Mage_StandLeft_01
-    21300010: Mage_StandLeft_02
-    21300012: Mage_StandBack_00
-    21300014: Mage_StandRight_00
-    21300016: Mage_StandRight_01
-    21300018: Mage_StandRight_02
-    21300020: Mage_WalkingDown_00
-    21300022: Mage_WalkingDown_01
-    21300024: Mage_WalkingDown_02
-    21300026: Mage_WalkingDown_03
-    21300028: Mage_WalkingDown_04
-    21300030: Mage_WalkingDown_05
-    21300032: Mage_WalkingDown_06
-    21300034: Mage_WalkingDown_07
-    21300036: Mage_WalkingDown_08
-    21300038: Mage_WalkingDown_09
-    21300040: Mage_WalkingLeft_00
-    21300042: Mage_WalkingLeft_01
-    21300044: Mage_WalkingLeft_02
-    21300046: Mage_WalkingLeft_03
-    21300048: Mage_WalkingLeft_04
-    21300050: Mage_WalkingLeft_05
-    21300052: Mage_WalkingLeft_06
-    21300054: Mage_WalkingLeft_07
-    21300056: Mage_WalkingLeft_08
-    21300058: Mage_WalkingLeft_09
-    21300060: Mage_WalkingUp_00
-    21300062: Mage_WalkingUp_01
-    21300064: Mage_WalkingUp_02
-    21300066: Mage_WalkingUp_03
-    21300068: Mage_WalkingUp_04
-    21300070: Mage_WalkingUp_05
-    21300072: Mage_WalkingUp_06
-    21300074: Mage_WalkingUp_07
-    21300076: Mage_WalkingUp_08
-    21300078: Mage_WalkingUp_09
-    21300080: Mage_WalkingRight_00
-    21300082: Mage_WalkingRight_01
-    21300084: Mage_WalkingRight_02
-    21300086: Mage_WalkingRight_03
-    21300088: Mage_WalkingRight_04
-    21300090: Mage_WalkingRight_05
-    21300092: Mage_WalkingRight_06
-    21300094: Mage_WalkingRight_07
-    21300096: Mage_WalkingRight_08
-    21300098: Mage_WalkingRight_09
+    21300000: Wizard_WalkUp_00
+    21300002: Wizard_WalkUp_01
+    21300004: Wizard_WalkUp_02
+    21300006: Wizard_WalkUp_03
+    21300008: Wizard_WalkUp_04
+    21300010: Wizard_WalkUp_05
+    21300012: Wizard_WalkUp_06
+    21300014: Wizard_WalkUp_07
+    21300016: Wizard_WalkUp_08
+    21300018: Wizard_WalkLeft_00
+    21300020: Wizard_WalkLeft_01
+    21300022: Wizard_WalkLeft_02
+    21300024: Wizard_WalkLeft_03
+    21300026: Wizard_WalkLeft_04
+    21300028: Wizard_WalkLeft_05
+    21300030: Wizard_WalkLeft_06
+    21300032: Wizard_WalkLeft_07
+    21300034: Wizard_WalkLeft_08
+    21300036: Wizard_WalkDown_00
+    21300038: Wizard_WalkDown_01
+    21300040: Wizard_WalkDown_02
+    21300042: Wizard_WalkDown_03
+    21300044: Wizard_WalkDown_04
+    21300046: Wizard_WalkDown_05
+    21300048: Wizard_WalkDown_06
+    21300050: Wizard_WalkDown_07
+    21300052: Wizard_WalkDown_08
+    21300054: Wizard_WalkRight_00
+    21300056: Wizard_WalkRight_01
+    21300058: Wizard_WalkRight_02
+    21300060: Wizard_WalkRight_03
+    21300062: Wizard_WalkRight_04
+    21300064: Wizard_WalkRight_05
+    21300066: Wizard_WalkRight_06
+    21300068: Wizard_WalkRight_07
+    21300070: Wizard_WalkRight_08
+    21300072: Wizard_StandUp_00
+    21300074: Wizard_StandUp_01
+    21300076: Wizard_StandUp_02
+    21300078: Wizard_StandLeft_00
+    21300080: Wizard_StandLeft_01
+    21300082: Wizard_StandLeft_02
+    21300084: Wizard_StandDown_00
+    21300086: Wizard_StandDown_01
+    21300088: Wizard_StandDown_02
+    21300090: Wizard_StandRight_00
+    21300092: Wizard_StandRight_01
+    21300094: Wizard_StandRight_02
+    21300096: Wizard_Die_00
+    21300098: Wizard_Die_01
+    21300100: Wizard_Die_02
+    21300102: Wizard_Die_03
+    21300104: Wizard_Die_04
+    21300106: Wizard_Die_05
+    21300108: Wizard_Atack_00
+    21300110: Wizard_Atack_01
+    21300112: Wizard_Atack_02
+    21300114: Wizard_Atack_03
+    21300116: Wizard_Atack_04
+    21300118: Wizard_Atack_05
+    21300120: Wizard_Atack_06
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -110,7 +121,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,17 +131,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,7 +141,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -150,7 +151,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -160,13 +161,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mage_StandFront_00
+      name: Wizard_WalkUp_00
       rect:
         serializedVersion: 2
-        x: 10
-        y: 910
-        width: 90
-        height: 115
+        x: 18
+        y: 770
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,13 +175,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandFront_01
+      name: Wizard_WalkUp_01
       rect:
         serializedVersion: 2
-        x: 130
-        y: 910
-        width: 90
-        height: 115
+        x: 82
+        y: 770
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,13 +189,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandFront_02
+      name: Wizard_WalkUp_02
       rect:
         serializedVersion: 2
-        x: 250
-        y: 910
-        width: 90
-        height: 115
+        x: 147
+        y: 769
+        width: 26
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,13 +203,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandLeft_00
+      name: Wizard_WalkUp_03
       rect:
         serializedVersion: 2
-        x: 20
-        y: 780
-        width: 85
-        height: 110
+        x: 212
+        y: 768
+        width: 24
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,13 +217,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandLeft_01
+      name: Wizard_WalkUp_04
       rect:
         serializedVersion: 2
-        x: 140
-        y: 780
-        width: 85
-        height: 110
+        x: 274
+        y: 769
+        width: 29
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,13 +231,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandLeft_02
+      name: Wizard_WalkUp_05
       rect:
         serializedVersion: 2
-        x: 260
-        y: 780
-        width: 85
-        height: 110
+        x: 338
+        y: 770
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,13 +245,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandBack_00
+      name: Wizard_WalkUp_06
       rect:
         serializedVersion: 2
-        x: 15
-        y: 650
-        width: 90
-        height: 105
+        x: 403
+        y: 769
+        width: 26
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,13 +259,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandRight_00
+      name: Wizard_WalkUp_07
       rect:
         serializedVersion: 2
-        x: 15
-        y: 520
-        width: 85
-        height: 110
+        x: 468
+        y: 768
+        width: 24
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,13 +273,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandRight_01
+      name: Wizard_WalkUp_08
       rect:
         serializedVersion: 2
-        x: 130
-        y: 520
-        width: 85
-        height: 110
+        x: 530
+        y: 769
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -286,13 +287,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_StandRight_02
+      name: Wizard_WalkLeft_00
       rect:
         serializedVersion: 2
-        x: 255
-        y: 520
-        width: 85
-        height: 110
+        x: 23
+        y: 706
+        width: 21
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,13 +301,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_00
+      name: Wizard_WalkLeft_01
       rect:
         serializedVersion: 2
-        x: 15
-        y: 390
-        width: 90
-        height: 115
+        x: 85
+        y: 706
+        width: 21
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -314,13 +315,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_01
+      name: Wizard_WalkLeft_02
       rect:
         serializedVersion: 2
-        x: 135
-        y: 400
-        width: 90
-        height: 110
+        x: 150
+        y: 707
+        width: 20
+        height: 46
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -328,13 +329,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_02
+      name: Wizard_WalkLeft_03
       rect:
         serializedVersion: 2
-        x: 255
-        y: 390
-        width: 90
-        height: 120
+        x: 214
+        y: 707
+        width: 22
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,13 +343,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_03
+      name: Wizard_WalkLeft_04
       rect:
         serializedVersion: 2
-        x: 375
-        y: 390
-        width: 90
-        height: 120
+        x: 277
+        y: 706
+        width: 25
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,13 +357,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_04
+      name: Wizard_WalkLeft_05
       rect:
         serializedVersion: 2
-        x: 495
-        y: 390
-        width: 90
-        height: 120
+        x: 340
+        y: 706
+        width: 27
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -370,13 +371,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_05
+      name: Wizard_WalkLeft_06
       rect:
         serializedVersion: 2
-        x: 615
-        y: 390
-        width: 90
-        height: 115
+        x: 406
+        y: 706
+        width: 24
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,13 +385,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_06
+      name: Wizard_WalkLeft_07
       rect:
         serializedVersion: 2
-        x: 735
-        y: 400
-        width: 90
-        height: 110
+        x: 469
+        y: 706
+        width: 23
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -398,13 +399,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_07
+      name: Wizard_WalkLeft_08
       rect:
         serializedVersion: 2
-        x: 855
-        y: 390
-        width: 90
-        height: 120
+        x: 534
+        y: 706
+        width: 20
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -412,13 +413,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_08
+      name: Wizard_WalkDown_00
       rect:
         serializedVersion: 2
-        x: 975
-        y: 390
-        width: 90
-        height: 120
+        x: 18
+        y: 642
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,13 +427,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingDown_09
+      name: Wizard_WalkDown_01
       rect:
         serializedVersion: 2
-        x: 1095
-        y: 390
-        width: 90
-        height: 120
+        x: 82
+        y: 642
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -440,13 +441,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_00
+      name: Wizard_WalkDown_02
       rect:
         serializedVersion: 2
-        x: 5
-        y: 260
-        width: 115
-        height: 110
+        x: 146
+        y: 641
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -454,13 +455,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_01
+      name: Wizard_WalkDown_03
       rect:
         serializedVersion: 2
-        x: 130
-        y: 265
-        width: 95
-        height: 105
+        x: 212
+        y: 641
+        width: 26
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,13 +469,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_02
+      name: Wizard_WalkDown_04
       rect:
         serializedVersion: 2
-        x: 245
-        y: 275
-        width: 95
-        height: 100
+        x: 274
+        y: 641
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -482,13 +483,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_03
+      name: Wizard_WalkDown_05
       rect:
         serializedVersion: 2
-        x: 370
-        y: 265
-        width: 95
-        height: 110
+        x: 338
+        y: 642
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -496,13 +497,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_04
+      name: Wizard_WalkDown_06
       rect:
         serializedVersion: 2
-        x: 490
-        y: 265
-        width: 100
-        height: 110
+        x: 402
+        y: 641
+        width: 27
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,13 +511,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_05
+      name: Wizard_WalkDown_07
       rect:
         serializedVersion: 2
-        x: 605
-        y: 260
-        width: 115
-        height: 110
+        x: 467
+        y: 641
+        width: 25
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -524,13 +525,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_06
+      name: Wizard_WalkDown_08
       rect:
         serializedVersion: 2
-        x: 730
-        y: 260
-        width: 95
-        height: 110
+        x: 530
+        y: 641
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -538,13 +539,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_07
+      name: Wizard_WalkRight_00
       rect:
         serializedVersion: 2
-        x: 850
-        y: 270
-        width: 90
-        height: 105
+        x: 21
+        y: 578
+        width: 21
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,13 +553,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_08
+      name: Wizard_WalkRight_01
       rect:
         serializedVersion: 2
-        x: 975
-        y: 270
-        width: 95
-        height: 105
+        x: 86
+        y: 578
+        width: 22
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -566,13 +567,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingLeft_09
+      name: Wizard_WalkRight_02
       rect:
         serializedVersion: 2
-        x: 1090
-        y: 265
-        width: 100
-        height: 110
+        x: 150
+        y: 578
+        width: 21
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -580,13 +581,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_00
+      name: Wizard_WalkRight_03
       rect:
         serializedVersion: 2
-        x: 15
-        y: 140
-        width: 90
-        height: 110
+        x: 212
+        y: 579
+        width: 22
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -594,13 +595,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_01
+      name: Wizard_WalkRight_04
       rect:
         serializedVersion: 2
-        x: 135
-        y: 140
-        width: 90
-        height: 110
+        x: 274
+        y: 578
+        width: 25
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -608,13 +609,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_02
+      name: Wizard_WalkRight_05
       rect:
         serializedVersion: 2
-        x: 255
-        y: 140
-        width: 90
-        height: 120
+        x: 337
+        y: 578
+        width: 27
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,13 +623,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_03
+      name: Wizard_WalkRight_06
       rect:
         serializedVersion: 2
-        x: 375
-        y: 140
-        width: 90
-        height: 120
+        x: 402
+        y: 578
+        width: 24
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -636,13 +637,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_04
+      name: Wizard_WalkRight_07
       rect:
         serializedVersion: 2
-        x: 495
-        y: 140
-        width: 90
-        height: 120
+        x: 468
+        y: 578
+        width: 22
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -650,13 +651,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_05
+      name: Wizard_WalkRight_08
       rect:
         serializedVersion: 2
-        x: 615
-        y: 140
-        width: 90
-        height: 110
+        x: 534
+        y: 578
+        width: 21
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -664,13 +665,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_06
+      name: Wizard_StandUp_00
       rect:
         serializedVersion: 2
-        x: 735
-        y: 140
-        width: 90
-        height: 110
+        x: 17
+        y: 1026
+        width: 29
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -678,13 +679,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_07
+      name: Wizard_StandUp_01
       rect:
         serializedVersion: 2
-        x: 855
-        y: 140
-        width: 90
-        height: 120
+        x: 81
+        y: 1024
+        width: 28
+        height: 49
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -692,13 +693,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_08
+      name: Wizard_StandUp_02
       rect:
         serializedVersion: 2
-        x: 975
-        y: 135
-        width: 90
-        height: 120
+        x: 148
+        y: 1024
+        width: 24
+        height: 50
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,13 +707,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingUp_09
+      name: Wizard_StandLeft_00
       rect:
         serializedVersion: 2
-        x: 1095
-        y: 140
-        width: 90
-        height: 120
+        x: 21
+        y: 962
+        width: 22
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -720,13 +721,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_00
+      name: Wizard_StandLeft_01
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 100
-        height: 110
+        x: 83
+        y: 962
+        width: 24
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -734,13 +735,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_01
+      name: Wizard_StandLeft_02
       rect:
         serializedVersion: 2
-        x: 135
-        y: 5
-        width: 95
-        height: 110
+        x: 147
+        y: 962
+        width: 27
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -748,13 +749,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_02
+      name: Wizard_StandDown_00
       rect:
         serializedVersion: 2
-        x: 255
-        y: 5
-        width: 95
-        height: 110
+        x: 18
+        y: 898
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -762,13 +763,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_03
+      name: Wizard_StandDown_01
       rect:
         serializedVersion: 2
-        x: 370
-        y: 0
-        width: 95
-        height: 110
+        x: 82
+        y: 898
+        width: 27
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -776,13 +777,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_04
+      name: Wizard_StandDown_02
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 115
-        height: 110
+        x: 147
+        y: 899
+        width: 26
+        height: 47
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -790,13 +791,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_05
+      name: Wizard_StandRight_00
       rect:
         serializedVersion: 2
-        x: 610
-        y: 5
-        width: 100
-        height: 110
+        x: 21
+        y: 834
+        width: 21
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -804,13 +805,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_06
+      name: Wizard_StandRight_01
       rect:
         serializedVersion: 2
-        x: 730
-        y: 5
-        width: 95
-        height: 110
+        x: 85
+        y: 834
+        width: 25
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -818,13 +819,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_07
+      name: Wizard_StandRight_02
       rect:
         serializedVersion: 2
-        x: 860
-        y: 15
-        width: 95
-        height: 100
+        x: 146
+        y: 834
+        width: 27
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -832,13 +833,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_08
+      name: Wizard_Die_00
       rect:
         serializedVersion: 2
-        x: 980
-        y: 5
-        width: 95
-        height: 105
+        x: 18
+        y: 1
+        width: 28
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -846,13 +847,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Mage_WalkingRight_09
+      name: Wizard_Die_01
       rect:
         serializedVersion: 2
-        x: 1080
-        y: 0
-        width: 115
-        height: 110
+        x: 84
+        y: 2
+        width: 27
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Die_02
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1
+        width: 26
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Die_03
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 2
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Die_04
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 3
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Die_05
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_00
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1090
+        width: 21
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_01
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 1090
+        width: 20
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_02
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1090
+        width: 20
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_03
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1090
+        width: 25
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_04
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1090
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_05
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1090
+        width: 32
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Wizard_Atack_06
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1090
+        width: 25
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
