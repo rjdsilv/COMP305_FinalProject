@@ -343,7 +343,9 @@ public class BattleManager : MonoBehaviour
                         {
                             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
-                            enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
+                            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+                            int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
+                            enemyController.DecreaseHealthHUD(attackPower);
                             hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
 
                             if (!enemyController.IsAlive())
@@ -351,11 +353,11 @@ public class BattleManager : MonoBehaviour
                                 SwapEnemyUp(_enemies.Length - 1);
                                 UpdateBattleEarnings(enemyController);
                                 enemyController.GetSelectionLight().intensity = 8f;
-                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH);
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
                             }
                             else
                             {
-                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE);
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
                             }
 
                             _attackExecuted = true;
