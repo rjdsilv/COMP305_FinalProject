@@ -84,10 +84,22 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
     }
 
-    /// <see cref="IEnemyController"/>    
+    /// <see cref="IEnemyController"/>
     public bool DropStaminaPot()
     {
         return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMinEnemiesInBattle()
+    {
+        return minEnemiesInBattle;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMaxEnemiesInBattle()
+    {
+        return maxEnemiesInBattle;
     }
 
     /// <see cref="IController"/>
@@ -100,6 +112,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         }
     }
 
+
     /// <see cref="ActorController{A, L}"/>
     protected override void SetAttributesForCurrentLevel()
     {
@@ -110,6 +123,13 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
         attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
         attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        attributes.health = levelTree.GetAttributesForCurrentLevel().health;
+        attributes.level = levelTree.GetAttributesForCurrentLevel().level;
+        attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
+        attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
+        attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
+        attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+        attributes.managedByAI = true;
     }
 
     /// <summary>

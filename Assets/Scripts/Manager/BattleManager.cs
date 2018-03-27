@@ -480,30 +480,40 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void SpawnEnemies()
     {
-        List<GameObject> enemies = new List<GameObject>();
-
-        if (SceneData.enemyInBattle.IsWolf())
-        {
-            WolfController controller = SceneData.enemyInBattle.GetEnemyControllerComponent() as WolfController;
-            int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
-
-            for (int i = 0; i < enemiesInBattle; i++)
-            {
-                GameObject instantiatedEnemy = Instantiate(SceneData.enemyInBattle, enemySpawnPoints[i], Quaternion.identity);
-                instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
-                instantiatedEnemy.name = SceneData.enemyInBattle.name;
-                instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
-                enemies.Add(instantiatedEnemy);
-            }
-        }
-
-        _enemies = enemies.ToArray();
+        IEnemyController controller = SceneData.enemyInBattle.GetEnemyControllerComponent();
+        _enemies = SpawnEnemies(controller.GetMinEnemiesInBattle(), controller.GetMaxEnemiesInBattle()).ToArray();
 
         if (_enemies.Length > 0)
         {
             _selectedEnemyIndex = 0;
             _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
         }
+    }
+
+    /// <summary>
+    /// Spawn the enemies in a number that ranges between the define minimum and maximum defined for the enemy.
+    /// </summary>
+    private List<GameObject> SpawnEnemies(int minEnemiesInBattle, int maxEnemiesInBattle)
+    {
+        int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(minEnemiesInBattle, maxEnemiesInBattle + 0.999999f));
+        List<GameObject> enemies = new List<GameObject>();
+        for (int i = 0; i < enemiesInBattle; i++)
+        {
+            enemies.Add(SpawnEnemy(enemySpawnPoints[i]));
+        }
+        return enemies;
+    }
+
+    /// <summary>
+    /// Spawn one single enemy.
+    /// </summary>
+    private GameObject SpawnEnemy(Vector3 position)
+    {
+        GameObject instantiatedEnemy = Instantiate(SceneData.enemyInBattle, position, Quaternion.identity);
+        instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
+        instantiatedEnemy.name = SceneData.enemyInBattle.name;
+        instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
+        return instantiatedEnemy;
     }
 
     /// <summary>

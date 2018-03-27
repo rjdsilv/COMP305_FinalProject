@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79aaa73badb15940ac98d218af11824, type: 3}
+  m_Name: GolemLevelTree
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  levelAttributes:
+  - health: 150
+    level: 1
+    minAttack: 30
+    maxAttack: 50
+    minDefense: 20
+    maxDefense: 30
+    managedByAI: 0
+    xpForKilling: 50
+    minGoldForKilling: 50
+    maxGoldForKilling: 75
+    healthRecoverDropChance: 0.9
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.85
+  - health: 200
+    level: 2
+    minAttack: 40
+    maxAttack: 65
+    minDefense: 25
+    maxDefense: 40
+    managedByAI: 0
+    xpForKilling: 50
+    minGoldForKilling: 50
+    maxGoldForKilling: 75
+    healthRecoverDropChance: 0.9
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.85

@@ -60,6 +60,15 @@ public static class SceneData
     }
 
     /// <summary>
+    /// Destroys all enemies on the current scene.
+    /// </summary>
+    public static void DestroyAllEnemiesInScene()
+    {
+        enemyNotInBattleList.ForEach(enemy => Object.Destroy(enemy));
+        enemyNotInBattleList.Clear();
+    }
+
+    /// <summary>
     /// Destroy the enemies on the list enemiesToDestroy and removes them from the list listToRemove.
     /// </summary>
     /// <param name="enemiesToDestroy">The list containing enemies to be destroyed.</param>

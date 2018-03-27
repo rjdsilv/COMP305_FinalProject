@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94a0aaad6f31a74789ce421dbb05989, type: 3}
   m_Name: WolfVisionAttributes
   m_EditorClassIdentifier: 
-  viewDistance: 2.5
+  viewDistance: 2
   viewingAngle: 35

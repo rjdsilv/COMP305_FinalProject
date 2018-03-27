@@ -7,6 +7,7 @@ public static class ActorUtils
 {
     private const string MAGE = "Mage";     // The mage's prefab name
     private const string WOLF = "Wolf";     // The wolf's prefab name.
+    private const string GOLEM = "Golem";     // The golem's prefab name.
 
     /// <summary>
     /// Method to indicate whether a given actor is a mage or not.
@@ -39,6 +40,16 @@ public static class ActorUtils
     }
 
     /// <summary>
+    /// Method to check if a given actor is a Golem.
+    /// </summary>
+    /// <param name="actor">The actor to be checked</param>
+    /// <returns><b>true</b> if the actor is a Golem. <b>false</b> otherwise.</returns>
+    public static bool IsGolem(this GameObject actor)
+    {
+        return actor.name == GOLEM;
+    }
+
+    /// <summary>
     /// Method to check if a given actor belongs to the given sector.
     /// </summary>
     /// <param name="actor">The actor to be checked.</param>
@@ -49,6 +60,10 @@ public static class ActorUtils
         if (actor.IsWolf())
         {
             return actor.GetComponent<WolfController>().SectorName == sectorName;
+        }
+        else if (actor.IsGolem())
+        {
+            return actor.GetComponent<GolemController>().SectorName == sectorName;
         }
 
         return false;
@@ -64,6 +79,11 @@ public static class ActorUtils
         {
             actor.GetComponent<WolfController>().SectorName = attributes.sectorName;
             actor.GetComponent<WolfController>().BattleScene = attributes.battleScene;
+        }
+        else if (actor.IsGolem())
+        {
+            actor.GetComponent<GolemController>().SectorName = attributes.sectorName;
+            actor.GetComponent<GolemController>().BattleScene = attributes.battleScene;
         }
     }
 
@@ -92,6 +112,10 @@ public static class ActorUtils
         if (actor.IsWolf())
         {
             return actor.GetComponent<WolfController>();
+        }
+        else if (actor.IsGolem())
+        {
+            return actor.GetComponent<GolemController>();
         }
 
         return null;

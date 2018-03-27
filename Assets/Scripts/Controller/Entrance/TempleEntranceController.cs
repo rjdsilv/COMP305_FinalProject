@@ -50,6 +50,7 @@ public class TempleEntranceController : EntranceController
     public override void Enter()
     {
         HideDialogPanelAndWalk();
+        SceneData.DestroyAllEnemiesInScene();
         SceneManager.LoadScene("Temple1stFloor");
     }
 
