@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Forest/ForestBattle_01.unity
     guid: 97fe923b7361764448f4080d9438555e
+  - enabled: 1
+    path: Assets/Scenes/Temple/Temple1stFloor.unity
+    guid: f866f57a4857b5a409c2cd49c0273177

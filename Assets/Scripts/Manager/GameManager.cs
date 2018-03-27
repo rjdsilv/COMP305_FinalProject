@@ -10,16 +10,11 @@ public class GameManager : MonoBehaviour
     // Public variable declaration.
     public GameObject[] players;        // The players to be instantiated.
 
-    // Private variable declaration.
-    private bool _goToBattle;           // The scene should change to the battle scene.
-    private string _battleScene = "";   // The battle scene that must be loaded.
-
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
     {
-        _goToBattle = false;
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -30,6 +25,7 @@ public class GameManager : MonoBehaviour
                     players[i] = Instantiate(players[i]);
                     players[i].name = name;
                     DontDestroyOnLoad(players[i]);
+                    DontDestroyOnLoad(this);
                     SceneData.SavePlayer(players[i]);
                 }
             }
@@ -60,12 +56,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GoToBattle(string battleScene, GameObject enemy)
     {
-        if (!_goToBattle)
+        if (!SceneData.isInBattle)
         {
-            _goToBattle = true;
-            _battleScene = battleScene;
+            SceneData.isInBattle = true;
+            SceneData.shouldStop = true;
+            SceneData.mainScene = "ForestMain";
             SceneData.enemyNotInBattleList.Remove(enemy);
-            SceneData.enemyInBattleList.Add(enemy);
+            SceneData.enemyInBattle= enemy;
+            SceneManager.LoadScene(battleScene);
         }
     }
 
@@ -76,13 +74,6 @@ public class GameManager : MonoBehaviour
     {
         while(!GameEnd())
         {
-            if (_goToBattle)
-            {
-                SceneData.isInBattle = true;
-                SceneData.mainScene = "ForestMain";
-                SceneManager.LoadScene(_battleScene);
-            }
-
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }

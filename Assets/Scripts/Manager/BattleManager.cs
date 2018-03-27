@@ -38,6 +38,8 @@ public class BattleManager : MonoBehaviour
     private bool _turnStarted;
     private bool _attackExecuted;
     private bool _canAIAttack = false;
+    private int _xpEarned = 0;
+    private int _goldEarned = 0;
 
     // Enemies variables.
     private int _enemyPlayerIndex = -1;
@@ -53,7 +55,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         // Sets the scene as being in a battle.
-        SceneData.isInBattle = true;
+        SceneData.shouldStop = true;
 
         // Spawn all the players and enemies in the previous scene.
         SpawnPlayers();
@@ -69,6 +71,13 @@ public class BattleManager : MonoBehaviour
         // Initializes the last selection time.
         _lastSwapTime = Time.time;
         _lastAttackTime = Time.time;
+
+        // Level up the enemy if its level is under the player's level.
+        IEnemyController enemyController = _enemies[_selectedEnemyIndex].GetEnemyControllerComponent();
+        if (enemyController.GetCurrentLevel() < _mageController.GetCurrentLevel())
+        {
+            enemyController.LevelUp();
+        }
 
         StartCoroutine(BattleLoop());
     }
@@ -192,16 +201,24 @@ public class BattleManager : MonoBehaviour
             // Restores the old positions for all players.
             RestorePlayersPositions();
 
-            // Destroys all the enemies that entered the battle.
-            foreach (GameObject enemy in SceneData.enemyInBattleList)
-            {
-                Destroy(enemy);
-            }
+            // Setup the dropped items.
+            SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
+            SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
+            SceneData.dropStaminaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropManaPot;
+            SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
+
+            // Destroy the enemy.
+            Destroy(SceneData.enemyInBattle);
+
+            // Sets up the players amount earned.
+            _mageController.IncreaseGold(_goldEarned);
+            _mageController.IncreaseXp(_xpEarned);
+            _mage.transform.localScale /= SCALE_FACTOR;
 
             // Restores the calling scene.
-            SceneData.enemyInBattleList.Clear();
-            SceneData.isInBattle = false;
+            SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
+            SceneData.isInBattle = false;
             SceneManager.LoadScene(SceneData.mainScene);
         }
         else
@@ -326,14 +343,21 @@ public class BattleManager : MonoBehaviour
                         {
                             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
-                            enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
+                            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+                            int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
+                            enemyController.DecreaseHealthHUD(attackPower);
                             hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
 
                             if (!enemyController.IsAlive())
                             {
                                 SwapEnemyUp(_enemies.Length - 1);
-                                enemyController.GetSelectionLight().intensity = 30f;
-                                selectedEnemy.SetActive(false);
+                                UpdateBattleEarnings(enemyController);
+                                enemyController.GetSelectionLight().intensity = 8f;
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+                            }
+                            else
+                            {
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
                             }
 
                             _attackExecuted = true;
@@ -358,9 +382,19 @@ public class BattleManager : MonoBehaviour
                         selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
                     }
 
+                    _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
                     hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
                     _lastAttackTime = Time.time;
                     _canAIAttack = false;
+                    IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
+                    if (!playerController.IsAlive())
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+                    }
+                    else
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
+                    }
                 }
             }
         }
@@ -448,21 +482,18 @@ public class BattleManager : MonoBehaviour
     {
         List<GameObject> enemies = new List<GameObject>();
 
-        foreach (GameObject enemy in SceneData.enemyInBattleList)
+        if (SceneData.enemyInBattle.IsWolf())
         {
-            if (enemy.IsWolf())
-            {
-                WolfController controller = enemy.GetEnemyControllerComponent() as WolfController;
-                int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
+            WolfController controller = SceneData.enemyInBattle.GetEnemyControllerComponent() as WolfController;
+            int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
 
-                for (int i = 0; i < enemiesInBattle; i++)
-                {
-                    GameObject instantiatedEnemy = Instantiate(enemy, enemySpawnPoints[i], Quaternion.identity);
-                    instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
-                    instantiatedEnemy.name = enemy.name;
-                    instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
-                    enemies.Add(instantiatedEnemy);
-                }
+            for (int i = 0; i < enemiesInBattle; i++)
+            {
+                GameObject instantiatedEnemy = Instantiate(SceneData.enemyInBattle, enemySpawnPoints[i], Quaternion.identity);
+                instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
+                instantiatedEnemy.name = SceneData.enemyInBattle.name;
+                instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
+                enemies.Add(instantiatedEnemy);
             }
         }
 
@@ -480,8 +511,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void InactivateActorsFromPreviousScene()
     {
-        foreach (GameObject o in SceneData.enemyInBattleList)
-            o.SetActive(false);
+        SceneData.enemyInBattle.SetActive(false);
 
         foreach (GameObject o in SceneData.enemyNotInBattleList)
             o.SetActive(false);
@@ -525,5 +555,15 @@ public class BattleManager : MonoBehaviour
                 _lastSwapTime = Time.time;
             }
         }
+    }
+
+    /// <summary>
+    /// Updates the earnings ammount for the given battle.
+    /// </summary>
+    /// <param name="enemyController">The controller to calculate the earnings.</param>
+    private void UpdateBattleEarnings(IEnemyController enemyController)
+    {
+        _xpEarned += enemyController.GetXpEarnedForKilling();
+        _goldEarned += enemyController.GetGoldEarnedForKilling();
     }
 }

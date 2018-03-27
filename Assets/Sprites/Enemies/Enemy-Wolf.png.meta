@@ -26,6 +26,18 @@ TextureImporter:
     21300038: Enemy-Wolf_StandFront_00
     21300040: Enemy-Wolf_StandRight_00
     21300042: Enemy-Wolf_StandLeft_00
+    21300044: Enemy-Wolf_Damage_00
+    21300046: Enemy-Wolf_Damage_01
+    21300048: Enemy-Wolf_Damage_02
+    21300050: Enemy-Wolf_Damage_03
+    21300052: Enemy-Wolf_Death_00
+    21300054: Enemy-Wolf_Death_01
+    21300056: Enemy-Wolf_Death_02
+    21300058: Enemy-Wolf_Attack_00
+    21300060: Enemy-Wolf_Attack_01
+    21300062: Enemy-Wolf_Attack_02
+    21300064: Enemy-Wolf_Attack_03
+    21300066: Enemy-Wolf_Attack_04
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -392,7 +404,7 @@ TextureImporter:
         width: 23
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -406,7 +418,7 @@ TextureImporter:
         width: 23
         height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -420,7 +432,7 @@ TextureImporter:
         width: 63
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -431,6 +443,174 @@ TextureImporter:
         serializedVersion: 2
         x: 320
         y: 160
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Damage_00
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 117
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Damage_01
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 117
+        width: 64
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Damage_02
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 117
+        width: 63
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Damage_03
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 117
+        width: 61
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Death_00
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 160
+        width: 65
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Death_01
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 160
+        width: 61
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Death_02
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 160
+        width: 60
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Attack_00
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 63
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Attack_01
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 60
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Attack_02
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 0
+        width: 64
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Attack_03
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 0
+        width: 65
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Enemy-Wolf_Attack_04
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 0
         width: 63
         height: 31
       alignment: 0
