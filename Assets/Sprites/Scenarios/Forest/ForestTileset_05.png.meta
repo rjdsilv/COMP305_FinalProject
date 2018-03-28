@@ -5,7 +5,7 @@ licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: ForestTileset_05_0
-    21300002: ForestTileset_05_1
+    21300002: FIshBarrel
     21300004: ForestTileset_05_2
     21300006: ForestTileset_05_3
     21300008: ForestTileset_05_4
@@ -13,10 +13,10 @@ TextureImporter:
     21300012: ForestTileset_05_6
     21300014: ForestTileset_05_7
     21300016: ForestTileset_05_8
-    21300018: ForestTileset_05_9
+    21300018: ForestMiddleClassHouse_04
     21300020: ForestTileset_05_10
     21300022: ForestTileset_05_11
-    21300024: ForestTileset_05_12
+    21300024: ForestMiddleClassHouse_05
     21300026: ForestTileset_05_13
     21300028: ForestTileset_05_14
     21300030: ForestTileset_05_15
@@ -249,6 +249,17 @@ TextureImporter:
     21300484: ForestTileset_05_242
     21300486: ForestTileset_05_243
     21300488: ForestTileset_05_244
+    21300490: ForestLightOff_01
+    21300492: ForestLightOn_01
+    21300494: ForestHorseWater
+    21300496: ForestHorseFood
+    21300498: ForestPathSign_01
+    21300500: ForestPathSign_02
+    21300502: ForestWell
+    21300504: ProductSack
+    21300506: SimpleBarrel
+    21300508: HorseCart
+    21300510: ForestSmallWashRoom
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -349,20 +360,6 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ForestTileset_05_1
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 723
-        width: 96
-        height: 44
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: ForestTileset_05_2
       rect:
         serializedVersion: 2
@@ -370,20 +367,6 @@ TextureImporter:
         y: 384
         width: 159
         height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ForestTileset_05_3
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 720
-        width: 96
-        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,27 +388,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ForestTileset_05_5
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 720
-        width: 96
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: ForestTileset_05_6
       rect:
         serializedVersion: 2
         x: 588
-        y: 240
-        width: 162
-        height: 508
+        y: 384
+        width: 160
+        height: 364
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -433,55 +402,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ForestTileset_05_7
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 721
-        width: 48
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ForestTileset_05_8
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 288
-        width: 44
-        height: 93
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ForestTileset_05_9
+      name: ForestMiddleClassHouse_04
       rect:
         serializedVersion: 2
         x: 5
-        y: 0
-        width: 283
-        height: 362
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: ForestTileset_05_10
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 480
-        height: 351
+        y: 48
+        width: 257
+        height: 313
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -503,13 +430,181 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ForestTileset_05_12
+      name: ForestMiddleClassHouse_05
       rect:
         serializedVersion: 2
-        x: 323
-        y: 193
-        width: 265
-        height: 156
+        x: 324
+        y: 192
+        width: 263
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestLightOff_01
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 48
+        width: 48
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestLightOn_01
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 144
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestHorseWater
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 144
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestHorseFood
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 96
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestPathSign_01
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestPathSign_02
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 97
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestWell
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 96
+        width: 48
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: FIshBarrel
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ProductSack
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 0
+        width: 42
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: SimpleBarrel
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 48
+        width: 44
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HorseCart
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 9
+        width: 85
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ForestSmallWashRoom
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 96
+        width: 48
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
