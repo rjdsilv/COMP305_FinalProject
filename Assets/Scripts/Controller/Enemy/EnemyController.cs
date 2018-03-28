@@ -16,8 +16,10 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
     public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
+    public AudioClip[] audioClips;
 
     // Protected variable declaration.
+    protected int _clipToPlay = 0;
     protected GameManager _gameManager;           // The game manager script to be used.
     protected EnemyVisionAI _enemyVisionAI;       // The enemy vision AI script to be used.
 
@@ -43,6 +45,11 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
             }
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// ABSTRACT METHODS
+
+    public abstract void PlayDamageSound();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS

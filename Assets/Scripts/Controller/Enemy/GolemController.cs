@@ -38,4 +38,9 @@ public class GolemController : EnemyController<GolemAttributes, GolemLevelTree>
         stonePunch = stonePunchLevelTree.GetAttributesForCurrentLevel();
         _abilityList.Add(stonePunch);
     }
+
+    public override void PlayDamageSound()
+    {
+        throw new System.NotImplementedException();
+    }
 }

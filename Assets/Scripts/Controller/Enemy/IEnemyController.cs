@@ -58,4 +58,6 @@ public interface IEnemyController : IController
     /// </summary>
     /// <returns><b>true</b> if a stamina pot is dropped/ <b>false</b> otherwise.</returns>
     bool DropStaminaPot();
+
+    void PlayDamageSound();
 }

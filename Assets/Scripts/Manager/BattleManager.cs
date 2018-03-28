@@ -345,6 +345,7 @@ public class BattleManager : MonoBehaviour
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
                             _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
                             int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
+                            enemyController.PlayDamageSound();
                             enemyController.DecreaseHealthHUD(attackPower);
                             hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
 
