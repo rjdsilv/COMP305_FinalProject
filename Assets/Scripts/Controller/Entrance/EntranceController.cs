@@ -39,7 +39,6 @@ public abstract class EntranceController : MonoBehaviour
         {
             _dialogPanel = new DialogPanel();
         }
-
         _dialogPanel.Load(Enter, DoNotEnter);
     }
 }

@@ -18,16 +18,16 @@ public class TempleEntranceController : EntranceController
     /// </summary>
     private void Update()
     {
-        LoadDialogPanel();
         _collisionObject = Physics2D.OverlapCircle(transform.position, entranceCheckRadius, entranceMask);
         if (null != _collisionObject)
         {
             if (!_showingText && TagUtils.IsTemple(_collisionObject.transform))
             {
                 // Shows the dialog panel.
+                LoadDialogPanel();
                 _showingText = true;
                 SceneData.shouldStop = true;
-                _dialogPanel.DisplayMessage(_dialogText, true);
+                _dialogPanel.DisplayMessage(_dialogText, new bool[] { true, true });
             }
         }
         else

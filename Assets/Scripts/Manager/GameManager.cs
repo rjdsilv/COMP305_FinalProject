@@ -10,11 +10,16 @@ public class GameManager : MonoBehaviour
     // Public variable declaration.
     public GameObject[] players;        // The players to be instantiated.
 
+    // Private variable declaration.
+    private TutorialController _tutorialController;
+
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
     {
+        _tutorialController = GetComponent<TutorialController>();
+
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -72,6 +77,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator GameLoop()
     {
+        ShowTutorial();
         while(!GameEnd())
         {
             yield return new WaitForSeconds(Time.deltaTime);
@@ -85,5 +91,21 @@ public class GameManager : MonoBehaviour
     private bool GameEnd()
     {
         return false;
+    }
+
+    /// <summary>
+    /// Shows the tutorial for the game.
+    /// </summary>
+    private void ShowTutorial()
+    {
+        if (SceneData.showTutorial)
+        {
+            _tutorialController.ShowTutorial();
+            SceneData.showTutorial = false;
+        }
+        else
+        {
+            _tutorialController.HideTutorial();
+        }
     }
 }
