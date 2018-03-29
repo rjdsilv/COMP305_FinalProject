@@ -17,7 +17,7 @@ public class WolfController : EnemyController<WolfAttributes, WolfLevelTree>
     /// </summary>
     private void OnEnable()
     {
-        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        SetGameManager();
         _audioSource = GetComponent<AudioSource>();
     }
 

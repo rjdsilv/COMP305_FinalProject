@@ -189,4 +189,12 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     {
         return GetHUDCanvas().GetComponent<RectTransform>().GetChild(1).GetComponent<Text>();
     }
+
+    /// <summary>
+    /// Sets the game manager to be used.
+    /// </summary>
+    protected void SetGameManager()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
 }

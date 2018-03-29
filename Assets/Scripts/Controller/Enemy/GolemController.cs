@@ -15,7 +15,7 @@ public class GolemController : EnemyController<GolemAttributes, GolemLevelTree>
     /// </summary>
     private void OnEnable()
     {
-        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        SetGameManager();
     }
 
     /// <summary>
@@ -41,6 +41,5 @@ public class GolemController : EnemyController<GolemAttributes, GolemLevelTree>
 
     public override void PlayDamageSound()
     {
-        throw new System.NotImplementedException();
     }
 }

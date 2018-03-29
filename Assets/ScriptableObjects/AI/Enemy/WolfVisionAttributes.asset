@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: WolfVisionAttributes
   m_EditorClassIdentifier: 
   viewDistance: 2
-  viewingAngle: 35
+  viewingAngle: 45
