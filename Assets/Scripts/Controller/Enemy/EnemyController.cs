@@ -85,19 +85,19 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public bool DropHealthPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
     }
 
     /// <see cref="IEnemyController"/>    
     public bool DropManaPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
     }
 
     /// <see cref="IEnemyController"/>
     public bool DropStaminaPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
     }
 
     /// <see cref="IEnemyController"/>
