@@ -58,14 +58,17 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Sets the state of the game in order to go to the battle scene.
+    /// <param name="battleScene">The battle scene to be loaded.</param>
+    /// <param name="mainScene">The main scene to be loaded after the battle.</param>
+    /// <param name="enemy">The enemy to be put on the battle.</param>
     /// </summary>
-    public void GoToBattle(string battleScene, GameObject enemy)
+    public void GoToBattle(string battleScene, string mainScene, GameObject enemy)
     {
         if (!SceneData.isInBattle)
         {
             SceneData.isInBattle = true;
             SceneData.shouldStop = true;
-            SceneData.mainScene = "ForestMain";
+            SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
             SceneData.enemyInBattle= enemy;
             SceneManager.LoadScene(battleScene);

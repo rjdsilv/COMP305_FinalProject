@@ -94,16 +94,19 @@ public static class ActorUtils
         {
             actor.GetComponent<WolfController>().SectorName = attributes.sectorName;
             actor.GetComponent<WolfController>().BattleScene = attributes.battleScene;
+            actor.GetComponent<WolfController>().MainScene = attributes.originalScene;
         }
         else if (actor.IsGolem())
         {
             actor.GetComponent<GolemController>().SectorName = attributes.sectorName;
             actor.GetComponent<GolemController>().BattleScene = attributes.battleScene;
+            actor.GetComponent<GolemController>().MainScene = attributes.originalScene;
         }
         else if (actor.IsOrc())
         {
             actor.GetComponent<OrcController>().SectorName = attributes.sectorName;
             actor.GetComponent<OrcController>().BattleScene = attributes.battleScene;
+            actor.GetComponent<OrcController>().MainScene = attributes.originalScene;
         }
     }
 

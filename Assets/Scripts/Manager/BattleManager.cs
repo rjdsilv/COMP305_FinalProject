@@ -259,6 +259,7 @@ public class BattleManager : MonoBehaviour
     private void RestorePlayersPositions()
     {
         _mage.transform.position = _mageOldPos;
+        Camera.main.transform.position = _mageOldPos;
     }
 
     /// <summary>

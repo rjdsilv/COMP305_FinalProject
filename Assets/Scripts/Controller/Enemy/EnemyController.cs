@@ -29,6 +29,9 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     // The battle scene to be loaded.
     public string BattleScene { get; set; }
 
+    // The main scene to be loaded.
+    public string MainScene { get; set; }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// EVENT METHODS
 
@@ -41,7 +44,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         {
             if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
-                _gameManager.GoToBattle(BattleScene, gameObject);
+                _gameManager.GoToBattle(BattleScene, MainScene, gameObject);
             }
         }
     }

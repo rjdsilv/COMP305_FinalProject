@@ -245,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 1084936185920738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 2.5}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 3.75}
   m_Children:
   - {fileID: 4036170135693008}
   - {fileID: 4275498670213574}
@@ -535,6 +535,7 @@ MonoBehaviour:
   levelTree: {fileID: 11400000, guid: 326807501614cce48a40ba48bc2d6371, type: 2}
   minEnemiesInBattle: 1
   maxEnemiesInBattle: 1
+  audioClips: []
   stonePunch: {fileID: 0}
   stonePunchLevelTree: {fileID: 11400000, guid: c88ad574c4aac774ab9c829b3f80ae74,
     type: 2}

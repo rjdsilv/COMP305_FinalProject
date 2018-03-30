@@ -7,6 +7,9 @@ public class TempleEntranceController : EntranceController
     private string _dialogText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
         "Are you sure you want to enter the temple and die?";
 
+    // Public variable declaration.
+    public Vector3 templeSpawnPoint;
+
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
     /// <ul>
@@ -53,7 +56,7 @@ public class TempleEntranceController : EntranceController
         SceneData.DestroyAllEnemiesInScene();
         foreach (GameObject player in SceneData.playerList)
         {
-            player.transform.position = Vector3.zero;
+            player.transform.position = templeSpawnPoint;
         }
         SceneManager.LoadScene("Temple1stFloor");
     }
