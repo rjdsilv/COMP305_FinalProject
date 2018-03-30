@@ -98,10 +98,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void ShowTutorial()
     {
-        if (SceneData.showTutorial)
+        if (SceneData.showGameTutorial)
         {
             _tutorialController.ShowTutorial();
-            SceneData.showTutorial = false;
+            SceneData.showGameTutorial = false;
         }
         else
         {

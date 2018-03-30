@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +23,7 @@ public class BattleManager : MonoBehaviour
 
     // Private variable declaration.
     private PlayerAbility _selectedAbility;
+    private TutorialController _tutorialController;
 
     // Mage variables.
     private Vector3 _mageOldPos;
@@ -38,6 +38,7 @@ public class BattleManager : MonoBehaviour
     private bool _turnStarted;
     private bool _attackExecuted;
     private bool _canAIAttack = false;
+    private bool _isShowingTutorial = false;
     private int _xpEarned = 0;
     private int _goldEarned = 0;
 
@@ -54,6 +55,9 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        _tutorialController = GetComponent<TutorialController>();
+        ShowTutorial();
+
         // Sets the scene as being in a battle.
         SceneData.shouldStop = true;
 
@@ -87,11 +91,21 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (_turnStarted && !IsBattleEnded())
+        if (_isShowingTutorial)
         {
-            SwapAbility();
-            SwapEnemy();
-            Attack();
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                _isShowingTutorial = false;
+            }
+        }
+        else
+        {
+            if (_turnStarted && !IsBattleEnded())
+            {
+                SwapAbility();
+                SwapEnemy();
+                Attack();
+            }
         }
     }
 
@@ -170,21 +184,24 @@ public class BattleManager : MonoBehaviour
         while (!IsTurnEnded() && !IsBattleEnded())
         {
             yield return new WaitForSecondsRealtime(turnTimeDecreaseRate);
-            _turnRemainingTime -= turnTimeDecreaseRate;
-            hudManager.UpdateTurnTimer(_turnRemainingTime);
-
-            if (autoRecoverConsumable)
+            if (!_isShowingTutorial)
             {
-                foreach (GameObject player in SceneData.playerList)
+                _turnRemainingTime -= turnTimeDecreaseRate;
+                hudManager.UpdateTurnTimer(_turnRemainingTime);
+
+                if (autoRecoverConsumable)
                 {
-                    player.GetPlayerControllerComponent().IncreaseConsumable(turnTimeDecreaseRate / 2);
-                    hudManager.UpdateConsumableHUD(player, turnTimeDecreaseRate / 2, false);
+                    foreach (GameObject player in SceneData.playerList)
+                    {
+                        player.GetPlayerControllerComponent().IncreaseConsumable(turnTimeDecreaseRate / 2);
+                        hudManager.UpdateConsumableHUD(player, turnTimeDecreaseRate / 2, false);
+                    }
                 }
-            }
 
-            if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
-            {
-                _canAIAttack = true;
+                if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
+                {
+                    _canAIAttack = true;
+                }
             }
         }
     }
@@ -576,5 +593,22 @@ public class BattleManager : MonoBehaviour
     {
         _xpEarned += enemyController.GetXpEarnedForKilling();
         _goldEarned += enemyController.GetGoldEarnedForKilling();
+    }
+
+    /// <summary>
+    /// Shows the tutorial for the game.
+    /// </summary>
+    private void ShowTutorial()
+    {
+        if (SceneData.showBattleTutorial)
+        {
+            _tutorialController.ShowTutorial();
+            SceneData.showBattleTutorial = false;
+            _isShowingTutorial = true;
+        }
+        else
+        {
+            _tutorialController.HideTutorial();
+        }
     }
 }

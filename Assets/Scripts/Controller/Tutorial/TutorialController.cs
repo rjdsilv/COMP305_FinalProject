@@ -5,8 +5,12 @@
 /// </summary>
 public class TutorialController : MonoBehaviour
 {
-    private string _dialogText = "Welcome to The Shrine of Ethernal Destinies. Use the keyboard's " +
+    private string _gameTutorialText = "Welcome to The Shrine of Ethernal Destinies. Use the keyboard's " +
         "left, right, up, and down arrow keys to move you character.\n\nPress ESC when you are ready to begin.";
+
+    private string _battleTutorialText = "To battle, select the enemy to attack using the up and down arrow keys. Then, " +
+        "choose the ability to use using the left and right arrow keys. To attack, press the space bar." +
+        "\n\nPress ESC when you are ready to begin.";
 
     public GameObject dialogPanel;
 
@@ -36,7 +40,7 @@ public class TutorialController : MonoBehaviour
     {
         LoadDialogPanel();
         _dialogPanel.Hide();
-        SceneData.shouldStop = false;
+        SceneData.shouldStop = SceneData.isInBattle;
     }
 
     /// <summary>
@@ -58,6 +62,14 @@ public class TutorialController : MonoBehaviour
     {
         // Shows the dialog panel.
         SceneData.shouldStop = true;
-        _dialogPanel.DisplayMessage(_dialogText, new bool[] { false, false });
+
+        if (!SceneData.isInBattle)
+        {
+            _dialogPanel.DisplayMessage(_gameTutorialText, new bool[] { false, false });
+        }
+        else
+        {
+            _dialogPanel.DisplayMessage(_battleTutorialText, new bool[] { false, false });
+        }
     }
 }
