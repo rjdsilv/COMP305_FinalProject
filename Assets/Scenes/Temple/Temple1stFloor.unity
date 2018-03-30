@@ -5126,11 +5126,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4789029899298972, guid: 021d8d9f59c9eb2449d2b94d6dff8b9e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -82.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4789029899298972, guid: 021d8d9f59c9eb2449d2b94d6dff8b9e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4789029899298972, guid: 021d8d9f59c9eb2449d2b94d6dff8b9e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5330,7 +5330,7 @@ Prefab:
     - target: {fileID: 224876818942330350, guid: d5552466cf359c0418a04a2631284197,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224876818942330350, guid: d5552466cf359c0418a04a2631284197,
         type: 2}
@@ -37657,6 +37657,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.enemyAttributes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4575289707984608, guid: 842d3f8baca27994cb0561faa242ff03, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -37687,7 +37692,61 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4575289707984608, guid: 842d3f8baca27994cb0561faa242ff03, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: healthPot
+      value: 
+      objectReference: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194,
+        type: 2}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: manaPot
+      value: 
+      objectReference: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f,
+        type: 2}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: staminaPot
+      value: 
+      objectReference: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91,
+        type: 2}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.sectorName
+      value: TempleSector_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.battleScene
+      value: TempleBattle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.originalScene
+      value: Temple1stFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.spawnEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.enemyAttributes.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 1482187684518922, guid: e4396f18b8cc75d4ca8503caaf8409a3,
+        type: 2}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.enemyAttributes.Array.data[0].spawnNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114477152993944258, guid: 842d3f8baca27994cb0561faa242ff03,
+        type: 2}
+      propertyPath: attributes.enemyAttributes.Array.data[0].spawnRadius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 842d3f8baca27994cb0561faa242ff03, type: 2}

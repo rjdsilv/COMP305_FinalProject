@@ -8,13 +8,13 @@ using UnityEngine.Events;
 public class DialogPanel
 {
     public static GameObject dialogPanel;
+    public static Button[] dialogPanelButtons;
 
     // Constant declaration.
     private const int YES_IDX = 0;
     private const int NO_IDX = 1;
 
     // Private variable declaration.
-    private Button[] _dialogPanelButtons;
     private Text _dialogText;
 
     public DialogPanel()
@@ -24,6 +24,7 @@ public class DialogPanel
     public DialogPanel(GameObject dialogPanel)
     {
         DialogPanel.dialogPanel = dialogPanel;
+        dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
     }
 
     /// <summary>
@@ -33,16 +34,15 @@ public class DialogPanel
     {
         dialogPanel.SetActive(true);
         _dialogText = dialogPanel.GetComponentInChildren<Text>();
-        _dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
 
         if (null != yesCall)
         {
-            _dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
+            dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
         }
 
         if (null != noCall)
         {
-            _dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
+            dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
         }
     }
 
@@ -64,9 +64,9 @@ public class DialogPanel
         dialogPanel.SetActive(true);
         _dialogText.text = message;
 
-        for (int i = 0; i < _dialogPanelButtons.Length; i++)
+        for (int i = 0; i < dialogPanelButtons.Length; i++)
         {
-            _dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
+            dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
         }
     }
 }

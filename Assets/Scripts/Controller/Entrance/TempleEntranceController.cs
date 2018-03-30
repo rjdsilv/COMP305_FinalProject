@@ -51,6 +51,10 @@ public class TempleEntranceController : EntranceController
     {
         HideDialogPanelAndWalk();
         SceneData.DestroyAllEnemiesInScene();
+        foreach (GameObject player in SceneData.playerList)
+        {
+            player.transform.position = Vector3.zero;
+        }
         SceneManager.LoadScene("Temple1stFloor");
     }
 
