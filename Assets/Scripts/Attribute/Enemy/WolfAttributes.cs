@@ -1,8 +1,7 @@
 ﻿using System;
-using UnityEngine;
 
 /// <summary>
-/// Attributes common for all the enemies in the game
+/// Attributes common for all the wolves in the game
 /// </summary>
 [Serializable]
 public class WolfAttributes : EnemyAttributes

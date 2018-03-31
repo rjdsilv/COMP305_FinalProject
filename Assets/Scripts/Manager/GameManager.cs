@@ -11,15 +11,23 @@ public class GameManager : MonoBehaviour
     public GameObject[] players;        // The players to be instantiated.
 
     // Private variable declaration.
-    private bool _goToBattle;           // The scene should change to the battle scene.
-    private string _battleScene = "";   // The battle scene that must be loaded.
+    private TutorialController _tutorialController;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoaded;
+    }
 
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
     {
-        _goToBattle = false;
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -30,12 +38,24 @@ public class GameManager : MonoBehaviour
                     players[i] = Instantiate(players[i]);
                     players[i].name = name;
                     DontDestroyOnLoad(players[i]);
+                    DontDestroyOnLoad(this);
                     SceneData.SavePlayer(players[i]);
                 }
             }
         }
-        else
+
+        if (!SceneData.gameStarted)
         {
+            SceneData.gameStarted = true;
+            StartCoroutine(GameLoop());
+        }
+	}
+
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!SceneData.isInBattle)
+        {
+            ShowHideTutorial();
             if (null == players)
             {
                 players = new GameObject[SceneData.playerList.Count];
@@ -51,21 +71,24 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        StartCoroutine(GameLoop());
-	}
+    }
 
     /// <summary>
     /// Sets the state of the game in order to go to the battle scene.
+    /// <param name="battleScene">The battle scene to be loaded.</param>
+    /// <param name="mainScene">The main scene to be loaded after the battle.</param>
+    /// <param name="enemy">The enemy to be put on the battle.</param>
     /// </summary>
-    public void GoToBattle(string battleScene, GameObject enemy)
+    public void GoToBattle(string battleScene, string mainScene, GameObject enemy)
     {
-        if (!_goToBattle)
+        if (!SceneData.isInBattle)
         {
-            _goToBattle = true;
-            _battleScene = battleScene;
+            SceneData.isInBattle = true;
+            SceneData.shouldStop = true;
+            SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
-            SceneData.enemyInBattleList.Add(enemy);
+            SceneData.enemyInBattle = enemy;
+            SceneManager.LoadScene(battleScene);
         }
     }
 
@@ -76,13 +99,6 @@ public class GameManager : MonoBehaviour
     {
         while(!GameEnd())
         {
-            if (_goToBattle)
-            {
-                SceneData.isInBattle = true;
-                SceneData.mainScene = "ForestMain";
-                SceneManager.LoadScene(_battleScene);
-            }
-
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -94,5 +110,26 @@ public class GameManager : MonoBehaviour
     private bool GameEnd()
     {
         return false;
+    }
+
+    /// <summary>
+    /// Shows the tutorial for the game.
+    /// </summary>
+    private void ShowHideTutorial()
+    {
+        if (null == _tutorialController)
+        {
+            _tutorialController = GetComponent<TutorialController>();
+        }
+ 
+        if (SceneData.showGameTutorial)
+        {
+            _tutorialController.ShowTutorial();
+            SceneData.showGameTutorial = false;
+        }
+        else
+        {
+            _tutorialController.HideTutorial();
+        }
     }
 }

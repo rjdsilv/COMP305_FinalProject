@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: LightningBall_Lv01
   m_EditorClassIdentifier: 
   level: 1
-  minPower: 18
-  maxPower: 25
+  minPower: 25
+  maxPower: 35
   consumableType: 1
-  consumptionValue: 6
+  consumptionValue: 12

@@ -24,7 +24,7 @@ public class EnemyMovement : ActorMovement
         _animator = GetComponent<Animator>();
         _visionAI = GetComponent<EnemyVisionAI>();
         _secondsInSameDirection = Random.Range(randomWalkAttributes.minTimeSameDir, randomWalkAttributes.maxTimeSameDir);
-        movement.faceDirection = SceneData.isInBattle ? FaceDirection.LEFT : Mathf.FloorToInt(Random.Range(0, 3.9999999999f));
+        movement.faceDirection = SceneData.shouldStop ? FaceDirection.LEFT : Mathf.FloorToInt(Random.Range(0, 3.9999999999f));
         _movementVector = GetDirectionVector();
     }
 
@@ -45,7 +45,7 @@ public class EnemyMovement : ActorMovement
             TurnDueToTimeFrame();
         }
 
-        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, SceneData.isInBattle);
+        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, SceneData.shouldStop);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

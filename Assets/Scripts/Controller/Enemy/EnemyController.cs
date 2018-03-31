@@ -16,8 +16,10 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
     public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
+    public AudioClip[] audioClips;
 
     // Protected variable declaration.
+    protected int _clipToPlay = 0;
     protected GameManager _gameManager;           // The game manager script to be used.
     protected EnemyVisionAI _enemyVisionAI;       // The enemy vision AI script to be used.
 
@@ -26,6 +28,9 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
 
     // The battle scene to be loaded.
     public string BattleScene { get; set; }
+
+    // The main scene to be loaded.
+    public string MainScene { get; set; }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// EVENT METHODS
@@ -37,12 +42,17 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     {
         if (null != _gameManager)
         {
-            if (_enemyVisionAI.IsSeeingPlayer())
+            if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
-                _gameManager.GoToBattle(BattleScene, gameObject);
+                _gameManager.GoToBattle(BattleScene, MainScene, gameObject);
             }
         }
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// ABSTRACT METHODS
+
+    public abstract void PlayDamageSound();
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
@@ -56,7 +66,80 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public void DecreaseHealthHUD(int amount)
     {
+        GetHUDHealthText().text = "-" + amount.ToString();
         GetHUDHealthSlider().value -= amount;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public int GetXpEarnedForKilling()
+    {
+        return attributes.xpForKilling;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public int GetGoldEarnedForKilling()
+    {
+        return Mathf.FloorToInt(Random.Range(attributes.minGoldForKilling, attributes.maxGoldForKilling + 0.99999f));
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public bool DropHealthPot()
+    {
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>    
+    public bool DropManaPot()
+    {
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public bool DropStaminaPot()
+    {
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMinEnemiesInBattle()
+    {
+        return minEnemiesInBattle;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMaxEnemiesInBattle()
+    {
+        return maxEnemiesInBattle;
+    }
+
+    /// <see cref="IController"/>
+    public override void LevelUp()
+    {
+        if (levelTree.CanLevelUp())
+        {
+            levelTree.IncreaseLevel();
+            SetAttributesForCurrentLevel();
+        }
+    }
+
+
+    /// <see cref="ActorController{A, L}"/>
+    protected override void SetAttributesForCurrentLevel()
+    {
+        // Initializes its attributes.
+        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
+        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
+        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
+        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        attributes.health = levelTree.GetAttributesForCurrentLevel().health;
+        attributes.level = levelTree.GetAttributesForCurrentLevel().level;
+        attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
+        attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
+        attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
+        attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+        attributes.managedByAI = true;
     }
 
     /// <summary>
@@ -70,19 +153,14 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         _enemyVisionAI = GetComponent<EnemyVisionAI>();
 
         // Initializes the attributes.
-        attributes.xpForKilling = levelTree.GetAttributesForCurrentLevel().xpForKilling;
-        attributes.minGoldForKilling = levelTree.GetAttributesForCurrentLevel().minGoldForKilling;
-        attributes.maxGoldForKilling = levelTree.GetAttributesForCurrentLevel().maxGoldForKilling;
-        attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
-        attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
-        attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        SetAttributesForCurrentLevel();
 
         // Initializes the HUD.
         GetHUDCanvas().enabled = true;
         GetHUDHealthSlider().maxValue = levelTree.GetAttributesForCurrentLevel().health;
         GetHUDHealthSlider().value = attributes.health;
 
-        if (!SceneData.isInBattle)
+        if (!SceneData.shouldStop)
         {
             GetHUDCanvas().enabled = false;
         }
@@ -104,5 +182,22 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     protected Slider GetHUDHealthSlider()
     {
         return GetHUDCanvas().GetComponent<RectTransform>().GetChild(0).GetComponent<Slider>();
+    }
+
+    /// <summary>
+    /// Returns the enemy HUD canvas health text to be used.
+    /// </summary>
+    /// <returns>The enemy HUD canvas health text to be used.</returns>
+    protected Text GetHUDHealthText()
+    {
+        return GetHUDCanvas().GetComponent<RectTransform>().GetChild(1).GetComponent<Text>();
+    }
+
+    /// <summary>
+    /// Sets the game manager to be used.
+    /// </summary>
+    protected void SetGameManager()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 }
