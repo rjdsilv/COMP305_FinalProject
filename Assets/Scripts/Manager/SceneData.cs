@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public static class SceneData
 {
+    public static bool gameStarted = false;
     public static bool shouldStop = false;                                            // Flag indicating if should stop all the scene movement.
     public static bool isInBattle = false;                                            // Flag indicating if we are already in battle.
     public static bool isCommingBackFronBattle = false;                               // Flag indicating if the player is comming back from a batlle.

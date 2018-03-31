@@ -7,8 +7,9 @@ using UnityEngine.Events;
 /// </summary>
 public class DialogPanel
 {
-    public static GameObject dialogPanel;
-    public static Button[] dialogPanelButtons;
+    private static Button[] _dialogPanelButtons;
+
+    private static GameObject _dialogPanel;
 
     // Constant declaration.
     private const int YES_IDX = 0;
@@ -23,8 +24,8 @@ public class DialogPanel
 
     public DialogPanel(GameObject dialogPanel)
     {
-        DialogPanel.dialogPanel = dialogPanel;
-        dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
+        _dialogPanel = dialogPanel;
+        _dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
     }
 
     /// <summary>
@@ -32,17 +33,17 @@ public class DialogPanel
     /// </summary>
     public void Load(UnityAction yesCall, UnityAction noCall)
     {
-        dialogPanel.SetActive(true);
-        _dialogText = dialogPanel.GetComponentInChildren<Text>();
+        _dialogPanel.SetActive(true);
+        _dialogText = _dialogPanel.GetComponentInChildren<Text>();
 
         if (null != yesCall)
         {
-            dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
+            _dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
         }
 
         if (null != noCall)
         {
-            dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
+            _dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
         }
     }
 
@@ -51,7 +52,10 @@ public class DialogPanel
     /// </summary>
     public void Hide()
     {
-        dialogPanel.SetActive(false);
+        if (null != _dialogPanel)
+        {
+            _dialogPanel.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -61,12 +65,12 @@ public class DialogPanel
     /// <param name="showButtons">The flag indicating if the buttons should be shown or not.</param>
     public void DisplayMessage(string message, bool[] showButtons)
     {
-        dialogPanel.SetActive(true);
+        _dialogPanel.SetActive(true);
         _dialogText.text = message;
 
-        for (int i = 0; i < dialogPanelButtons.Length; i++)
+        for (int i = 0; i < _dialogPanelButtons.Length; i++)
         {
-            dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
+            _dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
         }
     }
 }

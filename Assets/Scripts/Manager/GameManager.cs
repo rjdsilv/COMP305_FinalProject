@@ -13,13 +13,21 @@ public class GameManager : MonoBehaviour
     // Private variable declaration.
     private TutorialController _tutorialController;
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoaded;
+    }
+
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
     {
-        _tutorialController = GetComponent<TutorialController>();
-
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -35,8 +43,19 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        else
+
+        if (!SceneData.gameStarted)
         {
+            SceneData.gameStarted = true;
+            StartCoroutine(GameLoop());
+        }
+	}
+
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!SceneData.isInBattle)
+        {
+            ShowHideTutorial();
             if (null == players)
             {
                 players = new GameObject[SceneData.playerList.Count];
@@ -52,9 +71,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        StartCoroutine(GameLoop());
-	}
+    }
 
     /// <summary>
     /// Sets the state of the game in order to go to the battle scene.
@@ -70,7 +87,7 @@ public class GameManager : MonoBehaviour
             SceneData.shouldStop = true;
             SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
-            SceneData.enemyInBattle= enemy;
+            SceneData.enemyInBattle = enemy;
             SceneManager.LoadScene(battleScene);
         }
     }
@@ -80,7 +97,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private IEnumerator GameLoop()
     {
-        ShowTutorial();
         while(!GameEnd())
         {
             yield return new WaitForSeconds(Time.deltaTime);
@@ -99,8 +115,13 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Shows the tutorial for the game.
     /// </summary>
-    private void ShowTutorial()
+    private void ShowHideTutorial()
     {
+        if (null == _tutorialController)
+        {
+            _tutorialController = GetComponent<TutorialController>();
+        }
+ 
         if (SceneData.showGameTutorial)
         {
             _tutorialController.ShowTutorial();
