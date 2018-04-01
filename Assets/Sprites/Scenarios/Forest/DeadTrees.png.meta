@@ -1,0 +1,675 @@
+fileFormatVersion: 2
+guid: 5bd6f37a28cc4b44aa024147b3a0c989
+timeCreated: 1522535048
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DeadTrees_0
+    21300002: DeadTrees_1
+    21300004: DeadTrees_2
+    21300006: DeadTrees_3
+    21300008: DeadTrees_4
+    21300010: DeadTrees_5
+    21300012: DeadTrees_6
+    21300014: DeadTrees_7
+    21300016: DeadTrees_8
+    21300018: DeadTrees_9
+    21300020: DeadTrees_10
+    21300022: DeadTrees_11
+    21300024: DeadTrees_12
+    21300026: DeadTrees_13
+    21300028: DeadTrees_14
+    21300030: DeadTrees_15
+    21300032: DeadTrees_16
+    21300034: DeadTrees_17
+    21300036: DeadTrees_18
+    21300038: DeadTrees_19
+    21300040: DeadTrees_20
+    21300042: DeadTrees_21
+    21300044: DeadTrees_22
+    21300046: DeadTrees_23
+    21300048: DeadTrees_24
+    21300050: DeadTrees_25
+    21300052: DeadTrees_26
+    21300054: DeadTrees_27
+    21300056: DeadTrees_28
+    21300058: DeadTrees_29
+    21300060: DeadTrees_30
+    21300062: DeadTrees_31
+    21300064: DeadTrees_32
+    21300066: DeadTrees_33
+    21300068: DeadTrees_34
+    21300070: DeadTrees_35
+    21300072: DeadTrees_36
+    21300074: DeadTrees_37
+    21300076: DeadTrees_38
+    21300078: DeadTrees_39
+    21300080: DeadTrees_40
+    21300082: DeadTrees_41
+    21300084: DeadTrees_42
+    21300086: DeadTrees_43
+    21300088: DeadTrees_44
+    21300090: DeadTrees_45
+    21300092: DeadTrees_46
+    21300094: DeadTrees_47
+    21300096: DeadTrees_48
+    21300098: DeadTrees_49
+    21300100: DeadTrees_50
+    21300102: DeadTrees_51
+    21300104: DeadTrees_52
+    21300106: DeadTrees_53
+    21300108: DeadTrees_54
+    21300110: DeadTrees_55
+    21300112: DeadTrees_56
+    21300114: DeadTrees_57
+    21300116: DeadTrees_58
+    21300118: DeadTrees_59
+    21300120: DeadTrees_60
+    21300122: DeadTrees_61
+    21300124: DeadTrees_62
+    21300126: DeadTrees_63
+    21300128: DeadTrees_64
+    21300130: DeadTrees_65
+    21300132: DeadTrees_66
+    21300134: DeadTrees_67
+    21300136: DeadTrees_68
+    21300138: DeadTrees_69
+    21300140: DeadTrees_70
+    21300142: DeadTrees_71
+    21300144: DeadTrees_72
+    21300146: DeadTrees_73
+    21300148: DeadTrees_74
+    21300150: DeadTrees_75
+    21300152: DeadTrees_76
+    21300154: DeadTrees_77
+    21300156: DeadTrees_78
+    21300158: DeadTrees_79
+    21300160: DeadTrees_80
+    21300162: DeadTrees_81
+    21300164: DeadTrees_82
+    21300166: DeadTrees_83
+    21300168: DeadTrees_84
+    21300170: DeadTrees_85
+    21300172: DeadTrees_86
+    21300174: DeadTrees_87
+    21300176: DeadTrees_88
+    21300178: DeadTrees_89
+    21300180: DeadTrees_90
+    21300182: DeadTrees_91
+    21300184: DeadTrees_92
+    21300186: DeadTrees_93
+    21300188: DeadTrees_94
+    21300190: DeadTrees_95
+    21300192: DeadTrees_96
+    21300194: DeadTrees_97
+    21300196: DeadTrees_98
+    21300198: DeadTrees_99
+    21300200: DeadTrees_100
+    21300202: DeadTrees_101
+    21300204: DeadTrees_102
+    21300206: DeadTrees_103
+    21300208: DeadTrees_104
+    21300210: DeadTrees_105
+    21300212: DeadTrees_106
+    21300214: DeadTrees_107
+    21300216: DeadTrees_108
+    21300218: DeadTrees_109
+    21300220: DeadTrees_110
+    21300222: DeadTrees_111
+    21300224: DeadTrees_112
+    21300226: DeadTrees_113
+    21300228: DeadTrees_114
+    21300230: DeadTrees_115
+    21300232: DeadTrees_116
+    21300234: DeadTrees_117
+    21300236: DeadTrees_118
+    21300238: DeadTrees_119
+    21300240: DeadTrees_120
+    21300242: DeadTrees_121
+    21300244: DeadTrees_122
+    21300246: DeadTrees_123
+    21300248: DeadTrees_124
+    21300250: DeadTrees_125
+    21300252: DeadTrees_126
+    21300254: DeadTrees_127
+    21300256: DeadTrees_128
+    21300258: DeadTrees_129
+    21300260: DeadTrees_130
+    21300262: DeadTrees_131
+    21300264: DeadTrees_132
+    21300266: DeadTrees_133
+    21300268: DeadTrees_134
+    21300270: DeadTrees_135
+    21300272: DeadTrees_136
+    21300274: DeadTrees_137
+    21300276: DeadTrees_138
+    21300278: DeadTrees_139
+    21300280: DeadTrees_140
+    21300282: DeadTrees_141
+    21300284: DeadTrees_142
+    21300286: DeadTrees_143
+    21300288: DeadTrees_144
+    21300290: DeadTrees_145
+    21300292: DeadTrees_146
+    21300294: DeadTrees_147
+    21300296: DeadTrees_148
+    21300298: DeadTrees_149
+    21300300: DeadTrees_150
+    21300302: DeadTrees_151
+    21300304: DeadTrees_152
+    21300306: DeadTrees_153
+    21300308: DeadTrees_154
+    21300310: DeadTrees_155
+    21300312: DeadTrees_156
+    21300314: DeadTrees_157
+    21300316: DeadTrees_158
+    21300318: DeadTrees_159
+    21300320: DeadTrees_160
+    21300322: DeadTrees_161
+    21300324: DeadTrees_162
+    21300326: DeadTrees_163
+    21300328: DeadTrees_164
+    21300330: DeadTrees_165
+    21300332: DeadTrees_166
+    21300334: DeadTrees_167
+    21300336: DeadTrees_168
+    21300338: DeadTrees_169
+    21300340: DeadTrees_170
+    21300342: DeadTrees_171
+    21300344: DeadTrees_172
+    21300346: DeadTrees_173
+    21300348: DeadTrees_174
+    21300350: DeadTrees_175
+    21300352: DeadTrees_176
+    21300354: DeadTrees_177
+    21300356: DeadTrees_178
+    21300358: DeadTrees_179
+    21300360: DeadTrees_180
+    21300362: DeadTrees_181
+    21300364: DeadTrees_182
+    21300366: DeadTrees_183
+    21300368: DeadTrees_184
+    21300370: DeadTrees_185
+    21300372: DeadTrees_186
+    21300374: DeadTrees_187
+    21300376: DeadTrees_188
+    21300378: DeadTrees_189
+    21300380: DeadTrees_190
+    21300382: DeadTrees_191
+    21300384: DeadTrees_192
+    21300386: DeadTrees_193
+    21300388: DeadTrees_194
+    21300390: DeadTrees_195
+    21300392: DeadTrees_196
+    21300394: DeadTrees_197
+    21300396: DeadTrees_198
+    21300398: DeadTrees_199
+    21300400: DeadTrees_200
+    21300402: DeadTrees_201
+    21300404: DeadTrees_202
+    21300406: DeadTrees_203
+    21300408: DeadTrees_204
+    21300410: DeadTrees_205
+    21300412: DeadTrees_206
+    21300414: DeadTrees_207
+    21300416: DeadTrees_208
+    21300418: DeadTrees_209
+    21300420: DeadTrees_210
+    21300422: DeadTrees_211
+    21300424: DeadTrees_212
+    21300426: DeadTrees_213
+    21300428: DeadTrees_214
+    21300430: DeadTrees_215
+    21300432: DeadTrees_216
+    21300434: DeadTrees_217
+    21300436: DeadTrees_218
+    21300438: DeadTrees_219
+    21300440: DeadTrees_220
+    21300442: DeadTrees_221
+    21300444: DeadTrees_222
+    21300446: DeadTrees_223
+    21300448: DeadTrees_224
+    21300450: DeadTrees_225
+    21300452: DeadTrees_226
+    21300454: DeadTrees_227
+    21300456: DeadTrees_228
+    21300458: DeadTrees_229
+    21300460: DeadTrees_230
+    21300462: DeadTrees_231
+    21300464: DeadTrees_232
+    21300466: DeadTrees_233
+    21300468: DeadTrees_234
+    21300470: DeadTrees_235
+    21300472: DeadTrees_236
+    21300474: DeadTrees_237
+    21300476: DeadTrees_238
+    21300478: DeadTrees_239
+    21300480: DeadTrees_240
+    21300482: DeadTrees_241
+    21300484: DeadTrees_242
+    21300486: DeadTrees_243
+    21300488: DeadTrees_244
+    21300490: DeadTrees_245
+    21300492: DeadTrees_246
+    21300494: DeadTrees_247
+    21300496: DeadTrees_248
+    21300498: DeadTrees_249
+    21300500: DeadTrees_250
+    21300502: DeadTrees_251
+    21300504: DeadTrees_252
+    21300506: DeadTrees_253
+    21300508: DeadTrees_254
+    21300510: DeadTrees_255
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DeadTrees_8
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 279
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 241
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_11
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 240
+        width: 41
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_12
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 240
+        width: 37
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 182
+        width: 40
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_14
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 181
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 180
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_18
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 121
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_19
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 121
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_21
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 62
+        width: 38
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_22
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 61
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_24
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 2
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_25
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 220
+        width: 97
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_9
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 121
+        width: 97
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_26
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1
+        width: 41
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_27
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 1
+        width: 38
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_28
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1
+        width: 34
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_0
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 120
+        width: 39
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: DeadTrees_1
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 61
+        width: 36
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
