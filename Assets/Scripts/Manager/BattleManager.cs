@@ -232,10 +232,16 @@ public class BattleManager : MonoBehaviour
             _mageController.IncreaseXp(_xpEarned);
             _mage.transform.localScale /= SCALE_FACTOR;
 
+            // Displays the battle report.
+            hudManager.DisplayBattleReport(_goldEarned, _xpEarned, _mageController.GetCurrentLevel());
+            yield return new WaitForSeconds(3f);
+            hudManager.HideTurnText();
+
             // Restores the calling scene.
             SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
             SceneData.isInBattle = false;
+
             RestorePlayersPositions();
         }
         else

@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!SceneData.isInBattle && !GameEnd())
+        if (!SceneData.isInBattle && !SceneData.killedFinalBoss)
         {
             ShowHideTutorial();
             if (null == players)
