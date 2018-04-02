@@ -6380,7 +6380,7 @@ MonoBehaviour:
     sectorName: TempleSector_03
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 1

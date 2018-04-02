@@ -215,9 +215,6 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             hudManager.HideTurnText();
 
-            // Restores the old positions for all players.
-            RestorePlayersPositions();
-
             // Setup the dropped items.
             SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
             SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
@@ -236,6 +233,7 @@ public class BattleManager : MonoBehaviour
             SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
             SceneData.isInBattle = false;
+            RestorePlayersPositions();
             SceneManager.LoadScene(SceneData.mainScene);
         }
         else
