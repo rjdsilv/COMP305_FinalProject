@@ -95,8 +95,25 @@ public class GameManager : MonoBehaviour
             SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
             SceneData.enemyInBattle = enemy;
-            SceneManager.LoadScene(battleScene);
+            StartCoroutine(ShakeCameraAndLoadScene(battleScene));
         }
+    }
+
+    private IEnumerator ShakeCameraAndLoadScene(string battleScene)
+    {
+        for (int i = 0; i < 14; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            }
+            else
+            {
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+        SceneManager.LoadScene(battleScene);
     }
 
     /// <summary>
