@@ -9,7 +9,7 @@ public class GameIntroduction : MonoBehaviour
 
     private const float TYPE_INTERVAL = 0.05f;
     private const float NEW_LINE_INTERVAL = 0.5f;
-    private const float NEW_SCREEN_INTERVAL = 1.9f;
+    private const float NEW_SCREEN_INTERVAL = 1.5f;
 
     private const string history1_1 = "\t\tOnce upon a time in the Kingdom of Gillamor, an ancient evil was defeated by a very powerful wizard and sealed in the temple of Zydis.\n";
     private const string history1_2 = "\t\tFor 300 years, Gillamor remained a peaceful and properous Kingdom, until the evil awoke again, more powerful and fearful than never before.";
