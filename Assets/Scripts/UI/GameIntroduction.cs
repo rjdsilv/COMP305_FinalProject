@@ -36,6 +36,14 @@ public class GameIntroduction : MonoBehaviour
         StartCoroutine(TypeHistory());
 	}
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
     IEnumerator TypeHistory()
     {
         yield return TypePart01();
