@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
 
     // Private variable declaration.
     private TutorialController _tutorialController;
+
+    private enum GameEndStatus
+    {
+        WIN,
+        LOOSE
+    }
 
     private void OnEnable()
     {
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!SceneData.isInBattle)
+        if (!SceneData.isInBattle && !GameEnd())
         {
             ShowHideTutorial();
             if (null == players)
@@ -101,6 +108,18 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(Time.deltaTime);
         }
+
+        DestroyAllObjects();
+        GameEndStatus endStatus = GetGameEndStatus();
+
+        if (endStatus == GameEndStatus.WIN)
+        {
+            SceneManager.LoadScene("GameEnd");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     /// <summary>
@@ -109,7 +128,17 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     private bool GameEnd()
     {
-        return false;
+        return SceneData.killedFinalBoss || !IsAnyPlayerAlive();
+    }
+
+    private GameEndStatus GetGameEndStatus()
+    {
+        if (SceneData.killedFinalBoss)
+        {
+            return GameEndStatus.WIN;
+        }
+
+        return GameEndStatus.LOOSE;
     }
 
     /// <summary>
@@ -130,6 +159,43 @@ public class GameManager : MonoBehaviour
         else
         {
             _tutorialController.HideTutorial();
+        }
+    }
+
+    private bool IsAnyPlayerAlive()
+    {
+        foreach (GameObject player in SceneData.playerList)
+        {
+            if (null != player && player.GetControllerComponent().IsAlive())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void DestroyAllObjects()
+    {
+        foreach (GameObject player in SceneData.playerList)
+        {
+            if (null != player)
+            {
+                Destroy(player);
+            }
+        }
+
+        foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+        {
+            if (null != enemy)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        if (null != SceneData.enemyInBattle)
+        {
+            Destroy(SceneData.enemyInBattle);
         }
     }
 }

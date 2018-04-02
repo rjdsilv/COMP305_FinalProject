@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UI/SplashScreen.unity
     guid: b20180a397cdfb24eafd3c38d1a2d5c9
   - enabled: 1
-    path: Assets/Scenes/History/GameIntroduction.unity
+    path: Assets/Scenes/Story/GameIntroduction.unity
     guid: c200ac60385f49646852699f30a0f5aa
   - enabled: 1
     path: Assets/Scenes/UI/MainMenu.unity
@@ -26,3 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Temple/TempleBattle_01.unity
     guid: 97fe923b7361764448f4080d9438555e
+  - enabled: 1
+    path: Assets/Scenes/Story/GameEnd.unity
+    guid: 9b54b3ba91567894c9125779f4353eb8
+  - enabled: 1
+    path: Assets/Scenes/Story/GameOver.unity
+    guid: 20bc0042b6cccf147bd532e4cbc9df04

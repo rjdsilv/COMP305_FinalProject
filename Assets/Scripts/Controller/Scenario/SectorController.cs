@@ -8,6 +8,7 @@ using UnityEngine;
 public class SectorController : MonoBehaviour
 {
     // Public variable declaration.
+    public bool useEnemyPrefabPosition = false;          // Flag indicating if the spawn will use a spawn radius to spawn enemies.
     public GameObject healthPot;                // The health pot dropped by the enemy.
     public GameObject manaPot;                  // The mana pot dropped by the enemy.
     public GameObject staminaPot;               // The stamina pot dropped by the enemy.
@@ -64,12 +65,7 @@ public class SectorController : MonoBehaviour
                     for (int i = 0; i < ea.spawnNumber; i++)
                     {
                         // Instantiate the enemy.
-                        Vector3 position = new Vector3(
-                            transform.position.x + UnityEngine.Random.Range(-ea.spawnRadius, ea.spawnRadius),
-                            transform.position.y + UnityEngine.Random.Range(-ea.spawnRadius, ea.spawnRadius),
-                            0
-                        );
-                        GameObject enemy = Instantiate(ea.enemy, position, Quaternion.identity);
+                        GameObject enemy = Instantiate(ea.enemy, GetEnemySpawnPosition(ea), Quaternion.identity);
                         enemy.name = ea.enemy.name;
                         enemy.SetEnemyControllerParameters(attributes);
                         DontDestroyOnLoad(enemy);
@@ -155,5 +151,24 @@ public class SectorController : MonoBehaviour
     private void DestroyEnemies()
     {
         SceneData.DestroyAllEnemiesOnSector(attributes.sectorName);
+    }
+
+    /// <summary>
+    /// Gets the enemy spawn position based on the sector configuration.
+    /// </summary>
+    /// <param name="enemyAttr"></param>
+    /// <returns></returns>
+    private Vector3 GetEnemySpawnPosition(SectorEnemyAttributes enemyAttr)
+    {
+        if (useEnemyPrefabPosition)
+        {
+            return new Vector3(enemyAttr.enemy.transform.position.x, enemyAttr.enemy.transform.position.y, 0);
+        }
+
+        return new Vector3(
+            transform.position.x + UnityEngine.Random.Range(-enemyAttr.spawnRadius, enemyAttr.spawnRadius),
+            transform.position.y + UnityEngine.Random.Range(-enemyAttr.spawnRadius, enemyAttr.spawnRadius),
+            0
+        );
     }
 }

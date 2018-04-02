@@ -13,6 +13,7 @@ public static class SceneData
     public static bool isCommingBackFronBattle = false;                               // Flag indicating if the player is comming back from a batlle.
     public static bool showGameTutorial = true;                                       // Flag indicating if the game tutorial should be shown.
     public static bool showBattleTutorial = true;                                     // Flag indicating if the battle tutorial should be shown.
+    public static bool killedFinalBoss = false;
     public static string mainScene = "";                                              // Stores the name of the scene that invoked the battle scene.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
     public static List<GameObject> enemyNotInBattleList = new List<GameObject>();     // The list of enemies that are not in battle.

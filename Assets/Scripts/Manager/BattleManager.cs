@@ -221,6 +221,9 @@ public class BattleManager : MonoBehaviour
             SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
             SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
 
+            // Setting the flag indicating that the final boss was killed.
+            SceneData.killedFinalBoss = SceneData.enemyInBattle.IsFinalBoss();
+
             // Destroy the enemy.
             Destroy(SceneData.enemyInBattle);
 
@@ -234,12 +237,13 @@ public class BattleManager : MonoBehaviour
             SceneData.isCommingBackFronBattle = true;
             SceneData.isInBattle = false;
             RestorePlayersPositions();
-            SceneManager.LoadScene(SceneData.mainScene);
         }
         else
         {
-            hudManager.DisplayGameOverText();
+            yield return new WaitForSeconds(1.5f);
         }
+
+        SceneManager.LoadScene(SceneData.mainScene);
     }
 
     /// <summary>

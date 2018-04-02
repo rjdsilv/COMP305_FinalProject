@@ -4693,8 +4693,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 178209112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -64.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -63.74, z: 0}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_Children:
   - {fileID: 527516070}
   - {fileID: 215682693}
@@ -4715,15 +4715,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 1
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
   attributes:
     sectorName: TempleSector_13
-    battleScene: TempleBattle_01
+    battleScene: TempleBattle_FinalBoss
     originalScene: Temple1stFloor
-    spawnEnemies: 0
-    enemyAttributes: []
+    spawnEnemies: 1
+    enemyAttributes:
+    - spawnNumber: 1
+      spawnRadius: 0
+      enemy: {fileID: 1609685576827582, guid: 373dc372b2a9cca4f88a05a7b357c479, type: 2}
 --- !u!61 &178209115
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4988,6 +4992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -6287,6 +6292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -6294,7 +6300,7 @@ MonoBehaviour:
     sectorName: TempleSector_02
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 0.25
@@ -6373,6 +6379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -6459,6 +6466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -7299,7 +7307,7 @@ Prefab:
     - target: {fileID: 224876818942330350, guid: d5552466cf359c0418a04a2631284197,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224876818942330350, guid: d5552466cf359c0418a04a2631284197,
         type: 2}
@@ -7506,6 +7514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -40777,8 +40786,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1434978361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.1, y: -28.1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -36.75, y: -27.22, z: 0}
+  m_LocalScale: {x: 1, y: 0.7, z: 1}
   m_Children:
   - {fileID: 284992158}
   - {fileID: 718021469}
@@ -40799,6 +40808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -40806,7 +40816,7 @@ MonoBehaviour:
     sectorName: TempleSector_11
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 0.5
@@ -40863,8 +40873,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468667542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -10.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.23, y: -14.07, z: 0}
+  m_LocalScale: {x: 0.60321987, y: 0.7124958, z: 1}
   m_Children:
   - {fileID: 529712257}
   - {fileID: 1240067934}
@@ -40885,6 +40895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -40946,8 +40957,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1560448925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.1, y: -1.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -47.38, y: -0.88, z: 0}
+  m_LocalScale: {x: 0.43750125, y: 0.45000243, z: 1}
   m_Children:
   - {fileID: 183520251}
   - {fileID: 20387941}
@@ -40968,6 +40979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -41149,6 +41161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -41156,7 +41169,7 @@ MonoBehaviour:
     sectorName: TempleSector_04
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 1
@@ -41406,8 +41419,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1628895087}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -43.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.52, y: -43.9, z: 0}
+  m_LocalScale: {x: 0.81, y: 0.825, z: 1}
   m_Children:
   - {fileID: 432903216}
   - {fileID: 1772654020}
@@ -41428,6 +41441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -41435,7 +41449,7 @@ MonoBehaviour:
     sectorName: TempleSector_12
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 1
@@ -44013,6 +44027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -44020,7 +44035,7 @@ MonoBehaviour:
     sectorName: TempleSector_10
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 1
+    spawnEnemies: 0
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 0.25
@@ -44194,6 +44209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -44555,7 +44571,7 @@ Transform:
   - {fileID: 1628895088}
   - {fileID: 178209113}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922675098
 GameObject:

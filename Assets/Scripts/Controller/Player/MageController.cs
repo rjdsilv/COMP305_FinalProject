@@ -17,7 +17,7 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
     /// <summary>
     /// Initializes all the necessary variables.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         Init();
     }
