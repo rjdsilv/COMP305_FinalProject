@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 4789029899298972}
   - component: {fileID: 20366419966292376}
   - component: {fileID: 124299633997405176}
-  - component: {fileID: 81097093387807268}
   - component: {fileID: 50935939329322022}
   - component: {fileID: 68890263768791328}
   - component: {fileID: 68846298522339600}
   - component: {fileID: 68121659147918086}
   - component: {fileID: 68563205287743942}
   - component: {fileID: 61745490352379246}
+  - component: {fileID: 81097093387807268}
   m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera

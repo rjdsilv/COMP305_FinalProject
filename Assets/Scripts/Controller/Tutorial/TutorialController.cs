@@ -5,7 +5,7 @@
 /// </summary>
 public class TutorialController : MonoBehaviour
 {
-    private const string _gameTutorialText = "Welcome to The Shrine of Ethernal Destinies. Use the keyboard's " +
+    private const string _gameTutorialText = "Welcome to The Shrine of Ehernal Destinies. Use the keyboard's " +
         "left, right, up, and down arrow keys to move you character.\n\nPress ESC when you are ready to begin.";
 
     private const string _battleTutorialText = "To battle, select the enemy to attack using the up and down arrow keys. Then, " +
