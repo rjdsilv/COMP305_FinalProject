@@ -243,13 +243,9 @@ public class BattleManager : MonoBehaviour
             SceneData.isInBattle = false;
 
             RestorePlayersPositions();
-        }
-        else
-        {
-            yield return new WaitForSeconds(1.5f);
-        }
 
-        SceneManager.LoadScene(SceneData.mainScene);
+            SceneManager.LoadScene(SceneData.mainScene);
+        }
     }
 
     /// <summary>

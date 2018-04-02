@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Temple/TempleBattle_01.unity
     guid: 97fe923b7361764448f4080d9438555e
   - enabled: 1
+    path: Assets/Scenes/Temple/TempleBattle_FinalBoss.unity
+    guid: eb0ddd5bcd287cf4084ad7d11c593e55
+  - enabled: 1
     path: Assets/Scenes/Story/GameEnd.unity
     guid: 9b54b3ba91567894c9125779f4353eb8
   - enabled: 1

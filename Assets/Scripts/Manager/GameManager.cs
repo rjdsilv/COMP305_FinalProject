@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
 
+        yield return new WaitForSeconds(2f);
         DestroyAllObjects();
         GameEndStatus endStatus = GetGameEndStatus();
 

@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 852615558}
   - component: {fileID: 852615557}
   - component: {fileID: 852615556}
+  - component: {fileID: 852615560}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -385,6 +386,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &852615560
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 852615555}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ed80d8fbd08b15c49b5e208201784b6d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1031690410
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,11 +520,9 @@ MonoBehaviour:
     spawnPoint: {x: -6, y: -2.85, z: 0}
   enemySpawnPoints:
   - {x: 8, y: -3.85, z: 0}
-  - {x: 7, y: -3.15, z: 0}
-  - {x: 6, y: -2.5, z: 0}
-  - {x: 5.5, y: -3.85, z: 0}
-  - {x: 4.5, y: -3.15, z: 0}
-  - {x: 3.5, y: -2.5, z: 0}
+  - {x: 7, y: -2.5, z: 0}
+  - {x: 6, y: -3.85, z: 0}
+  - {x: 5.5, y: -2.5, z: 0}
   hudManager: {fileID: 1898857620}
   enemyMaterial: {fileID: 2100000, guid: 8e18174905954c84dbfe7b20e4713fbc, type: 2}
 --- !u!114 &1031690413

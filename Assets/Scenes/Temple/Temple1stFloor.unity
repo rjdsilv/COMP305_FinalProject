@@ -5000,7 +5000,7 @@ MonoBehaviour:
     sectorName: TempleSector_09
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 0
@@ -5948,6 +5948,171 @@ Camera:
   m_PrefabParentObject: {fileID: 20366419966292376, guid: 021d8d9f59c9eb2449d2b94d6dff8b9e,
     type: 2}
   m_PrefabInternal: {fileID: 498713275}
+--- !u!1 &498713277 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1571853459250466, guid: 021d8d9f59c9eb2449d2b94d6dff8b9e,
+    type: 2}
+  m_PrefabInternal: {fileID: 498713275}
+--- !u!82 &498713278
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498713277}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3daf527d16fff174ebb4227ffdd0b64d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &498713279
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498713277}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 20a7f80c2d4ca7e4ca56b7897f03c0f0, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 256
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &514036863
 GameObject:
   m_ObjectHideFlags: 0
@@ -6300,7 +6465,7 @@ MonoBehaviour:
     sectorName: TempleSector_02
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 0.25
@@ -6387,7 +6552,7 @@ MonoBehaviour:
     sectorName: TempleSector_03
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 1
@@ -40816,7 +40981,7 @@ MonoBehaviour:
     sectorName: TempleSector_11
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 0.5
@@ -41169,7 +41334,7 @@ MonoBehaviour:
     sectorName: TempleSector_04
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 1
@@ -41449,7 +41614,7 @@ MonoBehaviour:
     sectorName: TempleSector_12
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 1
@@ -44035,7 +44200,7 @@ MonoBehaviour:
     sectorName: TempleSector_10
     battleScene: TempleBattle_01
     originalScene: Temple1stFloor
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 0.25
