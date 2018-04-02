@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SplashScreen : MonoBehaviour
 {
     public RectTransform textLogo;
+    public RectTransform imageLogo;
 
     private float startScale;
     private float endScale;
@@ -23,6 +24,7 @@ public class SplashScreen : MonoBehaviour
         while (startScale < endScale)
         {
             textLogo.localScale = new Vector3(startScale, startScale, startScale);
+            imageLogo.localScale = new Vector3(startScale, startScale, startScale);
             yield return new WaitForSeconds(increaseFactor);
             startScale += increaseFactor;
         }
