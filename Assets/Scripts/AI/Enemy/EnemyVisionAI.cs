@@ -18,7 +18,15 @@ public class EnemyVisionAI : VisionAI
         _isSeeingPlayer = false;
         _isSeeingObstacle = false;
         _eye = transform.GetChild(EYE_IDX);
-        _enemyMovement = GetComponent<EnemyMovement>();
+
+        if (name == "FinalBoss")
+        {
+            _enemyMovement = GetComponent<FinalBossMovement>();
+        }
+        else
+        {
+            _enemyMovement = GetComponent<EnemyMovement>();
+        }
     }
 
     /// <summary>
@@ -99,7 +107,8 @@ public class EnemyVisionAI : VisionAI
     /// </summary>
     private void SeeObstacle()
     {
-        RaycastHit2D[] allHits = Physics2D.RaycastAll(_eye.position, _enemyMovement.GetDirectionVector(), _enemyMovement.randomWalkAttributes.turnDistance);
+        float turnDistance = (name == "FinalBoss" ? 0f : ((EnemyMovement) _enemyMovement).randomWalkAttributes.turnDistance);
+        RaycastHit2D[] allHits = Physics2D.RaycastAll(_eye.position, _enemyMovement.GetDirectionVector(), turnDistance);
         foreach (RaycastHit2D hit in allHits)
         {
             if (TagUtils.IsEnemy(hit.transform) || TagUtils.IsCamera(hit.transform))

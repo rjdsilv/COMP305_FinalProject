@@ -24,7 +24,7 @@ public class EnemyMovement : ActorMovement
         _animator = GetComponent<Animator>();
         _visionAI = GetComponent<EnemyVisionAI>();
         _secondsInSameDirection = Random.Range(randomWalkAttributes.minTimeSameDir, randomWalkAttributes.maxTimeSameDir);
-        movement.faceDirection = SceneData.isInBattle ? FaceDirection.LEFT : Mathf.FloorToInt(Random.Range(0, 3.9999999999f));
+        movement.faceDirection = SceneData.shouldStop ? FaceDirection.LEFT : Mathf.FloorToInt(Random.Range(0, 3.9999999999f));
         _movementVector = GetDirectionVector();
     }
 
@@ -45,35 +45,11 @@ public class EnemyMovement : ActorMovement
             TurnDueToTimeFrame();
         }
 
-        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, SceneData.isInBattle);
+        movement.Move(gameObject, _animator, _movementVector.x, _movementVector.y, SceneData.shouldStop);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
-
-    /// <summary>
-    /// Gets the ray direction based on the position the enemy is looking at.
-    /// </summary>
-    /// <returns>The direction to where the ray must by cast.</returns>
-    public Vector2 GetDirectionVector()
-    {
-        switch (movement.faceDirection)
-        {
-            case FaceDirection.DOWN:
-                return Vector2.down;
-
-            case FaceDirection.UP:
-                return Vector2.up;
-
-            case FaceDirection.LEFT:
-                return Vector2.left;
-
-            case FaceDirection.RIGHT:
-                return Vector2.right;
-        }
-
-        return Vector2.zero; ;
-    }
 
     /// <summary>
     /// Turns the enemy due to the time elapsed.
@@ -89,7 +65,7 @@ public class EnemyMovement : ActorMovement
     /// <summary>
     /// Turns randomly the enemy.
     /// </summary>
-    private void TurnNow()
+    protected override void TurnNow()
     {
         float direction = Random.Range(-1, 1);
 
@@ -97,7 +73,7 @@ public class EnemyMovement : ActorMovement
         {
             TurnVertical(direction);
         }
-        else if (movement.IsMovingVerticaally())
+        else if (movement.IsMovingVertically())
         {
             TurnHorizontal(direction);
         }

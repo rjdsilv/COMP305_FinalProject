@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +23,7 @@ public class BattleManager : MonoBehaviour
 
     // Private variable declaration.
     private PlayerAbility _selectedAbility;
+    private TutorialController _tutorialController;
 
     // Mage variables.
     private Vector3 _mageOldPos;
@@ -38,6 +38,9 @@ public class BattleManager : MonoBehaviour
     private bool _turnStarted;
     private bool _attackExecuted;
     private bool _canAIAttack = false;
+    private bool _isShowingTutorial = false;
+    private int _xpEarned = 0;
+    private int _goldEarned = 0;
 
     // Enemies variables.
     private int _enemyPlayerIndex = -1;
@@ -52,8 +55,11 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        _tutorialController = GetComponent<TutorialController>();
+        ShowTutorial();
+
         // Sets the scene as being in a battle.
-        SceneData.isInBattle = true;
+        SceneData.shouldStop = true;
 
         // Spawn all the players and enemies in the previous scene.
         SpawnPlayers();
@@ -70,6 +76,13 @@ public class BattleManager : MonoBehaviour
         _lastSwapTime = Time.time;
         _lastAttackTime = Time.time;
 
+        // Level up the enemy if its level is under the player's level.
+        IEnemyController enemyController = _enemies[_selectedEnemyIndex].GetEnemyControllerComponent();
+        if (enemyController.GetCurrentLevel() < _mageController.GetCurrentLevel())
+        {
+            enemyController.LevelUp();
+        }
+
         StartCoroutine(BattleLoop());
     }
 
@@ -78,11 +91,21 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (_turnStarted && !IsBattleEnded())
+        if (_isShowingTutorial)
         {
-            SwapAbility();
-            SwapEnemy();
-            Attack();
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                _isShowingTutorial = false;
+            }
+        }
+        else
+        {
+            if (_turnStarted && !IsBattleEnded())
+            {
+                SwapAbility();
+                SwapEnemy();
+                Attack();
+            }
         }
     }
 
@@ -161,21 +184,24 @@ public class BattleManager : MonoBehaviour
         while (!IsTurnEnded() && !IsBattleEnded())
         {
             yield return new WaitForSecondsRealtime(turnTimeDecreaseRate);
-            _turnRemainingTime -= turnTimeDecreaseRate;
-            hudManager.UpdateTurnTimer(_turnRemainingTime);
-
-            if (autoRecoverConsumable)
+            if (!_isShowingTutorial)
             {
-                foreach (GameObject player in SceneData.playerList)
+                _turnRemainingTime -= turnTimeDecreaseRate;
+                hudManager.UpdateTurnTimer(_turnRemainingTime);
+
+                if (autoRecoverConsumable)
                 {
-                    player.GetPlayerControllerComponent().IncreaseConsumable(turnTimeDecreaseRate / 2);
-                    hudManager.UpdateConsumableHUD(player, turnTimeDecreaseRate / 2, false);
+                    foreach (GameObject player in SceneData.playerList)
+                    {
+                        player.GetPlayerControllerComponent().IncreaseConsumable(turnTimeDecreaseRate / 2);
+                        hudManager.UpdateConsumableHUD(player, turnTimeDecreaseRate / 2, false);
+                    }
                 }
-            }
 
-            if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
-            {
-                _canAIAttack = true;
+                if (!_attackExecuted && _actorPlaying.GetControllerComponent().IsManagedByAI() && (Time.time - startTime) > turnTime / 2)
+                {
+                    _canAIAttack = true;
+                }
             }
         }
     }
@@ -189,24 +215,36 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             hudManager.HideTurnText();
 
-            // Restores the old positions for all players.
-            RestorePlayersPositions();
+            // Setup the dropped items.
+            SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
+            SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
+            SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
+            SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
 
-            // Destroys all the enemies that entered the battle.
-            foreach (GameObject enemy in SceneData.enemyInBattleList)
-            {
-                Destroy(enemy);
-            }
+            // Setting the flag indicating that the final boss was killed.
+            SceneData.killedFinalBoss = SceneData.enemyInBattle.IsFinalBoss();
+
+            // Destroy the enemy.
+            Destroy(SceneData.enemyInBattle);
+
+            // Sets up the players amount earned.
+            _mageController.IncreaseGold(_goldEarned);
+            _mageController.IncreaseXp(_xpEarned);
+            _mage.transform.localScale /= SCALE_FACTOR;
+
+            // Displays the battle report.
+            hudManager.DisplayBattleReport(_goldEarned, _xpEarned, _mageController.GetCurrentLevel());
+            yield return new WaitForSeconds(3f);
+            hudManager.HideTurnText();
 
             // Restores the calling scene.
-            SceneData.enemyInBattleList.Clear();
-            SceneData.isInBattle = false;
+            SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
+            SceneData.isInBattle = false;
+
+            RestorePlayersPositions();
+
             SceneManager.LoadScene(SceneData.mainScene);
-        }
-        else
-        {
-            hudManager.DisplayGameOverText();
         }
     }
 
@@ -326,14 +364,22 @@ public class BattleManager : MonoBehaviour
                         {
                             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
                             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
-                            enemyController.DecreaseHealthHUD(attackerController.Attack(selectedEnemy, _selectedAbility));
+                            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+                            int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
+                            enemyController.PlayDamageSound();
+                            enemyController.DecreaseHealthHUD(attackPower);
                             hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
 
                             if (!enemyController.IsAlive())
                             {
                                 SwapEnemyUp(_enemies.Length - 1);
-                                enemyController.GetSelectionLight().intensity = 30f;
-                                selectedEnemy.SetActive(false);
+                                UpdateBattleEarnings(enemyController);
+                                enemyController.GetSelectionLight().intensity = 8f;
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+                            }
+                            else
+                            {
+                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
                             }
 
                             _attackExecuted = true;
@@ -358,9 +404,19 @@ public class BattleManager : MonoBehaviour
                         selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
                     }
 
+                    _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
                     hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
                     _lastAttackTime = Time.time;
                     _canAIAttack = false;
+                    IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
+                    if (!playerController.IsAlive())
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+                    }
+                    else
+                    {
+                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
+                    }
                 }
             }
         }
@@ -446,27 +502,8 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void SpawnEnemies()
     {
-        List<GameObject> enemies = new List<GameObject>();
-
-        foreach (GameObject enemy in SceneData.enemyInBattleList)
-        {
-            if (enemy.IsWolf())
-            {
-                WolfController controller = enemy.GetEnemyControllerComponent() as WolfController;
-                int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(controller.minEnemiesInBattle, controller.maxEnemiesInBattle + 0.999999f));
-
-                for (int i = 0; i < enemiesInBattle; i++)
-                {
-                    GameObject instantiatedEnemy = Instantiate(enemy, enemySpawnPoints[i], Quaternion.identity);
-                    instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
-                    instantiatedEnemy.name = enemy.name;
-                    instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
-                    enemies.Add(instantiatedEnemy);
-                }
-            }
-        }
-
-        _enemies = enemies.ToArray();
+        IEnemyController controller = SceneData.enemyInBattle.GetEnemyControllerComponent();
+        _enemies = SpawnEnemies(controller.GetMinEnemiesInBattle(), controller.GetMaxEnemiesInBattle()).ToArray();
 
         if (_enemies.Length > 0)
         {
@@ -476,12 +513,37 @@ public class BattleManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Spawn the enemies in a number that ranges between the define minimum and maximum defined for the enemy.
+    /// </summary>
+    private List<GameObject> SpawnEnemies(int minEnemiesInBattle, int maxEnemiesInBattle)
+    {
+        int enemiesInBattle = Mathf.FloorToInt(UnityEngine.Random.Range(minEnemiesInBattle, maxEnemiesInBattle + 0.999999f));
+        List<GameObject> enemies = new List<GameObject>();
+        for (int i = 0; i < enemiesInBattle; i++)
+        {
+            enemies.Add(SpawnEnemy(enemySpawnPoints[i]));
+        }
+        return enemies;
+    }
+
+    /// <summary>
+    /// Spawn one single enemy.
+    /// </summary>
+    private GameObject SpawnEnemy(Vector3 position)
+    {
+        GameObject instantiatedEnemy = Instantiate(SceneData.enemyInBattle, position, Quaternion.identity);
+        instantiatedEnemy.transform.localScale *= SCALE_FACTOR;
+        instantiatedEnemy.name = SceneData.enemyInBattle.name;
+        instantiatedEnemy.GetComponent<SpriteRenderer>().material = enemyMaterial;
+        return instantiatedEnemy;
+    }
+
+    /// <summary>
     /// Inactivates all the actors from the previous scene.
     /// </summary>
     private void InactivateActorsFromPreviousScene()
     {
-        foreach (GameObject o in SceneData.enemyInBattleList)
-            o.SetActive(false);
+        SceneData.enemyInBattle.SetActive(false);
 
         foreach (GameObject o in SceneData.enemyNotInBattleList)
             o.SetActive(false);
@@ -524,6 +586,33 @@ public class BattleManager : MonoBehaviour
                 hudManager.SwapAbility(_mage);
                 _lastSwapTime = Time.time;
             }
+        }
+    }
+
+    /// <summary>
+    /// Updates the earnings ammount for the given battle.
+    /// </summary>
+    /// <param name="enemyController">The controller to calculate the earnings.</param>
+    private void UpdateBattleEarnings(IEnemyController enemyController)
+    {
+        _xpEarned += enemyController.GetXpEarnedForKilling();
+        _goldEarned += enemyController.GetGoldEarnedForKilling();
+    }
+
+    /// <summary>
+    /// Shows the tutorial for the game.
+    /// </summary>
+    private void ShowTutorial()
+    {
+        if (SceneData.showBattleTutorial)
+        {
+            _tutorialController.ShowTutorial();
+            SceneData.showBattleTutorial = false;
+            _isShowingTutorial = true;
+        }
+        else
+        {
+            _tutorialController.HideTutorial();
         }
     }
 }

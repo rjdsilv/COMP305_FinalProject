@@ -16,8 +16,8 @@ public abstract class VisionAI : GenericAI
     public VisionAttributes visionAttributes;
 
     // Protected variable declaration.
-    protected Transform _eye;               // The actor's eye.
-    protected EnemyMovement _enemyMovement;           // The actor's movement attributes.
+    protected Transform _eye;                // The actor's eye.
+    protected ActorMovement _enemyMovement;  // The actor's movement attributes.
 
     /// <summary>
     /// Execute the logic for when some other object enters the field of view.

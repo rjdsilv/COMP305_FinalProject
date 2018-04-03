@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c387717a9141d9499bbc5bec0ef025b, type: 3}
+  m_Name: OrcLevelTree
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  levelAttributes:
+  - health: 75
+    level: 1
+    minAttack: 20
+    maxAttack: 35
+    minDefense: 15
+    maxDefense: 20
+    managedByAI: 0
+    xpForKilling: 35
+    minGoldForKilling: 20
+    maxGoldForKilling: 40
+    healthRecoverDropChance: 0.85
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0.75
+  - health: 95
+    level: 2
+    minAttack: 30
+    maxAttack: 45
+    minDefense: 20
+    maxDefense: 30
+    managedByAI: 0
+    xpForKilling: 35
+    minGoldForKilling: 20
+    maxGoldForKilling: 40
+    healthRecoverDropChance: 0.85
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0.75

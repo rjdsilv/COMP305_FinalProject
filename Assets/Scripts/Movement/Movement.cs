@@ -46,30 +46,35 @@ public class Movement
     /// <param name="animator">The animator to set the properties in order to play the correct animation.</param>
     /// <param name="movementX">The movement on the X axis.</param>
     /// <param name="movementY">The movement on the Y axis.</param>
-    /// <param name="isInBattle">Flag indicating whether the player is in battle or not.</param>
-    public void Move(GameObject actor, Animator animator, float movementX, float movementY, bool isInBattle)
+    /// <param name="shouldStop">Flag indicating whether the player is in battle or not.</param>
+    public void Move(GameObject actor, Animator animator, float movementX, float movementY, bool shouldStop)
     {
-        if (!isInBattle)
+        if (!shouldStop)
         {
             if (movementX != 0)
             {
-                MoveHorizontally(actor, animator, movementX);
+                MoveHorizontally(actor, movementX);
             }
             else if (movementY != 0)
             {
-                MoveVertically(actor, animator, movementY);
+                MoveVertically(actor, movementY);
             }
             else
             {
-                Stop(actor, animator);
+                Stop(actor);
             }
         }
         else
         {
-            Stop(actor, animator);
+            Stop(actor);
         }
 
-        animator.Play(_currAnimation);
+        if (!AnimatorUtils.IsPlaying(animator, AnimatorUtils.BATTLE_DAMAGE) && 
+            !AnimatorUtils.IsPlaying(animator, AnimatorUtils.BATTLE_DEATH) &&
+            !AnimatorUtils.IsPlaying(animator, AnimatorUtils.BATTLE_ATTACK))
+        {
+            animator.Play(_currAnimation, 0);
+        }
     }
 
     /// <summary>
@@ -85,7 +90,7 @@ public class Movement
     /// This method indicates if an actor is moving horizontally.
     /// </summary>
     /// <returns><b>true</b> if the actor is moving horizontally. <b>false</b> otherwise.</returns>
-    public bool IsMovingVerticaally()
+    public bool IsMovingVertically()
     {
         return IsWalkingUp() || IsWalkingDown();
     }
@@ -130,9 +135,8 @@ public class Movement
     /// Moves the actor horizontally
     /// </summary>
     /// <param name="actor">The player to be moved</param>
-    /// <param name="animator">The animator to play animations</param>
     /// <param name="movementX">The movement on the X axis.</param>
-    private void MoveHorizontally(GameObject actor, Animator animator, float movementX)
+    private void MoveHorizontally(GameObject actor, float movementX)
     {
         if (movementX > 0)
         {
@@ -152,9 +156,8 @@ public class Movement
     /// Moves the actor vertivally
     /// </summary>
     /// <param name="actor">The actor to be moved</param>
-    /// <param name="animator">The animator to play animations</param>
     /// <param name="movementY">The movement on the Y axis.</param>
-    private void MoveVertically(GameObject actor, Animator animator, float movementY)
+    private void MoveVertically(GameObject actor, float movementY)
     {
         if (movementY > 0)
         {
@@ -174,8 +177,7 @@ public class Movement
     /// Stops the actor movement.
     /// </summary>
     /// <param name="actor">The actor to be moved</param>
-    /// <param name="animator">The animator to play animations</param>
-    private void Stop(GameObject actor, Animator animator)
+    private void Stop(GameObject actor)
     {
         actor.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         switch (faceDirection)

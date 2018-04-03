@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,15 +12,29 @@ public class GameManager : MonoBehaviour
     public GameObject[] players;        // The players to be instantiated.
 
     // Private variable declaration.
-    private bool _goToBattle;           // The scene should change to the battle scene.
-    private string _battleScene = "";   // The battle scene that must be loaded.
+    private TutorialController _tutorialController;
+
+    private enum GameEndStatus
+    {
+        WIN,
+        LOOSE
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoaded;
+    }
 
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
     {
-        _goToBattle = false;
         if (SceneData.playerList.Count == 0)
         {
             if (null != players)
@@ -30,12 +45,24 @@ public class GameManager : MonoBehaviour
                     players[i] = Instantiate(players[i]);
                     players[i].name = name;
                     DontDestroyOnLoad(players[i]);
+                    DontDestroyOnLoad(this);
                     SceneData.SavePlayer(players[i]);
                 }
             }
         }
-        else
+
+        if (!SceneData.gameStarted)
         {
+            SceneData.gameStarted = true;
+            StartCoroutine(GameLoop());
+        }
+	}
+
+    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (!SceneData.isInBattle && !SceneData.killedFinalBoss)
+        {
+            ShowHideTutorial();
             if (null == players)
             {
                 players = new GameObject[SceneData.playerList.Count];
@@ -51,22 +78,42 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        StartCoroutine(GameLoop());
-	}
+    }
 
     /// <summary>
     /// Sets the state of the game in order to go to the battle scene.
+    /// <param name="battleScene">The battle scene to be loaded.</param>
+    /// <param name="mainScene">The main scene to be loaded after the battle.</param>
+    /// <param name="enemy">The enemy to be put on the battle.</param>
     /// </summary>
-    public void GoToBattle(string battleScene, GameObject enemy)
+    public void GoToBattle(string battleScene, string mainScene, GameObject enemy)
     {
-        if (!_goToBattle)
+        if (!SceneData.isInBattle)
         {
-            _goToBattle = true;
-            _battleScene = battleScene;
+            SceneData.isInBattle = true;
+            SceneData.shouldStop = true;
+            SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
-            SceneData.enemyInBattleList.Add(enemy);
+            SceneData.enemyInBattle = enemy;
+            StartCoroutine(ShakeCameraAndLoadScene(battleScene));
         }
+    }
+
+    private IEnumerator ShakeCameraAndLoadScene(string battleScene)
+    {
+        for (int i = 0; i < 14; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            }
+            else
+            {
+                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+        SceneManager.LoadScene(battleScene);
     }
 
     /// <summary>
@@ -76,14 +123,20 @@ public class GameManager : MonoBehaviour
     {
         while(!GameEnd())
         {
-            if (_goToBattle)
-            {
-                SceneData.isInBattle = true;
-                SceneData.mainScene = "ForestMain";
-                SceneManager.LoadScene(_battleScene);
-            }
-
             yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        yield return new WaitForSeconds(2f);
+        DestroyAllObjects();
+        GameEndStatus endStatus = GetGameEndStatus();
+
+        if (endStatus == GameEndStatus.WIN)
+        {
+            SceneManager.LoadScene("GameEnd");
+        }
+        else
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -93,6 +146,74 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     private bool GameEnd()
     {
+        return SceneData.killedFinalBoss || !IsAnyPlayerAlive();
+    }
+
+    private GameEndStatus GetGameEndStatus()
+    {
+        if (SceneData.killedFinalBoss)
+        {
+            return GameEndStatus.WIN;
+        }
+
+        return GameEndStatus.LOOSE;
+    }
+
+    /// <summary>
+    /// Shows the tutorial for the game.
+    /// </summary>
+    private void ShowHideTutorial()
+    {
+        if (null == _tutorialController)
+        {
+            _tutorialController = GetComponent<TutorialController>();
+        }
+ 
+        if (SceneData.showGameTutorial)
+        {
+            _tutorialController.ShowTutorial();
+            SceneData.showGameTutorial = false;
+        }
+        else
+        {
+            _tutorialController.HideTutorial();
+        }
+    }
+
+    private bool IsAnyPlayerAlive()
+    {
+        foreach (GameObject player in SceneData.playerList)
+        {
+            if (null != player && player.GetControllerComponent().IsAlive())
+            {
+                return true;
+            }
+        }
+
         return false;
+    }
+
+    private void DestroyAllObjects()
+    {
+        foreach (GameObject player in SceneData.playerList)
+        {
+            if (null != player)
+            {
+                Destroy(player);
+            }
+        }
+
+        foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+        {
+            if (null != enemy)
+            {
+                Destroy(enemy);
+            }
+        }
+
+        if (null != SceneData.enemyInBattle)
+        {
+            Destroy(SceneData.enemyInBattle);
+        }
     }
 }
