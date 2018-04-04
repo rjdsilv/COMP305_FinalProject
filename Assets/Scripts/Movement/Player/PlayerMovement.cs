@@ -20,4 +20,9 @@ public class PlayerMovement : ActorMovement
     {
         movement.Move(gameObject, _animator, ControlUtils.Horizontal(), ControlUtils.Vertical(), SceneData.shouldStop);
     }
+
+    protected override void TurnNow()
+    {
+        throw new System.NotImplementedException();
+    }
 }

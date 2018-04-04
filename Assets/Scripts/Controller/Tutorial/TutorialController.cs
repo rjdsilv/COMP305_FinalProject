@@ -5,8 +5,10 @@
 /// </summary>
 public class TutorialController : MonoBehaviour
 {
+    // TODO Create a mission system.
     private const string _gameTutorialText = "Welcome to The Shrine of Ehernal Destinies. Use the keyboard's " +
-        "left, right, up, and down arrow keys to move you character.\n\nPress ESC when you are ready to begin.";
+        "left, right, up, and down arrow keys to move you character. Your 1st mission is to find the temple. " +
+        "Once you find it, kill the boss to win the game.\n\nPress ESC when you are ready to begin.";
 
     private const string _battleTutorialText = "To battle, select the enemy to attack using the up and down arrow keys. Then, " +
         "choose the ability to use using the left and right arrow keys. To attack, press the space bar." +

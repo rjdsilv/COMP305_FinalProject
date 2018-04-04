@@ -221,6 +221,9 @@ public class BattleManager : MonoBehaviour
             SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
             SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
 
+            // Setting the flag indicating that the final boss was killed.
+            SceneData.killedFinalBoss = SceneData.enemyInBattle.IsFinalBoss();
+
             // Destroy the enemy.
             Destroy(SceneData.enemyInBattle);
 
@@ -229,16 +232,19 @@ public class BattleManager : MonoBehaviour
             _mageController.IncreaseXp(_xpEarned);
             _mage.transform.localScale /= SCALE_FACTOR;
 
+            // Displays the battle report.
+            hudManager.DisplayBattleReport(_goldEarned, _xpEarned, _mageController.GetCurrentLevel());
+            yield return new WaitForSeconds(3f);
+            hudManager.HideTurnText();
+
             // Restores the calling scene.
             SceneData.shouldStop = false;
             SceneData.isCommingBackFronBattle = true;
             SceneData.isInBattle = false;
+
             RestorePlayersPositions();
+
             SceneManager.LoadScene(SceneData.mainScene);
-        }
-        else
-        {
-            hudManager.DisplayGameOverText();
         }
     }
 

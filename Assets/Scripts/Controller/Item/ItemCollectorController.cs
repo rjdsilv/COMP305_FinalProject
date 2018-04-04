@@ -3,12 +3,20 @@
 public class ItemCollectorController : MonoBehaviour
 {
     // Public variable declaration
-    public float entranceCheckRadius;
-    public LayerMask entranceMask;
+    public float itemCheckRadius;
+    public LayerMask itemMask;
 
     // Protected variable declaration
     protected Collider2D _collisionObject;
 
+    /// <summary>
+    /// Draw the player overlaping circle to make life easier when debugging.
+    /// </summary>
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, itemCheckRadius);
+    }
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
     /// <ul>
@@ -20,7 +28,7 @@ public class ItemCollectorController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        _collisionObject = Physics2D.OverlapCircle(transform.position, entranceCheckRadius, entranceMask);
+        _collisionObject = Physics2D.OverlapCircle(transform.position, itemCheckRadius, itemMask);
         if (null != _collisionObject)
         {
             if (TagUtils.IsHealthPot(_collisionObject.transform))

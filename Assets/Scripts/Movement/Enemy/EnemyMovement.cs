@@ -52,30 +52,6 @@ public class EnemyMovement : ActorMovement
     //// NON EVENT METHODS
 
     /// <summary>
-    /// Gets the ray direction based on the position the enemy is looking at.
-    /// </summary>
-    /// <returns>The direction to where the ray must by cast.</returns>
-    public Vector2 GetDirectionVector()
-    {
-        switch (movement.faceDirection)
-        {
-            case FaceDirection.DOWN:
-                return Vector2.down;
-
-            case FaceDirection.UP:
-                return Vector2.up;
-
-            case FaceDirection.LEFT:
-                return Vector2.left;
-
-            case FaceDirection.RIGHT:
-                return Vector2.right;
-        }
-
-        return Vector2.zero; ;
-    }
-
-    /// <summary>
     /// Turns the enemy due to the time elapsed.
     /// </summary>
     private void TurnDueToTimeFrame()
@@ -89,7 +65,7 @@ public class EnemyMovement : ActorMovement
     /// <summary>
     /// Turns randomly the enemy.
     /// </summary>
-    private void TurnNow()
+    protected override void TurnNow()
     {
         float direction = Random.Range(-1, 1);
 
@@ -97,7 +73,7 @@ public class EnemyMovement : ActorMovement
         {
             TurnVertical(direction);
         }
-        else if (movement.IsMovingVerticaally())
+        else if (movement.IsMovingVertically())
         {
             TurnHorizontal(direction);
         }

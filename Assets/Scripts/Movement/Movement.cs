@@ -90,7 +90,7 @@ public class Movement
     /// This method indicates if an actor is moving horizontally.
     /// </summary>
     /// <returns><b>true</b> if the actor is moving horizontally. <b>false</b> otherwise.</returns>
-    public bool IsMovingVerticaally()
+    public bool IsMovingVertically()
     {
         return IsWalkingUp() || IsWalkingDown();
     }

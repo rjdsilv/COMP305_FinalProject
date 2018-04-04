@@ -218,8 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a297c6ac615a89140a89d39b509c48cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entranceCheckRadius: 0.5
-  entranceMask:
+  itemCheckRadius: 0.8
+  itemMask:
     serializedVersion: 2
     m_Bits: 16384
 --- !u!114 &114362584931346482

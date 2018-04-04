@@ -73,9 +73,12 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Displays the text for game over.
     /// </summary>
-    public void DisplayGameOverText()
+    public void DisplayBattleReport(int goldEarned, int xpEarned, int plyerLevel)
     {
-        turnText.text = "Game Over";
+        turnText.text = string.Format("\t\t\t\t\t\t\t\tBattle Report\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t- Gold Earned: {0}\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t- XP Earned: {1}\n" +
+            "\t\t\t\t\t\t\t\t\t\t\t- Player Level: {2}", goldEarned, xpEarned, plyerLevel);
     }
 
     /// <summary>
