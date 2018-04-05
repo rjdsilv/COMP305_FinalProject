@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     // Constants declaration.
-    private const float SCALE_FACTOR = 1.25f;
+    private const float SCALE_FACTOR = 1.0f;
     private const float MIN_SEL_TIME = 0.25f;
     private const float MIN_ATTACK_TIME = 0.25f;
 
@@ -29,6 +29,11 @@ public class BattleManager : MonoBehaviour
     private Vector3 _mageOldPos;
     private GameObject _mage;
     private MageController _mageController;
+
+    // Thief variables.
+    private Vector3 _thiefOldPos;
+    private GameObject _thief;
+    private ThiefController _thiefController;
 
     // Generic variables.
     private GameObject _actorPlaying;
@@ -69,7 +74,7 @@ public class BattleManager : MonoBehaviour
         InactivateActorsFromPreviousScene();
 
         // Initialize the HUD.
-        hudManager.InitializePlayersHUD(_mage);
+        hudManager.InitializePlayersHUD(_mage, _thief);
         hudManager.InitializeTurnTimer(turnTime);
 
         // Initializes the last selection time.
@@ -127,6 +132,10 @@ public class BattleManager : MonoBehaviour
                 {
                     SwapMageAbility();
                 }
+                else if (_actorPlaying.IsThief())
+                {
+                    SwapThiefAbility();
+                }
             }
         }
     }
@@ -150,13 +159,22 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator StartTurn()
     {
+        // TODO Calculate which player will start the turn when multiplayer is working.
+
         _turnStarted = false;
         _attackExecuted = false;
 
         // Selects the player to attack.
         if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
         {
-            _actorPlaying = _mage;
+            if (_actorPlaying.IsMage())
+            {
+                _actorPlaying = _mage;
+            }
+            else if (_actorPlaying.IsThief())
+            {
+                _actorPlaying = _thief;
+            }
         }
         // Selects the enemy to attack.
         else
@@ -228,9 +246,21 @@ public class BattleManager : MonoBehaviour
             Destroy(SceneData.enemyInBattle);
 
             // Sets up the players amount earned.
-            _mageController.IncreaseGold(_goldEarned);
-            _mageController.IncreaseXp(_xpEarned);
-            _mage.transform.localScale /= SCALE_FACTOR;
+            foreach (GameObject player in SceneData.playerList)
+            {
+                if (player.IsMage())
+                {
+                    _mageController.IncreaseGold(_goldEarned);
+                    _mageController.IncreaseXp(_xpEarned);
+                    _mage.transform.localScale /= SCALE_FACTOR;
+                }
+                else if (player.IsThief())
+                {
+                    _thiefController.IncreaseGold(_goldEarned);
+                    _thiefController.IncreaseXp(_xpEarned);
+                    _thief.transform.localScale /= SCALE_FACTOR;
+                }
+            }
 
             // Displays the battle report.
             hudManager.DisplayBattleReport(_goldEarned, _xpEarned, _mageController.GetCurrentLevel());
@@ -262,7 +292,16 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void RestorePlayersPositions()
     {
-        _mage.transform.position = _mageOldPos;
+        // TODO remove null check when there are multiple players on the battle scene.
+        if (null != _mage)
+        {
+            _mage.transform.position = _mageOldPos;
+        }
+
+        if (null != _thief)
+        {
+            _thief.transform.position = _thiefOldPos;
+        }
     }
 
     /// <summary>
@@ -480,21 +519,55 @@ public class BattleManager : MonoBehaviour
         {
             if (player.IsMage())
             {
-                _mage = player;
-
-                // Saves the old position to restore by the end of the battle.
-                _mageOldPos = _mage.transform.position;
-
-                // Sets the selected ability for the mage's main ability.
-                _mageController = _mage.GetComponent<MageController>();
-                _selectedAbility = _mageController.fireBall;
-
-                // Fixes the player for the battle.
-                _mage.transform.position = FindSpawnPointForActor(player.name);
-                _mage.transform.localScale *= SCALE_FACTOR;
-                _mage.GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
+                SpawnMage(player);
+            }
+            else if (player.IsThief())
+            {
+                SpawnThief(player);
             }
         }
+    }
+
+    /// <summary>
+    /// Spawns the mage in the battle scene.
+    /// </summary>
+    /// <param name="player">The player to be spawned</param>
+    private void SpawnMage(GameObject player)
+    {
+        _mage = player;
+
+        // Saves the old position to restore by the end of the battle.
+        _mageOldPos = _mage.transform.position;
+
+        // Sets the selected ability for the mage's main ability.
+        _mageController = _mage.GetComponent<MageController>();
+        _selectedAbility = _mageController.fireBall;
+
+        // Fixes the player for the battle.
+        _mage.transform.position = FindSpawnPointForActor(player.name);
+        _mage.transform.localScale *= SCALE_FACTOR;
+        _mage.GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
+    }
+
+    /// <summary>
+    /// Spawns the thief in the battle scene.
+    /// </summary>
+    /// <param name="player">The player to be spawned</param>
+    private void SpawnThief(GameObject player)
+    {
+        _thief = player;
+
+        // Saves the old position to restore by the end of the battle.
+        _thiefOldPos = _thief.transform.position;
+
+        // Sets the selected ability for the mage's main ability.
+        _thiefController = _thief.GetComponent<ThiefController>();
+        _selectedAbility = _thiefController.dagger;
+
+        // Fixes the player for the battle.
+        _thief.transform.position = FindSpawnPointForActor(player.name);
+        _thief.transform.localScale *= SCALE_FACTOR;
+        _thief.GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
     }
 
     /// <summary>
@@ -571,6 +644,28 @@ public class BattleManager : MonoBehaviour
     /// Method to swap a mage ability no matter if controlled by the AI or not.
     /// </summary>
     private void SwapMageAbility()
+    {
+        // The mage is being controlled by some humam player.
+        if (!_mageController.attributes.managedByAI)
+        {
+            // The player chose to swap the hability.
+            if (ControlUtils.SwapAbility() != 0)
+            {
+                if (_selectedAbility == _mageController.fireBall)
+                    _selectedAbility = _mageController.lightningBall;
+                else
+                    _selectedAbility = _mageController.lightningBall;
+
+                hudManager.SwapAbility(_mage);
+                _lastSwapTime = Time.time;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Method to swap a thief ability no matter if controlled by the AI or not.
+    /// </summary>
+    private void SwapThiefAbility()
     {
         // The mage is being controlled by some humam player.
         if (!_mageController.attributes.managedByAI)
