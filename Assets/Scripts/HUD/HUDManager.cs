@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     public Text turnText;                       // The turn text to be displayed.
     public Slider turnTimer;                    // The turn timer to be managed.
     public PlayerHUD mageHUD;                   // The mage HUD to be managed.
+    public PlayerHUD thiefHUD;                  // The thief HUD to be managed.
 
     // Private variable declaration.
     private int _turnNumber = 1;
@@ -30,6 +31,10 @@ public class HUDManager : MonoBehaviour
             if (player.IsMage())
             {
                 InitializeMageHUD(player);
+            }
+            else if (player.IsThief())
+            {
+                InitializeThiefHUD(player);
             }
         }
     }
@@ -98,6 +103,10 @@ public class HUDManager : MonoBehaviour
         {
             SwapMageAbility();
         }
+        else if (player.IsThief())
+        {
+            SwapThiefAbility();
+        }
     }
 
     /// <summary>
@@ -107,7 +116,7 @@ public class HUDManager : MonoBehaviour
     /// <param name="healthDrained">The amount of health drained.</param>
     public void DecreaseHealthHUD(GameObject player, int healthDrained)
     {
-        if (player.IsMage())
+        if (player.IsMage() || player.IsThief())
         {
             GetHUDHealthText(player).text = "-" + healthDrained.ToString();
             DecreaseMageHealthHUD(healthDrained);
@@ -125,6 +134,10 @@ public class HUDManager : MonoBehaviour
         if (player.IsMage())
         {
             UpdateMageConsumableHUD(amount, decrease);
+        }
+        else if (player.IsThief())
+        {
+            UpdateThiefConsumableHUD(amount, decrease);
         }
     }
 
@@ -152,6 +165,29 @@ public class HUDManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Initializes the thief's HUD as long as it's on the plyaers list.
+    /// </summary>
+    /// <param name="thief">The thief to have the HUD initialized.</param>
+    private void InitializeThiefHUD(GameObject thief)
+    {
+        ThiefController thiefController = thief.GetComponent<ThiefController>();
+
+        // Initialize the health.
+        thiefHUD.healthSlider.minValue = 0;
+        thiefHUD.healthSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().health;
+        thiefHUD.healthSlider.value = thiefController.attributes.health;
+
+        // Initialize the mana.
+        thiefHUD.consumableSlider.minValue = 0;
+        thiefHUD.consumableSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().mana;
+        thiefHUD.consumableSlider.value = thiefController.attributes.mana;
+
+        // Initializes the abilities.
+        thiefHUD.mainAbilityImage.gameObject.GetComponent<Outline>().enabled = true;
+        thiefHUD.selectedImage = thiefHUD.mainAbilityImage;
+    }
+
+    /// <summary>
     /// Method in charge of swapping the mage's ability on the HUD.
     /// </summary>
     private void SwapMageAbility()
@@ -164,6 +200,21 @@ public class HUDManager : MonoBehaviour
             mageHUD.selectedImage = mageHUD.mainAbilityImage;
 
         mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
+    }
+
+    /// <summary>
+    /// Method in charge of swapping the thief's ability on the HUD.
+    /// </summary>
+    private void SwapThiefAbility()
+    {
+        thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
+
+        if (thiefHUD.selectedImage == thiefHUD.mainAbilityImage)
+            thiefHUD.selectedImage = thiefHUD.secondaryAbilityImage;
+        else
+            thiefHUD.selectedImage = thiefHUD.mainAbilityImage;
+
+        thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
     }
 
     /// <summary>
@@ -189,6 +240,23 @@ public class HUDManager : MonoBehaviour
         else
         {
             mageHUD.consumableSlider.value += amount;
+        }
+    }
+
+    /// <summary>
+    /// Updates the thief's consumable HUD to the new value after an attack.
+    /// </summary>
+    /// <param name="amount">The amount of consumable to be update.</param>
+    /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
+    private void UpdateThiefConsumableHUD(float amount, bool decrease)
+    {
+        if (decrease)
+        {
+            thiefHUD.consumableSlider.value -= amount;
+        }
+        else
+        {
+            thiefHUD.consumableSlider.value += amount;
         }
     }
 
