@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 50156762519690688}
   - component: {fileID: 61342980561175600}
   - component: {fileID: 114306736072813144}
-  - component: {fileID: 114967939663472998}
   - component: {fileID: 114563067892006396}
   - component: {fileID: 114501890211854836}
   - component: {fileID: 114475212887951752}
@@ -289,35 +288,6 @@ MonoBehaviour:
   dagger: {fileID: 0}
   bowLevelTree: {fileID: 11400000, guid: 6d1c58c1f4a7c4f4e8a801419fa2ede3, type: 2}
   daggerLevelTree: {fileID: 11400000, guid: 4e7371cb77273294286e896bbb04283e, type: 2}
---- !u!114 &114967939663472998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331064586474420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c764309d2642814288c05691163fd47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes:
-    health: 0
-    level: 0
-    minAttack: 0
-    maxAttack: 0
-    minDefense: 0
-    maxDefense: 0
-    managedByAI: 0
-    xp: 0
-    gold: 0
-    mana: 0
-    stamina: 0
-  levelTree: {fileID: 11400000, guid: 6d69899949f2c5d4bb0da1af74d23bb2, type: 2}
-  fireBall: {fileID: 0}
-  lightningBall: {fileID: 0}
-  fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
-  lightningBallLevelTre: {fileID: 11400000, guid: dc709df018c61574e83d374675ebb455,
-    type: 2}
 --- !u!212 &212463154190165372
 SpriteRenderer:
   m_ObjectHideFlags: 1

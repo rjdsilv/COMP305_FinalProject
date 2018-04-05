@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,6 +23,7 @@ public class BattleManager : MonoBehaviour
     public Material enemyMaterial;                  // The material to be used on the battle scene.
 
     // Private variable declaration.
+    private int _selectedPlayerIndex = 0;
     private PlayerAbility _selectedAbility;
     private TutorialController _tutorialController;
 
@@ -82,8 +84,9 @@ public class BattleManager : MonoBehaviour
         _lastAttackTime = Time.time;
 
         // Level up the enemy if its level is under the player's level.
-        IEnemyController enemyController = _enemies[_selectedEnemyIndex].GetEnemyControllerComponent();
-        if (enemyController.GetCurrentLevel() < _mageController.GetCurrentLevel())
+        IController enemyController = _enemies[_selectedEnemyIndex].GetControllerComponent();
+        IController playerController = SceneData.playerList[_selectedPlayerIndex].GetControllerComponent();
+        if (enemyController.GetCurrentLevel() < playerController.GetCurrentLevel())
         {
             enemyController.LevelUp();
         }
@@ -159,22 +162,15 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator StartTurn()
     {
-        // TODO Calculate which player will start the turn when multiplayer is working.
-
         _turnStarted = false;
         _attackExecuted = false;
 
         // Selects the player to attack.
         if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
         {
-            if (_actorPlaying.IsMage())
-            {
-                _actorPlaying = _mage;
-            }
-            else if (_actorPlaying.IsThief())
-            {
-                _actorPlaying = _thief;
-            }
+            _selectedPlayerIndex = _selectedPlayerIndex % SceneData.playerList.Count;
+            _actorPlaying = SceneData.playerList[_selectedPlayerIndex];
+            _selectedPlayerIndex++;
         }
         // Selects the enemy to attack.
         else
@@ -284,7 +280,19 @@ public class BattleManager : MonoBehaviour
     /// <returns><b>true</b> if at least one player is alive. <b>false</b> otherwise.</returns>
     private bool IsAnyPlayerAlive()
     {
-        return _mage.GetControllerComponent().IsAlive();
+        return IsMageAlive() || IsThiefAlive();
+    }
+
+    // TODO Remove null check when multiplayer is ready.
+    private bool IsMageAlive()
+    {
+        return _mage != null && _mage.GetControllerComponent().IsAlive();
+    }
+
+    // TODO Remove null check when multiplayer is ready.
+    private bool IsThiefAlive()
+    {
+        return _thief != null && _thief.GetControllerComponent().IsAlive();
     }
 
     /// <summary>
@@ -391,72 +399,97 @@ public class BattleManager : MonoBehaviour
             // The player is attacking.
             if (_actorPlaying.IsPlayer())
             {
-                IPlayerController attackerController = _actorPlaying.GetPlayerControllerComponent();
-
-                // Checks if the player can attack, which means it has consumable.
-                if (attackerController.CanAttack(_selectedAbility))
-                {
-                    // The player is controlled by human.
-                    if (!attackerController.IsManagedByAI())
-                    {
-                        if (ControlUtils.Attack())
-                        {
-                            GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
-                            IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
-                            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
-                            int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
-                            enemyController.PlayDamageSound();
-                            enemyController.DecreaseHealthHUD(attackPower);
-                            hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
-
-                            if (!enemyController.IsAlive())
-                            {
-                                SwapEnemyUp(_enemies.Length - 1);
-                                UpdateBattleEarnings(enemyController);
-                                enemyController.GetSelectionLight().intensity = 8f;
-                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
-                            }
-                            else
-                            {
-                                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
-                            }
-
-                            _attackExecuted = true;
-                            _lastAttackTime = Time.time;
-                        }
-                    }
-                }
+                PerformPlayerAttack();
             }
             else
             {
-                IEnemyController attackerController = _actorPlaying.GetEnemyControllerComponent();
+                PerformEnemyAttack();
+            }
+        }
+    }
 
-                if (_canAIAttack)
-                {
-                    _attackExecuted = true;
-                    ActorAbility selectedAbility = attackerController.SelectAbility();
+    /// <summary>
+    /// Method to perform a player attack. It can be both human controlled or AI controlled.
+    /// </summary>
+    private void PerformPlayerAttack()
+    {
+        IPlayerController attackerController = _actorPlaying.GetPlayerControllerComponent();
 
-                    // Finds an alive player to attack.
-                    GameObject selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
-                    while (!selectedPlayer.GetControllerComponent().IsAlive())
-                    {
-                        selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
-                    }
+        // Checks if the player can attack, which means it has consumable.
+        if (attackerController.CanAttack(_selectedAbility))
+        {
+            // The player is controlled by human.
+            if (!attackerController.IsManagedByAI())
+            {
+                PerformHumanControlledPlayerAttack(attackerController);
+            }
+        }
+    }
 
-                    _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
-                    hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
-                    _lastAttackTime = Time.time;
-                    _canAIAttack = false;
-                    IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
-                    if (!playerController.IsAlive())
-                    {
-                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
-                    }
-                    else
-                    {
-                        selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
-                    }
-                }
+    /// <summary>
+    /// Method to perform a human controlled player attack.
+    /// </summary>
+    /// <param name="attackerController">The controller for the attack.</param>
+    private void PerformHumanControlledPlayerAttack(IPlayerController attackerController)
+    {
+        if (ControlUtils.Attack())
+        {
+            GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
+            IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
+            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+            int attackPower = attackerController.Attack(selectedEnemy, _selectedAbility);
+            enemyController.PlayDamageSound();
+            enemyController.DecreaseHealthHUD(attackPower);
+            hudManager.UpdateConsumableHUD(_actorPlaying, _selectedAbility.consumptionValue, true);
+
+            if (!enemyController.IsAlive())
+            {
+                SwapEnemyUp(_enemies.Length - 1);
+                UpdateBattleEarnings(enemyController);
+                enemyController.GetSelectionLight().intensity = 8f;
+                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+            }
+            else
+            {
+                selectedEnemy.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
+            }
+
+            _attackExecuted = true;
+            _lastAttackTime = Time.time;
+        }
+    }
+
+    /// <summary>
+    /// Method to perform an enemy AI controlled attack.
+    /// </summary>
+    private void PerformEnemyAttack()
+    {
+        IEnemyController attackerController = _actorPlaying.GetEnemyControllerComponent();
+
+        if (_canAIAttack)
+        {
+            _attackExecuted = true;
+            ActorAbility selectedAbility = attackerController.SelectAbility();
+
+            // Finds an alive player to attack.
+            GameObject selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
+            while (!selectedPlayer.GetControllerComponent().IsAlive())
+            {
+                selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
+            }
+
+            _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+            hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
+            _lastAttackTime = Time.time;
+            _canAIAttack = false;
+            IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
+            if (!playerController.IsAlive())
+            {
+                selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
+            }
+            else
+            {
+                selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
             }
         }
     }
@@ -654,7 +687,7 @@ public class BattleManager : MonoBehaviour
                 if (_selectedAbility == _mageController.fireBall)
                     _selectedAbility = _mageController.lightningBall;
                 else
-                    _selectedAbility = _mageController.lightningBall;
+                    _selectedAbility = _mageController.fireBall;
 
                 hudManager.SwapAbility(_mage);
                 _lastSwapTime = Time.time;
@@ -668,17 +701,17 @@ public class BattleManager : MonoBehaviour
     private void SwapThiefAbility()
     {
         // The mage is being controlled by some humam player.
-        if (!_mageController.attributes.managedByAI)
+        if (!_thiefController.attributes.managedByAI)
         {
             // The player chose to swap the hability.
             if (ControlUtils.SwapAbility() != 0)
             {
-                if (_selectedAbility == _mageController.fireBall)
-                    _selectedAbility = _mageController.lightningBall;
+                if (_selectedAbility == _thiefController.dagger)
+                    _selectedAbility = _thiefController.bow;
                 else
-                    _selectedAbility = _mageController.lightningBall;
+                    _selectedAbility = _thiefController.dagger;
 
-                hudManager.SwapAbility(_mage);
+                hudManager.SwapAbility(_thief);
                 _lastSwapTime = Time.time;
             }
         }

@@ -28,13 +28,17 @@ public class HUDManager : MonoBehaviour
     {
         foreach (GameObject player in players)
         {
-            if (player.IsMage())
+            // TODO remove null check when multiplayer is done.
+            if (null != player)
             {
-                InitializeMageHUD(player);
-            }
-            else if (player.IsThief())
-            {
-                InitializeThiefHUD(player);
+                if (player.IsMage())
+                {
+                    InitializeMageHUD(player);
+                }
+                else if (player.IsThief())
+                {
+                    InitializeThiefHUD(player);
+                }
             }
         }
     }
@@ -116,10 +120,14 @@ public class HUDManager : MonoBehaviour
     /// <param name="healthDrained">The amount of health drained.</param>
     public void DecreaseHealthHUD(GameObject player, int healthDrained)
     {
-        if (player.IsMage() || player.IsThief())
+        if (player.IsMage())
         {
             GetHUDHealthText(player).text = "-" + healthDrained.ToString();
             DecreaseMageHealthHUD(healthDrained);
+        }
+        else if (player.IsThief())
+        {
+            DecreaseThiefHealthHUD(healthDrained);
         }
     }
 
@@ -179,8 +187,8 @@ public class HUDManager : MonoBehaviour
 
         // Initialize the mana.
         thiefHUD.consumableSlider.minValue = 0;
-        thiefHUD.consumableSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().mana;
-        thiefHUD.consumableSlider.value = thiefController.attributes.mana;
+        thiefHUD.consumableSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().stamina;
+        thiefHUD.consumableSlider.value = thiefController.attributes.stamina;
 
         // Initializes the abilities.
         thiefHUD.mainAbilityImage.gameObject.GetComponent<Outline>().enabled = true;
@@ -224,6 +232,16 @@ public class HUDManager : MonoBehaviour
     private void DecreaseMageHealthHUD(int healthDrained)
     {
         mageHUD.healthSlider.value -= healthDrained;
+    }
+
+
+    /// <summary>
+    /// Updates the thief health HUD.
+    /// </summary>
+    /// <param name="healthDrained">The amount of health to be drained.</param>
+    private void DecreaseThiefHealthHUD(int healthDrained)
+    {
+        thiefHUD.healthSlider.value -= healthDrained;
     }
 
     /// <summary>

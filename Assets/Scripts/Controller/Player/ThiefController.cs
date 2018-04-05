@@ -41,7 +41,7 @@ public class ThiefController : PlayerController<ThiefAttributes, ThiefLevelTree>
         // Initializes the mage attributes.
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
-        attributes.mana = levelTree.GetAttributesForCurrentLevel().mana;
+        attributes.stamina = levelTree.GetAttributesForCurrentLevel().stamina;
         attributes.managedByAI = levelTree.GetAttributesForCurrentLevel().managedByAI;
         attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
