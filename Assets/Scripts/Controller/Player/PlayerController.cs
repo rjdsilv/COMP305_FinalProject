@@ -79,13 +79,10 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         attributes.gold += amount;
     }
 
-    /// <see cref="ActorController{A, L}">
-    protected override void Init()
+    /// <see cref="IPlayerController{A, L}">
+    public void SetIsManagedByAI(bool isManagedByAI)
     {
-        base.Init();
-
-        attributes.gold = 0;
-        attributes.xp = 0;
+        attributes.managedByAI = isManagedByAI;
     }
 
     /// <see cref="IController{A, L}"/>
@@ -96,6 +93,15 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
             levelTree.IncreaseLevel();
             SetAttributesForCurrentLevel();
         }
+    }
+
+    /// <see cref="ActorController{A, L}">
+    protected override void Init()
+    {
+        base.Init();
+
+        attributes.gold = 0;
+        attributes.xp = 0;
     }
 
     /// <summary>

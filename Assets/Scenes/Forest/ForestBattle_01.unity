@@ -534,7 +534,7 @@ MonoBehaviour:
   - actorName: Mage
     spawnPoint: {x: -10, y: -3.5, z: 0}
   - actorName: Thief
-    spawnPoint: {x: -10, y: -2, z: 0}
+    spawnPoint: {x: -8.5, y: -3, z: 0}
   - actorName: Cleric
     spawnPoint: {x: -10, y: -0.5, z: 0}
   - actorName: Knight

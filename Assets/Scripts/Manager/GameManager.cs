@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Public variable declaration.
-    public GameObject[] players;        // The players to be instantiated.
+    public PlayerAIManager[] playerAIManagers;
 
     // Private variable declaration.
     private TutorialController _tutorialController;
@@ -37,16 +37,14 @@ public class GameManager : MonoBehaviour
     {
         if (SceneData.playerList.Count == 0)
         {
-            if (null != players)
+            if (null != playerAIManagers)
             {
-                for (int i = 0; i < players.Length; i++)
+                for (int i = 0; i < playerAIManagers.Length; i++)
                 {
-                    string name = players[i].name;
-                    players[i] = Instantiate(players[i]);
-                    players[i].name = name;
-                    DontDestroyOnLoad(players[i]);
+                    InstantiatePlayer(i);
+                    DontDestroyOnLoad(playerAIManagers[i].player);
                     DontDestroyOnLoad(this);
-                    SceneData.SavePlayer(players[i]);
+                    SceneData.SavePlayer(playerAIManagers[i].player);
                 }
             }
         }
@@ -58,23 +56,41 @@ public class GameManager : MonoBehaviour
         }
 	}
 
+    /// <summary>
+    /// Instantiate the player contained in the player index of the game manager.
+    /// </summary>
+    /// <param name="playerIndex"></param>
+    private void InstantiatePlayer(int playerIndex)
+    {
+        string name = playerAIManagers[playerIndex].player.name;
+        playerAIManagers[playerIndex].player = Instantiate(playerAIManagers[playerIndex].player);
+        playerAIManagers[playerIndex].player.name = name;
+        playerAIManagers[playerIndex].player.GetPlayerControllerComponent().SetIsManagedByAI(playerAIManagers[playerIndex].managedByAI);
+        playerAIManagers[playerIndex].player.SetActive(!playerAIManagers[playerIndex].managedByAI);
+    }
+
+    /// <summary>
+    /// Method that will be called whenever the scene is loaded.
+    /// </summary>
+    /// <param name="scene">The scene being loaded</param>
+    /// <param name="mode">the mode the scene is being loaded.</param>
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         if (!SceneData.isInBattle && !SceneData.killedFinalBoss)
         {
             ShowHideTutorial();
-            if (null == players)
+            if (null == playerAIManagers)
             {
-                players = new GameObject[SceneData.playerList.Count];
+                playerAIManagers = new PlayerAIManager[SceneData.playerList.Count];
             }
 
             for (int i = 0; i < SceneData.playerList.Count; i++)
             {
-                players[i] = SceneData.playerList[i];
-                players[i].SetActive(true);
-                if (!players[i].GetControllerComponent().IsManagedByAI())
+                playerAIManagers[i].player = SceneData.playerList[i];
+                playerAIManagers[i].player.SetActive(!playerAIManagers[i].managedByAI);
+                if (!playerAIManagers[i].player.GetControllerComponent().IsManagedByAI())
                 {
-                    Camera.main.transform.position = players[i].transform.position + Vector3.back * 10;
+                    Camera.main.transform.position = playerAIManagers[i].player.transform.position + Vector3.back * 10;
                 }
             }
         }

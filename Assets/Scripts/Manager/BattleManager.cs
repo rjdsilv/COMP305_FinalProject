@@ -44,6 +44,8 @@ public class BattleManager : MonoBehaviour
     private float _turnRemainingTime;
     private bool _turnStarted;
     private bool _attackExecuted;
+    private bool _abilitySwaped = false;
+    private bool _enemySwaped = false;
     private bool _canAIAttack = false;
     private bool _isShowingTutorial = false;
     private int _xpEarned = 0;
@@ -164,13 +166,13 @@ public class BattleManager : MonoBehaviour
     {
         _turnStarted = false;
         _attackExecuted = false;
+        _abilitySwaped = false;
+        _enemySwaped = false;
 
         // Selects the player to attack.
         if ((null == _actorPlaying) || !_actorPlaying.IsPlayer())
         {
-            _selectedPlayerIndex = _selectedPlayerIndex % SceneData.playerList.Count;
-            _actorPlaying = SceneData.playerList[_selectedPlayerIndex];
-            _selectedPlayerIndex++;
+            SelectPlayerToAttack();
         }
         // Selects the enemy to attack.
         else
@@ -241,7 +243,7 @@ public class BattleManager : MonoBehaviour
             // Destroy the enemy.
             Destroy(SceneData.enemyInBattle);
 
-            // Sets up the players amount earned.
+            // Sets up the players amount earned and inactivate the players controlled by AI..
             foreach (GameObject player in SceneData.playerList)
             {
                 if (player.IsMage())
@@ -256,6 +258,8 @@ public class BattleManager : MonoBehaviour
                     _thiefController.IncreaseXp(_xpEarned);
                     _thief.transform.localScale /= SCALE_FACTOR;
                 }
+
+                player.SetActive(!player.GetControllerComponent().IsManagedByAI());
             }
 
             // Displays the battle report.
@@ -345,6 +349,17 @@ public class BattleManager : MonoBehaviour
         return true;
     }
 
+    private void SelectPlayerToAttack()
+    {
+        do
+        {
+            _selectedPlayerIndex = _selectedPlayerIndex % SceneData.playerList.Count;
+            _actorPlaying = SceneData.playerList[_selectedPlayerIndex];
+            _selectedPlayerIndex++;
+        }
+        while (!_actorPlaying.GetControllerComponent().IsAlive());
+    }
+
     /// <summary>
     /// Selects an alive enemy to perform the next attack.
     /// </summary>
@@ -369,22 +384,39 @@ public class BattleManager : MonoBehaviour
         {
             if (_actorPlaying.IsPlayer())
             {
+                int max = _enemies.Length;
+                _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 8f;
+
                 if (!_actorPlaying.GetControllerComponent().IsManagedByAI())
                 {
-                    int max = _enemies.Length - 1;
-                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 8f;
-
                     if (ControlUtils.SwapEnemyDown())
                     {
-                        SwapEnemyDown(max);
+                        SwapEnemyDown(max - 1);
                     }
                     else if (ControlUtils.SwapEnemyUp())
                     {
-                        SwapEnemyUp(max);
+                        SwapEnemyUp(max - 1);
                     }
-
-                    _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
                 }
+                else
+                {
+                    if (!_enemySwaped)
+                    {
+                        float directionToMove = UnityEngine.Random.Range(0f, 1f);
+                        if (directionToMove >= 0f && directionToMove <= 0.333f)
+                        {
+                            SwapEnemyDown(max - 1);
+                        }
+                        else if (directionToMove > 0.333f && directionToMove <= 0.667f)
+                        {
+                            SwapEnemyUp(max - 1);
+                        }
+
+                        _enemySwaped = true;
+                    }
+                }
+
+                _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
             }
         }
     }
@@ -423,6 +455,19 @@ public class BattleManager : MonoBehaviour
             {
                 PerformHumanControlledPlayerAttack(attackerController);
             }
+            else
+            {
+                PerformAIControlledPlayerAttack(attackerController);
+            }
+        }
+    }
+
+    private void PerformAIControlledPlayerAttack(IPlayerController attackerController)
+    {
+        if (_canAIAttack)
+        {
+            PerformAttack(attackerController);
+            _canAIAttack = false;
         }
     }
 
@@ -433,6 +478,14 @@ public class BattleManager : MonoBehaviour
     private void PerformHumanControlledPlayerAttack(IPlayerController attackerController)
     {
         if (ControlUtils.Attack())
+        {
+            PerformAttack(attackerController);
+        }
+    }
+
+    private void PerformAttack(IPlayerController attackerController)
+    {
+        if (attackerController.IsAlive())
         {
             GameObject selectedEnemy = _enemies[_selectedEnemyIndex];
             IEnemyController enemyController = selectedEnemy.GetEnemyControllerComponent();
@@ -472,11 +525,12 @@ public class BattleManager : MonoBehaviour
             ActorAbility selectedAbility = attackerController.SelectAbility();
 
             // Finds an alive player to attack.
-            GameObject selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
-            while (!selectedPlayer.GetControllerComponent().IsAlive())
+            GameObject selectedPlayer;
+            do
             {
                 selectedPlayer = SceneData.playerList[Mathf.FloorToInt(UnityEngine.Random.Range(0, SceneData.playerList.Count - 0.00001f))];
             }
+            while (!selectedPlayer.GetControllerComponent().IsAlive());
 
             _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
             hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
@@ -580,6 +634,7 @@ public class BattleManager : MonoBehaviour
         _mage.transform.position = FindSpawnPointForActor(player.name);
         _mage.transform.localScale *= SCALE_FACTOR;
         _mage.GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
+        _mage.SetActive(true);
     }
 
     /// <summary>
@@ -601,6 +656,7 @@ public class BattleManager : MonoBehaviour
         _thief.transform.position = FindSpawnPointForActor(player.name);
         _thief.transform.localScale *= SCALE_FACTOR;
         _thief.GetComponent<PlayerMovement>().movement.faceDirection = FaceDirection.RIGHT;
+        _thief.SetActive(true);
     }
 
     /// <summary>
@@ -682,15 +738,36 @@ public class BattleManager : MonoBehaviour
         if (!_mageController.attributes.managedByAI)
         {
             // The player chose to swap the hability.
-            if (ControlUtils.SwapAbility() != 0)
+            if (ControlUtils.SwapAbility() < 0)
             {
-                if (_selectedAbility == _mageController.fireBall)
-                    _selectedAbility = _mageController.lightningBall;
-                else
-                    _selectedAbility = _mageController.fireBall;
-
-                hudManager.SwapAbility(_mage);
+                _selectedAbility = _mageController.fireBall;
+                hudManager.SwapAbility(_mage, _selectedAbility);
                 _lastSwapTime = Time.time;
+            }
+            else if (ControlUtils.SwapAbility() > 0)
+            {
+                _selectedAbility = _mageController.lightningBall;
+                hudManager.SwapAbility(_mage, _selectedAbility);
+                _lastSwapTime = Time.time;
+            }
+        }
+        else
+        {
+            if (!_abilitySwaped)
+            {
+                float habilityRange = UnityEngine.Random.Range(0, 1);
+                if (habilityRange >= 0.00f && habilityRange < 0.50f)
+                {
+                    _selectedAbility = _mageController.fireBall;
+                }
+                else
+                {
+                    _selectedAbility = _mageController.lightningBall;
+                }
+
+                hudManager.SwapAbility(_mage, _selectedAbility);
+                _lastSwapTime = Time.time;
+                _abilitySwaped = true;
             }
         }
     }
@@ -704,15 +781,36 @@ public class BattleManager : MonoBehaviour
         if (!_thiefController.attributes.managedByAI)
         {
             // The player chose to swap the hability.
-            if (ControlUtils.SwapAbility() != 0)
+            if (ControlUtils.SwapAbility() < 0)
             {
-                if (_selectedAbility == _thiefController.dagger)
-                    _selectedAbility = _thiefController.bow;
-                else
-                    _selectedAbility = _thiefController.dagger;
-
-                hudManager.SwapAbility(_thief);
+                _selectedAbility = _thiefController.dagger;
+                hudManager.SwapAbility(_thief, _selectedAbility);
                 _lastSwapTime = Time.time;
+            }
+            else if (ControlUtils.SwapAbility() > 0)
+            {
+                _selectedAbility = _thiefController.bow;
+                hudManager.SwapAbility(_thief, _selectedAbility);
+                _lastSwapTime = Time.time;
+            }
+        }
+        else
+        {
+            if (!_abilitySwaped)
+            {
+                float habilityRange = UnityEngine.Random.Range(0f, 1f);
+                if (habilityRange >= 0.00f && habilityRange < 0.50f)
+                {
+                    _selectedAbility = _thiefController.dagger;
+                }
+                else
+                {
+                    _selectedAbility = _thiefController.bow;
+                }
+
+                hudManager.SwapAbility(_thief, _selectedAbility);
+                _lastSwapTime = Time.time;
+                _abilitySwaped = true;
             }
         }
     }

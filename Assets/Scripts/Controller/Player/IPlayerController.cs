@@ -24,6 +24,12 @@ public interface IPlayerController : IController
     bool CanAttack(PlayerAbility ability);
 
     /// <summary>
+    /// Sets the player AI state.
+    /// </summary>
+    /// <param name="isManagedByAI">Flag indicating if the player is managed by AI or not.</param>
+    void SetIsManagedByAI(bool isManagedByAI);
+
+    /// <summary>
     /// Increases the ammount of XP this player has.
     /// <param name="amount">The amount of XP to increase.</param>
     /// </summary>

@@ -101,15 +101,15 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Method in charge of swapping the ability on the HUD.
     /// </summary>
-    public void SwapAbility(GameObject player)
+    public void SwapAbility(GameObject player, ActorAbility ability)
     {
         if (player.IsMage())
         {
-            SwapMageAbility();
+            SwapMageAbility(ability);
         }
         else if (player.IsThief())
         {
-            SwapThiefAbility();
+            SwapThiefAbility(ability);
         }
     }
 
@@ -127,6 +127,7 @@ public class HUDManager : MonoBehaviour
         }
         else if (player.IsThief())
         {
+            GetHUDHealthText(player).text = "-" + healthDrained.ToString();
             DecreaseThiefHealthHUD(healthDrained);
         }
     }
@@ -198,14 +199,18 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Method in charge of swapping the mage's ability on the HUD.
     /// </summary>
-    private void SwapMageAbility()
+    private void SwapMageAbility(ActorAbility ability)
     {
         mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
 
-        if (mageHUD.selectedImage == mageHUD.mainAbilityImage)
-            mageHUD.selectedImage = mageHUD.secondaryAbilityImage;
-        else
+        if (ability is FireBall)
+        {
             mageHUD.selectedImage = mageHUD.mainAbilityImage;
+        }
+        else if (ability is LightningBall)
+        {
+            mageHUD.selectedImage = mageHUD.secondaryAbilityImage;
+        }
 
         mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
     }
@@ -213,14 +218,18 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Method in charge of swapping the thief's ability on the HUD.
     /// </summary>
-    private void SwapThiefAbility()
+    private void SwapThiefAbility(ActorAbility ability)
     {
         thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
 
-        if (thiefHUD.selectedImage == thiefHUD.mainAbilityImage)
-            thiefHUD.selectedImage = thiefHUD.secondaryAbilityImage;
-        else
+        if (ability is Dagger)
+        {
             thiefHUD.selectedImage = thiefHUD.mainAbilityImage;
+        }
+        else if (ability is Bow)
+        {
+            thiefHUD.selectedImage = thiefHUD.secondaryAbilityImage;
+        }
 
         thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
     }

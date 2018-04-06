@@ -42,7 +42,6 @@ public class ThiefController : PlayerController<ThiefAttributes, ThiefLevelTree>
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
         attributes.stamina = levelTree.GetAttributesForCurrentLevel().stamina;
-        attributes.managedByAI = levelTree.GetAttributesForCurrentLevel().managedByAI;
         attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
