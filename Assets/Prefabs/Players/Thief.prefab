@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 50156762519690688}
   - component: {fileID: 61342980561175600}
   - component: {fileID: 114306736072813144}
-  - component: {fileID: 114967939663472998}
+  - component: {fileID: 114563067892006396}
   - component: {fileID: 114501890211854836}
   - component: {fileID: 114475212887951752}
   m_Layer: 9
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.21, y: 0.48}
+    oldSize: {x: 0.39, y: 0.51}
     newSize: {x: 0.21, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   templeSpawnPoint: {x: -85, y: 3.5, z: 0}
---- !u!114 &114967939663472998
+--- !u!114 &114563067892006396
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331064586474420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c764309d2642814288c05691163fd47, type: 3}
+  m_Script: {fileID: 11500000, guid: 6093742e48ba72743b042c719ac8b307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attributes:
@@ -283,12 +283,11 @@ MonoBehaviour:
     gold: 0
     mana: 0
     stamina: 0
-  levelTree: {fileID: 11400000, guid: 6d69899949f2c5d4bb0da1af74d23bb2, type: 2}
-  fireBall: {fileID: 0}
-  lightningBall: {fileID: 0}
-  fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
-  lightningBallLevelTre: {fileID: 11400000, guid: dc709df018c61574e83d374675ebb455,
-    type: 2}
+  levelTree: {fileID: 11400000, guid: 03f176cb78c6e67448ef979db8e1632d, type: 2}
+  bow: {fileID: 0}
+  dagger: {fileID: 0}
+  bowLevelTree: {fileID: 11400000, guid: 6d1c58c1f4a7c4f4e8a801419fa2ede3, type: 2}
+  daggerLevelTree: {fileID: 11400000, guid: 4e7371cb77273294286e896bbb04283e, type: 2}
 --- !u!212 &212463154190165372
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -323,7 +322,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 15
-  m_Sprite: {fileID: 21300090, guid: b17cbb5521712784cb0e529202f5fbf6, type: 3}
+  m_Sprite: {fileID: 21300108, guid: 8dd47d825cf56b54fb5985b7da136ae1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

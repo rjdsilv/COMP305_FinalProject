@@ -42,7 +42,6 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
         attributes.health = levelTree.GetAttributesForCurrentLevel().health;
         attributes.level = levelTree.GetAttributesForCurrentLevel().level;
         attributes.mana = levelTree.GetAttributesForCurrentLevel().mana;
-        attributes.managedByAI = levelTree.GetAttributesForCurrentLevel().managedByAI;
         attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
         attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
         attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
