@@ -103,7 +103,7 @@ public class BattleManager : MonoBehaviour
     {
         if (_isShowingTutorial)
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (ControlUtils.ButtonB(1) || ControlUtils.ButtonB(2))
             {
                 _isShowingTutorial = false;
             }
@@ -389,11 +389,11 @@ public class BattleManager : MonoBehaviour
 
                 if (!_actorPlaying.GetControllerComponent().IsManagedByAI())
                 {
-                    if (ControlUtils.SwapEnemyDown())
+                    if (ControlUtils.SwapEnemyDown(_actorPlaying.GetPlayerControllerComponent().GetPlayerNumber()))
                     {
                         SwapEnemyDown(max - 1);
                     }
-                    else if (ControlUtils.SwapEnemyUp())
+                    else if (ControlUtils.SwapEnemyUp(_actorPlaying.GetPlayerControllerComponent().GetPlayerNumber()))
                     {
                         SwapEnemyUp(max - 1);
                     }
@@ -477,7 +477,7 @@ public class BattleManager : MonoBehaviour
     /// <param name="attackerController">The controller for the attack.</param>
     private void PerformHumanControlledPlayerAttack(IPlayerController attackerController)
     {
-        if (ControlUtils.Attack())
+        if (ControlUtils.Attack(attackerController.GetPlayerNumber()))
         {
             PerformAttack(attackerController);
         }
@@ -738,13 +738,13 @@ public class BattleManager : MonoBehaviour
         if (!_mageController.attributes.managedByAI)
         {
             // The player chose to swap the hability.
-            if (ControlUtils.SwapAbility() < 0)
+            if (ControlUtils.SwapAbility(_mageController.playerNumber) < 0)
             {
                 _selectedAbility = _mageController.fireBall;
                 hudManager.SwapAbility(_mage, _selectedAbility);
                 _lastSwapTime = Time.time;
             }
-            else if (ControlUtils.SwapAbility() > 0)
+            else if (ControlUtils.SwapAbility(_mageController.playerNumber) > 0)
             {
                 _selectedAbility = _mageController.lightningBall;
                 hudManager.SwapAbility(_mage, _selectedAbility);
@@ -781,13 +781,13 @@ public class BattleManager : MonoBehaviour
         if (!_thiefController.attributes.managedByAI)
         {
             // The player chose to swap the hability.
-            if (ControlUtils.SwapAbility() < 0)
+            if (ControlUtils.SwapAbility(_thiefController.playerNumber) < 0)
             {
                 _selectedAbility = _thiefController.dagger;
                 hudManager.SwapAbility(_thief, _selectedAbility);
                 _lastSwapTime = Time.time;
             }
-            else if (ControlUtils.SwapAbility() > 0)
+            else if (ControlUtils.SwapAbility(_thiefController.playerNumber) > 0)
             {
                 _selectedAbility = _thiefController.bow;
                 hudManager.SwapAbility(_thief, _selectedAbility);

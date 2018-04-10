@@ -5,10 +5,10 @@
 /// </summary>
 public static class ActorUtils
 {
-    private const string MAGE = "Mage";            // The mage's prefab name
-    private const string THIEF = "Thief";          // The mage's prefab name
-    private const string KNIGHT = "Knight";        // The mage's prefab name
-    private const string CLERIC = "Cleric";        // The mage's prefab name
+    public const string MAGE = "Mage";             // The mage's prefab name
+    public const string THIEF = "Thief";           // The mage's prefab name
+    public const string KNIGHT = "Knight";         // The mage's prefab name
+    public const string CLERIC = "Cleric";         // The mage's prefab name
 
     private const string WOLF = "Wolf";            // The wolf's prefab name.
     private const string GOLEM = "Golem";          // The golem's prefab name.

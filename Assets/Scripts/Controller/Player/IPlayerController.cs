@@ -40,4 +40,22 @@ public interface IPlayerController : IController
     /// <param name="amount">The amount of gold to increase.</param>
     /// </summary>
     void IncreaseGold(int amount);
+
+    /// <summary>
+    /// Gets the player number 1 or 2.
+    /// </summary>
+    /// <returns>The player number</returns>
+    int GetPlayerNumber();
+
+    /// <summary>
+    /// Returns the indication if the player is the player one or not.
+    /// </summary>
+    /// <returns><b>true</b> if the player is player one. <b>false</b> otherwise.</returns>
+    bool IsPlayerOne();
+
+    /// <summary>
+    /// Returns the indication if the player is the player two or not.
+    /// </summary>
+    /// <returns><b>true</b> if the player is player two. <b>false</b> otherwise.</returns>
+    bool IsPlayerTwo();
 }

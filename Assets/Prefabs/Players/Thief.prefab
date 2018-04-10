@@ -259,7 +259,8 @@ MonoBehaviour:
   entranceMask:
     serializedVersion: 2
     m_Bits: 8192
-  templeSpawnPoint: {x: -85, y: 3.5, z: 0}
+  playerOneSpawnPos: {x: 25, y: -14.5, z: 0}
+  playerTwoSpawnPos: {x: 50, y: -14.5, z: 0}
 --- !u!114 &114563067892006396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -284,6 +285,7 @@ MonoBehaviour:
     mana: 0
     stamina: 0
   levelTree: {fileID: 11400000, guid: 03f176cb78c6e67448ef979db8e1632d, type: 2}
+  playerNumber: 1
   bow: {fileID: 0}
   dagger: {fileID: 0}
   bowLevelTree: {fileID: 11400000, guid: 6d1c58c1f4a7c4f4e8a801419fa2ede3, type: 2}

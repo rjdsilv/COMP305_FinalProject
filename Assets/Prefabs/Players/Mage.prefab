@@ -202,6 +202,7 @@ MonoBehaviour:
     mana: 0
     stamina: 0
   levelTree: {fileID: 11400000, guid: 6d69899949f2c5d4bb0da1af74d23bb2, type: 2}
+  playerNumber: 1
   fireBall: {fileID: 0}
   lightningBall: {fileID: 0}
   fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
@@ -288,7 +289,8 @@ MonoBehaviour:
   entranceMask:
     serializedVersion: 2
     m_Bits: 8192
-  templeSpawnPoint: {x: -85, y: 3.5, z: 0}
+  playerOneSpawnPos: {x: 25, y: -14.5, z: 0}
+  playerTwoSpawnPos: {x: 50, y: -14.5, z: 0}
 --- !u!212 &212623987305169716
 SpriteRenderer:
   m_ObjectHideFlags: 1
