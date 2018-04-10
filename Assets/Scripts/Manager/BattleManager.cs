@@ -65,6 +65,7 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         _tutorialController = GetComponent<TutorialController>();
+        _tutorialController.ResetPanels();
         ShowTutorial();
 
         // Sets the scene as being in a battle.
