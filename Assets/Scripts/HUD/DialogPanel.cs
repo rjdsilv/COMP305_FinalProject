@@ -7,9 +7,9 @@ using UnityEngine.Events;
 /// </summary>
 public class DialogPanel
 {
-    private static Button[] _dialogPanelButtons;
+    private Button[] _dialogPanelButtons;
 
-    private static GameObject _dialogPanel;
+    private GameObject _dialogPanel;
 
     // Constant declaration.
     private const int YES_IDX = 0;
@@ -18,14 +18,10 @@ public class DialogPanel
     // Private variable declaration.
     private Text _dialogText;
 
-    public DialogPanel()
-    {
-    }
-
     public DialogPanel(GameObject dialogPanel)
     {
         _dialogPanel = dialogPanel;
-        _dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>();
+        _dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>(true);
     }
 
     /// <summary>

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     // Private variable declaration.
     private TutorialController _tutorialController;
+    private bool _isLevelLoadMethodSet = false;
 
     private enum GameEndStatus
     {
@@ -22,18 +23,35 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += OnLevelLoaded;
+        if (!_isLevelLoadMethodSet)
+        {
+            SceneManager.sceneLoaded += OnLevelLoaded;
+            _isLevelLoadMethodSet = true;
+        }
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= OnLevelLoaded;
+        if (_isLevelLoadMethodSet)
+        {
+            SceneManager.sceneLoaded -= OnLevelLoaded;
+            _isLevelLoadMethodSet = false;
+        }
     }
 
     /// <summary>
     /// Starts all the necessary information for the game.
     /// </summary>
 	private void Start ()
+    {
+        InstantiateAndSavePlayers();
+        StartGame();
+	}
+
+    /// <summary>
+    /// Instantiates and save the players on scene data class.
+    /// </summary>
+    private void InstantiateAndSavePlayers()
     {
         if (SceneData.playerList.Count == 0)
         {
@@ -48,13 +66,19 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
 
+    /// <summary>
+    /// Method to start the game loop.
+    /// </summary>
+    private void StartGame()
+    {
         if (!SceneData.gameStarted)
         {
             SceneData.gameStarted = true;
             StartCoroutine(GameLoop());
         }
-	}
+    }
 
     /// <summary>
     /// Instantiate the player contained in the player index of the game manager.
@@ -65,8 +89,36 @@ public class GameManager : MonoBehaviour
         string name = playerAIManagers[playerIndex].player.name;
         playerAIManagers[playerIndex].player = Instantiate(playerAIManagers[playerIndex].player);
         playerAIManagers[playerIndex].player.name = name;
+
+        for (int i = 0; i < SceneData.chosenPlayers.Length; i++)
+        {
+            if (playerAIManagers[playerIndex].player.name == SceneData.chosenPlayers[i])
+            {
+                playerAIManagers[playerIndex].managedByAI = false;
+                playerAIManagers[playerIndex].player.transform.position = Vector3.up * playerIndex * 20;
+                SetPlayerNumber(playerAIManagers[playerIndex].player, i + 1);
+            }
+        }
+
         playerAIManagers[playerIndex].player.GetPlayerControllerComponent().SetIsManagedByAI(playerAIManagers[playerIndex].managedByAI);
         playerAIManagers[playerIndex].player.SetActive(!playerAIManagers[playerIndex].managedByAI);
+    }
+
+    /// <summary>
+    /// Sets the player number according to the selection made.
+    /// </summary>
+    /// <param name="player">The player to have the number set.</param>
+    /// <param name="playerNumber">The number to be set to the player.</param>
+    private void SetPlayerNumber(GameObject player, int playerNumber)
+    {
+        if (player.IsMage())
+        {
+            player.GetComponent<MageController>().playerNumber = playerNumber;
+        }
+        else if (player.IsThief())
+        {
+            player.GetComponent<ThiefController>().playerNumber = playerNumber;
+        }
     }
 
     /// <summary>
@@ -87,10 +139,42 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < SceneData.playerList.Count; i++)
             {
                 playerAIManagers[i].player = SceneData.playerList[i];
-                playerAIManagers[i].player.SetActive(!playerAIManagers[i].managedByAI);
+                playerAIManagers[i].player.SetActive(!playerAIManagers[i].player.GetControllerComponent().IsManagedByAI());
                 if (!playerAIManagers[i].player.GetControllerComponent().IsManagedByAI())
                 {
-                    Camera.main.transform.position = playerAIManagers[i].player.transform.position + Vector3.back * 10;
+                    ManageCameras(playerAIManagers[i].player);
+                }
+            }
+        }
+    }
+
+    private void ManageCameras(GameObject player)
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (SceneData.numberOfPlayers == 1)
+            {
+                if (c.name == "Player_01")
+                {
+                    c.rect = new Rect(player.transform.position.x, player.transform.position.y, 1, 1);
+                    c.orthographicSize = 10;
+                }
+                else if (c.name == "Player_02")
+                {
+                    c.gameObject.SetActive(false);
+                }
+            }
+            else if (SceneData.numberOfPlayers == 2)
+            {
+                if (c.name == "Player_01" && player.GetPlayerControllerComponent().IsPlayerOne())
+                {
+                    c.rect = new Rect(0f, 0f, 0.5f, 1f);
+                    c.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, c.transform.position.z);
+                }
+                else if (c.name == "Player_02" && player.GetPlayerControllerComponent().IsPlayerTwo())
+                {
+                    c.rect = new Rect(0.5f, 0f, 0.5f, 1f);
+                    c.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, c.transform.position.z);
                 }
             }
         }
@@ -119,13 +203,16 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 14; i++)
         {
-            if (i % 2 == 0)
+            foreach (Camera c in Camera.allCameras)
             {
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x + 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
-            }
-            else
-            {
-                Camera.main.transform.position = new Vector3(Camera.main.transform.position.x - 0.25f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+                if (i % 2 == 0)
+                {
+                    c.transform.position = new Vector3(c.transform.position.x + 0.25f, c.transform.position.y, c.transform.position.z);
+                }
+                else
+                {
+                    c.transform.position = new Vector3(c.transform.position.x - 0.25f, c.transform.position.y, c.transform.position.z);
+                }
             }
             yield return new WaitForSeconds(0.05f);
         }
@@ -196,6 +283,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if there any of the players alive.
+    /// </summary>
+    /// <returns><b>true</b> if there is at least 1 player alive. <b>false</b> otherwise.</returns>
     private bool IsAnyPlayerAlive()
     {
         foreach (GameObject player in SceneData.playerList)
@@ -209,6 +300,10 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Destroys all the objects in the screen
+    /// TODO Destroy the dropped items.
+    /// </summary>
     private void DestroyAllObjects()
     {
         foreach (GameObject player in SceneData.playerList)

@@ -8,7 +8,8 @@ public class TempleEntranceController : EntranceController
         "Are you sure you want to enter the temple and die?";
 
     // Public variable declaration.
-    public Vector3 templeSpawnPoint;
+    public Vector3 playerOneSpawnPos;
+    public Vector3 playerTwoSpawnPos;
 
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
@@ -56,7 +57,14 @@ public class TempleEntranceController : EntranceController
         SceneData.DestroyAllEnemiesInScene();
         foreach (GameObject player in SceneData.playerList)
         {
-            player.transform.position = templeSpawnPoint;
+            if (player.GetPlayerControllerComponent().IsPlayerOne())
+            {
+                player.transform.position = playerOneSpawnPos;
+            }
+            else if (player.GetPlayerControllerComponent().IsPlayerTwo())
+            {
+                player.transform.position = playerTwoSpawnPos;
+            }
         }
         SceneManager.LoadScene("Temple1stFloor");
     }

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public static class SceneData
 {
+    public static int numberOfPlayers = 1;                                            // Number indicating the number of players that will be playing the game. 
     public static bool gameStarted = false;
     public static bool shouldStop = false;                                            // Flag indicating if should stop all the scene movement.
     public static bool isInBattle = false;                                            // Flag indicating if we are already in battle.
@@ -15,6 +16,7 @@ public static class SceneData
     public static bool showBattleTutorial = true;                                     // Flag indicating if the battle tutorial should be shown.
     public static bool killedFinalBoss = false;
     public static string mainScene = "";                                              // Stores the name of the scene that invoked the battle scene.
+    public static string[] chosenPlayers = new string[1] { ActorUtils.MAGE };         // The players chosen players.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
     public static List<GameObject> enemyNotInBattleList = new List<GameObject>();     // The list of enemies that are not in battle.
     public static GameObject enemyInBattle;                                           // The enemy that are currently in battle.

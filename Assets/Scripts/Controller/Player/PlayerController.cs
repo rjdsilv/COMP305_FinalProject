@@ -6,6 +6,9 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
     where A : PlayerAttributes
     where L : PlayerLevelTree<A>
 {
+    [HideInInspector]
+    public int playerNumber = 1;            // Indicates the number of the selected player.
+
     /// <see cref="ActorController{A, L}"/>
     public override int Attack(GameObject opponent, ActorAbility ability)
     {
@@ -83,6 +86,24 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
     public void SetIsManagedByAI(bool isManagedByAI)
     {
         attributes.managedByAI = isManagedByAI;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetPlayerNumber()
+    {
+        return playerNumber;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public bool IsPlayerOne()
+    {
+        return playerNumber == 1;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public bool IsPlayerTwo()
+    {
+        return playerNumber == 2;
     }
 
     /// <see cref="IController{A, L}"/>

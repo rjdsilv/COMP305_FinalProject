@@ -561,7 +561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4388acfc8f12430458615ccf64f44cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogPanel: {fileID: 830610613}
+  dialogPanelPlayerOne: {fileID: 830610613}
+  dialogPanelPlayerTwo: {fileID: 830610613}
 --- !u!1 &1196674678
 GameObject:
   m_ObjectHideFlags: 0

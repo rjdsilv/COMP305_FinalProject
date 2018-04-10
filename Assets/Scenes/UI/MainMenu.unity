@@ -1321,7 +1321,7 @@ Prefab:
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
+      value: PlayGameSingleTwoPlayers
       objectReference: {fileID: 0}
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
@@ -1355,7 +1355,7 @@ Prefab:
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
@@ -1381,7 +1381,7 @@ Prefab:
         type: 2}
       propertyPath: m_fontColorGradientPreset
       value: 
-      objectReference: {fileID: 11400000, guid: c56a934e18bb16a439b7c3f08c9ea015,
+      objectReference: {fileID: 11400000, guid: dc41e06af6b1e4143bd250e83fde3611,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e44087aaa45881446a0b17ce04853480, type: 2}
@@ -1897,7 +1897,7 @@ Prefab:
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
+      value: PlayGameSinglePlayer
       objectReference: {fileID: 0}
     - target: {fileID: 114125648950995114, guid: e44087aaa45881446a0b17ce04853480,
         type: 2}
