@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -97,6 +96,7 @@ public class GameManager : MonoBehaviour
                 playerAIManagers[playerIndex].managedByAI = false;
                 playerAIManagers[playerIndex].player.transform.position = Vector3.up * playerIndex * 20;
                 SetPlayerNumber(playerAIManagers[playerIndex].player, i + 1);
+                ManageCameras(playerAIManagers[playerIndex].player);
             }
         }
 
@@ -148,6 +148,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method implemented to manage the game cameras for 1 or 2 players.
+    /// </summary>
+    /// <param name="player">The player to have the camera managed.</param>
     private void ManageCameras(GameObject player)
     {
         foreach (Camera c in Camera.allCameras)
@@ -156,7 +160,8 @@ public class GameManager : MonoBehaviour
             {
                 if (c.name == "Player_01")
                 {
-                    c.rect = new Rect(player.transform.position.x, player.transform.position.y, 1, 1);
+                    c.rect = new Rect(0f, 0f, 1, 1);
+                    c.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, c.transform.position.z);
                     c.orthographicSize = 10;
                 }
                 else if (c.name == "Player_02")
@@ -199,6 +204,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method made to Shake the cameras and load the battle scene scene.
+    /// </summary>
+    /// <param name="battleScene">The battle scene to be loaded.</param>
     private IEnumerator ShakeCameraAndLoadScene(string battleScene)
     {
         for (int i = 0; i < 14; i++)
@@ -271,7 +280,8 @@ public class GameManager : MonoBehaviour
         {
             _tutorialController = GetComponent<TutorialController>();
         }
- 
+
+        _tutorialController.ResetPanels();
         if (SceneData.showGameTutorial)
         {
             _tutorialController.ShowTutorial();

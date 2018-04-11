@@ -18,9 +18,6 @@ public class TutorialController : MonoBehaviour
         "choose the ability to use using the left and right arrow keys. To attack, press the space bar." +
         "\n\nPress B when you are ready to begin.";
 
-    public GameObject dialogPanelPlayerOne;
-    public GameObject dialogPanelPlayerTwo;
-
     private DialogPanel _dialogPanelPlayerOne = null;
     private DialogPanel _dialogPanelPlayerTwo = null;
 
@@ -36,6 +33,15 @@ public class TutorialController : MonoBehaviour
     }
 
     /// <summary>
+    /// Resets all the tutorial panels.
+    /// </summary>
+    public void ResetPanels()
+    {
+        _dialogPanelPlayerOne = null;
+        _dialogPanelPlayerTwo = null;
+    }
+
+    /// <summary>
     /// Shows the tutorial for the player.
     /// </summary>
     public void ShowTutorial()
@@ -44,6 +50,9 @@ public class TutorialController : MonoBehaviour
         DisplayTutorialMessage();
     }
 
+    /// <summary>
+    /// Hides the tutorial from the player.
+    /// </summary>
     public void HideTutorial()
     {
         LoadDialogPanel();
@@ -62,14 +71,18 @@ public class TutorialController : MonoBehaviour
     {
         if (null == _dialogPanelPlayerOne)
         {
-            _dialogPanelPlayerOne = new DialogPanel(dialogPanelPlayerOne);
+            _dialogPanelPlayerOne = new DialogPanel(GetDialogPanel(1));
             _dialogPanelPlayerOne.Load(null, null);
         }
 
         if (SceneData.numberOfPlayers == 2 && null == _dialogPanelPlayerTwo)
         {
-            _dialogPanelPlayerTwo = new DialogPanel(dialogPanelPlayerTwo);
-            _dialogPanelPlayerTwo.Load(null, null);
+            GameObject panelPlayerTwo = GetDialogPanel(2);
+            if (null != panelPlayerTwo)
+            {
+                _dialogPanelPlayerTwo = new DialogPanel(panelPlayerTwo);
+                _dialogPanelPlayerTwo.Load(null, null);
+            }
         }
     }
 
@@ -97,5 +110,27 @@ public class TutorialController : MonoBehaviour
                 _dialogPanelPlayerTwo.DisplayMessage(_battleTutorialText, new bool[] { false, false });
             }
         }
+    }
+
+    /// <summary>
+    /// Gets the correct panel for a given player number.
+    /// </summary>
+    /// <param name="playerNumber">The player number to be used.</param>
+    /// <returns>The correct panel.</returns>
+    private GameObject GetDialogPanel(int playerNumber)
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (playerNumber == 1 && (c.name == "Player_01" || c.name == "Main Camera"))
+            {
+                return c.transform.GetChild(0).GetChild(0).gameObject;
+            }
+            else if (playerNumber == 2 && c.name == "Player_02")
+            {
+                return c.transform.GetChild(0).GetChild(0).gameObject;
+            }
+        }
+
+        return null;
     }
 }
