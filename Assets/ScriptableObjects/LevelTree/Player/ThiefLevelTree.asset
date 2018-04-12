@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 125
+  - health: 10
     level: 1
     minAttack: 30
     maxAttack: 50
