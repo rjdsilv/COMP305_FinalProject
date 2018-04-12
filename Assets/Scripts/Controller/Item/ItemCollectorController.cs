@@ -8,6 +8,7 @@ public class ItemCollectorController : MonoBehaviour
 
     // Protected variable declaration
     protected Collider2D _collisionObject;
+    protected GameManager _gameManager;
 
     /// <summary>
     /// Draw the player overlaping circle to make life easier when debugging.
@@ -17,6 +18,15 @@ public class ItemCollectorController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, itemCheckRadius);
     }
+
+    /// <summary>
+    /// Initializes the controller.
+    /// </summary>
+    private void Start()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
     /// <ul>
@@ -48,21 +58,49 @@ public class ItemCollectorController : MonoBehaviour
         {
             _collisionObject.gameObject.GetComponent<HealthPot>().Use(gameObject.GetComponent<MageController>());
         }
+        else if (gameObject.IsThief())
+        {
+            _collisionObject.gameObject.GetComponent<HealthPot>().Use(gameObject.GetComponent<ThiefController>());
+        }
+        _gameManager.UpdateHUD(gameObject);
     }
 
     private void UseConsumablePot()
     {
         if (gameObject.IsMage())
         {
-            ConsumablePot pot = _collisionObject.gameObject.GetComponent<ConsumablePot>();
-            if (ConsumableType.MANA == pot.consumableType)
-            {
-                pot.Use(gameObject.GetComponent<MageController>());
-            }
-            else
-            {
-                pot.Destroy();
-            }
+            UseConsumableOnMage();
+        }
+        else if (gameObject.IsThief())
+        {
+            UseConsumableOnThief();
+        }
+        _gameManager.UpdateHUD(gameObject);
+    }
+
+    private void UseConsumableOnThief()
+    {
+        ConsumablePot pot = _collisionObject.gameObject.GetComponent<ConsumablePot>();
+        if (ConsumableType.STAMINA == pot.consumableType)
+        {
+            pot.Use(gameObject.GetComponent<ThiefController>());
+        }
+        else
+        {
+            pot.Destroy();
+        }
+    }
+
+    private void UseConsumableOnMage()
+    {
+        ConsumablePot pot = _collisionObject.gameObject.GetComponent<ConsumablePot>();
+        if (ConsumableType.MANA == pot.consumableType)
+        {
+            pot.Use(gameObject.GetComponent<MageController>());
+        }
+        else
+        {
+            pot.Destroy();
         }
     }
 }

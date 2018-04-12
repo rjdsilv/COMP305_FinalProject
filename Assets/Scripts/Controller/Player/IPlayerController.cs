@@ -47,6 +47,17 @@ public interface IPlayerController : IController
     /// <returns>The player number</returns>
     int GetPlayerNumber();
 
+    int GetGold();
+    int GetXp();
+
+    int GetHealth();
+
+    int GetMaxHealth();
+
+    float GetConsumable();
+
+    float GetMaxConsumable();
+
     /// <summary>
     /// Returns the indication if the player is the player one or not.
     /// </summary>

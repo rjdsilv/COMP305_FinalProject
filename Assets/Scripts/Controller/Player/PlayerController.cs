@@ -106,6 +106,46 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         return playerNumber == 2;
     }
 
+    /// <see cref="IPlayerController{A, L}">
+    public int GetGold()
+    {
+        return attributes.gold;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetXp()
+    {
+        return attributes.xp;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetHealth()
+    {
+        return attributes.health;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetMaxHealth()
+    {
+        return levelTree.GetAttributesForCurrentLevel().health;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public float GetConsumable()
+    {
+        return (_abilityList[0] as PlayerAbility).consumableType == ConsumableType.MANA 
+            ? attributes.mana 
+            : attributes.stamina;
+    }
+
+    /// <see cref="IController{A, L}"/>
+    public float GetMaxConsumable()
+    {
+        return (_abilityList[0] as PlayerAbility).consumableType == ConsumableType.MANA 
+            ? levelTree.GetAttributesForCurrentLevel().mana 
+            : levelTree.GetAttributesForCurrentLevel().stamina;
+    }
+
     /// <see cref="IController{A, L}"/>
     public override void LevelUp()
     {
