@@ -153,6 +153,7 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         {
             levelTree.IncreaseLevel();
             SetAttributesForCurrentLevel();
+            GetComponent<Animator>().SetInteger("health", attributes.health);
         }
     }
 

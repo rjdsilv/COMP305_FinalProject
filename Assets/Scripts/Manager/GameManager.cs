@@ -305,7 +305,7 @@ public class GameManager : MonoBehaviour
     /// <param name="mainScene">The main scene to be loaded after the battle.</param>
     /// <param name="enemy">The enemy to be put on the battle.</param>
     /// </summary>
-    public void GoToBattle(string battleScene, string mainScene, GameObject enemy)
+    public void GoToBattle(string sectorName, string battleScene, string mainScene, GameObject enemy)
     {
         if (!SceneData.isInBattle)
         {
@@ -314,6 +314,7 @@ public class GameManager : MonoBehaviour
             SceneData.mainScene = mainScene;
             SceneData.enemyNotInBattleList.Remove(enemy);
             SceneData.enemyInBattle = enemy;
+            SceneData.battleSectorName = sectorName;
             StartCoroutine(ShakeCameraAndLoadScene(battleScene));
         }
     }

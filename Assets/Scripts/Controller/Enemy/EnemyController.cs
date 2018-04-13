@@ -44,7 +44,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         {
             if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
-                _gameManager.GoToBattle(BattleScene, MainScene, gameObject);
+                _gameManager.GoToBattle(SectorName, BattleScene, MainScene, gameObject);
             }
         }
     }

@@ -20,7 +20,7 @@ MonoBehaviour:
     minDefense: 20
     maxDefense: 30
     managedByAI: 0
-    xp: 150
+    xp: 100
     gold: 300
     mana: 75
     stamina: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     minAttack: 40
     maxAttack: 60
     minDefense: 25
-    maxDefense: 35
+    maxDefense: 40
     managedByAI: 0
     xp: 300
     gold: 400

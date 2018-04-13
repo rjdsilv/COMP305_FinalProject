@@ -31,11 +31,13 @@ public class BattleManager : MonoBehaviour
     private Vector3 _mageOldPos;
     private GameObject _mage;
     private MageController _mageController;
+    private PlayerAbility _selectedMageAbility;
 
     // Thief variables.
     private Vector3 _thiefOldPos;
     private GameObject _thief;
     private ThiefController _thiefController;
+    private PlayerAbility _selectedThiefAbility;
 
     // Generic variables.
     private GameObject _actorPlaying;
@@ -483,6 +485,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void PerformPlayerAttack()
     {
+        _selectedAbility = _actorPlaying.IsMage() ? _selectedMageAbility : _selectedThiefAbility;
         IPlayerController attackerController = _actorPlaying.GetPlayerControllerComponent();
 
         // Checks if the player can attack, which means it has consumable.
@@ -667,7 +670,7 @@ public class BattleManager : MonoBehaviour
 
         // Sets the selected ability for the mage's main ability.
         _mageController = _mage.GetComponent<MageController>();
-        _selectedAbility = _mageController.fireBall;
+        _selectedMageAbility = _mageController.fireBall;
 
         // Fixes the player for the battle.
         _mage.transform.position = FindSpawnPointForActor(player.name);
@@ -689,7 +692,7 @@ public class BattleManager : MonoBehaviour
 
         // Sets the selected ability for the mage's main ability.
         _thiefController = _thief.GetComponent<ThiefController>();
-        _selectedAbility = _thiefController.dagger;
+        _selectedThiefAbility = _thiefController.dagger;
 
         // Fixes the player for the battle.
         _thief.transform.position = FindSpawnPointForActor(player.name);
@@ -779,14 +782,14 @@ public class BattleManager : MonoBehaviour
             // The player chose to swap the hability.
             if (ControlUtils.SwapAbility(_mageController.playerNumber) < 0)
             {
-                _selectedAbility = _mageController.fireBall;
-                hudManager.SwapAbility(_mage, _selectedAbility);
+                _selectedMageAbility = _mageController.fireBall;
+                hudManager.SwapAbility(_mage, _selectedMageAbility);
                 _lastSwapTime = Time.time;
             }
             else if (ControlUtils.SwapAbility(_mageController.playerNumber) > 0)
             {
-                _selectedAbility = _mageController.lightningBall;
-                hudManager.SwapAbility(_mage, _selectedAbility);
+                _selectedMageAbility = _mageController.lightningBall;
+                hudManager.SwapAbility(_mage, _selectedMageAbility);
                 _lastSwapTime = Time.time;
             }
         }
@@ -797,14 +800,14 @@ public class BattleManager : MonoBehaviour
                 float habilityRange = UnityEngine.Random.Range(0, 1);
                 if (habilityRange >= 0.00f && habilityRange < 0.50f)
                 {
-                    _selectedAbility = _mageController.fireBall;
+                    _selectedMageAbility = _mageController.fireBall;
                 }
                 else
                 {
-                    _selectedAbility = _mageController.lightningBall;
+                    _selectedMageAbility = _mageController.lightningBall;
                 }
 
-                hudManager.SwapAbility(_mage, _selectedAbility);
+                hudManager.SwapAbility(_mage, _selectedMageAbility);
                 _lastSwapTime = Time.time;
                 _abilitySwaped = true;
             }
@@ -822,14 +825,14 @@ public class BattleManager : MonoBehaviour
             // The player chose to swap the hability.
             if (ControlUtils.SwapAbility(_thiefController.playerNumber) < 0)
             {
-                _selectedAbility = _thiefController.dagger;
-                hudManager.SwapAbility(_thief, _selectedAbility);
+                _selectedThiefAbility = _thiefController.dagger;
+                hudManager.SwapAbility(_thief, _selectedThiefAbility);
                 _lastSwapTime = Time.time;
             }
             else if (ControlUtils.SwapAbility(_thiefController.playerNumber) > 0)
             {
-                _selectedAbility = _thiefController.bow;
-                hudManager.SwapAbility(_thief, _selectedAbility);
+                _selectedThiefAbility = _thiefController.bow;
+                hudManager.SwapAbility(_thief, _selectedThiefAbility);
                 _lastSwapTime = Time.time;
             }
         }
@@ -840,14 +843,14 @@ public class BattleManager : MonoBehaviour
                 float habilityRange = UnityEngine.Random.Range(0f, 1f);
                 if (habilityRange >= 0.00f && habilityRange < 0.50f)
                 {
-                    _selectedAbility = _thiefController.dagger;
+                    _selectedThiefAbility = _thiefController.dagger;
                 }
                 else
                 {
-                    _selectedAbility = _thiefController.bow;
+                    _selectedThiefAbility = _thiefController.bow;
                 }
 
-                hudManager.SwapAbility(_thief, _selectedAbility);
+                hudManager.SwapAbility(_thief, _selectedThiefAbility);
                 _lastSwapTime = Time.time;
                 _abilitySwaped = true;
             }
