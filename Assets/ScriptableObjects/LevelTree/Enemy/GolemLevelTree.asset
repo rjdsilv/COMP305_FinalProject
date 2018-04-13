@@ -24,8 +24,9 @@ MonoBehaviour:
     minGoldForKilling: 50
     maxGoldForKilling: 75
     healthRecoverDropChance: 0.9
-    staminaRecoverDropChance: 0
+    staminaRecoverDropChance: 0.5
     manaRecoverDropChance: 0.5
+    keyDropChance: 1
   - health: 160
     level: 2
     minAttack: 30
@@ -37,5 +38,6 @@ MonoBehaviour:
     minGoldForKilling: 50
     maxGoldForKilling: 75
     healthRecoverDropChance: 0.9
-    staminaRecoverDropChance: 0
+    staminaRecoverDropChance: 0.65
     manaRecoverDropChance: 0.65
+    keyDropChance: 1

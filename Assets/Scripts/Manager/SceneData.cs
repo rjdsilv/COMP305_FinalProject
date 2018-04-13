@@ -25,7 +25,9 @@ public static class SceneData
     public static bool dropHealthPot = false;                                         // Indicates if the enemy dropped a health pot.
     public static bool dropManaPot = false;                                           // Indicates if the enemy dropped a mana pot.
     public static bool dropStaminaPot = false;                                        // Indicates if the enemy dropped a stamina pot.
+    public static bool dropKey = false;                                               // Indicates if the enemy dropped a key.
     public static Vector3 dropPosition = Vector3.zero;                                // The position where the items will be dropped.
+    public static List<Key> keys = new List<Key>();
 
     /// <summary>
     /// Saves the player to be used in any scene.

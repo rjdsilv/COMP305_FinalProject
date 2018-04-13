@@ -312,6 +312,7 @@ public class BattleManager : MonoBehaviour
         SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
         SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
         SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
+        SceneData.dropKey = !SceneData.dropKey ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropKey() : SceneData.dropKey;
         SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
     }
 

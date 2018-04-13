@@ -100,6 +100,11 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
     }
 
+    public bool DropKey()
+    {
+        return levelTree.GetAttributesForCurrentLevel().keyDropChance == 1.0f;
+    }
+
     /// <see cref="IEnemyController"/>
     public int GetMinEnemiesInBattle()
     {

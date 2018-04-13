@@ -69,4 +69,9 @@ public class DialogPanel
             _dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
         }
     }
+
+    public bool IsNull()
+    {
+        return null == _dialogPanel;
+    }
 }

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     // Public variable declaration.
     public PlayerAIManager[] playerAIManagers;
+    public Mission currentMission;
 
     // Properties for the HUD for the player one.
     [Header("Player One HUD")]
@@ -85,6 +86,26 @@ public class GameManager : MonoBehaviour
         InstantiateAndSavePlayers();
         StartGame();
 	}
+
+    public void CompleteCurrentMission()
+    {
+        if (currentMission.nextMission != null)
+        {
+            currentMission = currentMission.nextMission;
+            UpdateMissionDescription();
+        }
+    }
+
+    private void UpdateMissionDescription()
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (c.name == "Player_01" || c.name == "Player_02")
+            {
+                c.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>().text = currentMission.description;
+            }
+        }
+    }
 
     private void InitializeHUD()
     {
@@ -219,6 +240,7 @@ public class GameManager : MonoBehaviour
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
         InitializeHUD();
+        UpdateMissionDescription();
         if (!SceneData.isInBattle && !SceneData.killedFinalBoss)
         {
             ShowHideTutorial();

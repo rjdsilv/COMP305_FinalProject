@@ -49,6 +49,10 @@ public class ItemCollectorController : MonoBehaviour
             {
                 UseConsumablePot();
             }
+            else if (TagUtils.IsKey(_collisionObject.transform))
+            {
+                UseKey();
+            }
         }
     }
 
@@ -76,6 +80,11 @@ public class ItemCollectorController : MonoBehaviour
             UseConsumableOnThief();
         }
         _gameManager.UpdateHUD(gameObject);
+    }
+
+    private void UseKey()
+    {
+        _collisionObject.gameObject.GetComponent<Key>().UseKey();
     }
 
     private void UseConsumableOnThief()

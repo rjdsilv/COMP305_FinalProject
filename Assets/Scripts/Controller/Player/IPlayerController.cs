@@ -48,6 +48,7 @@ public interface IPlayerController : IController
     int GetPlayerNumber();
 
     int GetGold();
+
     int GetXp();
 
     int GetHealth();
