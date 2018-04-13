@@ -1,5 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+
 /// <summary>
 /// Script class that will control the player movement
 /// </summary>

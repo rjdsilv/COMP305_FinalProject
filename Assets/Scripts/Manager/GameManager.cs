@@ -1,14 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Script responsible for managing the game.
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    private static GameManager Instance;
+
     // Public variable declaration.
     public PlayerAIManager[] playerAIManagers;
+    public Mission currentMission;
+
+    // Properties for the HUD for the player one.
+    [Header("Player One HUD")]
+    private Text levelTextP1;
+    private Text goldTextP1;
+    private Text xpTextP1;
+    private Slider healthBarP1;
+    private Slider consumableBarP1;
+
+    // Properties for the HUD for the player two.
+    [Header("Player Two HUD")]
+    private Text levelTextP2;
+    private Text goldTextP2;
+    private Text xpTextP2;
+    private Slider healthBarP2;
+    private Slider consumableBarP2;
 
     // Private variable declaration.
     private TutorialController _tutorialController;
@@ -20,6 +41,22 @@ public class GameManager : MonoBehaviour
         LOOSE
     }
 
+    private void Awake()
+    {
+        if (null == Instance)
+        {
+            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Runs when the object is enabled.
+    /// </summary>
     private void OnEnable()
     {
         if (!_isLevelLoadMethodSet)
@@ -29,6 +66,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Runs when the object is disabled.
+    /// </summary>
     private void OnDisable()
     {
         if (_isLevelLoadMethodSet)
@@ -47,6 +87,77 @@ public class GameManager : MonoBehaviour
         StartGame();
 	}
 
+    public void CompleteCurrentMission()
+    {
+        if (currentMission.nextMission != null)
+        {
+            currentMission = currentMission.nextMission;
+            UpdateMissionDescription();
+        }
+    }
+
+    private void UpdateMissionDescription()
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (c.name == "Player_01" || c.name == "Player_02")
+            {
+                c.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>().text = currentMission.description;
+            }
+        }
+    }
+
+    private void InitializeHUD()
+    {
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (c.name == "Player_01")
+            {
+                levelTextP1 = c.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<Text>();
+                xpTextP1 = c.transform.GetChild(0).GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
+                goldTextP1 = c.transform.GetChild(0).GetChild(1).GetChild(5).gameObject.GetComponent<Text>();
+                healthBarP1 = c.transform.GetChild(0).GetChild(1).GetChild(6).gameObject.GetComponent<Slider>();
+                consumableBarP1 = c.transform.GetChild(0).GetChild(1).GetChild(7).gameObject.GetComponent<Slider>();
+            }
+            else if (c.name == "Player_02")
+            {
+                levelTextP2 = c.transform.GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<Text>();
+                xpTextP2 = c.transform.GetChild(0).GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
+                goldTextP2 = c.transform.GetChild(0).GetChild(1).GetChild(5).gameObject.GetComponent<Text>();
+                healthBarP2 = c.transform.GetChild(0).GetChild(1).GetChild(6).gameObject.GetComponent<Slider>();
+                consumableBarP2 = c.transform.GetChild(0).GetChild(1).GetChild(7).gameObject.GetComponent<Slider>();
+            }
+        }
+    }
+
+    /// <summary>
+    /// Updates the HUD for the players on the main scene.
+    /// </summary>
+    /// <param name="player">The player to have the HUD updated.</param>
+    public void UpdateHUD(GameObject player)
+    {
+        if (player.GetPlayerControllerComponent().IsPlayerOne())
+        {
+            levelTextP1.text = player.GetPlayerControllerComponent().GetCurrentLevel().ToString();
+            xpTextP1.text = player.GetPlayerControllerComponent().GetXp().ToString();
+            goldTextP1.text = player.GetPlayerControllerComponent().GetGold().ToString();
+            healthBarP1.maxValue = player.GetPlayerControllerComponent().GetMaxHealth();
+            healthBarP1.value = player.GetPlayerControllerComponent().GetHealth();
+            consumableBarP1.maxValue = player.GetPlayerControllerComponent().GetMaxConsumable();
+            consumableBarP1.value = player.GetPlayerControllerComponent().GetConsumable();
+        }
+        else if (player.GetPlayerControllerComponent().IsPlayerTwo())
+        {
+            levelTextP2.text = player.GetPlayerControllerComponent().GetCurrentLevel().ToString();
+            xpTextP2.text = player.GetPlayerControllerComponent().GetXp().ToString();
+            goldTextP2.text = player.GetPlayerControllerComponent().GetGold().ToString();
+            healthBarP2.maxValue = player.GetPlayerControllerComponent().GetMaxHealth();
+            healthBarP2.value = player.GetPlayerControllerComponent().GetHealth();
+            consumableBarP2.maxValue = player.GetPlayerControllerComponent().GetMaxConsumable();
+            consumableBarP2.value = player.GetPlayerControllerComponent().GetConsumable();
+        }
+    }
+
     /// <summary>
     /// Instantiates and save the players on scene data class.
     /// </summary>
@@ -60,7 +171,6 @@ public class GameManager : MonoBehaviour
                 {
                     InstantiatePlayer(i);
                     DontDestroyOnLoad(playerAIManagers[i].player);
-                    DontDestroyOnLoad(this);
                     SceneData.SavePlayer(playerAIManagers[i].player);
                 }
             }
@@ -96,7 +206,8 @@ public class GameManager : MonoBehaviour
                 playerAIManagers[playerIndex].managedByAI = false;
                 playerAIManagers[playerIndex].player.transform.position = Vector3.up * playerIndex * 20;
                 SetPlayerNumber(playerAIManagers[playerIndex].player, i + 1);
-                ManageCameras(playerAIManagers[playerIndex].player);
+                ManageCamera(playerAIManagers[playerIndex].player);
+                UpdateHUD(playerAIManagers[playerIndex].player);
             }
         }
 
@@ -128,6 +239,8 @@ public class GameManager : MonoBehaviour
     /// <param name="mode">the mode the scene is being loaded.</param>
     private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
     {
+        InitializeHUD();
+        UpdateMissionDescription();
         if (!SceneData.isInBattle && !SceneData.killedFinalBoss)
         {
             ShowHideTutorial();
@@ -142,7 +255,8 @@ public class GameManager : MonoBehaviour
                 playerAIManagers[i].player.SetActive(!playerAIManagers[i].player.GetControllerComponent().IsManagedByAI());
                 if (!playerAIManagers[i].player.GetControllerComponent().IsManagedByAI())
                 {
-                    ManageCameras(playerAIManagers[i].player);
+                    ManageCamera(playerAIManagers[i].player);
+                    UpdateHUD(playerAIManagers[i].player);
                 }
             }
         }
@@ -152,7 +266,7 @@ public class GameManager : MonoBehaviour
     /// Method implemented to manage the game cameras for 1 or 2 players.
     /// </summary>
     /// <param name="player">The player to have the camera managed.</param>
-    private void ManageCameras(GameObject player)
+    private void ManageCamera(GameObject player)
     {
         foreach (Camera c in Camera.allCameras)
         {
@@ -261,6 +375,10 @@ public class GameManager : MonoBehaviour
         return SceneData.killedFinalBoss || !IsAnyPlayerAlive();
     }
 
+    /// <summary>
+    /// Gets the game end status to check whether it was a win or a loose.
+    /// </summary>
+    /// <returns>The game end status.</returns>
     private GameEndStatus GetGameEndStatus()
     {
         if (SceneData.killedFinalBoss)

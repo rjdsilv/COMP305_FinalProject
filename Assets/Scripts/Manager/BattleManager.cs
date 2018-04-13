@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class BattleManager : MonoBehaviour
 {
     // Constants declaration.
+    private const int HEALTH_FOR_DEAD = 5;
     private const float SCALE_FACTOR = 1.0f;
     private const float MIN_SEL_TIME = 0.25f;
     private const float MIN_ATTACK_TIME = 0.25f;
@@ -223,6 +223,9 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method called to setup the players, enemies, and other actor after the battle finishes.
+    /// </summary>
     private IEnumerator EndBattle()
     {
         if (IsAnyPlayerAlive())
@@ -232,51 +235,85 @@ public class BattleManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
             hudManager.HideTurnText();
 
-            // Setup the dropped items.
-            SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
-            SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
-            SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
-            SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
-
-            // Setting the flag indicating that the final boss was killed.
-            SceneData.killedFinalBoss = SceneData.enemyInBattle.IsFinalBoss();
-
-            // Destroy the enemy.
+            SetupDroppings();
+            CollectEarnings();
             Destroy(SceneData.enemyInBattle);
-
-            // Sets up the players amount earned and inactivate the players controlled by AI..
-            foreach (GameObject player in SceneData.playerList)
-            {
-                if (player.IsMage())
-                {
-                    _mageController.IncreaseGold(_goldEarned);
-                    _mageController.IncreaseXp(_xpEarned);
-                    _mage.transform.localScale /= SCALE_FACTOR;
-                }
-                else if (player.IsThief())
-                {
-                    _thiefController.IncreaseGold(_goldEarned);
-                    _thiefController.IncreaseXp(_xpEarned);
-                    _thief.transform.localScale /= SCALE_FACTOR;
-                }
-
-                player.SetActive(!player.GetControllerComponent().IsManagedByAI());
-            }
+            SceneData.killedFinalBoss = SceneData.enemyInBattle.IsFinalBoss();
 
             // Displays the battle report.
             hudManager.DisplayBattleReport(_goldEarned, _xpEarned, _mageController.GetCurrentLevel());
             yield return new WaitForSeconds(3f);
             hudManager.HideTurnText();
 
-            // Restores the calling scene.
-            SceneData.shouldStop = false;
-            SceneData.isCommingBackFronBattle = true;
-            SceneData.isInBattle = false;
-
+            RestoreCallingScene();
             RestorePlayersPositions();
-
+            ReviveDeadPlayer();
             SceneManager.LoadScene(SceneData.mainScene);
         }
+    }
+
+    /// <summary>
+    /// Revives the dead players in the battle.
+    /// </summary>
+    private void ReviveDeadPlayer()
+    {
+        if (!IsMageAlive())
+        {
+            _mageController.IncreaseHealth(HEALTH_FOR_DEAD);
+            _mage.GetComponent<Animator>().SetInteger("health", HEALTH_FOR_DEAD);
+        }
+
+        if (!IsThiefAlive())
+        {
+            _thiefController.IncreaseHealth(HEALTH_FOR_DEAD);
+            _thief.GetComponent<Animator>().SetInteger("health", HEALTH_FOR_DEAD);
+        }
+    }
+
+    /// <summary>
+    /// Restores the calling scene.
+    /// </summary>
+    private static void RestoreCallingScene()
+    {
+        SceneData.shouldStop = false;
+        SceneData.isCommingBackFronBattle = true;
+        SceneData.isInBattle = false;
+    }
+
+    /// <summary>
+    /// Collect the earnings.
+    /// </summary>
+    private void CollectEarnings()
+    {
+        foreach (GameObject player in SceneData.playerList)
+        {
+            if (player.IsMage())
+            {
+                _mageController.IncreaseGold(_goldEarned);
+                _mageController.IncreaseXp(_xpEarned);
+                _mage.transform.localScale /= SCALE_FACTOR;
+            }
+            else if (player.IsThief())
+            {
+                _thiefController.IncreaseGold(_goldEarned);
+                _thiefController.IncreaseXp(_xpEarned);
+                _thief.transform.localScale /= SCALE_FACTOR;
+            }
+
+            player.SetActive(!player.GetControllerComponent().IsManagedByAI());
+        }
+    }
+
+    /// <summary>
+    /// Sets the droppings to be collected.
+    /// </summary>
+    private static void SetupDroppings()
+    {
+        SceneData.dropHealthPot = !SceneData.dropHealthPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropHealthPot() : SceneData.dropHealthPot;
+        SceneData.dropManaPot = !SceneData.dropManaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropManaPot() : SceneData.dropManaPot;
+        SceneData.dropStaminaPot = !SceneData.dropStaminaPot ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropStaminaPot() : SceneData.dropStaminaPot;
+        SceneData.dropKey = !SceneData.dropKey ? SceneData.enemyInBattle.GetEnemyControllerComponent().DropKey() : SceneData.dropKey;
+        SceneData.dropPosition = SceneData.enemyInBattle.transform.position;
     }
 
     /// <summary>
@@ -540,6 +577,7 @@ public class BattleManager : MonoBehaviour
             IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
             if (!playerController.IsAlive())
             {
+                selectedPlayer.GetComponent<Animator>().SetInteger("health", 0);
                 selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DEATH, 0);
             }
             else

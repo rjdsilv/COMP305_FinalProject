@@ -259,7 +259,7 @@ MonoBehaviour:
   entranceMask:
     serializedVersion: 2
     m_Bits: 8192
-  playerOneSpawnPos: {x: 25, y: -14.5, z: 0}
+  playerOneSpawnPos: {x: 22, y: -14.5, z: 0}
   playerTwoSpawnPos: {x: 50, y: -14.5, z: 0}
 --- !u!114 &114563067892006396
 MonoBehaviour:

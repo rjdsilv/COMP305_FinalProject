@@ -52,7 +52,14 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
     /// <see cref="IController"/>
     public void DecreaseHealth(int amount)
     {
-        attributes.health -= amount;
+        if (attributes.health - amount < 0)
+        {
+            attributes.health = 0;
+        }
+        else
+        {
+            attributes.health -= amount;
+        }
     }
 
     /// <see cref="IController"/>

@@ -15,6 +15,7 @@ TagManager:
   - Item
   - HealthPot
   - ConsumablePot
+  - Key
   layers:
   - Default
   - TransparentFX

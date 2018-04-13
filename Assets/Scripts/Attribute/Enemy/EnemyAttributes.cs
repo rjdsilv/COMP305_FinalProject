@@ -16,4 +16,7 @@ public class EnemyAttributes : ActorAttributes
 
     [Range(min: 0.0f, max: 1.0f)]
     public float manaRecoverDropChance;         // The chance this enemy will drop a mana recover item.
+
+    [Range(min: 0.0f, max: 1.0f)]
+    public float keyDropChance;                 // The chance this enemy will drop a key.
 }

@@ -36,7 +36,7 @@ public abstract class EntranceController : MonoBehaviour
     /// </summary>
     protected void LoadDialogPanel()
     {
-        if (null == _dialogPanel)
+        if (null == _dialogPanel || _dialogPanel.IsNull())
         {
             _dialogPanel = new DialogPanel(GetDialogPanel());
         }

@@ -4,12 +4,17 @@ using UnityEngine.SceneManagement;
 public class TempleEntranceController : EntranceController
 {
     // The text that will be shown when the player enters the temple first time.
-    private string _dialogText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
+    private const string _noKeyText = "The temple door is locked and can only be opened with the proper key.\n\nPress B to continue.";
+
+    private const string _holdingKeyText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
         "Are you sure you want to enter the temple and die?";
 
     // Public variable declaration.
     public Vector3 playerOneSpawnPos;
     public Vector3 playerTwoSpawnPos;
+
+    // Private variable declaration.
+    private bool _missionUpdated = false;
 
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
@@ -31,7 +36,35 @@ public class TempleEntranceController : EntranceController
                 LoadDialogPanel();
                 _showingText = true;
                 SceneData.shouldStop = true;
-                _dialogPanel.DisplayMessage(_dialogText, new bool[] { true, true });
+                if (SceneData.keys.Count == 0)
+                {
+                    _dialogPanel.DisplayMessage(_noKeyText, new bool[] { false, false });
+                }
+                else
+                {
+                    _dialogPanel.DisplayMessage(_holdingKeyText, new bool[] { true, true });
+                }
+
+                if (!_missionUpdated)
+                {
+                    GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+                    if (ControlUtils.ButtonB(1) || ControlUtils.ButtonB(2))
+                    {
+                        HideDialogPanelAndWalk();
+                    }
+
+                    if (SceneData.keys.Count == 0)
+                    {
+                        _missionUpdated = true;
+                        gm.CompleteCurrentMission();
+                    }
+                    else
+                    {
+                        _missionUpdated = true;
+                        gm.CompleteCurrentMission();
+                        gm.CompleteCurrentMission();
+                    }
+                }
             }
         }
         else
