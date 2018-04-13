@@ -17,7 +17,7 @@ public class SectorController : MonoBehaviour
 
     // Private variable declaration.
     private bool _spawnEnemies = true;          // Indicates if the enemies were destroyed or not.
-    private float _itemSpawnRadius = 1.0f;      // The radius arround the dead enemy where the items will be spawned.
+    private float _itemSpawnRadius = 1.5f;      // The radius arround the dead enemy where the items will be spawned.
 
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
