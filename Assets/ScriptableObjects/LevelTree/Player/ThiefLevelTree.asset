@@ -13,23 +13,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 120
+  - health: 140
     level: 1
     minAttack: 30
     maxAttack: 50
     minDefense: 15
     maxDefense: 25
     managedByAI: 0
-    xp: 150
+    xp: 100
     gold: 300
     mana: 0
     stamina: 90
-  - health: 160
+  - health: 175
     level: 2
     minAttack: 45
     maxAttack: 60
     minDefense: 20
-    maxDefense: 30
+    maxDefense: 35
     managedByAI: 0
     xp: 300
     gold: 400

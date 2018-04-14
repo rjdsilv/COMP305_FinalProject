@@ -77,12 +77,16 @@ public class SectorController : MonoBehaviour
         }
         else
         {
-            SceneData.isCommingBackFronBattle = false;
-            foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+            if (SceneData.battleSectorName == attributes.sectorName)
             {
-                enemy.SetActive(true);
+                SceneData.isCommingBackFronBattle = false;
+                foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+                {
+                    enemy.SetActive(true);
+                }
+                SpawnDroppedItems();
+                SceneData.battleSectorName = "";
             }
-            SpawnDroppedItems();
         }
         _spawnEnemies = false;
     }

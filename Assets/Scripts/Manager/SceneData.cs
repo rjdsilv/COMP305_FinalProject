@@ -15,6 +15,7 @@ public static class SceneData
     public static bool showGameTutorial = true;                                       // Flag indicating if the game tutorial should be shown.
     public static bool showBattleTutorial = true;                                     // Flag indicating if the battle tutorial should be shown.
     public static bool killedFinalBoss = false;
+    public static string battleSectorName = "";
     public static string mainScene = "";                                              // Stores the name of the scene that invoked the battle scene.
     public static string[] chosenPlayers = new string[1] { ActorUtils.MAGE };         // The players chosen players.
     public static List<GameObject> playerList = new List<GameObject>();               // The list of players.
@@ -27,7 +28,7 @@ public static class SceneData
     public static bool dropStaminaPot = false;                                        // Indicates if the enemy dropped a stamina pot.
     public static bool dropKey = false;                                               // Indicates if the enemy dropped a key.
     public static Vector3 dropPosition = Vector3.zero;                                // The position where the items will be dropped.
-    public static List<Key> keys = new List<Key>();
+    public static Dictionary<string, Key> keys = new Dictionary<string, Key>();
 
     /// <summary>
     /// Saves the player to be used in any scene.
