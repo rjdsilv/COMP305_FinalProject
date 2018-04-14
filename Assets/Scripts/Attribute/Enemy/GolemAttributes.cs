@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 
 /// <summary>
 /// Attributes common for all the golems in the game
