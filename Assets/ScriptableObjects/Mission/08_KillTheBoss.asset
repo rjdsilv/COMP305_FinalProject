@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1ccd84bca47a4582ef710600b1788, type: 3}
   m_Name: 08_KillTheBoss
   m_EditorClassIdentifier: 
+  missionName: KillFinalBoss
   description: KILL THE FINAL BOSS AND END THE TEMPLE EVILNESS
   nextMission: {fileID: 0}

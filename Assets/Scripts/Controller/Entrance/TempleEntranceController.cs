@@ -9,12 +9,21 @@ public class TempleEntranceController : EntranceController
     private const string _holdingKeyText = "You are about to enter the temple of Zydis. This is a temple of pure evilness and disgrace to those who enters it. " +
         "Are you sure you want to enter the temple and die?";
 
+    private GameManager gameManager;
+
     // Public variable declaration.
     public Vector3 playerOneSpawnPos;
     public Vector3 playerTwoSpawnPos;
+    public Mission noKeyNextMission;
+    public Mission withKeyNextMission;
 
-    // Private variable declaration.
-    private bool _missionUpdated = false;
+    /// <summary>
+    /// Initializes the object.
+    /// </summary>
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
 
     /// <summary>
     /// This method will check if the player reached the temple entrance and perform the following actions:
@@ -45,24 +54,16 @@ public class TempleEntranceController : EntranceController
                     _dialogPanel.DisplayMessage(_holdingKeyText, new bool[] { true, true });
                 }
 
-                if (!_missionUpdated)
+                if (ControlUtils.ButtonB(1) || ControlUtils.ButtonB(2))
                 {
-                    GameManager gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-                    if (ControlUtils.ButtonB(1) || ControlUtils.ButtonB(2))
-                    {
-                        HideDialogPanelAndWalk();
-                    }
+                    HideDialogPanelAndWalk();
+                }
 
-                    if (SceneData.keys.Count == 0)
+                if (SceneData.keys.Count == 0)
+                {
+                    while (!noKeyNextMission.Equals(gameManager.currentMission) && !withKeyNextMission.Equals(gameManager.currentMission))
                     {
-                        _missionUpdated = true;
-                        gm.CompleteCurrentMission();
-                    }
-                    else
-                    {
-                        _missionUpdated = true;
-                        gm.CompleteCurrentMission();
-                        gm.CompleteCurrentMission();
+                        gameManager.CompleteCurrentMission();
                     }
                 }
             }
@@ -99,6 +100,7 @@ public class TempleEntranceController : EntranceController
                 player.transform.position = playerTwoSpawnPos;
             }
         }
+        gameManager.CompleteCurrentMission();
         SceneManager.LoadScene("Temple1stFloor");
     }
 

@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1ccd84bca47a4582ef710600b1788, type: 3}
   m_Name: 02_RetrieveTempleKey
   m_EditorClassIdentifier: 
+  missionName: RetrieveTempleKey
   description: KILL THE TEMPLE GUARDIAN AND RETRIEVE THE TEMPLE KEY
   nextMission: {fileID: 11400000, guid: 0579d22722f1fb44fb9cff7608d02ab5, type: 2}

@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1ccd84bca47a4582ef710600b1788, type: 3}
   m_Name: 01_FindTemple
   m_EditorClassIdentifier: 
+  missionName: FindZydis
   description: FIND ZYDIS, THE TEMPLE OF EVILNESS
   nextMission: {fileID: 11400000, guid: 2c38095eb2ef67644b8ab1f6a78b61ee, type: 2}

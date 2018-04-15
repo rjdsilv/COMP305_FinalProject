@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1ccd84bca47a4582ef710600b1788, type: 3}
   m_Name: 03_EnterTheTemple
   m_EditorClassIdentifier: 
+  missionName: EnterTheTemple
   description: ENTER ZYDIS, THE TEMPLE OF EVILNESS
   nextMission: {fileID: 11400000, guid: 4e2dfba3ab48ed348b9ba38f8529f13c, type: 2}

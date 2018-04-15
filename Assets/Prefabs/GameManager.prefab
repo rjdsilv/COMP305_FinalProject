@@ -57,14 +57,7 @@ MonoBehaviour:
     managedByAI: 0
   - player: {fileID: 1331064586474420, guid: 39e7cd8d33b4b8042913d70fdf1c30ba, type: 2}
     managedByAI: 1
-  levelTextP1: {fileID: 0}
-  goldTextP1: {fileID: 0}
-  healthBarP1: {fileID: 0}
-  consumableBarP1: {fileID: 0}
-  levelTextP2: {fileID: 0}
-  goldTextP2: {fileID: 0}
-  healthBarP2: {fileID: 0}
-  consumableBarP2: {fileID: 0}
+  currentMission: {fileID: 11400000, guid: 9adec323e75e81c43a8b24109d0d6567, type: 2}
 --- !u!114 &114963315406599962
 MonoBehaviour:
   m_ObjectHideFlags: 1

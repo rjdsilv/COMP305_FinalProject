@@ -4,7 +4,7 @@ public class Key : MonoBehaviour
 {
     public string keyName;
 
-    public void UseKey()
+    public virtual void UseKey()
     {
         if (!SceneData.keys.ContainsKey(keyName))
         {

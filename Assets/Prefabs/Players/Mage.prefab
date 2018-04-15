@@ -291,6 +291,8 @@ MonoBehaviour:
     m_Bits: 8192
   playerOneSpawnPos: {x: 22, y: -14.5, z: 0}
   playerTwoSpawnPos: {x: 50, y: -14.5, z: 0}
+  noKeyNextMission: {fileID: 11400000, guid: 2c38095eb2ef67644b8ab1f6a78b61ee, type: 2}
+  withKeyNextMission: {fileID: 11400000, guid: 0579d22722f1fb44fb9cff7608d02ab5, type: 2}
 --- !u!212 &212623987305169716
 SpriteRenderer:
   m_ObjectHideFlags: 1
