@@ -60,8 +60,9 @@ GameObject:
   - component: {fileID: 61628858338193744}
   - component: {fileID: 114491267976572776}
   - component: {fileID: 114099804694245758}
-  - component: {fileID: 114966651153551616}
   - component: {fileID: 114333121510317594}
+  - component: {fileID: 114966651153551616}
+  - component: {fileID: 114260228759758560}
   m_Layer: 9
   m_Name: Mage
   m_TagString: Player
@@ -208,6 +209,22 @@ MonoBehaviour:
   fireBallLevelTree: {fileID: 11400000, guid: c1fb98e8c2f48e140b3abfe5af1e296e, type: 2}
   lightningBallLevelTre: {fileID: 11400000, guid: dc709df018c61574e83d374675ebb455,
     type: 2}
+--- !u!114 &114260228759758560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869775162124002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be1527d9a53c7e4a80456600e16e9d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entranceCheckRadius: 0.5
+  entranceMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  withKeyNextMission: {fileID: 11400000, guid: 25d8586902816d94b9fd4a3cfeab6a74, type: 2}
 --- !u!114 &114333121510317594
 MonoBehaviour:
   m_ObjectHideFlags: 1
