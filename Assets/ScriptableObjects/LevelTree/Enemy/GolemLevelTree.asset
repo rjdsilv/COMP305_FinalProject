@@ -11,14 +11,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79aaa73badb15940ac98d218af11824, type: 3}
   m_Name: GolemLevelTree
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentLevel: 2
   levelAttributes:
   - health: 125
     level: 1
     minAttack: 20
     maxAttack: 50
-    minDefense: 20
-    maxDefense: 30
+    minDefense: 25
+    maxDefense: 40
     managedByAI: 0
     xpForKilling: 50
     minGoldForKilling: 50
@@ -27,12 +27,12 @@ MonoBehaviour:
     staminaRecoverDropChance: 0.5
     manaRecoverDropChance: 0.5
     keyDropChance: 1
-  - health: 160
+  - health: 190
     level: 2
     minAttack: 30
     maxAttack: 65
-    minDefense: 25
-    maxDefense: 40
+    minDefense: 35
+    maxDefense: 55
     managedByAI: 0
     xpForKilling: 50
     minGoldForKilling: 50
