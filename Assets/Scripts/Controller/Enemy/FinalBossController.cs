@@ -38,8 +38,4 @@ public class FinalBossController : EnemyController<FinalBossAttributes, FinalBos
         magicalAxe = magicalAxeLevelTree.GetAttributesForCurrentLevel();
         _abilityList.Add(magicalAxe);
     }
-
-    public override void PlayDamageSound()
-    {
-    }
 }

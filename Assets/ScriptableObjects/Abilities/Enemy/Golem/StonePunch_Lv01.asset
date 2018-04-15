@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: StonePunch_Lv01
   m_EditorClassIdentifier: 
   level: 1
-  minPower: 20
-  maxPower: 30
+  minPower: 10
+  maxPower: 20

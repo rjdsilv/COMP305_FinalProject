@@ -37,8 +37,4 @@ public class OrcController : EnemyController<OrcAttributes, OrcLevelTree>
         destinySpear = destinySpearLevelTree.GetAttributesForCurrentLevel();
         _abilityList.Add(destinySpear);
     }
-
-    public override void PlayDamageSound()
-    {
-    }
 }

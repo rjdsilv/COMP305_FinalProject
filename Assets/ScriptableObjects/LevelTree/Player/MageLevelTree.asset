@@ -17,8 +17,8 @@ MonoBehaviour:
     level: 1
     minAttack: 35
     maxAttack: 50
-    minDefense: 20
-    maxDefense: 30
+    minDefense: 15
+    maxDefense: 40
     managedByAI: 0
     xp: 150
     gold: 300
@@ -28,8 +28,8 @@ MonoBehaviour:
     level: 2
     minAttack: 50
     maxAttack: 75
-    minDefense: 30
-    maxDefense: 45
+    minDefense: 25
+    maxDefense: 50
     managedByAI: 0
     xp: 300
     gold: 400

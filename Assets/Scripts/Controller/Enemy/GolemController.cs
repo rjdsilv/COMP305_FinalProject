@@ -16,6 +16,7 @@ public class GolemController : EnemyController<GolemAttributes, GolemLevelTree>
     private void OnEnable()
     {
         SetGameManager();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -37,9 +38,5 @@ public class GolemController : EnemyController<GolemAttributes, GolemLevelTree>
         // Initializes its abilities.
         stonePunch = stonePunchLevelTree.GetAttributesForCurrentLevel();
         _abilityList.Add(stonePunch);
-    }
-
-    public override void PlayDamageSound()
-    {
     }
 }
