@@ -125,7 +125,16 @@ public class ItemCollectorController : MonoBehaviour
         }
         else
         {
-            pot.Destroy();
+            if (SceneData.numberOfPlayers == 1)
+            {
+                foreach (GameObject player in SceneData.playerList)
+                {
+                    if (player.IsThief())
+                    {
+                        pot.Use(player.GetComponent<ThiefController>());
+                    }
+                }
+            }
         }
     }
 }

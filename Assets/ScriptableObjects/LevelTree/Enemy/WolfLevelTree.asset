@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 70
+  - health: 60
     level: 1
     minAttack: 15
     maxAttack: 30
@@ -27,7 +27,7 @@ MonoBehaviour:
     staminaRecoverDropChance: 0.7
     manaRecoverDropChance: 0.8
     keyDropChance: 0
-  - health: 90
+  - health: 85
     level: 2
     minAttack: 25
     maxAttack: 40

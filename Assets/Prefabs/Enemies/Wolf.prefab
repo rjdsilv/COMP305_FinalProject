@@ -425,7 +425,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -644,9 +644,11 @@ MonoBehaviour:
     healthRecoverDropChance: 0
     staminaRecoverDropChance: 0
     manaRecoverDropChance: 0
+    keyDropChance: 0
   levelTree: {fileID: 11400000, guid: 751a6e4a51e78294fb8948ee468df688, type: 2}
   minEnemiesInBattle: 2
   maxEnemiesInBattle: 3
+  sfxVolume: 0.25
   audioClips:
   - {fileID: 8300000, guid: 502a635e7eb8f744895b61bc7d912a2d, type: 3}
   powerBite: {fileID: 0}
