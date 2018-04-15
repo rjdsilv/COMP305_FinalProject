@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4109636292782488}
   - component: {fileID: 212248068645452896}
   - component: {fileID: 61292106088187482}
-  - component: {fileID: 114378944985031928}
+  - component: {fileID: 114625396052870264}
   m_Layer: 14
   m_Name: TempleDoor
   m_TagString: Key
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.657073, y: 4.881599}
   m_EdgeRadius: 0
---- !u!114 &114378944985031928
+--- !u!114 &114625396052870264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,10 +75,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1937801079212170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d3977bbc88842408cfbc46f7bded89, type: 3}
+  m_Script: {fileID: 11500000, guid: 313da0b478c440d418a9677e91e31f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   keyName: TempleDoor
+  nextMission: {fileID: 11400000, guid: 0579d22722f1fb44fb9cff7608d02ab5, type: 2}
 --- !u!212 &212248068645452896
 SpriteRenderer:
   m_ObjectHideFlags: 1

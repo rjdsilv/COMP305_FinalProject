@@ -58,15 +58,31 @@ public class ItemCollectorController : MonoBehaviour
 
     private void UseHealthPot()
     {
-        if (gameObject.IsMage())
+        // Applies the health for both players if in one player mode.
+        if (SceneData.numberOfPlayers == 1)
         {
-            _collisionObject.gameObject.GetComponent<HealthPot>().Use(gameObject.GetComponent<MageController>());
+            foreach (GameObject player in SceneData.playerList)
+            {
+                ApplyHealth(player);
+            }
         }
-        else if (gameObject.IsThief())
+        else
         {
-            _collisionObject.gameObject.GetComponent<HealthPot>().Use(gameObject.GetComponent<ThiefController>());
+            ApplyHealth(gameObject);
         }
-        _gameManager.UpdateHUD(gameObject);
+    }
+
+    private void ApplyHealth(GameObject player)
+    {
+        if (player.IsMage())
+        {
+            _collisionObject.gameObject.GetComponent<HealthPot>().Use(player.GetComponent<MageController>());
+        }
+        else if (player.IsThief())
+        {
+            _collisionObject.gameObject.GetComponent<HealthPot>().Use(player.GetComponent<ThiefController>());
+        }
+        _gameManager.UpdateHUD(player);
     }
 
     private void UseConsumablePot()

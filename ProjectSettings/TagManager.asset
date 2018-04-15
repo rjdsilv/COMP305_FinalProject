@@ -16,6 +16,7 @@ TagManager:
   - HealthPot
   - ConsumablePot
   - Key
+  - FinalBossDoor
   layers:
   - Default
   - TransparentFX

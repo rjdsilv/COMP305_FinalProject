@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f1ccd84bca47a4582ef710600b1788, type: 3}
   m_Name: 07_FindBossRoomKey04
   m_EditorClassIdentifier: 
+  missionName: Find4thTempleKey
   description: FIND THE 4th OF 4 KEYS TO THE FINAL BOSS ROOM
   nextMission: {fileID: 11400000, guid: 25d8586902816d94b9fd4a3cfeab6a74, type: 2}

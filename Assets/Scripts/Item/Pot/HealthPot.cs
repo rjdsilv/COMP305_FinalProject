@@ -1,8 +1,11 @@
-﻿/// <summary>
+﻿using UnityEngine;
+/// <summary>
 /// Class representing the Health Pot attributes on the system.
 /// </summary>
 public class HealthPot : Item
 {
+    private float _singlePlayerRecoverFactor = 2.0f / 3.0f;
+
     /// <see cref="IUsable"/>
     public override void Use(IPlayerController playerController)
     {
@@ -15,7 +18,8 @@ public class HealthPot : Item
     /// <param name="playerController">The player to have the health restored.</param>
     private void RestoreHealth(IPlayerController playerController)
     {
-        playerController.IncreaseHealth(power);
+        float useFactor = SceneData.numberOfPlayers == 1 ? _singlePlayerRecoverFactor : 1.0f;
+        playerController.IncreaseHealth(Mathf.FloorToInt(_singlePlayerRecoverFactor * power));
         Destroy();
     }
 }
