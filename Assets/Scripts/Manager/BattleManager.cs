@@ -585,10 +585,39 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
+                // Camera Shake Effect
+                StartCoroutine(ShakeCamera());
                 selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
+                
             }
         }
     }
+    //------------------------------------------Camera Shake------------------------------------//
+    /// <summary>
+    /// Method made to Shake the cameras.
+    /// </summary>
+    private IEnumerator ShakeCamera()
+    {
+        yield return new WaitForSeconds(0.05f);
+        for (int i = 0; i < 2; i++)
+        {
+            foreach (Camera c in Camera.allCameras)
+            {
+                
+                if (i % 2 == 0)
+                {
+                    c.transform.position = new Vector3(c.transform.position.x + 0.25f, c.transform.position.y, c.transform.position.z);
+                }
+                else
+                {
+                    c.transform.position = new Vector3(c.transform.position.x - 0.25f, c.transform.position.y, c.transform.position.z);
+                }
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    
 
     /// <summary>
     /// Clamps the index based on the given parameters so it avoid array out of bounds.
