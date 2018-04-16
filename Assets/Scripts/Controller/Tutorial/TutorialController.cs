@@ -16,9 +16,9 @@ public class TutorialController : MonoBehaviour
         "choose the ability to use using the left and right arrow keys. To attack, press the space bar." +
         "\n\nPress B when you are ready to begin.";
 
-    private const string _battleTutorialText_P2 = "To battle, select the enemy to attack using the RB and LB buttons. Then, " +
-        "choose the ability to use using the RT and LT buttons. To attack, press the A button." +
-        "\n\nPress B when you are ready to begin.";
+    private const string _battleTutorialText_P2 = "To battle, select the enemy to attack using the up / down arrow keys on the keyboard (P1) or RT and LT on XBox Controller (P2). Then, " +
+        "choose the ability to use using the left / right arrow keys on the keyboard (P1) or RB and LB on Xbox Controller (P2). To attack, press the space bar on the keyboard (P!) or the A " +
+        "button on XBox Controller (P2).\n\nPress B when you are ready to begin.";
 
     private DialogPanel _dialogPanelPlayerOne = null;
     private DialogPanel _dialogPanelPlayerTwo = null;
@@ -106,10 +106,13 @@ public class TutorialController : MonoBehaviour
         }
         else
         {
-            _dialogPanelPlayerOne.DisplayMessage(_battleTutorialText_P1, new bool[] { false, false });
-            if (SceneData.numberOfPlayers == 2 && null != _dialogPanelPlayerTwo)
+            if (SceneData.numberOfPlayers == 1)
             {
-                _dialogPanelPlayerTwo.DisplayMessage(_battleTutorialText_P1, new bool[] { false, false });
+                _dialogPanelPlayerOne.DisplayMessage(_battleTutorialText_P1, new bool[] { false, false });
+            }
+            else if (SceneData.numberOfPlayers == 2)
+            {
+                _dialogPanelPlayerOne.DisplayMessage(_battleTutorialText_P2, new bool[] { false, false });
             }
         }
     }
