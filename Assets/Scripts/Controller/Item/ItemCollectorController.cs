@@ -135,6 +135,10 @@ public class ItemCollectorController : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                pot.Destroy();
+            }
         }
     }
 }

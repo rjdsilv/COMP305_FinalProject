@@ -586,7 +586,7 @@ public class BattleManager : MonoBehaviour
             else
             {
                 // Camera Shake Effect
-                StartCoroutine(ShakeCamera());
+                StartCoroutine(ShakeCamera(selectedAbility));
                 selectedPlayer.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_DAMAGE, 0);
                 
             }
@@ -596,9 +596,10 @@ public class BattleManager : MonoBehaviour
     /// <summary>
     /// Method made to Shake the cameras.
     /// </summary>
-    private IEnumerator ShakeCamera()
+    private IEnumerator ShakeCamera(ActorAbility selectedAbility)
     {
-        yield return new WaitForSeconds(0.05f);
+        float attackWait = (selectedAbility is StonePunch) ? 0.35f : 0.10f;
+        yield return new WaitForSeconds(attackWait);
         for (int i = 0; i < 2; i++)
         {
             foreach (Camera c in Camera.allCameras)
