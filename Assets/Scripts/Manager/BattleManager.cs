@@ -598,7 +598,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator ShakeCamera()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.25f);
         for (int i = 0; i < 2; i++)
         {
             foreach (Camera c in Camera.allCameras)
