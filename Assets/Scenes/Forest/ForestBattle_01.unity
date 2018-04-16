@@ -212,6 +212,16 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114775603006086714, guid: b31ac673da15927468b6638ff39a53df,
+        type: 2}
+      propertyPath: bloodTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: aa04e310731e76e4b8b77ee28dfc47e3, type: 3}
+    - target: {fileID: 114775603006086714, guid: b31ac673da15927468b6638ff39a53df,
+        type: 2}
+      propertyPath: guiEnabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b31ac673da15927468b6638ff39a53df, type: 2}
   m_IsPrefabParent: 0
@@ -551,6 +561,7 @@ MonoBehaviour:
   - {x: 7, y: 5.5, z: 0}
   hudManager: {fileID: 1898857620}
   enemyMaterial: {fileID: 2100000, guid: 8e18174905954c84dbfe7b20e4713fbc, type: 2}
+  bloodTexture: {fileID: 2800000, guid: aa04e310731e76e4b8b77ee28dfc47e3, type: 3}
 --- !u!114 &1031690413
 MonoBehaviour:
   m_ObjectHideFlags: 0
