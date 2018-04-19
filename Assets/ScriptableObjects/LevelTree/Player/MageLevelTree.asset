@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4124ba63f33953c4d8a9213826c614a7, type: 3}
   m_Name: MageLevelTree
   m_EditorClassIdentifier: 
-  currentLevel: 2
+  currentLevel: 1
   levelAttributes:
   - health: 100
     level: 1

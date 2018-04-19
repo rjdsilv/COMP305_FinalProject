@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d79aaa73badb15940ac98d218af11824, type: 3}
   m_Name: GolemLevelTree
   m_EditorClassIdentifier: 
-  currentLevel: 2
+  currentLevel: 1
   levelAttributes:
   - health: 125
     level: 1
