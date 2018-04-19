@@ -572,7 +572,7 @@ MonoBehaviour:
   - {x: 4.5, y: -3.15, z: 0}
   - {x: 3.5, y: -2.5, z: 0}
   hudManager: {fileID: 1898857620}
-  enemyMaterial: {fileID: 2100000, guid: 8e18174905954c84dbfe7b20e4713fbc, type: 2}
+  enemyMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1031690413
 MonoBehaviour:
   m_ObjectHideFlags: 0

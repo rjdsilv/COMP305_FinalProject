@@ -30,9 +30,9 @@ MonoBehaviour:
   - health: 190
     level: 2
     minAttack: 30
-    maxAttack: 50
-    minDefense: 20
-    maxDefense: 45
+    maxAttack: 55
+    minDefense: 25
+    maxDefense: 50
     managedByAI: 0
     xpForKilling: 50
     minGoldForKilling: 50

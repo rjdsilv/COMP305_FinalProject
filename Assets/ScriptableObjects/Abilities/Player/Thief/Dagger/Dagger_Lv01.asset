@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   minPower: 10
-  maxPower: 18
+  maxPower: 30
   consumableType: 0
   consumptionValue: 8

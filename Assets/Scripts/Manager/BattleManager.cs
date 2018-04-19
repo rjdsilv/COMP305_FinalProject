@@ -252,6 +252,11 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator EndBattle()
     {
+        foreach (GameObject e in _enemies)
+        {
+            e.transform.GetChild(7).gameObject.SetActive(false);
+        }
+
         if (IsAnyPlayerAlive())
         {
             // Displays the end of battle text.
@@ -479,9 +484,20 @@ public class BattleManager : MonoBehaviour
                         _enemySwaped = true;
                     }
                 }
-
-                _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
+                _enemies[_selectedEnemyIndex].transform.GetChild(7).gameObject.SetActive(true);
             }
+            else
+            {
+                InactivateEnemyArrows();
+            }
+        }
+    }
+
+    private void InactivateEnemyArrows()
+    {
+        foreach (GameObject e in _enemies)
+        {
+            e.transform.GetChild(7).gameObject.SetActive(false);
         }
     }
 
@@ -675,6 +691,7 @@ public class BattleManager : MonoBehaviour
             counter++;
         }
         while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+        InactivateEnemyArrows();
     }
 
     /// <summary>
@@ -691,6 +708,7 @@ public class BattleManager : MonoBehaviour
             counter++;
         }
         while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+        InactivateEnemyArrows();
     }
 
     /// <summary>

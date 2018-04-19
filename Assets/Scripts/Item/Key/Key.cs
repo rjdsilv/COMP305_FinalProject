@@ -9,10 +9,13 @@ public class Key : MonoBehaviour
         if (!SceneData.keys.ContainsKey(keyName))
         {
             SceneData.keys.Add(keyName, this);
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CompleteCurrentMission();
+            DontDestroyOnLoad(this);
+            gameObject.SetActive(false);
         }
-
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().CompleteCurrentMission();
-        DontDestroyOnLoad(this);
-        gameObject.SetActive(false);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

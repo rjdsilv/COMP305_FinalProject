@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d88f85980f5c2d4cae8a3fd9e50a9b5, type: 3}
   m_Name: ThiefLevelTree
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentLevel: 2
   levelAttributes:
   - health: 140
     level: 1
@@ -28,7 +28,7 @@ MonoBehaviour:
     level: 2
     minAttack: 45
     maxAttack: 65
-    minDefense: 35
+    minDefense: 30
     maxDefense: 45
     managedByAI: 0
     xp: 300
