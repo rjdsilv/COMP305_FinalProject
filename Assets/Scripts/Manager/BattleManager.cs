@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -66,6 +67,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        // Take care of the tutorial
         _tutorialController = GetComponent<TutorialController>();
         _tutorialController.ResetPanels();
         ShowTutorial();
@@ -190,6 +192,26 @@ public class BattleManager : MonoBehaviour
 
         _turnRemainingTime = turnTime;
         _turnStarted = true;
+        ShowArrow();
+    }
+
+    private void ShowArrow()
+    {
+        if (_actorPlaying.IsMage())
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(true);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (_actorPlaying.IsThief())
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -250,6 +272,8 @@ public class BattleManager : MonoBehaviour
             RestoreCallingScene();
             RestorePlayersPositions();
             ReviveDeadPlayer();
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneData.mainScene);
         }
     }

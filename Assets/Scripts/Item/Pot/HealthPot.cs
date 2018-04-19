@@ -4,7 +4,7 @@
 /// </summary>
 public class HealthPot : Item
 {
-    private float _singlePlayerRecoverFactor = 2.0f / 3.0f;
+    private const float _singlePlayerRecoverFactor = 2.0f / 3.0f;
 
     /// <see cref="IUsable"/>
     public override void Use(IPlayerController playerController)
@@ -19,7 +19,7 @@ public class HealthPot : Item
     private void RestoreHealth(IPlayerController playerController)
     {
         float useFactor = SceneData.numberOfPlayers == 1 ? _singlePlayerRecoverFactor : 1.0f;
-        playerController.IncreaseHealth(Mathf.FloorToInt(_singlePlayerRecoverFactor * power));
+        playerController.IncreaseHealth(Mathf.FloorToInt(_singlePlayerRecoverFactor * power * useFactor));
         Destroy();
     }
 }

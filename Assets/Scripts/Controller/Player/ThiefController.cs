@@ -19,6 +19,7 @@ public class ThiefController : PlayerController<ThiefAttributes, ThiefLevelTree>
     /// </summary>
     private void Awake()
     {
+        playerNumber = 2;
         Init();
     }
 

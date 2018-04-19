@@ -540,7 +540,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1031690412
 MonoBehaviour:
@@ -644,7 +644,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386600481
 GameObject:
@@ -717,50 +717,8 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1653582212
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.39453927
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.1576815
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4101546516102560, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b1ba50762afe12349a00206c7e656823, type: 2}
-  m_IsPrefabParent: 0
 --- !u!114 &1898857620 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114775603006086714, guid: b31ac673da15927468b6638ff39a53df,
