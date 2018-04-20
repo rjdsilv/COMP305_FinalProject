@@ -26,7 +26,7 @@ public class GameIntroduction : MonoBehaviour
     private const string history3_3 = "\t\tStevyn was left with the Cleric who married them, Iliphyra.\n";
     private const string history3_4 = "\t\tDestrian was left with Alard, Melisant's noble brother.\n";
     private const string history3_5 = "\t\tAnd Ruven was left with Benedict's parents Gerolt and Nance, a couple of peasant farmers.";
-    private const string history4_1 = "\t\tEach children was raised without knowing the existence of their brothers and developed different abilities.\n";
+    private const string history4_1 = "\t\tEach child was raised without knowing the existence of their brothers and developed different abilities.\n";
     private const string history4_2 = "\t\tGrizzel was trained by Vrarugast and became a powerful Wizard.\n";
     private const string history4_3 = "\t\tStevyn was trained by Iliphyra and became a Cleric, with healing powers.\n";
     private const string history4_4 = "\t\tDestrian, who was raised by Alard, became a very respected Knight.\n";
