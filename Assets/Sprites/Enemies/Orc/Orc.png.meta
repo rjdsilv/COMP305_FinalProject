@@ -1,0 +1,962 @@
+fileFormatVersion: 2
+guid: a228c8acbb48d484cb73029f6da7fc18
+timeCreated: 1522338161
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Orc_WalkUp_00
+    21300002: Orc_WalkUp_01
+    21300004: Orc_WalkUp_02
+    21300006: Orc_WalkUp_03
+    21300008: Orc_WalkUp_04
+    21300010: Orc_WalkUp_05
+    21300012: Orc_WalkUp_06
+    21300014: Orc_WalkUp_07
+    21300016: Orc_WalkUp_08
+    21300018: Orc_WalkLeft_00
+    21300020: Orc_WalkLeft_01
+    21300022: Orc_WalkLeft_02
+    21300024: Orc_WalkLeft_03
+    21300026: Orc_WalkLeft_04
+    21300028: Orc_WalkLeft_05
+    21300030: Orc_WalkLeft_06
+    21300032: Orc_WalkLeft_07
+    21300034: Orc_WalkLeft_08
+    21300036: Orc_WalkDown_00
+    21300038: Orc_WalkDown_01
+    21300040: Orc_WalkDown_02
+    21300042: Orc_WalkDown_03
+    21300044: Orc_WalkDown_04
+    21300046: Orc_WalkDown_05
+    21300048: Orc_WalkDown_06
+    21300050: Orc_WalkDown_07
+    21300052: Orc_WalkDown_08
+    21300054: Orc_WalkRight_00
+    21300056: Orc_WalkRight_01
+    21300058: Orc_WalkRight_02
+    21300060: Orc_WalkRight_03
+    21300062: Orc_WalkRight_04
+    21300064: Orc_WalkRight_05
+    21300066: Orc_WalkRight_06
+    21300068: Orc_WalkRight_07
+    21300070: Orc_WalkRight_08
+    21300072: Orc_BattleDeath_00
+    21300074: Orc_BattleDeath_01
+    21300076: Orc_BattleDeath_02
+    21300078: Orc_BattleDeath_03
+    21300080: Orc_BattleDeath_04
+    21300082: Orc_BattleDeath_05
+    21300084: Orc_BattleAttack_00
+    21300086: Orc_BattleAttack_01
+    21300088: Orc_BattleAttack_02
+    21300090: Orc_BattleAttack_03
+    21300092: Orc_BattleAttack_04
+    21300094: Orc_BattleAttack_05
+    21300096: Orc_BattleAttack_06
+    21300098: Orc_BattleAttack_07
+    21300100: Orc_BattleDamage_00
+    21300102: Orc_BattleDamage_01
+    21300104: Orc_BattleDamage_02
+    21300106: Orc_BattleDamage_03
+    21300108: Orc_BattleDamage_04
+    21300110: Orc_BattleDamage_05
+    21300112: Orc_0
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Orc_WalkUp_00
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1538
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_01
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1539
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_02
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1538
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_03
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1537
+        width: 29
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_04
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1538
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_05
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1539
+        width: 30
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_06
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1538
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_07
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1536
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkUp_08
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1538
+        width: 30
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_00
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1474
+        width: 20
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_01
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1474
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_02
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1475
+        width: 23
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_03
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 1475
+        width: 22
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_04
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 1474
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_05
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1474
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_06
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1474
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_07
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 1474
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkLeft_08
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 1474
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_00
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1410
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_01
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1410
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_02
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1409
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_03
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1409
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_04
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1409
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_05
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1410
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_06
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1409
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_07
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1409
+        width: 29
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkDown_08
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1409
+        width: 30
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_00
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 1346
+        width: 20
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_01
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1346
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_02
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1347
+        width: 22
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_03
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1347
+        width: 22
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_04
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1346
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_05
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1346
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_06
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1346
+        width: 23
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_07
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1346
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_WalkRight_08
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1346
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_00
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 770
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_01
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 770
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_02
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 770
+        width: 30
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_03
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 771
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_04
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 772
+        width: 31
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDeath_05
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 770
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_00
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_01
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_02
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_03
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_04
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_05
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 450
+        width: 99
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_06
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 450
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleAttack_07
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 450
+        width: 85
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_00
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1218
+        width: 20
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_01
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1218
+        width: 24
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_02
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1218
+        width: 24
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_03
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 1218
+        width: 34
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_04
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1218
+        width: 36
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_BattleDamage_05
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1218
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Orc_0
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1346
+        width: 22
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

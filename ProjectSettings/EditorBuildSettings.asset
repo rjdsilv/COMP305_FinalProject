@@ -6,11 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/UI/SplashScreen.unity
+    guid: b20180a397cdfb24eafd3c38d1a2d5c9
+  - enabled: 1
+    path: Assets/Scenes/Story/GameIntroduction.unity
+    guid: c200ac60385f49646852699f30a0f5aa
+  - enabled: 1
+    path: Assets/Scenes/UI/MainMenu.unity
+    guid: 410a0116dc821124bba154fd48f6e37d
+  - enabled: 1
     path: Assets/Scenes/Forest/ForestMain.unity
     guid: eed4d8c5d34a29a47b8f195216cc6f2a
   - enabled: 1
     path: Assets/Scenes/Forest/ForestBattle_01.unity
-    guid: 97fe923b7361764448f4080d9438555e
+    guid: c79dcfa5f3b54be48af292fa75983bdd
   - enabled: 1
     path: Assets/Scenes/Temple/Temple1stFloor.unity
     guid: f866f57a4857b5a409c2cd49c0273177
+  - enabled: 1
+    path: Assets/Scenes/Temple/TempleBattle_01.unity
+    guid: 97fe923b7361764448f4080d9438555e
+  - enabled: 1
+    path: Assets/Scenes/Temple/TempleBattle_FinalBoss.unity
+    guid: eb0ddd5bcd287cf4084ad7d11c593e55
+  - enabled: 1
+    path: Assets/Scenes/Story/GameEnd.unity
+    guid: 9b54b3ba91567894c9125779f4353eb8
+  - enabled: 1
+    path: Assets/Scenes/Story/GameOver.unity
+    guid: 20bc0042b6cccf147bd532e4cbc9df04

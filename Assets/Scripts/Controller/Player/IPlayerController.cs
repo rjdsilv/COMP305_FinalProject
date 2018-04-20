@@ -24,6 +24,12 @@ public interface IPlayerController : IController
     bool CanAttack(PlayerAbility ability);
 
     /// <summary>
+    /// Sets the player AI state.
+    /// </summary>
+    /// <param name="isManagedByAI">Flag indicating if the player is managed by AI or not.</param>
+    void SetIsManagedByAI(bool isManagedByAI);
+
+    /// <summary>
     /// Increases the ammount of XP this player has.
     /// <param name="amount">The amount of XP to increase.</param>
     /// </summary>
@@ -34,4 +40,34 @@ public interface IPlayerController : IController
     /// <param name="amount">The amount of gold to increase.</param>
     /// </summary>
     void IncreaseGold(int amount);
+
+    /// <summary>
+    /// Gets the player number 1 or 2.
+    /// </summary>
+    /// <returns>The player number</returns>
+    int GetPlayerNumber();
+
+    int GetGold();
+
+    int GetXp();
+
+    int GetHealth();
+
+    int GetMaxHealth();
+
+    float GetConsumable();
+
+    float GetMaxConsumable();
+
+    /// <summary>
+    /// Returns the indication if the player is the player one or not.
+    /// </summary>
+    /// <returns><b>true</b> if the player is player one. <b>false</b> otherwise.</returns>
+    bool IsPlayerOne();
+
+    /// <summary>
+    /// Returns the indication if the player is the player two or not.
+    /// </summary>
+    /// <returns><b>true</b> if the player is player two. <b>false</b> otherwise.</returns>
+    bool IsPlayerTwo();
 }

@@ -6,6 +6,9 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
     where A : PlayerAttributes
     where L : PlayerLevelTree<A>
 {
+    [HideInInspector]
+    public int playerNumber = 1;            // Indicates the number of the selected player.
+
     /// <see cref="ActorController{A, L}"/>
     public override int Attack(GameObject opponent, ActorAbility ability)
     {
@@ -79,13 +82,68 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         attributes.gold += amount;
     }
 
-    /// <see cref="ActorController{A, L}">
-    protected override void Init()
+    /// <see cref="IPlayerController{A, L}">
+    public void SetIsManagedByAI(bool isManagedByAI)
     {
-        base.Init();
+        attributes.managedByAI = isManagedByAI;
+    }
 
-        attributes.gold = 0;
-        attributes.xp = 0;
+    /// <see cref="IPlayerController{A, L}">
+    public int GetPlayerNumber()
+    {
+        return playerNumber;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public bool IsPlayerOne()
+    {
+        return playerNumber == 1;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public bool IsPlayerTwo()
+    {
+        return playerNumber == 2;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetGold()
+    {
+        return attributes.gold;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetXp()
+    {
+        return attributes.xp;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetHealth()
+    {
+        return attributes.health;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public int GetMaxHealth()
+    {
+        return levelTree.GetAttributesForCurrentLevel().health;
+    }
+
+    /// <see cref="IPlayerController{A, L}">
+    public float GetConsumable()
+    {
+        return (_abilityList[0] as PlayerAbility).consumableType == ConsumableType.MANA 
+            ? attributes.mana 
+            : attributes.stamina;
+    }
+
+    /// <see cref="IController{A, L}"/>
+    public float GetMaxConsumable()
+    {
+        return (_abilityList[0] as PlayerAbility).consumableType == ConsumableType.MANA 
+            ? levelTree.GetAttributesForCurrentLevel().mana 
+            : levelTree.GetAttributesForCurrentLevel().stamina;
     }
 
     /// <see cref="IController{A, L}"/>
@@ -95,7 +153,17 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
         {
             levelTree.IncreaseLevel();
             SetAttributesForCurrentLevel();
+            GetComponent<Animator>().SetInteger("health", attributes.health);
         }
+    }
+
+    /// <see cref="ActorController{A, L}">
+    protected override void Init()
+    {
+        base.Init();
+
+        attributes.gold = 0;
+        attributes.xp = 0;
     }
 
     /// <summary>

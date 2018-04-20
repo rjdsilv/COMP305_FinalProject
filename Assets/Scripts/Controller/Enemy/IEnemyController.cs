@@ -30,6 +30,18 @@ public interface IEnemyController : IController
     int GetGoldEarnedForKilling();
 
     /// <summary>
+    /// Gets the minimum number of enemies that will be spawn in a battle scene.
+    /// </summary>
+    /// <returns>The minimum number of enemies that will be spawn in a battle scene.</returns>
+    int GetMinEnemiesInBattle();
+
+    /// <summary>
+    /// Gets the maximum number of enemies that will be spawn in a battle scene.
+    /// </summary>
+    /// <returns>The maximum number of enemies that will be spawn in a battle scene.</returns>
+    int GetMaxEnemiesInBattle();
+
+    /// <summary>
     /// Method that will determine if the enemy will drop any health pot to be collected.
     /// </summary>
     /// <returns><b>true</b> if a health pot is dropped/ <b>false</b> otherwise.</returns>
@@ -46,4 +58,8 @@ public interface IEnemyController : IController
     /// </summary>
     /// <returns><b>true</b> if a stamina pot is dropped/ <b>false</b> otherwise.</returns>
     bool DropStaminaPot();
+
+    bool DropKey();
+
+    void PlayDamageSound();
 }

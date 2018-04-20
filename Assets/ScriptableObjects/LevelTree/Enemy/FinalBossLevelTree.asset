@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744c00add5ae9374581034f4f40f7829, type: 3}
+  m_Name: FinalBossLevelTree
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  levelAttributes:
+  - health: 180
+    level: 1
+    minAttack: 25
+    maxAttack: 45
+    minDefense: 20
+    maxDefense: 50
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 300
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 230
+    level: 1
+    minAttack: 40
+    maxAttack: 70
+    minDefense: 35
+    maxDefense: 70
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 300
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0

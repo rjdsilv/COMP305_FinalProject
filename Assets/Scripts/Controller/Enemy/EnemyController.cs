@@ -16,16 +16,24 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
     public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
+    public float sfxVolume = 0.5f;
+    public AudioClip[] audioClips;
 
     // Protected variable declaration.
+    protected int _clipToPlay = 0;
     protected GameManager _gameManager;           // The game manager script to be used.
     protected EnemyVisionAI _enemyVisionAI;       // The enemy vision AI script to be used.
+    protected AudioSource _audioSource;
+
 
     // The sector where the enemy was spawned.
     public string SectorName { get; set; }
 
     // The battle scene to be loaded.
     public string BattleScene { get; set; }
+
+    // The main scene to be loaded.
+    public string MainScene { get; set; }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// EVENT METHODS
@@ -39,8 +47,22 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         {
             if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
-                _gameManager.GoToBattle(BattleScene, gameObject);
+                _gameManager.GoToBattle(SectorName, BattleScene, MainScene, gameObject);
             }
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //// ABSTRACT METHODS
+
+    public virtual void PlayDamageSound()
+    {
+        if (null != audioClips && audioClips.Length > 0)
+        {
+            _clipToPlay %= audioClips.Length;
+            _audioSource.clip = audioClips[_clipToPlay++];
+            _audioSource.volume = sfxVolume;
+            _audioSource.Play();
         }
     }
 
@@ -75,19 +97,36 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     /// <see cref="IEnemyController"/>    
     public bool DropHealthPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
     }
 
     /// <see cref="IEnemyController"/>    
     public bool DropManaPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
     }
 
-    /// <see cref="IEnemyController"/>    
+    /// <see cref="IEnemyController"/>
     public bool DropStaminaPot()
     {
-        return Random.Range(0.0f, 1.0f) <= levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+        return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+    }
+
+    public bool DropKey()
+    {
+        return levelTree.GetAttributesForCurrentLevel().keyDropChance == 1.0f;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMinEnemiesInBattle()
+    {
+        return minEnemiesInBattle;
+    }
+
+    /// <see cref="IEnemyController"/>
+    public int GetMaxEnemiesInBattle()
+    {
+        return maxEnemiesInBattle;
     }
 
     /// <see cref="IController"/>
@@ -100,6 +139,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         }
     }
 
+
     /// <see cref="ActorController{A, L}"/>
     protected override void SetAttributesForCurrentLevel()
     {
@@ -110,6 +150,13 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         attributes.healthRecoverDropChance = levelTree.GetAttributesForCurrentLevel().healthRecoverDropChance;
         attributes.staminaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
         attributes.manaRecoverDropChance = levelTree.GetAttributesForCurrentLevel().manaRecoverDropChance;
+        attributes.health = levelTree.GetAttributesForCurrentLevel().health;
+        attributes.level = levelTree.GetAttributesForCurrentLevel().level;
+        attributes.maxAttack = levelTree.GetAttributesForCurrentLevel().maxAttack;
+        attributes.maxDefense = levelTree.GetAttributesForCurrentLevel().maxDefense;
+        attributes.minAttack = levelTree.GetAttributesForCurrentLevel().minAttack;
+        attributes.minDefense = levelTree.GetAttributesForCurrentLevel().minDefense;
+        attributes.managedByAI = true;
     }
 
     /// <summary>
@@ -161,5 +208,13 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     protected Text GetHUDHealthText()
     {
         return GetHUDCanvas().GetComponent<RectTransform>().GetChild(1).GetComponent<Text>();
+    }
+
+    /// <summary>
+    /// Sets the game manager to be used.
+    /// </summary>
+    protected void SetGameManager()
+    {
+        _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 }

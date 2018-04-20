@@ -7,31 +7,39 @@ using UnityEngine.Events;
 /// </summary>
 public class DialogPanel
 {
+    private Button[] _dialogPanelButtons;
+
+    private GameObject _dialogPanel;
+
     // Constant declaration.
     private const int YES_IDX = 0;
     private const int NO_IDX = 1;
 
     // Private variable declaration.
-    private GameObject _dialogPanel;
-    private Button[] _dialogPanelButtons;
     private Text _dialogText;
+
+    public DialogPanel(GameObject dialogPanel)
+    {
+        _dialogPanel = dialogPanel;
+        _dialogPanelButtons = dialogPanel.GetComponentsInChildren<Button>(true);
+    }
 
     /// <summary>
     /// Loads the dialog panel data to be used.
     /// </summary>
     public void Load(UnityAction yesCall, UnityAction noCall)
     {
-        if (!SceneData.isInBattle)
+        _dialogPanel.SetActive(true);
+        _dialogText = _dialogPanel.GetComponentInChildren<Text>();
+
+        if (null != yesCall)
         {
-            if (null == _dialogPanel)
-            {
-                _dialogPanel = TagUtils.FindDialogPanel();
-                _dialogText = _dialogPanel.GetComponentInChildren<Text>();
-                _dialogPanelButtons = _dialogPanel.GetComponentsInChildren<Button>();
-                _dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
-                _dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
-                _dialogPanel.SetActive(false);
-            }
+            _dialogPanelButtons[YES_IDX].onClick.AddListener(yesCall);
+        }
+
+        if (null != noCall)
+        {
+            _dialogPanelButtons[NO_IDX].onClick.AddListener(noCall);
         }
     }
 
@@ -40,7 +48,10 @@ public class DialogPanel
     /// </summary>
     public void Hide()
     {
-        _dialogPanel.SetActive(false);
+        if (null != _dialogPanel)
+        {
+            _dialogPanel.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -48,14 +59,19 @@ public class DialogPanel
     /// </summary>
     /// <param name="message">The message to be displayed.</param>
     /// <param name="showButtons">The flag indicating if the buttons should be shown or not.</param>
-    public void DisplayMessage(string message, bool showButtons)
+    public void DisplayMessage(string message, bool[] showButtons)
     {
         _dialogPanel.SetActive(true);
         _dialogText.text = message;
 
-        foreach (Button b in _dialogPanelButtons)
+        for (int i = 0; i < _dialogPanelButtons.Length; i++)
         {
-            b.gameObject.SetActive(showButtons);
+            _dialogPanelButtons[i].gameObject.SetActive(showButtons[i]);
         }
+    }
+
+    public bool IsNull()
+    {
+        return null == _dialogPanel;
     }
 }

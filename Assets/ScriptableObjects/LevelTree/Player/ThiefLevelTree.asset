@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d88f85980f5c2d4cae8a3fd9e50a9b5, type: 3}
+  m_Name: ThiefLevelTree
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  levelAttributes:
+  - health: 140
+    level: 1
+    minAttack: 30
+    maxAttack: 45
+    minDefense: 25
+    maxDefense: 35
+    managedByAI: 0
+    xp: 150
+    gold: 300
+    mana: 0
+    stamina: 90
+  - health: 175
+    level: 2
+    minAttack: 45
+    maxAttack: 65
+    minDefense: 30
+    maxDefense: 45
+    managedByAI: 0
+    xp: 300
+    gold: 400
+    mana: 0
+    stamina: 110
