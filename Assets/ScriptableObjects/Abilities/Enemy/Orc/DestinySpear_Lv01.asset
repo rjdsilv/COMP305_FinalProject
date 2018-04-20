@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: DestinySpear_Lv01
   m_EditorClassIdentifier: 
   level: 1
-  minPower: 15
-  maxPower: 21
+  minPower: 10
+  maxPower: 45
