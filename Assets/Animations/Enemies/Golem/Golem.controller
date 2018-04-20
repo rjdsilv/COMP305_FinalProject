@@ -245,7 +245,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BattleAttack
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101240801123337052}
@@ -350,44 +350,44 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102153454148495772}
-    m_Position: {x: 96, y: -348, z: 0}
+    m_Position: {x: 2328, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102578063811130632}
-    m_Position: {x: 96, y: -276, z: 0}
+    m_Position: {x: 2328, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102306854044107234}
-    m_Position: {x: 336, y: -348, z: 0}
+    m_Position: {x: 2568, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102320744413263182}
-    m_Position: {x: 336, y: -276, z: 0}
+    m_Position: {x: 2568, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102731232883921946}
-    m_Position: {x: 96, y: -204, z: 0}
+    m_Position: {x: 2328, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102296932042583402}
-    m_Position: {x: 336, y: -204, z: 0}
+    m_Position: {x: 2568, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102985153278214096}
-    m_Position: {x: 96, y: -132, z: 0}
+    m_Position: {x: 2328, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102495273667738042}
-    m_Position: {x: 336, y: -132, z: 0}
+    m_Position: {x: 2568, y: 216, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102648441018890466}
-    m_Position: {x: -144, y: -276, z: 0}
+    m_Position: {x: 2088, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102844414059022930}
-    m_Position: {x: -144, y: -204, z: 0}
+    m_Position: {x: 2088, y: 144, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102231011506361648}
-    m_Position: {x: -144, y: -132, z: 0}
+    m_Position: {x: 2088, y: 216, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -132, y: -408, z: 0}
-  m_EntryPosition: {x: -132, y: -348, z: 0}
-  m_ExitPosition: {x: 108, y: -408, z: 0}
+  m_AnyStatePosition: {x: 2100, y: -60, z: 0}
+  m_EntryPosition: {x: 2100, y: 0, z: 0}
+  m_ExitPosition: {x: 2340, y: -60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102578063811130632}

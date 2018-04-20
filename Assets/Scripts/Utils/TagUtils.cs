@@ -63,13 +63,23 @@ public class TagUtils
     }
 
     /// <summary>
-    /// Method to verify if the object overlaping the player circle is an entrance.
+    /// Method to verify if the object overlaping the player circle is an entrance to the temple.
     /// </summary>
     /// <param name="detectedObject">The object to be checked.</param>
     /// <returns><b>true</b> if the object overlaping the player circle is an entrance. <b>false</b>otherwise.</returns>
     public static bool IsTemple(Transform detectedObject)
     {
         return detectedObject.tag == "Temple";
+    }
+
+    /// <summary>
+    /// Method to verify if the object overlaping the player circle is an entrance to the final boss.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object overlaping the player circle is an entrance to the final boss. <b>false</b>otherwise.</returns>
+    public static bool IsFinalBossDoor(Transform detectedObject)
+    {
+        return detectedObject.tag == "FinalBossDoor";
     }
 
     /// <summary>
@@ -90,6 +100,16 @@ public class TagUtils
     public static bool IsConsumablePot(Transform detectedObject)
     {
         return detectedObject.tag == "ConsumablePot";
+    }
+
+    /// <summary>
+    /// Method to verify if the object overlaping the player circle is a key.
+    /// </summary>
+    /// <param name="detectedObject">The object to be checked.</param>
+    /// <returns><b>true</b> if the object overlaping the player circle is a key. <b>false</b>otherwise.</returns>
+    public static bool IsKey(Transform detectedObject)
+    {
+        return detectedObject.tag == "Key";
     }
 
     /// <summary>

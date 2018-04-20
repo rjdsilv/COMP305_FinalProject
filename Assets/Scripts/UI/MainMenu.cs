@@ -9,11 +9,20 @@ public class MainMenu : MonoBehaviour {
     public Slider slider;
     public Text progressText;
 
-	public void PlayGame()
+	public void PlayGameSinglePlayer()
     {
-        //Loading Forest Scene
-        //SceneManager.LoadScene("ForestMain");
-        //SceneManager.LoadSceneAsync("ForestMain");
+        SceneData.numberOfPlayers = 1;
+        SceneData.chosenPlayers = new string[1];
+        SceneData.chosenPlayers[0] = ActorUtils.MAGE;
+        StartCoroutine(LoadingScene());
+    }
+
+    public void PlayGameSingleTwoPlayers()
+    {
+        SceneData.numberOfPlayers = 2;
+        SceneData.chosenPlayers = new string[2];
+        SceneData.chosenPlayers[0] = ActorUtils.MAGE;
+        SceneData.chosenPlayers[1] = ActorUtils.THIEF;
         StartCoroutine(LoadingScene());
     }
 
@@ -45,7 +54,6 @@ public class MainMenu : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
-        //EditorApplication.Exit(0);
-    }
 
+    }
 }

@@ -742,22 +742,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1246968038547206
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4767792364007458}
-  - component: {fileID: 68594771215386416}
-  m_Layer: 11
-  m_Name: Edge_00
-  m_TagString: SectorEdge
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1247753512100912
 GameObject:
   m_ObjectHideFlags: 1
@@ -1107,22 +1091,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4721494076407706}
   - component: {fileID: 68775092158928094}
-  m_Layer: 11
-  m_Name: Edge_01
-  m_TagString: SectorEdge
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1344641939678900
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4404179159259730}
-  - component: {fileID: 68224653837378074}
   m_Layer: 11
   m_Name: Edge_01
   m_TagString: SectorEdge
@@ -1726,22 +1694,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1529663633870466
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4851072555388548}
-  - component: {fileID: 68752431230195394}
-  m_Layer: 11
-  m_Name: Edge_02
-  m_TagString: SectorEdge
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1533715239728962
 GameObject:
   m_ObjectHideFlags: 1
@@ -1755,23 +1707,6 @@ GameObject:
   m_Name: Edge_01
   m_TagString: SectorEdge
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1534400608737014
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4806847289454516}
-  - component: {fileID: 61271506191637918}
-  - component: {fileID: 114329958723348510}
-  m_Layer: 2
-  m_Name: Sector_56
-  m_TagString: Sector
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2785,22 +2720,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1806346683015846
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4031759777901380}
-  - component: {fileID: 68354725449732498}
-  m_Layer: 11
-  m_Name: Edge_03
-  m_TagString: SectorEdge
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1812628133374006
 GameObject:
   m_ObjectHideFlags: 1
@@ -3639,19 +3558,6 @@ Transform:
   m_Father: {fileID: 4662457516366730}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4031759777901380
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1806346683015846}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10.7, z: 0}
-  m_LocalScale: {x: 19.1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4806847289454516}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4042246857812014
 Transform:
   m_ObjectHideFlags: 1
@@ -3912,7 +3818,6 @@ Transform:
   - {fileID: 4220379508665516}
   - {fileID: 4460727383232718}
   - {fileID: 4823262810628840}
-  - {fileID: 4806847289454516}
   m_Father: {fileID: 4257056957206068}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4617,19 +4522,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4487085337816056}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4404179159259730
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344641939678900}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10.7, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4806847289454516}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4422978349425182
 Transform:
@@ -5746,19 +5638,6 @@ Transform:
   m_Father: {fileID: 4905829747518180}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4767792364007458
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1246968038547206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.1, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 10.7, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4806847289454516}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4772583729750108
 Transform:
   m_ObjectHideFlags: 1
@@ -5811,23 +5690,6 @@ Transform:
   m_Father: {fileID: 4691602817729834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4806847289454516
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534400608737014}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 230.4, y: 108, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4767792364007458}
-  - {fileID: 4404179159259730}
-  - {fileID: 4851072555388548}
-  - {fileID: 4031759777901380}
-  m_Father: {fileID: 4127355009492190}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4807291865100214
 Transform:
   m_ObjectHideFlags: 1
@@ -5874,8 +5736,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1845276922757406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 192, y: 108, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 210.2, y: 110.2, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 4005869018289972}
   - {fileID: 4581585406920916}
@@ -5989,19 +5851,6 @@ Transform:
   - {fileID: 4332567854958206}
   m_Father: {fileID: 4162188080066856}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4851072555388548
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529663633870466}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.7, z: 0}
-  m_LocalScale: {x: 19.1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4806847289454516}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4852910193472874
 Transform:
@@ -6836,31 +6685,6 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832193509098264}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 38.4, y: 21.6}
-  m_EdgeRadius: 0
---- !u!61 &61271506191637918
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534400608737014}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -8149,23 +7973,6 @@ EdgeCollider2D:
   m_Points:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
---- !u!68 &68224653837378074
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1344641939678900}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0, y: 1}
-  - {x: 0, y: -1}
 --- !u!68 &68228425312634092
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -8523,23 +8330,6 @@ EdgeCollider2D:
   m_Points:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
---- !u!68 &68354725449732498
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1806346683015846}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
 --- !u!68 &68367373743003816
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -9271,23 +9061,6 @@ EdgeCollider2D:
   m_Points:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
---- !u!68 &68594771215386416
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1246968038547206}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0, y: 1}
-  - {x: 0, y: -1}
 --- !u!68 &68598608951664732
 EdgeCollider2D:
   m_ObjectHideFlags: 1
@@ -9770,23 +9543,6 @@ EdgeCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1189255600701674}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
---- !u!68 &68752431230195394
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529663633870466}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -10472,6 +10228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10482,7 +10239,7 @@ MonoBehaviour:
     spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
-      spawnRadius: 6
+      spawnRadius: 3
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114071123936988926
 MonoBehaviour:
@@ -10495,6 +10252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10515,6 +10273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10523,10 +10282,7 @@ MonoBehaviour:
     battleScene: ForestBattle_01
     originalScene: ForestMain
     spawnEnemies: 0
-    enemyAttributes:
-    - spawnNumber: 2
-      spawnRadius: 6
-      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
+    enemyAttributes: []
 --- !u!114 &114103280609160214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10538,6 +10294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10545,7 +10302,7 @@ MonoBehaviour:
     sectorName: Sector_15
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 6
@@ -10561,6 +10318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10568,7 +10326,7 @@ MonoBehaviour:
     sectorName: Sector_50
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 4
@@ -10584,6 +10342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10604,6 +10363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10624,6 +10384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10631,34 +10392,11 @@ MonoBehaviour:
     sectorName: Sector_23
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 3
       spawnRadius: 6
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
---- !u!114 &114329958723348510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534400608737014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
-  manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
-  staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
-  attributes:
-    sectorName: Sector_56
-    battleScene: ForestBattle_01
-    originalScene: ForestMain
-    spawnEnemies: 1
-    enemyAttributes:
-    - spawnNumber: 1
-      spawnRadius: 5
-      enemy: {fileID: 1084936185920738, guid: b1ba50762afe12349a00206c7e656823, type: 2}
 --- !u!114 &114333883356375714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10670,6 +10408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10690,6 +10429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10710,6 +10450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10717,9 +10458,9 @@ MonoBehaviour:
     sectorName: Sector_32
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
-    - spawnNumber: 3
+    - spawnNumber: 2
       spawnRadius: 7
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114503953679499130
@@ -10733,6 +10474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10753,6 +10495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10760,9 +10503,9 @@ MonoBehaviour:
     sectorName: Sector_33
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
-    - spawnNumber: 2
+    - spawnNumber: 1
       spawnRadius: 5
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114523743699530272
@@ -10776,6 +10519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10783,8 +10527,11 @@ MonoBehaviour:
     sectorName: Sector_06
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
-    enemyAttributes: []
+    spawnEnemies: 1
+    enemyAttributes:
+    - spawnNumber: 2
+      spawnRadius: 1
+      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114564751787051842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10796,6 +10543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10803,7 +10551,7 @@ MonoBehaviour:
     sectorName: Sector_42
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 5
@@ -10819,6 +10567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10839,6 +10588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10859,6 +10609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10879,6 +10630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10899,6 +10651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10919,6 +10672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10927,10 +10681,7 @@ MonoBehaviour:
     battleScene: ForestBattle_01
     originalScene: ForestMain
     spawnEnemies: 0
-    enemyAttributes:
-    - spawnNumber: 1
-      spawnRadius: 5
-      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
+    enemyAttributes: []
 --- !u!114 &114626765895709966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10942,6 +10693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10962,6 +10714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10982,6 +10735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -10989,10 +10743,10 @@ MonoBehaviour:
     sectorName: Sector_45
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
-    - spawnNumber: 3
-      spawnRadius: 8
+    - spawnNumber: 2
+      spawnRadius: 4
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114700653285722550
 MonoBehaviour:
@@ -11005,6 +10759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11012,7 +10767,7 @@ MonoBehaviour:
     sectorName: Sector_26
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 5
@@ -11028,6 +10783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11035,7 +10791,7 @@ MonoBehaviour:
     sectorName: Sector_54
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 3
       spawnRadius: 6
@@ -11051,6 +10807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11058,10 +10815,10 @@ MonoBehaviour:
     sectorName: Sector_46
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
-    - spawnNumber: 2
-      spawnRadius: 5
+    - spawnNumber: 1
+      spawnRadius: 0
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114739531399699704
 MonoBehaviour:
@@ -11074,6 +10831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11081,9 +10839,9 @@ MonoBehaviour:
     sectorName: Sector_36
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
-    - spawnNumber: 3
+    - spawnNumber: 2
       spawnRadius: 8
       enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
 --- !u!114 &114750598469129730
@@ -11097,6 +10855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11117,6 +10876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11124,7 +10884,7 @@ MonoBehaviour:
     sectorName: Sector_40
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 3
@@ -11140,6 +10900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11160,6 +10921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11180,6 +10942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11190,7 +10953,7 @@ MonoBehaviour:
     spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
-      spawnRadius: 5
+      spawnRadius: 0
       enemy: {fileID: 1084936185920738, guid: b1ba50762afe12349a00206c7e656823, type: 2}
 --- !u!114 &114904371865807840
 MonoBehaviour:
@@ -11203,6 +10966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11210,7 +10974,7 @@ MonoBehaviour:
     sectorName: Sector_30
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 2
       spawnRadius: 5
@@ -11226,6 +10990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11246,6 +11011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11266,6 +11032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11286,6 +11053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11293,7 +11061,7 @@ MonoBehaviour:
     sectorName: Sector_13
     battleScene: ForestBattle_01
     originalScene: ForestMain
-    spawnEnemies: 0
+    spawnEnemies: 1
     enemyAttributes:
     - spawnNumber: 1
       spawnRadius: 5
@@ -11309,6 +11077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11329,6 +11098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11337,10 +11107,7 @@ MonoBehaviour:
     battleScene: ForestBattle_01
     originalScene: ForestMain
     spawnEnemies: 0
-    enemyAttributes:
-    - spawnNumber: 1
-      spawnRadius: 4
-      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
+    enemyAttributes: []
 --- !u!114 &114999654162452302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11352,6 +11119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067ce8ef5e03f84ab8a20610450e524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useEnemyPrefabPosition: 0
   healthPot: {fileID: 1027069720514076, guid: 417a342317457d6449b40af3fd1a0194, type: 2}
   manaPot: {fileID: 1192153380296858, guid: 636e71d5ff311bf4dbc9d50bbeb2615f, type: 2}
   staminaPot: {fileID: 1025668855695556, guid: f096d11e085b6d34383a3530e3172f91, type: 2}
@@ -11360,7 +11128,4 @@ MonoBehaviour:
     battleScene: ForestBattle_01
     originalScene: ForestMain
     spawnEnemies: 0
-    enemyAttributes:
-    - spawnNumber: 3
-      spawnRadius: 8
-      enemy: {fileID: 1383903170578806, guid: 485e7d7c3d7730142bb45c901298b31c, type: 2}
+    enemyAttributes: []

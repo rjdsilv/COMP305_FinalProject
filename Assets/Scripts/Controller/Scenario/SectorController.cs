@@ -12,6 +12,7 @@ public class SectorController : MonoBehaviour
     public GameObject healthPot;                // The health pot dropped by the enemy.
     public GameObject manaPot;                  // The mana pot dropped by the enemy.
     public GameObject staminaPot;               // The stamina pot dropped by the enemy.
+    public GameObject key;                      // The key dropped by the enemy.
     public SectorAttributes attributes;         // The attributes for the sector.
 
     // Private variable declaration.
@@ -76,12 +77,16 @@ public class SectorController : MonoBehaviour
         }
         else
         {
-            SceneData.isCommingBackFronBattle = false;
-            foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+            if (SceneData.battleSectorName == attributes.sectorName)
             {
-                enemy.SetActive(true);
+                SceneData.isCommingBackFronBattle = false;
+                foreach (GameObject enemy in SceneData.enemyNotInBattleList)
+                {
+                    enemy.SetActive(true);
+                }
+                SpawnDroppedItems();
+                SceneData.battleSectorName = "";
             }
-            SpawnDroppedItems();
         }
         _spawnEnemies = false;
     }
@@ -94,6 +99,7 @@ public class SectorController : MonoBehaviour
         SpawnDroppedHealthPot();
         SpawnDroppedManaPot();
         SpawnDroppedStaminahPot();
+        SpawnKey();
     }
 
     /// <summary>
@@ -105,7 +111,7 @@ public class SectorController : MonoBehaviour
         if (SceneData.dropHealthPot)
         {
             // Instantiate the pot.
-            DontDestroyOnLoad(Instantiate(healthPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            DontDestroyOnLoad(Instantiate(healthPot, CalculateItemPosition(), Quaternion.identity));
             SceneData.dropHealthPot = false;
         }
     }
@@ -118,7 +124,7 @@ public class SectorController : MonoBehaviour
         // Did the enemy drop a mana pot?
         if (SceneData.dropManaPot)
         {
-            DontDestroyOnLoad(Instantiate(manaPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            DontDestroyOnLoad(Instantiate(manaPot, CalculateItemPosition(), Quaternion.identity));
             SceneData.dropManaPot = false;
         }
     }
@@ -131,12 +137,25 @@ public class SectorController : MonoBehaviour
         // Did the enemy drop a stamina pot?
         if (SceneData.dropStaminaPot)
         {
-            DontDestroyOnLoad(Instantiate(staminaPot, CalculatePotSpawnPosition(), Quaternion.identity));
+            DontDestroyOnLoad(Instantiate(staminaPot, CalculateItemPosition(), Quaternion.identity));
             SceneData.dropStaminaPot = false;
         }
     }
 
-    private Vector3 CalculatePotSpawnPosition()
+    /// <summary>
+    /// Spawns the key.
+    /// </summary>
+    private void SpawnKey()
+    {
+        // Did the enemy drop a stamina pot?
+        if (SceneData.dropKey)
+        {
+            DontDestroyOnLoad(Instantiate(key, CalculateItemPosition(), Quaternion.identity));
+            SceneData.dropKey = false;
+        }
+    }
+
+    private Vector3 CalculateItemPosition()
     {
         return new Vector3(
             SceneData.dropPosition.x + UnityEngine.Random.Range(-_itemSpawnRadius, _itemSpawnRadius),

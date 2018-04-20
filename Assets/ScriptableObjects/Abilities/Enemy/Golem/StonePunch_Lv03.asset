@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 3
   minPower: 30
-  maxPower: 45
+  maxPower: 55

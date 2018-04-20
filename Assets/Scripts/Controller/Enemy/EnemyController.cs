@@ -16,12 +16,15 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     // Public variable declaration.
     public int minEnemiesInBattle;                // The minimum number of enemies that will be spawned in a battle scene.
     public int maxEnemiesInBattle;                // The maximum number of enemies that will be spawned in a battle scene.
+    public float sfxVolume = 0.5f;
     public AudioClip[] audioClips;
 
     // Protected variable declaration.
     protected int _clipToPlay = 0;
     protected GameManager _gameManager;           // The game manager script to be used.
     protected EnemyVisionAI _enemyVisionAI;       // The enemy vision AI script to be used.
+    protected AudioSource _audioSource;
+
 
     // The sector where the enemy was spawned.
     public string SectorName { get; set; }
@@ -44,7 +47,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
         {
             if ((null != BattleScene) && !SceneData.isInBattle && _enemyVisionAI.IsSeeingPlayer())
             {
-                _gameManager.GoToBattle(BattleScene, MainScene, gameObject);
+                _gameManager.GoToBattle(SectorName, BattleScene, MainScene, gameObject);
             }
         }
     }
@@ -52,7 +55,16 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// ABSTRACT METHODS
 
-    public abstract void PlayDamageSound();
+    public virtual void PlayDamageSound()
+    {
+        if (null != audioClips && audioClips.Length > 0)
+        {
+            _clipToPlay %= audioClips.Length;
+            _audioSource.clip = audioClips[_clipToPlay++];
+            _audioSource.volume = sfxVolume;
+            _audioSource.Play();
+        }
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// NON EVENT METHODS
@@ -98,6 +110,11 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     public bool DropStaminaPot()
     {
         return Random.Range(0.0f, 1.0f) < levelTree.GetAttributesForCurrentLevel().staminaRecoverDropChance;
+    }
+
+    public bool DropKey()
+    {
+        return levelTree.GetAttributesForCurrentLevel().keyDropChance == 1.0f;
     }
 
     /// <see cref="IEnemyController"/>

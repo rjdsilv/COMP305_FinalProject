@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 75
+  - health: 80
     level: 1
-    minAttack: 20
+    minAttack: 25
     maxAttack: 35
     minDefense: 15
     maxDefense: 20
@@ -24,18 +24,20 @@ MonoBehaviour:
     minGoldForKilling: 20
     maxGoldForKilling: 40
     healthRecoverDropChance: 0.85
-    staminaRecoverDropChance: 0
+    staminaRecoverDropChance: 0.65
     manaRecoverDropChance: 0.75
+    keyDropChance: 0
   - health: 95
     level: 2
-    minAttack: 30
-    maxAttack: 45
+    minAttack: 35
+    maxAttack: 50
     minDefense: 20
-    maxDefense: 30
+    maxDefense: 35
     managedByAI: 0
     xpForKilling: 35
     minGoldForKilling: 20
     maxGoldForKilling: 40
     healthRecoverDropChance: 0.85
-    staminaRecoverDropChance: 0
-    manaRecoverDropChance: 0.75
+    staminaRecoverDropChance: 0.7
+    manaRecoverDropChance: 0.8
+    keyDropChance: 0

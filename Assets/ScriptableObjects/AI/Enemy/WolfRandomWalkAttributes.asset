@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c188e0a145a26ac4d9fa1102e6bfb1ca, type: 3}
   m_Name: WolfRandomWalkAttributes
   m_EditorClassIdentifier: 
-  turnDistance: 1
+  turnDistance: 2
   minTimeSameDir: 3
   maxTimeSameDir: 6

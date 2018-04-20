@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class EntranceController : MonoBehaviour
 {
@@ -35,10 +36,44 @@ public abstract class EntranceController : MonoBehaviour
     /// </summary>
     protected void LoadDialogPanel()
     {
-        if (null == _dialogPanel)
+        if (null == _dialogPanel || _dialogPanel.IsNull())
         {
-            _dialogPanel = new DialogPanel();
+            _dialogPanel = new DialogPanel(GetDialogPanel());
         }
         _dialogPanel.Load(Enter, DoNotEnter);
+    }
+
+    private GameObject GetDialogPanel()
+    {
+        int playerNumber = GetPlayerNumber();
+
+        foreach (Camera c in Camera.allCameras)
+        {
+            if (playerNumber == 1 && c.name == "Player_01")
+            {
+                return c.transform.GetChild(0).GetChild(0).gameObject;
+            }
+            else if (playerNumber == 2 && c.name == "Player_02")
+            {
+                return c.transform.GetChild(0).GetChild(0).gameObject;
+            }
+        }
+
+        return null;
+    }
+
+    private int GetPlayerNumber()
+    {
+        if (gameObject.IsMage())
+        {
+            return gameObject.GetComponent<MageController>().playerNumber;
+        }
+
+        if (gameObject.IsThief())
+        {
+            return gameObject.GetComponent<ThiefController>().playerNumber;
+        }
+
+        return 1;
     }
 }

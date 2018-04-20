@@ -15,6 +15,7 @@ public class HUDManager : MonoBehaviour
     public Text turnText;                       // The turn text to be displayed.
     public Slider turnTimer;                    // The turn timer to be managed.
     public PlayerHUD mageHUD;                   // The mage HUD to be managed.
+    public PlayerHUD thiefHUD;                  // The thief HUD to be managed.
 
     // Private variable declaration.
     private int _turnNumber = 1;
@@ -27,9 +28,17 @@ public class HUDManager : MonoBehaviour
     {
         foreach (GameObject player in players)
         {
-            if (player.IsMage())
+            // TODO remove null check when multiplayer is done.
+            if (null != player)
             {
-                InitializeMageHUD(player);
+                if (player.IsMage())
+                {
+                    InitializeMageHUD(player);
+                }
+                else if (player.IsThief())
+                {
+                    InitializeThiefHUD(player);
+                }
             }
         }
     }
@@ -92,11 +101,15 @@ public class HUDManager : MonoBehaviour
     /// <summary>
     /// Method in charge of swapping the ability on the HUD.
     /// </summary>
-    public void SwapAbility(GameObject player)
+    public void SwapAbility(GameObject player, ActorAbility ability)
     {
         if (player.IsMage())
         {
-            SwapMageAbility();
+            SwapMageAbility(ability);
+        }
+        else if (player.IsThief())
+        {
+            SwapThiefAbility(ability);
         }
     }
 
@@ -112,6 +125,11 @@ public class HUDManager : MonoBehaviour
             GetHUDHealthText(player).text = "-" + healthDrained.ToString();
             DecreaseMageHealthHUD(healthDrained);
         }
+        else if (player.IsThief())
+        {
+            GetHUDHealthText(player).text = "-" + healthDrained.ToString();
+            DecreaseThiefHealthHUD(healthDrained);
+        }
     }
 
     /// <summary>
@@ -125,6 +143,10 @@ public class HUDManager : MonoBehaviour
         if (player.IsMage())
         {
             UpdateMageConsumableHUD(amount, decrease);
+        }
+        else if (player.IsThief())
+        {
+            UpdateThiefConsumableHUD(amount, decrease);
         }
     }
 
@@ -152,18 +174,64 @@ public class HUDManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Initializes the thief's HUD as long as it's on the plyaers list.
+    /// </summary>
+    /// <param name="thief">The thief to have the HUD initialized.</param>
+    private void InitializeThiefHUD(GameObject thief)
+    {
+        ThiefController thiefController = thief.GetComponent<ThiefController>();
+
+        // Initialize the health.
+        thiefHUD.healthSlider.minValue = 0;
+        thiefHUD.healthSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().health;
+        thiefHUD.healthSlider.value = thiefController.attributes.health;
+
+        // Initialize the mana.
+        thiefHUD.consumableSlider.minValue = 0;
+        thiefHUD.consumableSlider.maxValue = thiefController.levelTree.GetAttributesForCurrentLevel().stamina;
+        thiefHUD.consumableSlider.value = thiefController.attributes.stamina;
+
+        // Initializes the abilities.
+        thiefHUD.mainAbilityImage.gameObject.GetComponent<Outline>().enabled = true;
+        thiefHUD.selectedImage = thiefHUD.mainAbilityImage;
+    }
+
+    /// <summary>
     /// Method in charge of swapping the mage's ability on the HUD.
     /// </summary>
-    private void SwapMageAbility()
+    private void SwapMageAbility(ActorAbility ability)
     {
         mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
 
-        if (mageHUD.selectedImage == mageHUD.mainAbilityImage)
-            mageHUD.selectedImage = mageHUD.secondaryAbilityImage;
-        else
+        if (ability is FireBall)
+        {
             mageHUD.selectedImage = mageHUD.mainAbilityImage;
+        }
+        else if (ability is LightningBall)
+        {
+            mageHUD.selectedImage = mageHUD.secondaryAbilityImage;
+        }
 
         mageHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
+    }
+
+    /// <summary>
+    /// Method in charge of swapping the thief's ability on the HUD.
+    /// </summary>
+    private void SwapThiefAbility(ActorAbility ability)
+    {
+        thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = false;
+
+        if (ability is Dagger)
+        {
+            thiefHUD.selectedImage = thiefHUD.mainAbilityImage;
+        }
+        else if (ability is Bow)
+        {
+            thiefHUD.selectedImage = thiefHUD.secondaryAbilityImage;
+        }
+
+        thiefHUD.selectedImage.gameObject.GetComponent<Outline>().enabled = true;
     }
 
     /// <summary>
@@ -173,6 +241,16 @@ public class HUDManager : MonoBehaviour
     private void DecreaseMageHealthHUD(int healthDrained)
     {
         mageHUD.healthSlider.value -= healthDrained;
+    }
+
+
+    /// <summary>
+    /// Updates the thief health HUD.
+    /// </summary>
+    /// <param name="healthDrained">The amount of health to be drained.</param>
+    private void DecreaseThiefHealthHUD(int healthDrained)
+    {
+        thiefHUD.healthSlider.value -= healthDrained;
     }
 
     /// <summary>
@@ -189,6 +267,23 @@ public class HUDManager : MonoBehaviour
         else
         {
             mageHUD.consumableSlider.value += amount;
+        }
+    }
+
+    /// <summary>
+    /// Updates the thief's consumable HUD to the new value after an attack.
+    /// </summary>
+    /// <param name="amount">The amount of consumable to be update.</param>
+    /// <param name="decrease">Indicates if the amount should be decreased or increased.</param>
+    private void UpdateThiefConsumableHUD(float amount, bool decrease)
+    {
+        if (decrease)
+        {
+            thiefHUD.consumableSlider.value -= amount;
+        }
+        else
+        {
+            thiefHUD.consumableSlider.value += amount;
         }
     }
 
