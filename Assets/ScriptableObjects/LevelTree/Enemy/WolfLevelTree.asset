@@ -16,7 +16,7 @@ MonoBehaviour:
   - health: 60
     level: 1
     minAttack: 15
-    maxAttack: 30
+    maxAttack: 45
     minDefense: 10
     maxDefense: 25
     managedByAI: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   - health: 85
     level: 2
     minAttack: 25
-    maxAttack: 40
+    maxAttack: 55
     minDefense: 20
     maxDefense: 40
     managedByAI: 0
@@ -40,4 +40,46 @@ MonoBehaviour:
     healthRecoverDropChance: 0.9
     staminaRecoverDropChance: 0.75
     manaRecoverDropChance: 0.85
+    keyDropChance: 0
+  - health: 100
+    level: 3
+    minAttack: 35
+    maxAttack: 65
+    minDefense: 30
+    maxDefense: 50
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.925
+    staminaRecoverDropChance: 0.775
+    manaRecoverDropChance: 0.875
+    keyDropChance: 0
+  - health: 125
+    level: 4
+    minAttack: 45
+    maxAttack: 75
+    minDefense: 35
+    maxDefense: 60
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.935
+    staminaRecoverDropChance: 0.775
+    manaRecoverDropChance: 0.875
+    keyDropChance: 0
+  - health: 140
+    level: 5
+    minAttack: 60
+    maxAttack: 90
+    minDefense: 45
+    maxDefense: 80
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.95
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.9
     keyDropChance: 0

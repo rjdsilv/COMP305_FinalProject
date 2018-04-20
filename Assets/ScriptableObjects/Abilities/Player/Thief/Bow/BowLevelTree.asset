@@ -14,4 +14,3 @@ MonoBehaviour:
   currentLevel: 1
   levelAttributes:
   - {fileID: 11400000, guid: 5e8ac75ba42169f4a825405a6ffc51db, type: 2}
-  - {fileID: 11400000, guid: a8818eab2ac654c4cb1cc6b253eddc49, type: 2}
