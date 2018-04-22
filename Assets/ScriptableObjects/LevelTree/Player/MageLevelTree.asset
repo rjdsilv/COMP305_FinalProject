@@ -27,7 +27,7 @@ MonoBehaviour:
   - health: 130
     level: 2
     minAttack: 50
-    maxAttack: 75
+    maxAttack: 80
     minDefense: 30
     maxDefense: 50
     managedByAI: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   - health: 160
     level: 3
     minAttack: 65
-    maxAttack: 90
+    maxAttack: 95
     minDefense: 40
     maxDefense: 60
     managedByAI: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   - health: 190
     level: 4
     minAttack: 80
-    maxAttack: 105
+    maxAttack: 110
     minDefense: 50
     maxDefense: 70
     managedByAI: 0
@@ -57,10 +57,10 @@ MonoBehaviour:
     gold: 600
     mana: 150
     stamina: 0
-  - health: 220
+  - health: 240
     level: 5
     minAttack: 95
-    maxAttack: 120
+    maxAttack: 125
     minDefense: 60
     maxDefense: 80
     managedByAI: 0

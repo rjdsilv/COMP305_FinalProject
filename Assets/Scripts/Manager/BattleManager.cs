@@ -93,7 +93,7 @@ public class BattleManager : MonoBehaviour
         // Level up the enemy if its level is under the player's level.
         IController enemyController = _enemies[_selectedEnemyIndex].GetControllerComponent();
         IController playerController = SceneData.playerList[_selectedPlayerIndex].GetControllerComponent();
-        if (enemyController.GetCurrentLevel() < playerController.GetCurrentLevel())
+        while (enemyController.GetCurrentLevel() < playerController.GetCurrentLevel())
         {
             enemyController.LevelUp();
         }

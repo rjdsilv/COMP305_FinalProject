@@ -16,7 +16,7 @@ MonoBehaviour:
   - health: 60
     level: 1
     minAttack: 15
-    maxAttack: 45
+    maxAttack: 40
     minDefense: 10
     maxDefense: 25
     managedByAI: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   - health: 85
     level: 2
     minAttack: 25
-    maxAttack: 55
+    maxAttack: 50
     minDefense: 20
     maxDefense: 40
     managedByAI: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
   - health: 100
     level: 3
     minAttack: 35
-    maxAttack: 65
+    maxAttack: 60
     minDefense: 30
     maxDefense: 50
     managedByAI: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   - health: 125
     level: 4
     minAttack: 45
-    maxAttack: 75
+    maxAttack: 70
     minDefense: 35
     maxDefense: 60
     managedByAI: 0
