@@ -13,25 +13,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 140
+  - health: 125
     level: 1
     minAttack: 30
-    maxAttack: 45
+    maxAttack: 55
     minDefense: 25
-    maxDefense: 35
+    maxDefense: 40
     managedByAI: 0
     xp: 150
     gold: 300
     mana: 0
     stamina: 90
-  - health: 175
+  - health: 155
     level: 2
     minAttack: 45
-    maxAttack: 65
+    maxAttack: 75
     minDefense: 35
-    maxDefense: 45
+    maxDefense: 55
     managedByAI: 0
     xp: 300
     gold: 400
     mana: 0
     stamina: 110
+  - health: 185
+    level: 3
+    minAttack: 60
+    maxAttack: 90
+    minDefense: 50
+    maxDefense: 75
+    managedByAI: 0
+    xp: 450
+    gold: 500
+    mana: 0
+    stamina: 135
+  - health: 215
+    level: 4
+    minAttack: 75
+    maxAttack: 110
+    minDefense: 65
+    maxDefense: 90
+    managedByAI: 0
+    xp: 600
+    gold: 600
+    mana: 0
+    stamina: 155
+  - health: 260
+    level: 5
+    minAttack: 90
+    maxAttack: 125
+    minDefense: 80
+    maxDefense: 110
+    managedByAI: 0
+    xp: 750
+    gold: 700
+    mana: 0
+    stamina: 185

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Dagger_Lv02
   m_EditorClassIdentifier: 
   level: 2
-  minPower: 15
-  maxPower: 25
+  minPower: 20
+  maxPower: 45
   consumableType: 0
-  consumptionValue: 9
+  consumptionValue: 12

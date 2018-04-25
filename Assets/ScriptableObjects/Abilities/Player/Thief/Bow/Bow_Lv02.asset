@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Bow_Lv02
   m_EditorClassIdentifier: 
   level: 2
-  minPower: 22
-  maxPower: 38
+  minPower: 20
+  maxPower: 50
   consumableType: 0
-  consumptionValue: 17
+  consumptionValue: 18

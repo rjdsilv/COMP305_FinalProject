@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -66,6 +67,7 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        // Take care of the tutorial
         _tutorialController = GetComponent<TutorialController>();
         _tutorialController.ResetPanels();
         ShowTutorial();
@@ -91,7 +93,7 @@ public class BattleManager : MonoBehaviour
         // Level up the enemy if its level is under the player's level.
         IController enemyController = _enemies[_selectedEnemyIndex].GetControllerComponent();
         IController playerController = SceneData.playerList[_selectedPlayerIndex].GetControllerComponent();
-        if (enemyController.GetCurrentLevel() < playerController.GetCurrentLevel())
+        while (enemyController.GetCurrentLevel() < playerController.GetCurrentLevel())
         {
             enemyController.LevelUp();
         }
@@ -190,6 +192,26 @@ public class BattleManager : MonoBehaviour
 
         _turnRemainingTime = turnTime;
         _turnStarted = true;
+        ShowArrow();
+    }
+
+    private void ShowArrow()
+    {
+        if (_actorPlaying.IsMage())
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(true);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
+        }
+        else if (_actorPlaying.IsThief())
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else
+        {
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -230,6 +252,11 @@ public class BattleManager : MonoBehaviour
     /// </summary>
     private IEnumerator EndBattle()
     {
+        foreach (GameObject e in _enemies)
+        {
+            e.transform.GetChild(7).gameObject.SetActive(false);
+        }
+
         if (IsAnyPlayerAlive())
         {
             // Displays the end of battle text.
@@ -250,6 +277,8 @@ public class BattleManager : MonoBehaviour
             RestoreCallingScene();
             RestorePlayersPositions();
             ReviveDeadPlayer();
+            _mage.transform.GetChild(1).gameObject.SetActive(false);
+            _thief.transform.GetChild(1).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneData.mainScene);
         }
     }
@@ -455,9 +484,20 @@ public class BattleManager : MonoBehaviour
                         _enemySwaped = true;
                     }
                 }
-
-                _enemies[_selectedEnemyIndex].GetEnemyControllerComponent().GetSelectionLight().intensity = 20f;
+                _enemies[_selectedEnemyIndex].transform.GetChild(7).gameObject.SetActive(true);
             }
+            else
+            {
+                InactivateEnemyArrows();
+            }
+        }
+    }
+
+    private void InactivateEnemyArrows()
+    {
+        foreach (GameObject e in _enemies)
+        {
+            e.transform.GetChild(7).gameObject.SetActive(false);
         }
     }
 
@@ -651,6 +691,7 @@ public class BattleManager : MonoBehaviour
             counter++;
         }
         while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+        InactivateEnemyArrows();
     }
 
     /// <summary>
@@ -667,6 +708,7 @@ public class BattleManager : MonoBehaviour
             counter++;
         }
         while (!_enemies[_selectedEnemyIndex].GetControllerComponent().IsAlive() && counter < _enemies.Length);
+        InactivateEnemyArrows();
     }
 
     /// <summary>
