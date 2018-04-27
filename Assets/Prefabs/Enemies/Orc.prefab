@@ -687,7 +687,7 @@ MonoBehaviour:
     keyDropChance: 0
   levelTree: {fileID: 11400000, guid: ae1262c066524af4e892a859f8fa21d2, type: 2}
   minEnemiesInBattle: 2
-  maxEnemiesInBattle: 4
+  maxEnemiesInBattle: 3
   sfxVolume: 0.5
   audioClips:
   - {fileID: 8300000, guid: 92ff70d4eac373a4b887bf30a5df9056, type: 3}

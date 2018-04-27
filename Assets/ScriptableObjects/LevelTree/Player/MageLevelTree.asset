@@ -16,9 +16,9 @@ MonoBehaviour:
   - health: 100
     level: 1
     minAttack: 35
-    maxAttack: 60
-    minDefense: 20
-    maxDefense: 40
+    maxAttack: 65
+    minDefense: 25
+    maxDefense: 45
     managedByAI: 0
     xp: 150
     gold: 300
@@ -27,9 +27,9 @@ MonoBehaviour:
   - health: 130
     level: 2
     minAttack: 50
-    maxAttack: 80
-    minDefense: 30
-    maxDefense: 50
+    maxAttack: 85
+    minDefense: 35
+    maxDefense: 55
     managedByAI: 0
     xp: 300
     gold: 400
@@ -38,9 +38,9 @@ MonoBehaviour:
   - health: 160
     level: 3
     minAttack: 65
-    maxAttack: 95
-    minDefense: 40
-    maxDefense: 60
+    maxAttack: 105
+    minDefense: 45
+    maxDefense: 65
     managedByAI: 0
     xp: 450
     gold: 500
@@ -49,9 +49,9 @@ MonoBehaviour:
   - health: 190
     level: 4
     minAttack: 80
-    maxAttack: 110
-    minDefense: 50
-    maxDefense: 70
+    maxAttack: 120
+    minDefense: 55
+    maxDefense: 75
     managedByAI: 0
     xp: 600
     gold: 600
@@ -60,11 +60,33 @@ MonoBehaviour:
   - health: 240
     level: 5
     minAttack: 95
-    maxAttack: 125
-    minDefense: 60
-    maxDefense: 80
+    maxAttack: 140
+    minDefense: 65
+    maxDefense: 90
     managedByAI: 0
     xp: 750
     gold: 700
     mana: 175
+    stamina: 0
+  - health: 300
+    level: 6
+    minAttack: 110
+    maxAttack: 165
+    minDefense: 80
+    maxDefense: 105
+    managedByAI: 0
+    xp: 900
+    gold: 850
+    mana: 200
+    stamina: 0
+  - health: 330
+    level: 7
+    minAttack: 120
+    maxAttack: 185
+    minDefense: 90
+    maxDefense: 120
+    managedByAI: 0
+    xp: 1050
+    gold: 100
+    mana: 230
     stamina: 0

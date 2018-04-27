@@ -83,3 +83,31 @@ MonoBehaviour:
     staminaRecoverDropChance: 0.775
     manaRecoverDropChance: 0.875
     keyDropChance: 0
+  - health: 155
+    level: 6
+    minAttack: 75
+    maxAttack: 100
+    minDefense: 65
+    maxDefense: 90
+    managedByAI: 0
+    xpForKilling: 35
+    minGoldForKilling: 20
+    maxGoldForKilling: 40
+    healthRecoverDropChance: 0.95
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.9
+    keyDropChance: 0
+  - health: 175
+    level: 7
+    minAttack: 85
+    maxAttack: 100
+    minDefense: 70
+    maxDefense: 95
+    managedByAI: 0
+    xpForKilling: 35
+    minGoldForKilling: 20
+    maxGoldForKilling: 40
+    healthRecoverDropChance: 0.975
+    staminaRecoverDropChance: 0.825
+    manaRecoverDropChance: 0.925
+    keyDropChance: 0

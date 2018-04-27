@@ -68,3 +68,25 @@ MonoBehaviour:
     gold: 700
     mana: 0
     stamina: 185
+  - health: 315
+    level: 6
+    minAttack: 105
+    maxAttack: 145
+    minDefense: 95
+    maxDefense: 125
+    managedByAI: 0
+    xp: 900
+    gold: 850
+    mana: 0
+    stamina: 220
+  - health: 360
+    level: 7
+    minAttack: 120
+    maxAttack: 160
+    minDefense: 110
+    maxDefense: 140
+    managedByAI: 0
+    xp: 1050
+    gold: 1000
+    mana: 0
+    stamina: 250
