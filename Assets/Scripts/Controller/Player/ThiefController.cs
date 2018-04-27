@@ -21,6 +21,7 @@ public class ThiefController : PlayerController<ThiefAttributes, ThiefLevelTree>
     {
         playerNumber = 2;
         Init();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <see cref="ActorController{A, L}">

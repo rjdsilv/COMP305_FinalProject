@@ -55,7 +55,7 @@ public abstract class EnemyController<A, L> : ActorController<A, L>, IEnemyContr
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// ABSTRACT METHODS
 
-    public virtual void PlayDamageSound()
+    public override void PlayDamageSound()
     {
         if (null != audioClips && audioClips.Length > 0)
         {

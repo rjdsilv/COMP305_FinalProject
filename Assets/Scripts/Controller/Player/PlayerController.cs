@@ -8,6 +8,11 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
 {
     [HideInInspector]
     public int playerNumber = 1;            // Indicates the number of the selected player.
+    public float sfxVolume = 0.5f;
+    public AudioClip[] audioClips;
+
+    protected int _clipToPlay = 0;
+    protected AudioSource _audioSource;
 
     /// <see cref="ActorController{A, L}"/>
     public override int Attack(GameObject opponent, ActorAbility ability)
@@ -41,6 +46,17 @@ public abstract class PlayerController<A, L> : ActorController<A, L>, IPlayerCon
             {
                 attributes.stamina = levelTree.GetAttributesForCurrentLevel().stamina;
             }
+        }
+    }
+
+    public override void PlayDamageSound()
+    {
+        if (null != audioClips && audioClips.Length > 0)
+        {
+            _clipToPlay %= audioClips.Length;
+            _audioSource.clip = audioClips[_clipToPlay++];
+            _audioSource.volume = sfxVolume;
+            _audioSource.Play();
         }
     }
 

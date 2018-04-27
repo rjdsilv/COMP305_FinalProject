@@ -16,6 +16,7 @@ public class FinalBossController : EnemyController<FinalBossAttributes, FinalBos
     private void OnEnable()
     {
         SetGameManager();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>

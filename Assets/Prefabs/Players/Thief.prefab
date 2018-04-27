@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 212463154190165372}
   - component: {fileID: 95987911279645002}
   - component: {fileID: 50156762519690688}
+  - component: {fileID: 82044332635197620}
   - component: {fileID: 61342980561175600}
   - component: {fileID: 114306736072813144}
   - component: {fileID: 114563067892006396}
@@ -160,6 +161,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21300507, y: 0.48563546}
   m_EdgeRadius: 0
+--- !u!82 &82044332635197620
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331064586474420}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95934221557184424
 Animator:
   serializedVersion: 3
@@ -353,6 +434,12 @@ MonoBehaviour:
     stamina: 0
   levelTree: {fileID: 11400000, guid: 03f176cb78c6e67448ef979db8e1632d, type: 2}
   playerNumber: 1
+  sfxVolume: 0.5
+  audioClips:
+  - {fileID: 8300000, guid: b180502f300d1604eb56de31f28d722a, type: 3}
+  - {fileID: 8300000, guid: ba0490a717738a2439560b036fa55f54, type: 3}
+  - {fileID: 8300000, guid: 2dd90c5894080e24b922b2033fc2e87f, type: 3}
+  - {fileID: 8300000, guid: 4a4488ff77270614ab8c9001a6cf27cb, type: 3}
   bow: {fileID: 0}
   dagger: {fileID: 0}
   bowLevelTree: {fileID: 11400000, guid: 6d1c58c1f4a7c4f4e8a801419fa2ede3, type: 2}

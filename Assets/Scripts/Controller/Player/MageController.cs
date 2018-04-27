@@ -20,6 +20,7 @@ public class MageController : PlayerController<MageAttributes, MageLevelTree>
     private void Awake()
     {
         Init();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <see cref="ActorController{A, L}">

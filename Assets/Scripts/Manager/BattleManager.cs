@@ -614,10 +614,11 @@ public class BattleManager : MonoBehaviour
             while (!selectedPlayer.GetControllerComponent().IsAlive());
 
             _actorPlaying.GetComponent<Animator>().Play(AnimatorUtils.BATTLE_ATTACK, 0);
+            IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
+            playerController.PlayDamageSound();
             hudManager.DecreaseHealthHUD(selectedPlayer, attackerController.Attack(selectedPlayer, selectedAbility));
             _lastAttackTime = Time.time;
             _canAIAttack = false;
-            IPlayerController playerController = selectedPlayer.GetPlayerControllerComponent();
             if (!playerController.IsAlive())
             {
                 selectedPlayer.GetComponent<Animator>().SetInteger("health", 0);
