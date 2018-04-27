@@ -84,4 +84,5 @@ public abstract class ActorController<A, L> : MonoBehaviour, IController
     /// Sets the players attributes for the current level.
     /// </summary>
     protected abstract void SetAttributesForCurrentLevel();
+    public abstract void PlayDamageSound();
 }

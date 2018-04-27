@@ -16,9 +16,9 @@ MonoBehaviour:
   - health: 60
     level: 1
     minAttack: 15
-    maxAttack: 30
-    minDefense: 10
-    maxDefense: 25
+    maxAttack: 40
+    minDefense: 20
+    maxDefense: 35
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 10
@@ -30,9 +30,9 @@ MonoBehaviour:
   - health: 85
     level: 2
     minAttack: 25
-    maxAttack: 40
-    minDefense: 20
-    maxDefense: 40
+    maxAttack: 50
+    minDefense: 30
+    maxDefense: 45
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 15
@@ -40,4 +40,74 @@ MonoBehaviour:
     healthRecoverDropChance: 0.9
     staminaRecoverDropChance: 0.75
     manaRecoverDropChance: 0.85
+    keyDropChance: 0
+  - health: 100
+    level: 3
+    minAttack: 35
+    maxAttack: 60
+    minDefense: 40
+    maxDefense: 60
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.925
+    staminaRecoverDropChance: 0.775
+    manaRecoverDropChance: 0.875
+    keyDropChance: 0
+  - health: 125
+    level: 4
+    minAttack: 45
+    maxAttack: 70
+    minDefense: 50
+    maxDefense: 75
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.935
+    staminaRecoverDropChance: 0.775
+    manaRecoverDropChance: 0.875
+    keyDropChance: 0
+  - health: 140
+    level: 5
+    minAttack: 60
+    maxAttack: 90
+    minDefense: 65
+    maxDefense: 90
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.95
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.9
+    keyDropChance: 0
+  - health: 160
+    level: 6
+    minAttack: 70
+    maxAttack: 100
+    minDefense: 70
+    maxDefense: 95
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 0.95
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.9
+    keyDropChance: 0
+  - health: 180
+    level: 7
+    minAttack: 80
+    maxAttack: 110
+    minDefense: 75
+    maxDefense: 100
+    managedByAI: 0
+    xpForKilling: 20
+    minGoldForKilling: 15
+    maxGoldForKilling: 30
+    healthRecoverDropChance: 1
+    staminaRecoverDropChance: 0.8
+    manaRecoverDropChance: 0.9
     keyDropChance: 0

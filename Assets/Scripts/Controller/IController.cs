@@ -50,4 +50,6 @@ public interface IController
     /// Levels up the actor if necessary.
     /// </summary>
     void LevelUp();
+
+    void PlayDamageSound();
 }

@@ -15,6 +15,7 @@ public class OrcController : EnemyController<OrcAttributes, OrcLevelTree>
     private void OnEnable()
     {
         SetGameManager();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>

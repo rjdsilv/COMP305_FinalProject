@@ -557,9 +557,9 @@ MonoBehaviour:
   autoRecoverConsumable: 1
   playerSpawnPoints:
   - actorName: Mage
-    spawnPoint: {x: -9, y: -4, z: 0}
+    spawnPoint: {x: -9.5, y: -4.5, z: 0}
   - actorName: Thief
-    spawnPoint: {x: -8.5, y: -3.25, z: 0}
+    spawnPoint: {x: -6.5, y: -4, z: 0}
   - actorName: Cleric
     spawnPoint: {x: -7.35, y: -3.8, z: 0}
   - actorName: Knight

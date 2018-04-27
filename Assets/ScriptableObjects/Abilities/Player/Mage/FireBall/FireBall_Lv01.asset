@@ -15,4 +15,4 @@ MonoBehaviour:
   minPower: 15
   maxPower: 50
   consumableType: 1
-  consumptionValue: 7
+  consumptionValue: 10

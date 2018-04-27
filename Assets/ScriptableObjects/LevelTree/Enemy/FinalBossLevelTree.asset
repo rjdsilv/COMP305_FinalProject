@@ -13,29 +13,99 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelAttributes:
-  - health: 180
+  - health: 175
     level: 1
     minAttack: 25
-    maxAttack: 45
-    minDefense: 20
-    maxDefense: 50
+    maxAttack: 50
+    minDefense: 30
+    maxDefense: 55
     managedByAI: 0
     xpForKilling: 100
-    minGoldForKilling: 300
+    minGoldForKilling: 100
     maxGoldForKilling: 150
     healthRecoverDropChance: 0
     staminaRecoverDropChance: 0
     manaRecoverDropChance: 0
     keyDropChance: 0
-  - health: 230
-    level: 1
-    minAttack: 40
-    maxAttack: 70
-    minDefense: 35
-    maxDefense: 70
+  - health: 210
+    level: 2
+    minAttack: 45
+    maxAttack: 75
+    minDefense: 40
+    maxDefense: 75
     managedByAI: 0
     xpForKilling: 100
-    minGoldForKilling: 300
+    minGoldForKilling: 100
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 245
+    level: 3
+    minAttack: 55
+    maxAttack: 85
+    minDefense: 50
+    maxDefense: 90
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 100
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 280
+    level: 4
+    minAttack: 65
+    maxAttack: 95
+    minDefense: 65
+    maxDefense: 100
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 100
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 315
+    level: 5
+    minAttack: 75
+    maxAttack: 105
+    minDefense: 75
+    maxDefense: 105
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 100
+    maxGoldForKilling: 150
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 355
+    level: 6
+    minAttack: 90
+    maxAttack: 125
+    minDefense: 95
+    maxDefense: 125
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 150
+    maxGoldForKilling: 300
+    healthRecoverDropChance: 0
+    staminaRecoverDropChance: 0
+    manaRecoverDropChance: 0
+    keyDropChance: 0
+  - health: 400
+    level: 7
+    minAttack: 100
+    maxAttack: 140
+    minDefense: 100
+    maxDefense: 135
+    managedByAI: 0
+    xpForKilling: 100
+    minGoldForKilling: 100
     maxGoldForKilling: 150
     healthRecoverDropChance: 0
     staminaRecoverDropChance: 0

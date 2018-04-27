@@ -7,6 +7,12 @@ public class GameIntroduction : MonoBehaviour
 {
     public Text historyText;
 
+    private bool skipPressed;
+
+    private int textSpeed;
+
+
+
     private const float TYPE_INTERVAL = 0.05f;
     private const float NEW_LINE_INTERVAL = 0.5f;
     private const float NEW_SCREEN_INTERVAL = 1.5f;
@@ -20,7 +26,7 @@ public class GameIntroduction : MonoBehaviour
     private const string history3_3 = "\t\tStevyn was left with the Cleric who married them, Iliphyra.\n";
     private const string history3_4 = "\t\tDestrian was left with Alard, Melisant's noble brother.\n";
     private const string history3_5 = "\t\tAnd Ruven was left with Benedict's parents Gerolt and Nance, a couple of peasant farmers.";
-    private const string history4_1 = "\t\tEach children was raised without knowing the existence of their brothers and developed different abilities.\n";
+    private const string history4_1 = "\t\tEach child was raised without knowing the existence of their brothers and developed different abilities.\n";
     private const string history4_2 = "\t\tGrizzel was trained by Vrarugast and became a powerful Wizard.\n";
     private const string history4_3 = "\t\tStevyn was trained by Iliphyra and became a Cleric, with healing powers.\n";
     private const string history4_4 = "\t\tDestrian, who was raised by Alard, became a very respected Knight.\n";
@@ -33,6 +39,7 @@ public class GameIntroduction : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        textSpeed = 1;
         StartCoroutine(TypeHistory());
 	}
 
@@ -41,6 +48,17 @@ public class GameIntroduction : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             SceneManager.LoadScene("MainMenu");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            textSpeed = 0;
+            skipPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            textSpeed = 1;
+            skipPressed = false;
         }
     }
 
@@ -57,70 +75,88 @@ public class GameIntroduction : MonoBehaviour
     IEnumerator TypePart01()
     {
         historyText.text = "";
-        yield return Type(history1_1, 1);
+        yield return Type(history1_1, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history1_2, 1);
+        yield return Type(history1_2, textSpeed);
         yield return new WaitForSeconds(NEW_SCREEN_INTERVAL);
+        
     }
 
     IEnumerator TypePart02()
     {
         historyText.text = "";
-        yield return Type(history2_1, 1);
+        yield return Type(history2_1, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history2_2, 1);
+        yield return Type(history2_2, textSpeed);
         yield return new WaitForSeconds(NEW_SCREEN_INTERVAL);
+       
     }
 
     IEnumerator TypePart03()
     {
         historyText.text = "";
-        yield return Type(history3_1, 1);
+        yield return Type(history3_1, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history3_2, 1);
+        yield return Type(history3_2, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history3_3, 1);
+        yield return Type(history3_3, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history3_4, 1);
+        yield return Type(history3_4, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history3_5, 1);
+        yield return Type(history3_5, textSpeed);
         yield return new WaitForSeconds(NEW_SCREEN_INTERVAL);
+        
     }
 
     IEnumerator TypePart04()
     {
         historyText.text = "";
-        yield return Type(history4_1, 1);
+        yield return Type(history4_1, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history4_2, 1);
+        yield return Type(history4_2, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history4_3, 1);
+        yield return Type(history4_3, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history4_4, 1);
+        yield return Type(history4_4, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history4_5, 1);
+        yield return Type(history4_5, textSpeed);
         yield return new WaitForSeconds(NEW_SCREEN_INTERVAL);
+        
     }
 
     IEnumerator TypePart05()
     {
         historyText.text = "";
-        yield return Type(history5_1, 1);
+        yield return Type(history5_1, 0);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history5_2, 1);
+        yield return Type(history5_2, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history5_3, 1);
+        yield return Type(history5_3, textSpeed);
         yield return new WaitForSeconds(NEW_LINE_INTERVAL);
-        yield return Type(history5_4, 3);
+        yield return Type(history5_4, textSpeed);
         yield return new WaitForSeconds(NEW_SCREEN_INTERVAL);
+        
     }
 
     IEnumerator Type(string historyPart, float slowingFactor)
     {
         for (int i = 0; i < historyPart.Length; i++)
         {
+            if (skipPressed == true)
+            {
+                slowingFactor = 0;
+            }
+            else
+            {
+                slowingFactor = 1;
+            }
+            
             yield return new WaitForSeconds(TYPE_INTERVAL * slowingFactor);
-            historyText.text += historyPart[i];
+
+                historyText.text += historyPart[i];
+            
+           
+            
         }
     }
 }
