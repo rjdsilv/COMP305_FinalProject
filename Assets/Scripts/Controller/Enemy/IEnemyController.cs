@@ -60,6 +60,4 @@ public interface IEnemyController : IController
     bool DropStaminaPot();
 
     bool DropKey();
-
-    void PlayDamageSound();
 }

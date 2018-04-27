@@ -17,8 +17,8 @@ MonoBehaviour:
     level: 1
     minAttack: 15
     maxAttack: 40
-    minDefense: 10
-    maxDefense: 25
+    minDefense: 20
+    maxDefense: 35
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 10
@@ -31,8 +31,8 @@ MonoBehaviour:
     level: 2
     minAttack: 25
     maxAttack: 50
-    minDefense: 20
-    maxDefense: 40
+    minDefense: 30
+    maxDefense: 45
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 15
@@ -45,8 +45,8 @@ MonoBehaviour:
     level: 3
     minAttack: 35
     maxAttack: 60
-    minDefense: 30
-    maxDefense: 50
+    minDefense: 40
+    maxDefense: 60
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 15
@@ -59,8 +59,8 @@ MonoBehaviour:
     level: 4
     minAttack: 45
     maxAttack: 70
-    minDefense: 35
-    maxDefense: 60
+    minDefense: 50
+    maxDefense: 75
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 15
@@ -73,8 +73,8 @@ MonoBehaviour:
     level: 5
     minAttack: 60
     maxAttack: 90
-    minDefense: 45
-    maxDefense: 80
+    minDefense: 65
+    maxDefense: 90
     managedByAI: 0
     xpForKilling: 20
     minGoldForKilling: 15
